@@ -50,5 +50,11 @@ namespace Dentalcare.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Register.";
+            return View();
+        }
+
     }
 }

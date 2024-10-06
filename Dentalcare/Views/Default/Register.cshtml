@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<link href="../../Content/css/register_style.css" rel="stylesheet" />
+<div class="register-container">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+    <div class="content">
+        <!-- Registration form -->
+        <form action="#">
+            <div class="user-details">
+                <!-- Input for Full Name -->
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input type="text" placeholder="Enter your name" name="full-name" id="full-name" required>
+                </div>
+                <!-- Input for Username -->
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text" placeholder="Enter your username" name="user-name" id="user-name" required>
+                </div>
+                <!-- Input for Email -->
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" placeholder="Enter your email" name="email" id="email" required>
+                </div>
+                <!-- Input for Phone Number -->
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input type="text" placeholder="Enter your number" name="phone-number" id="phone-number"
+                           required>
+                </div>
+                <!-- Input for Birthday -->
+                <div class="input-box">
+                    <span class="details">Birth day</span>
+                    <input type="date" name="birth-day" id="birth-day" required>
+                </div>
+                <!-- Input for Nation -->
+                <div class="input-box">
+                    <span class="details">Nation</span>
+                    <select name="nation" id="nation" required>
+                        <option value="vietnam">Việt Nam</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+
+                <!-- Input for Password -->
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="text" placeholder="Enter your password" name="password" id="password" required>
+                </div>
+                <!-- Input for Confirm Password -->
+                <div class="input-box">
+                    <span class="details">Confirm Password</span>
+                    <input type="text" placeholder="Confirm your password" name="confirm-password"
+                           id="confirm-password" required>
+                </div>
+            </div>
+            <div class="gender-details">
+                <!-- Radio buttons for gender selection -->
+                <span class="gender-title">Gender</span>
+                <div class="category">
+                    <!-- Label for Male -->
+                    <label for="gender-male">
+                        <input type="radio" name="gender" id="gender-male" value="gender-male" checked>
+                        <span class="gender">Male</span>
+                    </label>
+                    <!-- Label for Female -->
+                    <label for="gender-female">
+                        <input type="radio" name="gender" id="gender-female" value="gender-female">
+                        <span class="gender">Female</span>
+                    </label>
+                </div>
+            </div>
+            <!-- Submit button -->
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+            <!-- Already have account? -->
+            <div class="login">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+

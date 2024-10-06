@@ -153,6 +153,7 @@
     <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
     <Content Include="Content\css\css\bootstrap-reboot.css" />
     <Content Include="Content\css\css\mixins\_text-hide.css" />
+    <Content Include="Content\css\register_style.css" />
     <Content Include="Content\css\flaticon.css" />
     <Content Include="Content\css\icomoon.css" />
     <Content Include="Content\css\ionicons.min.css" />
@@ -365,6 +366,7 @@
     <Content Include="Views\Default\Blog.cshtml" />
     <Content Include="Views\Default\Contact.cshtml" />
     <Content Include="Views\Default\Login.cshtml" />
+    <Content Include="Views\Default\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
