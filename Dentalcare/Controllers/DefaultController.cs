@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dentalcare.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Dentalcare.Controllers
 {
-    public class DefaultController : Controller
+    public class DefaultController : BaseController
     {
 
         public ActionResult Home()
@@ -53,6 +54,12 @@ namespace Dentalcare.Controllers
         public ActionResult Register()
         {
             ViewBag.Message = "Register.";
+            return View();
+        }
+
+        public ActionResult _404()
+        {
+            ViewBag.Message = "PageNotFound.";
             return View();
         }
 

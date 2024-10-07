@@ -3,17 +3,34 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
-<link href="../../Content/css/login_style.css" rel="stylesheet" />
-<main>
-    <div class="title-login">Đăng nhập để xem lịch sử khám</div>
-    <form action="">
-        <label for="phone-numbers" id="name-label">
-            Số điện thoại
-            <input id="phone-numbers" type="text" required pattern="[0-9]{10}" placeholder="0123456789">
-        </label>
-        <label for="password" id="name-label">
-            Mật khẩu
-            <input id="password" type="password">
-        </label>
-    </form>
-</main>
+<link href="../../Content/css/register_style.css" rel="stylesheet" />
+<div class="register-container">
+    <!-- Title section -->
+    <div class="title">Login</div>
+    <div class="content">
+        <!-- Registration form -->
+        <form action="#">
+            <div class="user-details">
+                <!-- Input for Username -->
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text" placeholder="Enter your username" name="user-name" id="user-name" required>
+                </div>
+
+                <!-- Input for Password -->
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" placeholder="Enter your password" name="password" id="password" required>
+                </div>
+            </div>
+            <!-- Submit button -->
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+            <!-- Already have account? -->
+            <div class="login">
+                <p>Do not have an account? <a href="/register">Register</a></p>
+            </div>
+        </form>
+    </div>
+</div>

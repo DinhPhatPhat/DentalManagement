@@ -156,3 +156,7 @@ C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalca
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.csproj.CopyComplete
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.dll
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.pdb
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\EntityFramework.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\EntityFramework.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\EntityFramework.SqlServer.xml

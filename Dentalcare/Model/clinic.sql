@@ -2107,15 +2107,17 @@ begin
 end
 go
 
-
 --them menu
-exec procAddMenu N'Trang chủ','','trang-chu'
-exec procAddMenu N'Nha sĩ','','nha-si'
-exec procAddMenu N'Tin tức','','tin-tuc'
-exec procAddMenu N'Dịch vụ','','dich-vu'
-exec procAddMenu N'Bình luận','','binh-luan'
-exec procAddMenu N'Liên hệ','','lien-he'
+exec procAddMenu N'Trang chủ','/','trang-chu'
+exec procAddMenu N'Nha sĩ','Doctors','nha-si'
+exec procAddMenu N'Tin tức','Blog','tin-tuc'
+exec procAddMenu N'Dịch vụ','Service','dich-vu'
+exec procAddMenu N'Bình luận','Comments','binh-luan'
+exec procAddMenu N'Liên hệ','Contact','lien-he'
+exec procAddMenu N'Tài khoản','Login','tai-khoan'
 go
+
+--Select * from menu
 
 --CLinic
 create proc procAddClinic
