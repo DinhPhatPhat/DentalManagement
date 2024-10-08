@@ -180,6 +180,7 @@
     <EntitySetMapping Name="Faculties">
       <EntityTypeMapping TypeName="clinicModel.Faculty">
         <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="able" ColumnName="able" />

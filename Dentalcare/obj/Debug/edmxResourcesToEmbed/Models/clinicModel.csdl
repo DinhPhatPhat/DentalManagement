@@ -196,6 +196,7 @@
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Dentists" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Faculty" ToRole="Dentist" />
+    <Property Name="descrip" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="FixedMaterial">
     <Key>
@@ -974,6 +975,7 @@
     </FunctionImport>
     <FunctionImport Name="procAddFaculty">
       <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddFixedMaterial">

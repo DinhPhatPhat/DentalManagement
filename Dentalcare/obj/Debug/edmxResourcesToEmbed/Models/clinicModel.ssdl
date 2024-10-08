@@ -176,6 +176,7 @@
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="FixedMaterial">
     <Key>
@@ -795,6 +796,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
   </Function>
   <Function Name="procAddFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="meta" Type="varchar(max)" Mode="In" />
   </Function>
   <Function Name="procAddFixedMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

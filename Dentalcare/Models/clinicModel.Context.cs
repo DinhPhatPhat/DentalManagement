@@ -329,17 +329,21 @@ namespace Dentalcare.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddConsumableMaterial", expDateParameter, metaParameter, idParameter);
         }
     
-        public virtual int procAddFaculty(string name, string meta)
+        public virtual int procAddFaculty(string name, string descrip, string meta)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
                 new ObjectParameter("name", typeof(string));
     
+            var descripParameter = descrip != null ?
+                new ObjectParameter("descrip", descrip) :
+                new ObjectParameter("descrip", typeof(string));
+    
             var metaParameter = meta != null ?
                 new ObjectParameter("meta", meta) :
                 new ObjectParameter("meta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddFaculty", nameParameter, metaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddFaculty", nameParameter, descripParameter, metaParameter);
         }
     
         public virtual int procAddFixedMaterial(string meta, string id)

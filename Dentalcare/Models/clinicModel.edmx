@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="clinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="clinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="id" />
@@ -181,6 +181,7 @@
           <Property Name="meta" Type="varchar(max)" Nullable="false" />
           <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datebegin" Type="datetime" Nullable="false" />
+          <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="FixedMaterial">
           <Key>
@@ -800,6 +801,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
         </Function>
         <Function Name="procAddFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="meta" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="procAddFixedMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1025,8 +1027,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="clinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1226,6 +1227,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Dentists" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Faculty" ToRole="Dentist" />
+          <Property Name="descrip" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FixedMaterial">
           <Key>
@@ -2004,6 +2006,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           </FunctionImport>
           <FunctionImport Name="procAddFaculty">
             <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="descrip" Mode="In" Type="String" />
             <Parameter Name="meta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="procAddFixedMaterial">
@@ -2270,6 +2273,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <EntitySetMapping Name="Faculties">
             <EntityTypeMapping TypeName="clinicModel.Faculty">
               <MappingFragment StoreEntitySet="Faculty">
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="able" ColumnName="able" />
