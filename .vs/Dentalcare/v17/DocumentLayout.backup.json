@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|d:\\college\\summarytdtu\\nettechnology\\ck_main\\mainapplication\\dentalmanagement\\dentalcare\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|d:\\college\\summarytdtu\\nettechnology\\ck_main\\mainapplication\\dentalmanagement\\dentalcare\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\dentalcare\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\dentalcare\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -23,14 +31,6 @@
       "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\controllers\\defaultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\dentalcare\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\dentalcare\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\dentalcare\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Dentalcare\\Views\\Shared\\_Layout.cshtml",
@@ -78,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "DefaultController.cs",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Controllers\\DefaultController.cs",
               "RelativeDocumentMoniker": "Dentalcare\\Controllers\\DefaultController.cs",
@@ -90,20 +90,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MyLayout.cshtml",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Views\\Shared\\MyLayout.cshtml",
               "RelativeDocumentMoniker": "Dentalcare\\Views\\Shared\\MyLayout.cshtml",
               "ToolTip": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Views\\Shared\\MyLayout.cshtml",
               "RelativeToolTip": "Dentalcare\\Views\\Shared\\MyLayout.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAIwCQAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T09:42:19.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T09:42:19.335Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Dentalcare\\Views\\_ViewStart.cshtml",
@@ -115,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Home.cshtml",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Views\\Default\\Home.cshtml",
               "RelativeDocumentMoniker": "Dentalcare\\Views\\Default\\Home.cshtml",
@@ -127,27 +126,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Dentalcare\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Dentalcare\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAlAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T09:18:07.874Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "RouteConfig.cs",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "Dentalcare\\App_Start\\RouteConfig.cs",
               "ToolTip": "D:\\College\\SummaryTDTU\\NetTechnology\\CK_main\\MainApplication\\DentalManagement\\Dentalcare\\App_Start\\RouteConfig.cs",
               "RelativeToolTip": "Dentalcare\\App_Start\\RouteConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABGAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T09:17:31.143Z"
+              "WhenOpened": "2024-09-17T09:17:31.143Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
