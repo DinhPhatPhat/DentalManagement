@@ -1,0 +1,1025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="clinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Advertisement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="symptom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="state" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="timeStart" Type="datetime" Nullable="false" />
+    <Property Name="timeEnd" Type="datetime" Nullable="false" />
+    <Property Name="note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="denid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assisstant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="totalPrice" Type="int" Nullable="false" />
+    <Property Name="ServicesPrice" Type="int" Nullable="false" />
+    <Property Name="PrescriptionPrice" Type="int" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="isPayed" Type="bit" Nullable="false" />
+    <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bill_Service">
+    <Key>
+      <PropertyRef Name="billID" />
+      <PropertyRef Name="SerID" />
+    </Key>
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="billID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SerID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="timeStart" Type="datetime" Nullable="false" />
+    <Property Name="timeEnd" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="Personid" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="facebook" Type="varchar(max)" Nullable="false" />
+    <Property Name="zalo" Type="varchar(max)" Nullable="false" />
+    <Property Name="instagram" Type="varchar(max)" Nullable="false" />
+    <Property Name="youtube" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsumableMaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="expDate" Type="datetime" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dentist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="falid" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FixedMaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredient_ConsumableMaterial">
+    <Key>
+      <PropertyRef Name="ingreId" />
+      <PropertyRef Name="consumId" />
+    </Key>
+    <Property Name="able" Type="int" Nullable="false" />
+    <Property Name="ingreId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="consumId" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cateId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="calUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="func" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mfgDate" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Material_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="caredACtor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="instruction" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NEWS">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="img" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="msg" />
+      <PropertyRef Name="meta" />
+      <PropertyRef Name="hide" />
+      <PropertyRef Name="order" />
+      <PropertyRef Name="datebegin" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="isVip" Type="int" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phoneNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="salary" Type="int" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="gender" Type="bit" Nullable="false" />
+    <Property Name="birthday" Type="datetime" Nullable="false" />
+    <Property Name="nation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="role" Type="int" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="denid" />
+      <PropertyRef Name="patid" />
+      <PropertyRef Name="billid" />
+    </Key>
+    <Property Name="note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="denid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="billid" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prescription_Medicine">
+    <Key>
+      <PropertyRef Name="denid" />
+      <PropertyRef Name="patid" />
+      <PropertyRef Name="billid" />
+      <PropertyRef Name="medId" />
+    </Key>
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="denid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="billid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="medId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="quantityMedicine" Type="int" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Receptionist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cateId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="caredActor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="calUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
+    <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datebegin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Admin__id__47DBAE45">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__denid__55F4C372">
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dentist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="denid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__patid__56E8E7AB">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assisstant__id__5165187F">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Assisstant" Type="Self.Assisstant" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Assisstant">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__patid__628FA481">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Serv__billI__1EA48E88">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+    <End Role="Bill_Service" Type="Self.Bill_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill_Service">
+        <PropertyRef Name="billID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Serv__SerID__1F98B2C1">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Bill_Service" Type="Self.Bill_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill_Service">
+        <PropertyRef Name="SerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Calendar__Person__2A164134">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Calendar">
+        <PropertyRef Name="Personid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__patid__2EDAF651">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ConsumableMa__id__0D7A0286">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dentist__falid__40058253">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dentist">
+        <PropertyRef Name="falid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dentist__id__3F115E1A">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dentist">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FixedMateria__id__02084FDA">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="FixedMaterial" Type="Self.FixedMaterial" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FixedMaterial">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingredien__consu__123EB7A3">
+    <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="1" />
+    <End Role="Ingredient_ConsumableMaterial" Type="Self.Ingredient_ConsumableMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ingredient_ConsumableMaterial">
+        <PropertyRef Name="consumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingredien__ingre__114A936A">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+    <End Role="Ingredient_ConsumableMaterial" Type="Self.Ingredient_ConsumableMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ingredient_ConsumableMaterial">
+        <PropertyRef Name="ingreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material__cateId__7C4F7684">
+    <End Role="Material_Category" Type="Self.Material_Category" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="cateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Medicine__id__18EBB532">
+    <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="1" />
+    <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Medicine">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Patient__id__5629CD9C">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Person__id__4316F928">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__billi__498EEC8D">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="billid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__denid__47A6A41B">
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dentist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="denid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__medId__503BEA1C">
+    <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+    <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="medId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__patid__489AC854">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescription_Med__4F47C5E3">
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
+    <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescription">
+        <PropertyRef Name="denid" />
+        <PropertyRef Name="patid" />
+        <PropertyRef Name="billid" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="denid" />
+        <PropertyRef Name="patid" />
+        <PropertyRef Name="billid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Receptionist__id__4CA06362">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Receptionist" Type="Self.Receptionist" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Receptionist">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Service__cateId__6EF57B66">
+    <End Role="Service_Category" Type="Self.Service_Category" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="cateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="autoid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="NAME" Type="char" Mode="In" />
+    <Parameter Name="QUAN" Type="int" Mode="In" />
+  </Function>
+  <Function Name="procAddAccountAndPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="salary" Type="int" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="gender" Type="bit" Mode="In" />
+    <Parameter Name="birthday" Type="datetime" Mode="In" />
+    <Parameter Name="nation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="role" Type="int" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="falID" Type="varchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="MetaAccount" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MetaPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MetaPersonDetail" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddAdvertisement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denID" Type="varchar" Mode="In" />
+    <Parameter Name="patID" Type="varchar" Mode="In" />
+    <Parameter Name="timeStart" Type="datetime" Mode="In" />
+    <Parameter Name="timeEnd" Type="datetime" Mode="In" />
+    <Parameter Name="symptom" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="state" Type="nvarchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patId" Type="varchar" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddBill_Service" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="serId" Type="varchar" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddCalendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="timeStart" Type="datetime" Mode="In" />
+    <Parameter Name="timeEnd" Type="datetime" Mode="In" />
+    <Parameter Name="personID" Type="varchar" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddClinic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="facebook" Type="varchar(max)" Mode="In" />
+    <Parameter Name="zalo" Type="varchar(max)" Mode="In" />
+    <Parameter Name="instagram" Type="varchar(max)" Mode="In" />
+    <Parameter Name="youtube" Type="varchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patID" Type="varchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddConsumableMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="expDate" Type="datetime" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddFixedMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddIngredient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddIngredient_ConsumableMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ingreID" Type="varchar" Mode="In" />
+    <Parameter Name="consumID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="cateId" Type="varchar" Mode="In" />
+    <Parameter Name="calUnit" Type="nvarchar" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="func" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="mfgDate" Type="datetime" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddMaterial_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="ins" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="price" Type="int" Mode="In" />
+    <Parameter Name="caredActor" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="link" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddPrescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denId" Type="varchar" Mode="In" />
+    <Parameter Name="patId" Type="varchar" Mode="In" />
+    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddPrescription_Medicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denId" Type="varchar" Mode="In" />
+    <Parameter Name="patId" Type="varchar" Mode="In" />
+    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="medID" Type="varchar" Mode="In" />
+    <Parameter Name="quantityMedicine" Type="int" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddService" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="price" Type="int" Mode="In" />
+    <Parameter Name="calUnit" Type="nvarchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="cateId" Type="varchar" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="caredActor" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="procAddService_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="descip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="clinicModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Assisstant" EntityType="Self.Assisstant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bill_Service" EntityType="Self.Bill_Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clinic" EntityType="Self.Clinic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsumableMaterial" EntityType="Self.ConsumableMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dentist" EntityType="Self.Dentist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FixedMaterial" EntityType="Self.FixedMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredient_ConsumableMaterial" EntityType="Self.Ingredient_ConsumableMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Material_Category" EntityType="Self.Material_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prescription" EntityType="Self.Prescription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prescription_Medicine" EntityType="Self.Prescription_Medicine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receptionist" EntityType="Self.Receptionist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service_Category" EntityType="Self.Service_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEWS" EntityType="Self.NEWS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NEWS].[id] AS [id], 
+    [NEWS].[img] AS [img], 
+    [NEWS].[title] AS [title], 
+    [NEWS].[msg] AS [msg], 
+    [NEWS].[meta] AS [meta], 
+    [NEWS].[hide] AS [hide], 
+    [NEWS].[order] AS [order], 
+    [NEWS].[datebegin] AS [datebegin]
+    FROM [dbo].[NEWS] AS [NEWS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Admin__id__47DBAE45" Association="Self.FK__Admin__id__47DBAE45">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__denid__55F4C372" Association="Self.FK__Appointme__denid__55F4C372">
+      <End Role="Dentist" EntitySet="Dentist" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__patid__56E8E7AB" Association="Self.FK__Appointme__patid__56E8E7AB">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assisstant__id__5165187F" Association="Self.FK__Assisstant__id__5165187F">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Assisstant" EntitySet="Assisstant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__patid__628FA481" Association="Self.FK__Bill__patid__628FA481">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Serv__billI__1EA48E88" Association="Self.FK__Bill_Serv__billI__1EA48E88">
+      <End Role="Bill" EntitySet="Bill" />
+      <End Role="Bill_Service" EntitySet="Bill_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Serv__SerID__1F98B2C1" Association="Self.FK__Bill_Serv__SerID__1F98B2C1">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Bill_Service" EntitySet="Bill_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Calendar__Person__2A164134" Association="Self.FK__Calendar__Person__2A164134">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Calendar" EntitySet="Calendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__patid__2EDAF651" Association="Self.FK__Comment__patid__2EDAF651">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ConsumableMa__id__0D7A0286" Association="Self.FK__ConsumableMa__id__0D7A0286">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dentist__falid__40058253" Association="Self.FK__Dentist__falid__40058253">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Dentist" EntitySet="Dentist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dentist__id__3F115E1A" Association="Self.FK__Dentist__id__3F115E1A">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Dentist" EntitySet="Dentist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FixedMateria__id__02084FDA" Association="Self.FK__FixedMateria__id__02084FDA">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="FixedMaterial" EntitySet="FixedMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingredien__consu__123EB7A3" Association="Self.FK__Ingredien__consu__123EB7A3">
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterial" />
+      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingredien__ingre__114A936A" Association="Self.FK__Ingredien__ingre__114A936A">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material__cateId__7C4F7684" Association="Self.FK__Material__cateId__7C4F7684">
+      <End Role="Material_Category" EntitySet="Material_Category" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Medicine__id__18EBB532" Association="Self.FK__Medicine__id__18EBB532">
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterial" />
+      <End Role="Medicine" EntitySet="Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Patient__id__5629CD9C" Association="Self.FK__Patient__id__5629CD9C">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Person__id__4316F928" Association="Self.FK__Person__id__4316F928">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__billi__498EEC8D" Association="Self.FK__Prescript__billi__498EEC8D">
+      <End Role="Bill" EntitySet="Bill" />
+      <End Role="Prescription" EntitySet="Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__denid__47A6A41B" Association="Self.FK__Prescript__denid__47A6A41B">
+      <End Role="Dentist" EntitySet="Dentist" />
+      <End Role="Prescription" EntitySet="Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__medId__503BEA1C" Association="Self.FK__Prescript__medId__503BEA1C">
+      <End Role="Medicine" EntitySet="Medicine" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__patid__489AC854" Association="Self.FK__Prescript__patid__489AC854">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Prescription" EntitySet="Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescription_Med__4F47C5E3" Association="Self.FK__Prescription_Med__4F47C5E3">
+      <End Role="Prescription" EntitySet="Prescription" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Receptionist__id__4CA06362" Association="Self.FK__Receptionist__id__4CA06362">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Receptionist" EntitySet="Receptionist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Service__cateId__6EF57B66" Association="Self.FK__Service__cateId__6EF57B66">
+      <End Role="Service_Category" EntitySet="Service_Category" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

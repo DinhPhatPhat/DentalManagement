@@ -1,0 +1,1060 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="clinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Person__id__4316F928" FromRole="Account" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Admin__id__47DBAE45" FromRole="Admin" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Advertisement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="symptom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="denid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Dentist" Relationship="Self.FK__Appointme__denid__55F4C372" FromRole="Appointment" ToRole="Dentist" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__patid__56E8E7AB" FromRole="Appointment" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Assisstant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Assisstant__id__5165187F" FromRole="Assisstant" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="totalPrice" Type="Int32" Nullable="false" />
+    <Property Name="ServicesPrice" Type="Int32" Nullable="false" />
+    <Property Name="PrescriptionPrice" Type="Int32" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isPayed" Type="Boolean" Nullable="false" />
+    <Property Name="patid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Bill__patid__628FA481" FromRole="Bill" ToRole="Patient" />
+    <NavigationProperty Name="Bill_Service" Relationship="Self.FK__Bill_Serv__billI__1EA48E88" FromRole="Bill" ToRole="Bill_Service" />
+    <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__billi__498EEC8D" FromRole="Bill" ToRole="Prescription" />
+  </EntityType>
+  <EntityType Name="Bill_Service">
+    <Key>
+      <PropertyRef Name="billID" />
+      <PropertyRef Name="SerID" />
+    </Key>
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="billID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SerID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK__Bill_Serv__billI__1EA48E88" FromRole="Bill_Service" ToRole="Bill" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Bill_Serv__SerID__1F98B2C1" FromRole="Bill_Service" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Personid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Calendar__Person__2A164134" FromRole="Calendar" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="facebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="zalo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="instagram" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="youtube" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="patid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Comment__patid__2EDAF651" FromRole="Comment" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="ConsumableMaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Material" Relationship="Self.FK__ConsumableMa__id__0D7A0286" FromRole="ConsumableMaterial" ToRole="Material" />
+    <NavigationProperty Name="Ingredient_ConsumableMaterial" Relationship="Self.FK__Ingredien__consu__123EB7A3" FromRole="ConsumableMaterial" ToRole="Ingredient_ConsumableMaterial" />
+    <NavigationProperty Name="Medicine" Relationship="Self.FK__Medicine__id__18EBB532" FromRole="ConsumableMaterial" ToRole="Medicine" />
+  </EntityType>
+  <EntityType Name="Dentist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="falid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__denid__55F4C372" FromRole="Dentist" ToRole="Appointment" />
+    <NavigationProperty Name="Faculty" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Dentist" ToRole="Faculty" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Dentist" ToRole="Person" />
+    <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__denid__47A6A41B" FromRole="Dentist" ToRole="Prescription" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Dentists" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Faculty" ToRole="Dentist" />
+    <Property Name="descrip" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FixedMaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Material" Relationship="Self.FK__FixedMateria__id__02084FDA" FromRole="FixedMaterial" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Ingredient_ConsumableMaterial" Relationship="Self.FK__Ingredien__ingre__114A936A" FromRole="Ingredient" ToRole="Ingredient_ConsumableMaterial" />
+  </EntityType>
+  <EntityType Name="Ingredient_ConsumableMaterial">
+    <Key>
+      <PropertyRef Name="ingreId" />
+      <PropertyRef Name="consumId" />
+    </Key>
+    <Property Name="able" Type="Int32" Nullable="false" />
+    <Property Name="ingreId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="consumId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ConsumableMaterial" Relationship="Self.FK__Ingredien__consu__123EB7A3" FromRole="Ingredient_ConsumableMaterial" ToRole="ConsumableMaterial" />
+    <NavigationProperty Name="Ingredient" Relationship="Self.FK__Ingredien__ingre__114A936A" FromRole="Ingredient_ConsumableMaterial" ToRole="Ingredient" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cateId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="calUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="func" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mfgDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ConsumableMaterial" Relationship="Self.FK__ConsumableMa__id__0D7A0286" FromRole="Material" ToRole="ConsumableMaterial" />
+    <NavigationProperty Name="FixedMaterial" Relationship="Self.FK__FixedMateria__id__02084FDA" FromRole="Material" ToRole="FixedMaterial" />
+    <NavigationProperty Name="Material_Category" Relationship="Self.FK__Material__cateId__7C4F7684" FromRole="Material" ToRole="Material_Category" />
+  </EntityType>
+  <EntityType Name="Material_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK__Material__cateId__7C4F7684" FromRole="Material_Category" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="caredACtor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="instruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ConsumableMaterial" Relationship="Self.FK__Medicine__id__18EBB532" FromRole="Medicine" ToRole="ConsumableMaterial" />
+    <NavigationProperty Name="Prescription_Medicine" Relationship="Self.FK__Prescript__medId__503BEA1C" FromRole="Medicine" ToRole="Prescription_Medicine" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="isVip" Type="Int32" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__patid__56E8E7AB" FromRole="Patient" ToRole="Appointment" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__patid__628FA481" FromRole="Patient" ToRole="Bill" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__patid__2EDAF651" FromRole="Patient" ToRole="Comment" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Patient__id__5629CD9C" FromRole="Patient" ToRole="Person" />
+    <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__patid__489AC854" FromRole="Patient" ToRole="Prescription" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="salary" Type="Int32" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gender" Type="Boolean" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="nation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="role" Type="Int32" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Person__id__4316F928" FromRole="Person" ToRole="Account" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK__Admin__id__47DBAE45" FromRole="Person" ToRole="Admin" />
+    <NavigationProperty Name="Assisstant" Relationship="Self.FK__Assisstant__id__5165187F" FromRole="Person" ToRole="Assisstant" />
+    <NavigationProperty Name="Calendars" Relationship="Self.FK__Calendar__Person__2A164134" FromRole="Person" ToRole="Calendar" />
+    <NavigationProperty Name="Dentist" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Person" ToRole="Dentist" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__id__5629CD9C" FromRole="Person" ToRole="Patient" />
+    <NavigationProperty Name="Receptionist" Relationship="Self.FK__Receptionist__id__4CA06362" FromRole="Person" ToRole="Receptionist" />
+  </EntityType>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="denid" />
+      <PropertyRef Name="patid" />
+      <PropertyRef Name="billid" />
+    </Key>
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="denid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="billid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK__Prescript__billi__498EEC8D" FromRole="Prescription" ToRole="Bill" />
+    <NavigationProperty Name="Dentist" Relationship="Self.FK__Prescript__denid__47A6A41B" FromRole="Prescription" ToRole="Dentist" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Prescript__patid__489AC854" FromRole="Prescription" ToRole="Patient" />
+    <NavigationProperty Name="Prescription_Medicine" Relationship="Self.FK__Prescription_Med__4F47C5E3" FromRole="Prescription" ToRole="Prescription_Medicine" />
+  </EntityType>
+  <EntityType Name="Prescription_Medicine">
+    <Key>
+      <PropertyRef Name="denid" />
+      <PropertyRef Name="patid" />
+      <PropertyRef Name="billid" />
+      <PropertyRef Name="medId" />
+    </Key>
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="denid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="billid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="medId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="quantityMedicine" Type="Int32" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Medicine" Relationship="Self.FK__Prescript__medId__503BEA1C" FromRole="Prescription_Medicine" ToRole="Medicine" />
+    <NavigationProperty Name="Prescription" Relationship="Self.FK__Prescription_Med__4F47C5E3" FromRole="Prescription_Medicine" ToRole="Prescription" />
+  </EntityType>
+  <EntityType Name="Receptionist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Receptionist__id__4CA06362" FromRole="Receptionist" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cateId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="caredActor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="calUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bill_Service" Relationship="Self.FK__Bill_Serv__SerID__1F98B2C1" FromRole="Service" ToRole="Bill_Service" />
+    <NavigationProperty Name="Service_Category" Relationship="Self.FK__Service__cateId__6EF57B66" FromRole="Service" ToRole="Service_Category" />
+  </EntityType>
+  <EntityType Name="Service_Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Services" Relationship="Self.FK__Service__cateId__6EF57B66" FromRole="Service_Category" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="NEWS">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="img" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="msg" />
+      <PropertyRef Name="meta" />
+      <PropertyRef Name="hide" />
+      <PropertyRef Name="order" />
+      <PropertyRef Name="datebegin" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK__Person__id__4316F928">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Admin__id__47DBAE45">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__denid__55F4C372">
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dentist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="denid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__patid__56E8E7AB">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assisstant__id__5165187F">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Assisstant" Type="Self.Assisstant" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Assisstant">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__patid__628FA481">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Serv__billI__1EA48E88">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+    <End Role="Bill_Service" Type="Self.Bill_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill_Service">
+        <PropertyRef Name="billID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__billi__498EEC8D">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="billid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Serv__SerID__1F98B2C1">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Bill_Service" Type="Self.Bill_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill_Service">
+        <PropertyRef Name="SerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Calendar__Person__2A164134">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Calendar">
+        <PropertyRef Name="Personid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__patid__2EDAF651">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ConsumableMa__id__0D7A0286">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingredien__consu__123EB7A3">
+    <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="1" />
+    <End Role="Ingredient_ConsumableMaterial" Type="Self.Ingredient_ConsumableMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ingredient_ConsumableMaterial">
+        <PropertyRef Name="consumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Medicine__id__18EBB532">
+    <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="1" />
+    <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Medicine">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dentist__falid__40058253">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dentist">
+        <PropertyRef Name="falid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dentist__id__3F115E1A">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dentist">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__denid__47A6A41B">
+    <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dentist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="denid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FixedMateria__id__02084FDA">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="FixedMaterial" Type="Self.FixedMaterial" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FixedMaterial">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingredien__ingre__114A936A">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+    <End Role="Ingredient_ConsumableMaterial" Type="Self.Ingredient_ConsumableMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ingredient_ConsumableMaterial">
+        <PropertyRef Name="ingreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material__cateId__7C4F7684">
+    <End Role="Material_Category" Type="Self.Material_Category" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="cateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__medId__503BEA1C">
+    <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+    <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="medId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Patient__id__5629CD9C">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__patid__489AC854">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Receptionist__id__4CA06362">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Receptionist" Type="Self.Receptionist" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Receptionist">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescription_Med__4F47C5E3">
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
+    <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescription">
+        <PropertyRef Name="denid" />
+        <PropertyRef Name="patid" />
+        <PropertyRef Name="billid" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="denid" />
+        <PropertyRef Name="patid" />
+        <PropertyRef Name="billid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Service__cateId__6EF57B66">
+    <End Role="Service_Category" Type="Self.Service_Category" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="cateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="clinicEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Advertisements" EntityType="Self.Advertisement" />
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="Assisstants" EntityType="Self.Assisstant" />
+    <EntitySet Name="Bills" EntityType="Self.Bill" />
+    <EntitySet Name="Bill_Service" EntityType="Self.Bill_Service" />
+    <EntitySet Name="Calendars" EntityType="Self.Calendar" />
+    <EntitySet Name="Clinics" EntityType="Self.Clinic" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="ConsumableMaterials" EntityType="Self.ConsumableMaterial" />
+    <EntitySet Name="Dentists" EntityType="Self.Dentist" />
+    <EntitySet Name="Faculties" EntityType="Self.Faculty" />
+    <EntitySet Name="FixedMaterials" EntityType="Self.FixedMaterial" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+    <EntitySet Name="Ingredient_ConsumableMaterial" EntityType="Self.Ingredient_ConsumableMaterial" />
+    <EntitySet Name="Materials" EntityType="Self.Material" />
+    <EntitySet Name="Material_Category" EntityType="Self.Material_Category" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
+    <EntitySet Name="Prescription_Medicine" EntityType="Self.Prescription_Medicine" />
+    <EntitySet Name="Receptionists" EntityType="Self.Receptionist" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="Service_Category" EntityType="Self.Service_Category" />
+    <EntitySet Name="NEWS" EntityType="Self.NEWS" />
+    <AssociationSet Name="FK__Person__id__4316F928" Association="Self.FK__Person__id__4316F928">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Admin__id__47DBAE45" Association="Self.FK__Admin__id__47DBAE45">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__denid__55F4C372" Association="Self.FK__Appointme__denid__55F4C372">
+      <End Role="Dentist" EntitySet="Dentists" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__patid__56E8E7AB" Association="Self.FK__Appointme__patid__56E8E7AB">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assisstant__id__5165187F" Association="Self.FK__Assisstant__id__5165187F">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Assisstant" EntitySet="Assisstants" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__patid__628FA481" Association="Self.FK__Bill__patid__628FA481">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Serv__billI__1EA48E88" Association="Self.FK__Bill_Serv__billI__1EA48E88">
+      <End Role="Bill" EntitySet="Bills" />
+      <End Role="Bill_Service" EntitySet="Bill_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__billi__498EEC8D" Association="Self.FK__Prescript__billi__498EEC8D">
+      <End Role="Bill" EntitySet="Bills" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Serv__SerID__1F98B2C1" Association="Self.FK__Bill_Serv__SerID__1F98B2C1">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="Bill_Service" EntitySet="Bill_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Calendar__Person__2A164134" Association="Self.FK__Calendar__Person__2A164134">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Calendar" EntitySet="Calendars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__patid__2EDAF651" Association="Self.FK__Comment__patid__2EDAF651">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ConsumableMa__id__0D7A0286" Association="Self.FK__ConsumableMa__id__0D7A0286">
+      <End Role="Material" EntitySet="Materials" />
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingredien__consu__123EB7A3" Association="Self.FK__Ingredien__consu__123EB7A3">
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
+      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Medicine__id__18EBB532" Association="Self.FK__Medicine__id__18EBB532">
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
+      <End Role="Medicine" EntitySet="Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dentist__falid__40058253" Association="Self.FK__Dentist__falid__40058253">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Dentist" EntitySet="Dentists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dentist__id__3F115E1A" Association="Self.FK__Dentist__id__3F115E1A">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Dentist" EntitySet="Dentists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__denid__47A6A41B" Association="Self.FK__Prescript__denid__47A6A41B">
+      <End Role="Dentist" EntitySet="Dentists" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FixedMateria__id__02084FDA" Association="Self.FK__FixedMateria__id__02084FDA">
+      <End Role="Material" EntitySet="Materials" />
+      <End Role="FixedMaterial" EntitySet="FixedMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingredien__ingre__114A936A" Association="Self.FK__Ingredien__ingre__114A936A">
+      <End Role="Ingredient" EntitySet="Ingredients" />
+      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material__cateId__7C4F7684" Association="Self.FK__Material__cateId__7C4F7684">
+      <End Role="Material_Category" EntitySet="Material_Category" />
+      <End Role="Material" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__medId__503BEA1C" Association="Self.FK__Prescript__medId__503BEA1C">
+      <End Role="Medicine" EntitySet="Medicines" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Patient__id__5629CD9C" Association="Self.FK__Patient__id__5629CD9C">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__patid__489AC854" Association="Self.FK__Prescript__patid__489AC854">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Receptionist__id__4CA06362" Association="Self.FK__Receptionist__id__4CA06362">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Receptionist" EntitySet="Receptionists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescription_Med__4F47C5E3" Association="Self.FK__Prescription_Med__4F47C5E3">
+      <End Role="Prescription" EntitySet="Prescriptions" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Service__cateId__6EF57B66" Association="Self.FK__Service__cateId__6EF57B66">
+      <End Role="Service_Category" EntitySet="Service_Category" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <FunctionImport Name="procAddAccountAndPerson">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phoneNumber" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="salary" Mode="In" Type="Int32" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="Boolean" />
+      <Parameter Name="birthday" Mode="In" Type="DateTime" />
+      <Parameter Name="nation" Mode="In" Type="String" />
+      <Parameter Name="role" Mode="In" Type="Int32" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="falID" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="MetaAccount" Mode="In" Type="String" />
+      <Parameter Name="MetaPerson" Mode="In" Type="String" />
+      <Parameter Name="MetaPersonDetail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddAdvertisement">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddAppointment">
+      <Parameter Name="denID" Mode="In" Type="String" />
+      <Parameter Name="patID" Mode="In" Type="String" />
+      <Parameter Name="timeStart" Mode="In" Type="DateTime" />
+      <Parameter Name="timeEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="symptom" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddBill">
+      <Parameter Name="patId" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddBill_Service">
+      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="serId" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddCalendar">
+      <Parameter Name="timeStart" Mode="In" Type="DateTime" />
+      <Parameter Name="timeEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="personID" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddClinic">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phoneNumber" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="facebook" Mode="In" Type="String" />
+      <Parameter Name="zalo" Mode="In" Type="String" />
+      <Parameter Name="instagram" Mode="In" Type="String" />
+      <Parameter Name="youtube" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddComment">
+      <Parameter Name="patID" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddConsumableMaterial">
+      <Parameter Name="expDate" Mode="In" Type="DateTime" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddFaculty">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddFixedMaterial">
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddIngredient">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddIngredient_ConsumableMaterial">
+      <Parameter Name="ingreID" Mode="In" Type="String" />
+      <Parameter Name="consumID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMaterial">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="cateId" Mode="In" Type="String" />
+      <Parameter Name="calUnit" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="func" Mode="In" Type="String" />
+      <Parameter Name="mfgDate" Mode="In" Type="DateTime" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMaterial_Category">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMedicine">
+      <Parameter Name="id" Mode="In" Type="String" />
+      <Parameter Name="ins" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="caredActor" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMenu">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="link" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddNews">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddPrescription">
+      <Parameter Name="denId" Mode="In" Type="String" />
+      <Parameter Name="patId" Mode="In" Type="String" />
+      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddPrescription_Medicine">
+      <Parameter Name="denId" Mode="In" Type="String" />
+      <Parameter Name="patId" Mode="In" Type="String" />
+      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="medID" Mode="In" Type="String" />
+      <Parameter Name="quantityMedicine" Mode="In" Type="Int32" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddService">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="calUnit" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="cateId" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="caredActor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddService_Category">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descip" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
