@@ -274,6 +274,7 @@ CREATE TABLE Faculty
 (
   id VARCHAR(10) NOT NULL,
   name NVARCHAR(MAX) NOT NULL,
+  descrip NVARCHAR(MAX) NOT NULL DEFAULT('none'),
   able BIT NOT NULL DEFAULT 1,
   hide BIT NOT NULL DEFAULT 0,
   meta VARCHAR(MAX) NOT NULL,
@@ -355,7 +356,17 @@ CREATE TABLE Menu
   datebegin DATETIME NOT NULL  DEFAULT GETDATE(),
   PRIMARY KEY (id)
 );
-
+CREATE TABLE Footer
+(
+  id VARCHAR(10) NOT NULL,
+  name NVARCHAR(100) NOT NULL,
+  link NVARCHAR(MAX),
+  hide BIT NOT NULL DEFAULT 0,
+  meta VARCHAR(MAX) NOT NULL,
+  [order] INT NOT NULL IDENTITY(1,1),
+  datebegin DATETIME NOT NULL  DEFAULT GETDATE(),
+  PRIMARY KEY (id)
+);
 CREATE TABLE Dentist
 (
   title NVARCHAR(50) NOT NULL,
@@ -654,6 +665,7 @@ go
 --THEM KHOA
 create proc procAddFaculty
 	@name NVARCHAR(MAX),
+	@descrip NVARCHAR(MAX),
 	@meta VARCHAR(MAX)
 as
 begin
@@ -666,21 +678,22 @@ begin
 		end
 	declare @id VARCHAR(10)
 	set @id = dbo.autoid('FA', @QuanFal+1)
-	insert into Faculty(id,meta,name)
-	values (@id,@meta,@name)
+	insert into Faculty(id,descrip,meta,name)
+	values (@id,@descrip,@meta,@name)
 end
 go
 
 --select * from Faculty
---them khoa
-exec procAddFaculty 'Nha chu', 'khoa-nha-chu'
-exec procAddFaculty N'Phục Hình', 'khoa-phuc-hinh'
-exec procAddFaculty N'Răng trẻ em', 'khoa-rang-tre-em'
-exec procAddFaculty N'Nhổ răng và tiểu phẩu', 'khoa-nho-rang-va-tieu-phau'
-exec procAddFaculty N'Chữa răng và nội nha','khoa-chu-rang-va-noi-nha'
-exec procAddFaculty N'Tổng quát', 'khoa-tong-quat'
-GO
 
+--them khoa
+exec procAddFaculty N'Nha chu', N'Khoa chuyên về chăm sóc và điều trị các bệnh lý liên quan đến nướu và các mô mềm quanh răng.', 'khoa-nha-chu'
+exec procAddFaculty N'Phục Hình', N'Khoa chuyên thực hiện phục hồi chức năng nhai cho bệnh nhân thông qua các biện pháp như hàm giả, cầu răng.', 'khoa-phuc-hinh'
+exec procAddFaculty N'Răng trẻ em', N'Khoa chuyên điều trị và chăm sóc răng miệng cho trẻ em, bao gồm cả việc phòng ngừa các bệnh lý.', 'khoa-rang-tre-em'
+exec procAddFaculty N'Nhổ răng và tiểu phẩu', N'Khoa chuyên thực hiện các phẫu thuật nhổ răng và các tiểu phẫu liên quan đến răng miệng.', 'khoa-nho-rang-va-tieu-phau'
+exec procAddFaculty N'Chữa răng và nội nha', N'Khoa chuyên điều trị các bệnh lý về răng, đặc biệt là các vấn đề nội nha như tủy răng.', 'khoa-chu-rang-va-noi-nha'
+exec procAddFaculty N'Tổng quát', N'Khoa cung cấp các dịch vụ khám và điều trị tổng quát cho bệnh nhân, bao gồm cả tư vấn và chăm sóc răng miệng.', 'khoa-tong-quat'
+
+GO
 
 --them nha si
 exec procAddAccountAndPerson 'dentist1','123',N'Lâm Đình Kiêm','09023511284',  'lamvak@gmail.com', 9000000,N'Tây Ninh'
@@ -2107,15 +2120,17 @@ begin
 end
 go
 
-
 --them menu
-exec procAddMenu N'Trang chủ','','trang-chu'
-exec procAddMenu N'Nha sĩ','','nha-si'
-exec procAddMenu N'Tin tức','','tin-tuc'
-exec procAddMenu N'Dịch vụ','','dich-vu'
-exec procAddMenu N'Bình luận','','binh-luan'
-exec procAddMenu N'Liên hệ','','lien-he'
+exec procAddMenu N'Trang chủ','/','trang-chu'
+exec procAddMenu N'Nha sĩ','/Doctors','nha-si'
+exec procAddMenu N'Tin tức','/Blog','tin-tuc'
+exec procAddMenu N'Dịch vụ','/Service','dich-vu'
+exec procAddMenu N'Bình luận','/Comments','binh-luan'
+exec procAddMenu N'Liên hệ','/Contact','lien-he'
+exec procAddMenu N'Tài khoản','/Login','tai-khoan'
 go
+
+--Select * from menu
 
 --CLinic
 create proc procAddClinic
