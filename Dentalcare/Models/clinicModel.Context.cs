@@ -55,6 +55,7 @@ namespace Dentalcare.Models
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Service_Category> Service_Category { get; set; }
         public virtual DbSet<NEWS> NEWS { get; set; }
+        public virtual DbSet<Avatar> Avatars { get; set; }
     
         public virtual int procAddAccountAndPerson(string username, string password, string name, string phoneNumber, string email, Nullable<int> salary, string address, Nullable<bool> gender, Nullable<System.DateTime> birthday, string nation, Nullable<int> role, string img, string falID, string title, string metaAccount, string metaPerson, string metaPersonDetail)
         {
@@ -620,6 +621,15 @@ namespace Dentalcare.Models
                 new ObjectParameter("meta", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddService_Category", nameParameter, descipParameter, noteParameter, metaParameter);
+        }
+    
+        public virtual int procAddAvatar(string personId)
+        {
+            var personIdParameter = personId != null ?
+                new ObjectParameter("personId", personId) :
+                new ObjectParameter("personId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddAvatar", personIdParameter);
         }
     }
 }

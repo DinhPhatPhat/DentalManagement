@@ -44,5 +44,6 @@ namespace Dentalcare.Models
         public virtual Dentist Dentist { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Receptionist Receptionist { get; set; }
+        public virtual Avatar Avatar { get; set; }
     }
 }

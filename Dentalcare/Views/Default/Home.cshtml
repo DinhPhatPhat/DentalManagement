@@ -4,8 +4,9 @@
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 
+
 <section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url('../../Content/images/bg_1.jpg');">
+<div class="slider-item" style="background-image: url('@Url.Content("~/Content/images/bg_1.jpg")');" alt="Background Image">
         <div class="overlay"></div>
         <div class="container">
             <div class="row slider-text align-items-center" data-scrollax-parent="true">
@@ -28,25 +29,27 @@
         </div>
     </div>
 
-    <div class="slider-item" style="background-image: url('../../Content/images/bg_2.jpg');">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row slider-text align-items-center" data-scrollax-parent="true">
-                <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                    <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                        Modern Achieve Your Desired
-                        Perfect Smile
-                    </h1>
-                    <p class="mb-4">
-                        A small river named Duden flows by their place and supplies it with the necessary
-                        regelialia.
-                    </p>
-                    <p><a href="contact.html" data-toggle="modal" class="btn btn-primary px-4 py-3"
-                       data-target="#modalRequest"><span>Make an Appointment</span></a></p>
-                </div>
+<div class="col-md-6 img" style="background-image: url('@Url.Content("~/Content/images/about-2.jpg")');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row slider-text align-items-center" data-scrollax-parent="true">
+            <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    Modern Achieve Your Desired
+                    Perfect Smile
+                </h1>
+                <p class="mb-4">
+                    A small river named Duden flows by their place and supplies it with the necessary
+                    regelialia.
+                </p>
+                <p>
+                    <a href="contact.html" data-toggle="modal" class="btn btn-primary px-4 py-3"
+                       data-target="#modalRequest"><span>Make an Appointment</span></a>
+                </p>
             </div>
         </div>
     </div>
+</div>
 </section>
 
 <section class="ftco-intro">
@@ -160,7 +163,7 @@
     </div>
     <div class="container-wrap mt-5">
         <div class="row d-flex no-gutters">
-            <div class="col-md-6 img" style="background-image: url(../../Content/images/about-2.jpg);">
+            <div class="col-md-6 img" style="background-image: url(@Url.Content("~/Content/images/about-2.jpg"));">
             </div>
             <div class="col-md-6 d-flex">
                 <div class="about-wrap">
@@ -222,80 +225,31 @@
                 </p>
             </div>
         </div>
+
+        <!--Dentiss row-->
         <div class="row">
-            <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(../../Content/images/person_5.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Tom Smith</a></h3>
-                        <span class="position">Dentist</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                            <ul class="ftco-social">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                            </ul>
+            @foreach (var dentist in ViewBag.topFourDentists) // Lấy 4 người đầu tiên từ danh sách
+            {
+                <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
+                    <div class="staff">
+                        <div class="img mb-4" style="background-image: url('@Url.Content("~/" + dentist.Avatar)');"></div>
+                        <div class="info text-center">
+                            <h3><a href="teacher-single.html">@dentist.Name</a></h3>
+                            <span class="position">@dentist.Title</span>
+                            <div class="text">
+                                <p>@dentist.Description</p>
+                                <ul class="ftco-social">
+                                    <li class="ftco-animate">
+                                        <a href="mailto:@dentist.Email"><span class="icon-gmail"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(../../Content/images/person_6.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Mark Wilson</a></h3>
-                        <span class="position">Dentist</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                            <ul class="ftco-social">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(../../Content/images/person_7.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Patrick Jacobson</a></h3>
-                        <span class="position">Dentist</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                            <ul class="ftco-social">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(../../Content/images/person_8.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Ivan Dorchsner</a></h3>
-                        <span class="position">System Analyst</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                            <ul class="ftco-social">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
+
         <div class="row  mt-5 justify-conten-center">
             <div class="col-md-8 ftco-animate">
                 <p>
@@ -308,8 +262,7 @@
     </div>
 </section>
 
-<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../../Content/images/bg_1.jpg);"
-         data-stellar-background-ratio="0.5">
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url('@Url.Content("~/Content/images/bg_1.jpg")');" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row d-flex align-items-center">
             <div class="col-md-3 aside-stretch py-5">
@@ -494,7 +447,7 @@
                 <div class="carousel-testimony owl-carousel ftco-owl">
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(../../Content/images/person_1.jpg)">
+                            <div class="user-img mb-5" style="background-image: url('@Url.Content("~/Content/images/person_1.jpg")')">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
@@ -512,7 +465,7 @@
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(../../Content/images/person_2.jpg)">
+                            <div class="user-img mb-5" style="background-image: url('@Url.Content("~/Content/images/person_2.jpg")')">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
@@ -529,7 +482,7 @@
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(../../Content/images/person_3.jpg)">
+                            <div class="user-img mb-5" style="background-image: url('@Url.Content("~/Content/images/person_3.jpg")')">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
@@ -546,7 +499,7 @@
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(../../Content/images/person_1.jpg)">
+                            <div class="user-img mb-5" style="background-image: url('@Url.Content("~/Content/images/person_1.jpg")')">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
@@ -563,7 +516,7 @@
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(../../Content/images/person_1.jpg)">
+                            <div class="user-img mb-5" style="background-image: url('@Url.Content("~/Content/images/person_1.jpg")')">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
@@ -588,32 +541,28 @@
     <div class="container-wrap">
         <div class="row no-gutters">
             <div class="col-md-3 ftco-animate">
-                <a href="#" class="gallery img d-flex align-items-center"
-                   style="background-image: url(../../Content/images/gallery-1.jpg);">
+                <a href="#" class="gallery img d-flex align-items-center" style="background-image: url('@Url.Content("~/Content/images/gallery-1.jpg")');">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                         <span class="icon-search"></span>
                     </div>
                 </a>
             </div>
             <div class="col-md-3 ftco-animate">
-                <a href="#" class="gallery img d-flex align-items-center"
-                   style="background-image: url(../../Content/images/gallery-2.jpg);">
+                <a href="#" class="gallery img d-flex align-items-center" style="background-image: url('@Url.Content("~/Content/images/gallery-2.jpg")');">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                         <span class="icon-search"></span>
                     </div>
                 </a>
             </div>
             <div class="col-md-3 ftco-animate">
-                <a href="#" class="gallery img d-flex align-items-center"
-                   style="background-image: url(../../Content/images/gallery-3.jpg);">
+                <a href="#" class="gallery img d-flex align-items-center" style="background-image: url('@Url.Content("~/Content/images/gallery-3.jpg")');">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                         <span class="icon-search"></span>
                     </div>
                 </a>
             </div>
             <div class="col-md-3 ftco-animate">
-                <a href="#" class="gallery img d-flex align-items-center"
-                   style="background-image: url(../../Content/images/gallery-4.jpg);">
+                <a href="#" class="gallery img d-flex align-items-center" style="background-image: url('@Url.Content("~/Content/images/gallery-4.jpg")');">
                     <div class="icon mb-4 d-flex align-items-center justify-content-center">
                         <span class="icon-search"></span>
                     </div>
@@ -634,7 +583,7 @@
         <div class="row">
             <div class="col-md-4 ftco-animate">
                 <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('../../Content/images/image_1.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('@Url.Content("~/Content/images/image_1.jpg")');">
                     </a>
                     <div class="text d-flex py-4">
                         <div class="meta mb-3">
@@ -652,7 +601,7 @@
             </div>
             <div class="col-md-4 ftco-animate">
                 <div class="blog-entry" data-aos-delay="100">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('../../Content/images/image_2.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('@Url.Content("~/Content/images/image_2.jpg")');">
                     </a>
                     <div class="text d-flex py-4">
                         <div class="meta mb-3">
@@ -670,7 +619,7 @@
             </div>
             <div class="col-md-4 ftco-animate">
                 <div class="blog-entry" data-aos-delay="200">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('../../Content/images/image_3.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('@Url.Content("~/Content/images/image_3.jpg")');">
                     </a>
                     <div class="text d-flex py-4">
                         <div class="meta mb-3">

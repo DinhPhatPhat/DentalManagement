@@ -11,10 +11,12 @@ namespace Dentalcare.Controllers
     {
 
         private readonly FacultyManager facultyManager;
+        private readonly DentistManager dentistManager;
 
         public DefaultController()
         {
             this.facultyManager = new FacultyManager();
+            this.dentistManager = new DentistManager();
         }
 
         public ActionResult PageByMeta(string meta)
@@ -32,7 +34,8 @@ namespace Dentalcare.Controllers
             switch (meta)
             {
                 case "nha-si":
-                    return View("Doctors");
+                    ViewBag.dentists = dentistManager.GetAllDentistsInfo();
+                    return View("Dentist");
                 case "tin-tuc":
                     return View("Blog"); 
                 case "dich-vu":
@@ -51,41 +54,11 @@ namespace Dentalcare.Controllers
         public ActionResult Home()
         {
             var faculties = facultyManager.GetAllFaculties();
+            var topFourDentists = dentistManager.GetTopFourDentistsInfo();
             ViewBag.faculties = faculties;
+            ViewBag.topFourDentists = topFourDentists;
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "About.";
-            return View();
-
-        }
-
-        public ActionResult Service()
-        {
-            ViewBag.Message = "Sevice.";
-            return View();
-        }
-
-        public ActionResult Doctors()
-        {
-            ViewBag.Message = "Doctors.";
-            return View();
-        }
-
-        public ActionResult Blog()
-        {
-            ViewBag.Message = "Blog.";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Contact.";
-            return View();
-        }
-
         public ActionResult Login()
         {
             ViewBag.Message = "Login.";

@@ -69,6 +69,14 @@
           <Property Name="datebegin" Type="datetime" Nullable="false" />
           <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="Avatar">
+          <Key>
+            <PropertyRef Name="personId" />
+          </Key>
+          <Property Name="personId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="imgPath" Type="varchar(max)" Nullable="false" />
+          <Property Name="uploadDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="id" />
@@ -169,6 +177,7 @@
           <Property Name="datebegin" Type="datetime" Nullable="false" />
           <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="falid" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="descrip" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -452,6 +461,18 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Avatar__personId__2F9A1060">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Avatar" Type="Self.Avatar" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Avatar">
+              <PropertyRef Name="personId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Bill__patid__628FA481">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
@@ -724,6 +745,9 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <Parameter Name="NAME" Type="char" Mode="In" />
           <Parameter Name="QUAN" Type="int" Mode="In" />
         </Function>
+        <Function Name="funcGetRoleByPersonId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="PersonID" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="procAddAccountAndPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="password" Type="nvarchar" Mode="In" />
@@ -758,6 +782,9 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <Parameter Name="state" Type="nvarchar" Mode="In" />
           <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="procAddAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personId" Type="varchar" Mode="In" />
         </Function>
         <Function Name="procAddBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="patId" Type="varchar" Mode="In" />
@@ -888,6 +915,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Assisstant" EntityType="Self.Assisstant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Avatar" EntityType="Self.Avatar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bill_Service" EntityType="Self.Bill_Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
@@ -937,6 +965,10 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <AssociationSet Name="FK__Assisstant__id__5165187F" Association="Self.FK__Assisstant__id__5165187F">
             <End Role="Person" EntitySet="Person" />
             <End Role="Assisstant" EntitySet="Assisstant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Avatar__personId__2F9A1060" Association="Self.FK__Avatar__personId__2F9A1060">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Avatar" EntitySet="Avatar" />
           </AssociationSet>
           <AssociationSet Name="FK__Bill__patid__628FA481" Association="Self.FK__Bill__patid__628FA481">
             <End Role="Patient" EntitySet="Patient" />
@@ -1214,6 +1246,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <NavigationProperty Name="Faculty" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Dentist" ToRole="Faculty" />
           <NavigationProperty Name="Person" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Dentist" ToRole="Person" />
           <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__denid__47A6A41B" FromRole="Dentist" ToRole="Prescription" />
+          <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -1371,6 +1404,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <NavigationProperty Name="Dentist" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Person" ToRole="Dentist" />
           <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__id__5629CD9C" FromRole="Person" ToRole="Patient" />
           <NavigationProperty Name="Receptionist" Relationship="Self.FK__Receptionist__id__4CA06362" FromRole="Person" ToRole="Receptionist" />
+          <NavigationProperty Name="Avatar" Relationship="clinicModel.FK__Avatar__personId__2F9A1060" FromRole="Person" ToRole="Avatar" />
         </EntityType>
         <EntityType Name="Prescription">
           <Key>
@@ -2087,7 +2121,36 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
             <Parameter Name="note" Mode="In" Type="String" />
             <Parameter Name="meta" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Avatars" EntityType="clinicModel.Avatar" />
+          <AssociationSet Name="FK__Avatar__personId__2F9A1060" Association="clinicModel.FK__Avatar__personId__2F9A1060">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Avatar" EntitySet="Avatars" />
+          </AssociationSet>
+          <FunctionImport Name="procAddAvatar">
+          <Parameter Name="personId" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="Avatar">
+          <Key>
+            <PropertyRef Name="personId" />
+          </Key>
+          <Property Name="personId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="imgPath" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="uploadDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Person" Relationship="clinicModel.FK__Avatar__personId__2F9A1060" FromRole="Avatar" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK__Avatar__personId__2F9A1060">
+          <End Type="clinicModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="clinicModel.Avatar" Role="Avatar" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Avatar">
+              <PropertyRef Name="personId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2260,6 +2323,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <EntitySetMapping Name="Dentists">
             <EntityTypeMapping TypeName="clinicModel.Dentist">
               <MappingFragment StoreEntitySet="Dentist">
+                <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="hide" ColumnName="hide" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
@@ -2527,6 +2591,16 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
           <FunctionImportMapping FunctionImportName="procAddPrescription_Medicine" FunctionName="clinicModel.Store.procAddPrescription_Medicine" />
           <FunctionImportMapping FunctionImportName="procAddService" FunctionName="clinicModel.Store.procAddService" />
           <FunctionImportMapping FunctionImportName="procAddService_Category" FunctionName="clinicModel.Store.procAddService_Category" />
+          <EntitySetMapping Name="Avatars">
+            <EntityTypeMapping TypeName="clinicModel.Avatar">
+              <MappingFragment StoreEntitySet="Avatar">
+                <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
+                <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+                <ScalarProperty Name="personId" ColumnName="personId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="procAddAvatar" FunctionName="clinicModel.Store.procAddAvatar" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

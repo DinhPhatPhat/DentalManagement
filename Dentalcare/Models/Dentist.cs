@@ -28,6 +28,7 @@ namespace Dentalcare.Models
         public System.DateTime datebegin { get; set; }
         public string id { get; set; }
         public string falid { get; set; }
+        public string descrip { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }

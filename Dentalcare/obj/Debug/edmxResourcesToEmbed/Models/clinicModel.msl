@@ -167,6 +167,7 @@
     <EntitySetMapping Name="Dentists">
       <EntityTypeMapping TypeName="clinicModel.Dentist">
         <MappingFragment StoreEntitySet="Dentist">
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="hide" ColumnName="hide" />
           <ScalarProperty Name="meta" ColumnName="meta" />
@@ -434,5 +435,15 @@
     <FunctionImportMapping FunctionImportName="procAddPrescription_Medicine" FunctionName="clinicModel.Store.procAddPrescription_Medicine" />
     <FunctionImportMapping FunctionImportName="procAddService" FunctionName="clinicModel.Store.procAddService" />
     <FunctionImportMapping FunctionImportName="procAddService_Category" FunctionName="clinicModel.Store.procAddService_Category" />
+    <EntitySetMapping Name="Avatars">
+      <EntityTypeMapping TypeName="clinicModel.Avatar">
+        <MappingFragment StoreEntitySet="Avatar">
+          <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
+          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="procAddAvatar" FunctionName="clinicModel.Store.procAddAvatar" />
   </EntityContainerMapping>
 </Mapping>

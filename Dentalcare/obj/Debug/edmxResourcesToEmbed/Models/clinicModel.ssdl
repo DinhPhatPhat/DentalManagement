@@ -64,6 +64,14 @@
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
+  <EntityType Name="Avatar">
+    <Key>
+      <PropertyRef Name="personId" />
+    </Key>
+    <Property Name="personId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="imgPath" Type="varchar(max)" Nullable="false" />
+    <Property Name="uploadDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="id" />
@@ -164,6 +172,7 @@
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="falid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -447,6 +456,18 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Avatar__personId__2F9A1060">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Avatar" Type="Self.Avatar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Avatar">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Bill__patid__628FA481">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
@@ -719,6 +740,9 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
     <Parameter Name="NAME" Type="char" Mode="In" />
     <Parameter Name="QUAN" Type="int" Mode="In" />
   </Function>
+  <Function Name="funcGetRoleByPersonId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="PersonID" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="procAddAccountAndPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="password" Type="nvarchar" Mode="In" />
@@ -753,6 +777,9 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
     <Parameter Name="state" Type="nvarchar" Mode="In" />
     <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="personId" Type="varchar" Mode="In" />
   </Function>
   <Function Name="procAddBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="patId" Type="varchar" Mode="In" />
@@ -883,6 +910,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
     <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Assisstant" EntityType="Self.Assisstant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Avatar" EntityType="Self.Avatar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill_Service" EntityType="Self.Bill_Service" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
@@ -932,6 +960,10 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
     <AssociationSet Name="FK__Assisstant__id__5165187F" Association="Self.FK__Assisstant__id__5165187F">
       <End Role="Person" EntitySet="Person" />
       <End Role="Assisstant" EntitySet="Assisstant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Avatar__personId__2F9A1060" Association="Self.FK__Avatar__personId__2F9A1060">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Avatar" EntitySet="Avatar" />
     </AssociationSet>
     <AssociationSet Name="FK__Bill__patid__628FA481" Association="Self.FK__Bill__patid__628FA481">
       <End Role="Patient" EntitySet="Patient" />

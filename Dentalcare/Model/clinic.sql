@@ -63,6 +63,15 @@ CREATE TABLE Person
   UNIQUE (email)
 );
 
+CREATE TABLE Avatar
+(
+    personId VARCHAR(10) NOT NULL,
+    imgPath VARCHAR(MAX) NOT NULL,
+    uploadDate DATETIME NOT NULL DEFAULT GETDATE(),
+    PRIMARY KEY (personId),
+    FOREIGN KEY (personId) REFERENCES Person(id)
+);
+
 CREATE TABLE Admin
 (
   hide BIT NOT NULL DEFAULT 0,
@@ -376,6 +385,7 @@ CREATE TABLE Dentist
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
   id VARCHAR(10) NOT NULL,
   falid VARCHAR(10) NOT NULL,
+  descrip NVARCHAR(MAX) NOT NULL DEFAULT('none'),
   PRIMARY KEY (id),
   FOREIGN KEY (id) REFERENCES Person(id),
   FOREIGN KEY (falID) REFERENCES Faculty(id)
@@ -661,6 +671,77 @@ exec procAddAccountAndPerson 'recep2','11',N'Đăng Văn Trọng','0893842173','
 go
 --select * from receptionist
 
+--FUNCTION TÌM ROLE DỰA VÀO PERSONID
+CREATE FUNCTION funcGetRoleByPersonId(@PersonID VARCHAR(10))
+RETURNS INT
+AS
+BEGIN
+    DECLARE @Role INT;
+    IF EXISTS (SELECT 1 FROM Admin WHERE id = @PersonID)
+        SET @Role = 1;  -- Quản lý
+    ELSE IF EXISTS (SELECT 1 FROM Receptionist WHERE id = @PersonID)
+        SET @Role = 2;  -- Lễ tân
+    ELSE IF EXISTS (SELECT 1 FROM Dentist WHERE id = @PersonID)
+        SET @Role = 3;  -- Nha sĩ
+    ELSE IF EXISTS (SELECT 1 FROM Assisstant WHERE id = @PersonID)
+        SET @Role = 4;  -- Phụ tá
+    ELSE IF EXISTS (SELECT 1 FROM Patient WHERE id = @PersonID)
+        SET @Role = 5;  -- Bệnh nhân
+    ELSE
+        SET @Role = 0;  -- Không tìm thấy vai trò
+
+    RETURN @Role;
+END
+GO
+
+--THÊM AVATAR
+create proc procAddAvatar
+    @personId VARCHAR(10)
+AS
+BEGIN
+	DECLARE @role INT;
+	DECLARE @imgPath VARCHAR(MAX)
+    -- Kiểm tra xem personId đã tồn tại trong bảng Person chưa
+    IF EXISTS (SELECT 1 FROM Person WHERE id = @personId)
+    BEGIN
+		SET @role = dbo.funcGetRoleByPersonId(@personId)
+        -- Thêm ảnh đại diện vào bảng Avatar
+		SET @imgPath = CONCAT('Content/images/', CASE 
+			WHEN @role = 1 THEN 'Admin' 
+			WHEN @role = 2 THEN 'Receptionist' 
+			WHEN @role = 3 THEN 'Dentist' 
+			WHEN @role = 4 THEN 'Assistant' 
+			WHEN @role = 5 THEN 'Patient' 
+		END, '/', @personId, '/avatar.jpg');
+
+	INSERT INTO Avatar(personId, imgPath) VALUES (@personId, @imgPath);
+			PRINT 'Avatar added successfully.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'Person ID does not exist.';
+    END
+END
+GO
+
+EXEC procAddAvatar @personId = 'AC00000004';
+EXEC procAddAvatar @personId = 'AC00000005';
+EXEC procAddAvatar @personId = 'AC00000006';
+EXEC procAddAvatar @personId = 'AC00000007';
+EXEC procAddAvatar @personId = 'AC00000008';
+EXEC procAddAvatar @personId = 'AC00000009';
+--Select * from Avatar
+
+UPDATE Dentist
+SET [descrip] = CASE 
+    WHEN id = 'AC00000004' THEN N'Nha sĩ có hơn 10 năm kinh nghiệm trong lĩnh vực nha khoa tổng quát, chuyên về chăm sóc răng miệng cho trẻ em.'
+    WHEN id = 'AC00000005' THEN N'Chuyên gia hàng đầu về chỉnh nha và cấy ghép implant, đã thực hiện hàng trăm ca phẫu thuật thành công.'
+    WHEN id = 'AC00000006' THEN N'Nha sĩ tận tâm, chuyên về phục hình răng sứ và các dịch vụ thẩm mỹ nha khoa hiện đại.'
+    WHEN id = 'AC00000007' THEN N'Giảng viên đại học chuyên về nghiên cứu các phương pháp điều trị viêm nướu và bệnh lý nha chu.'
+    WHEN id = 'AC00000008' THEN N'Kỹ năng xuất sắc trong điều trị tủy và chữa trị các bệnh lý răng miệng phức tạp.'
+    WHEN id = 'AC00000009' THEN N'Chuyên gia tư vấn các giải pháp chăm sóc răng miệng cho người cao tuổi, với nhiều năm kinh nghiệm trong lĩnh vực này.'
+END
+WHERE id IN ('AC00000004', 'AC00000005', 'AC00000006', 'AC00000007', 'AC00000008', 'AC00000009');
 
 --THEM KHOA
 create proc procAddFaculty
@@ -2122,7 +2203,7 @@ go
 
 --them menu
 exec procAddMenu N'Trang chủ','/','trang-chu'
-exec procAddMenu N'Nha sĩ','/Doctors','nha-si'
+exec procAddMenu N'Nha sĩ','/Dentist','nha-si'
 exec procAddMenu N'Tin tức','/Blog','tin-tuc'
 exec procAddMenu N'Dịch vụ','/Service','dich-vu'
 exec procAddMenu N'Bình luận','/Comments','binh-luan'
@@ -2130,6 +2211,7 @@ exec procAddMenu N'Liên hệ','/Contact','lien-he'
 exec procAddMenu N'Tài khoản','/Login','tai-khoan'
 go
 
+update Menu set name = 'Dentist' where name ='Doctors'
 --Select * from menu
 
 --CLinic

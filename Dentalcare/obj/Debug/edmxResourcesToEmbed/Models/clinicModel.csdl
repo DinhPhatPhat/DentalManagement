@@ -183,6 +183,7 @@
     <NavigationProperty Name="Faculty" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Dentist" ToRole="Faculty" />
     <NavigationProperty Name="Person" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Dentist" ToRole="Person" />
     <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__denid__47A6A41B" FromRole="Dentist" ToRole="Prescription" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -340,6 +341,7 @@
     <NavigationProperty Name="Dentist" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Person" ToRole="Dentist" />
     <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__id__5629CD9C" FromRole="Person" ToRole="Patient" />
     <NavigationProperty Name="Receptionist" Relationship="Self.FK__Receptionist__id__4CA06362" FromRole="Person" ToRole="Receptionist" />
+    <NavigationProperty Name="Avatar" Relationship="clinicModel.FK__Avatar__personId__2F9A1060" FromRole="Person" ToRole="Avatar" />
   </EntityType>
   <EntityType Name="Prescription">
     <Key>
@@ -1056,5 +1058,34 @@
       <Parameter Name="note" Mode="In" Type="String" />
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Avatars" EntityType="clinicModel.Avatar" />
+    <AssociationSet Name="FK__Avatar__personId__2F9A1060" Association="clinicModel.FK__Avatar__personId__2F9A1060">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Avatar" EntitySet="Avatars" />
+    </AssociationSet>
+    <FunctionImport Name="procAddAvatar">
+      <Parameter Name="personId" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <EntityType Name="Avatar">
+    <Key>
+      <PropertyRef Name="personId" />
+    </Key>
+    <Property Name="personId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="imgPath" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="uploadDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Person" Relationship="clinicModel.FK__Avatar__personId__2F9A1060" FromRole="Avatar" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK__Avatar__personId__2F9A1060">
+    <End Type="clinicModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="clinicModel.Avatar" Role="Avatar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Avatar">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
