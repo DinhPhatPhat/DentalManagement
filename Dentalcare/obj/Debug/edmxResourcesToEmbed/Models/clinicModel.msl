@@ -119,6 +119,8 @@
     <EntitySetMapping Name="Clinics">
       <EntityTypeMapping TypeName="clinicModel.Clinic">
         <MappingFragment StoreEntitySet="Clinic">
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
@@ -445,5 +447,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="procAddAvatar" FunctionName="clinicModel.Store.procAddAvatar" />
+    <EntitySetMapping Name="Footers">
+      <EntityTypeMapping TypeName="clinicModel.Footer">
+        <MappingFragment StoreEntitySet="Footer">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -7754,9 +7754,11 @@ h1, h2, h3, h4, h5,
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff !important;
       font-size: 14px;
-      padding-right: 20px !important; }
+      padding-right: 20px !important; 
+      padding: 5px;
+    }
       .ftco-intro .appointment-form .form-group input option, .ftco-intro .appointment-form .form-group select option {
-        color: #fff; }
+        color: #000; }
       .ftco-intro .appointment-form .form-group input::-webkit-input-placeholder, .ftco-intro .appointment-form .form-group select::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
         color: #fff !important; }
