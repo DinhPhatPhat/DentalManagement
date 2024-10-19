@@ -22,6 +22,10 @@ namespace Dentalcare.Controllers
                               .ToList();
             ViewBag.MenuItems = menuItems;
 
+            //var footerItems = db.
+            //...
+            //ViewBag.FooterItems = footerItems
+                
             var facultyItems = db.Faculties.ToList();
             ViewBag.FacultyItems = facultyItems;
 
