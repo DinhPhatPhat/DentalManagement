@@ -137,6 +137,8 @@
     <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="msg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -183,7 +185,7 @@
     <NavigationProperty Name="Faculty" Relationship="Self.FK__Dentist__falid__40058253" FromRole="Dentist" ToRole="Faculty" />
     <NavigationProperty Name="Person" Relationship="Self.FK__Dentist__id__3F115E1A" FromRole="Dentist" ToRole="Person" />
     <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__denid__47A6A41B" FromRole="Dentist" ToRole="Prescription" />
-    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -961,6 +963,8 @@
       <Parameter Name="zalo" Mode="In" Type="String" />
       <Parameter Name="instagram" Mode="In" Type="String" />
       <Parameter Name="youtube" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddComment">
@@ -1023,7 +1027,6 @@
     <FunctionImport Name="procAddNews">
       <Parameter Name="title" Mode="In" Type="String" />
       <Parameter Name="msg" Mode="In" Type="String" />
-      <Parameter Name="img" Mode="In" Type="String" />
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddPrescription">
@@ -1066,6 +1069,7 @@
     <FunctionImport Name="procAddAvatar">
       <Parameter Name="personId" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Footers" EntityType="clinicModel.Footer" />
   </EntityContainer>
   <EntityType Name="Avatar">
     <Key>
@@ -1088,4 +1092,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Footer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

@@ -204,6 +204,9 @@
     <Compile Include="Models\FixedMaterial.cs">
       <DependentUpon>clinicModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Footer.cs">
+      <DependentUpon>clinicModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Ingredient.cs">
       <DependentUpon>clinicModel.tt</DependentUpon>
     </Compile>
@@ -252,6 +255,7 @@
     <Compile Include="Services\CommentManager.cs" />
     <Compile Include="Services\DentistManager.cs" />
     <Compile Include="Services\FacultyManager.cs" />
+    <Compile Include="Services\InfoClinicManager.cs" />
     <Compile Include="Services\ServiceCategoryManager.cs" />
   </ItemGroup>
   <ItemGroup>

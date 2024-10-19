@@ -8799,7 +8799,8 @@
             as the <see cref="T:System.Data.Entity.Spatial.DbSpatialServices" /> instance to use.
             </summary>
         </member>
-        <member name="M:System.Data.Entity.Core.Common.DbProviderServices.RegisterInfoMessageHandler(System.Data.Common.DbConnection,System.Action{System.String})">
+        <member name="M:System.Data.Entity.Core.Common.DbProviderServices.RegisterInfoMessageHandler(System.Data.Common.Db
+				,System.Action{System.String})">
             <summary>
             Registers a handler to process non-error messages coming from the database provider.
             </summary>

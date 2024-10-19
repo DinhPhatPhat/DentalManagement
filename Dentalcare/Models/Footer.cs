@@ -12,23 +12,14 @@ namespace Dentalcare.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Clinic
+    public partial class Footer
     {
         public string id { get; set; }
         public string name { get; set; }
-        public string phoneNumber { get; set; }
-        public string address { get; set; }
-        public string img { get; set; }
-        public string email { get; set; }
-        public string facebook { get; set; }
-        public string zalo { get; set; }
-        public string instagram { get; set; }
-        public string youtube { get; set; }
+        public string link { get; set; }
         public bool hide { get; set; }
         public string meta { get; set; }
         public int order { get; set; }
         public System.DateTime datebegin { get; set; }
-        public string title { get; set; }
-        public string msg { get; set; }
     }
 }
