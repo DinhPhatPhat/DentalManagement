@@ -167,7 +167,9 @@ CREATE TABLE Service
   PRIMARY KEY (id),
   FOREIGN KEY (cateId) REFERENCES Service_Category(id)
 );
+SELECT * FROM Service_Category WHERE meta = 'chua-tuy' AND hide = 0;
 
+SELECT * FROM Service WHERE cateId = 'SC00000006' AND hide = 0;
 CREATE TABLE Material_Category
 (
   id VARCHAR(10) NOT NULL,
@@ -863,6 +865,31 @@ exec procAddService_Category N'Nâng xoang', N'', '', ''
 exec procAddService_Category N'Chụp CT CONE BEAM', N'', '', ''
 exec procAddService_Category N'Máng Hướng Dẫn / in Sọ Mặt', N'', '', ''
 go
+UPDATE Service_Category SET meta = 'nho-rang' WHERE name = N'Nhổ răng';
+UPDATE Service_Category SET meta = 'tieu-phau' WHERE name = N'Tiểu phẫu thuật';
+UPDATE Service_Category SET meta = 'nha-chu' WHERE name = N'Nha chu';
+UPDATE Service_Category SET meta = 'chua-rang-noi-nha' WHERE name = N'Chữa răng-Nội nha';
+UPDATE Service_Category SET meta = 'chua-tuy' WHERE name = N'Chữa tủy';
+UPDATE Service_Category SET meta = 'phuc-hinh-thao-lap' WHERE name = N'Phục hình tháo lắp';
+UPDATE Service_Category SET meta = 'sua-chua-ham' WHERE name = N'Sửa chữa hàm';
+UPDATE Service_Category SET meta = 'dieu-tri-tien-phuc-hinh' WHERE name = N'Điều trị tiền phục hình';
+UPDATE Service_Category SET meta = 'phuc-hinh-co-dinh' WHERE name = N'Phục hình cố định';
+UPDATE Service_Category SET meta = 'dieu-tri-rang-sua' WHERE name = N'Điều trị răng sữa';
+UPDATE Service_Category SET meta = 'chinh-hinh-rang-mat' WHERE name = N'Chỉnh hình răng mặt';
+UPDATE Service_Category SET meta = 'nha-cong-cong' WHERE name = N'Nha công cộng';
+UPDATE Service_Category SET meta = 'dieu-tri-loan-nang-he-thong-nhai' WHERE name = N'Điều trị loạn năng hệ thống nhai';
+UPDATE Service_Category SET meta = 'x-quang-rang' WHERE name = N'X-quang răng';
+UPDATE Service_Category SET meta = 'rang-su-dan' WHERE name = N'Răng sứ dán';
+UPDATE Service_Category SET meta = 'ham-phu-thao-lap' WHERE name = N'Hàm phủ tháo lắp';
+UPDATE Service_Category SET meta = 'ham-co-dinh-bat-vit' WHERE name = N'Hàm cố định bắt vít';
+UPDATE Service_Category SET meta = 'phuc-hinh-tam-tuc-thi-toan-ham' WHERE name = N'Phục hình tạm tức thì toàn hàm';
+UPDATE Service_Category SET meta = 'cay-ghep-implant' WHERE name = N'Cấy ghép 1 trụ Implantt';
+UPDATE Service_Category SET meta = 'mang-xuong-tong-hop' WHERE name = N'Màng, xương tổng hợp';
+UPDATE Service_Category SET meta = 'mang-xuong-tu-than' WHERE name = N'Màng, xương tự thân';
+UPDATE Service_Category SET meta = 'nang-xoang' WHERE name = N'Nâng xoang';
+UPDATE Service_Category SET meta = 'chup-ct-cone-beam' WHERE name = N'Chụp CT CONE BEAM';
+UPDATE Service_Category SET meta = 'mang-huong-dan-in-so-mat' WHERE name = N'Máng Hướng Dẫn / in Sọ Mặt';
+
 
 --Service
 create proc procAddService
@@ -2154,33 +2181,92 @@ exec procAddComment 'AC00000015',N'Khách hàng niềng răng',N'Dịch vụ tr�
 go
 
 --NEWS
-create proc procAddNews
+
+CREATE PROCEDURE procAddNews
   @title NVARCHAR(MAX),
   @msg NVARCHAR(MAX),
-  @img VARCHAR(MAX),
   @meta VARCHAR(MAX)
-as
-begin
-	declare @QuanNE INT
-	set @QuanNE = (select count(*) from NEWS)
-	if(TRIM(@meta)='') 
-		begin
-			set @meta = 'tin-tuc-' + CONVERT(varchar(MAX), @QuanNE+1)
-		end
-	declare @id VARCHAR(10)
-	set @id = dbo.autoid('NE', @QuanNE+1)
-	insert into NEWS(id,title,msg,img,meta)
-	values (@id,@title,@msg,@img,@meta)
-end
-go
+AS
+BEGIN
+    DECLARE @QuanNE INT
+    SET @QuanNE = (SELECT COUNT(*) FROM NEWS)
 
+    -- Tạo ID mới dựa trên số lượng hiện tại
+    DECLARE @id VARCHAR(10)
+    SET @id = dbo.autoid('NE', @QuanNE + 1)
+
+    -- Đặt đường dẫn cho hình ảnh dựa trên ID
+    DECLARE @imgPath VARCHAR(MAX)
+    SET @imgPath = CONCAT('Content/images/Blog/', @id, '.jpg')
+
+    -- Thực hiện chèn vào bảng NEWS
+    INSERT INTO NEWS (id, title, msg, img, meta)
+    VALUES (@id, @title, @msg, @imgPath, @meta)
+END
+GO
 --them news
-exec procAddNews N'CHÍNH SÁCH BẢO MẬT - NHA KHOA BÌNH MINH',N'Nha Khoa Bình Minh cam kết cung cấp đến khách hàng những giải pháp tốt nhất , vượt trội, uy tín và đáng tin cậy nhằm giúp cho các quyết định quan trọng của khách hàng trở nên dễ dàng hơn. Trong đó bao gồm cả việc đảm bảo tính bảo mật đối với tất cả các thông tin cá nhân của chính họ. Trong quá trình quản lý thông tin, Công ty luôn tuân thủ theo các Nguyên tắc Bảo mật sau đây:','',''
-exec procAddNews N'NỤ CƯỜI DUYÊN DÁNG CÓ THỂ LUYỆN TẬP NHƯ THẾ NÀO ĐỂ CÓ ĐƯỢC?',N'Không có một định nghĩa chính xác nào về một nụ cười duyên dáng. Nhưng chúng ta có thể hiểu nụ cười này là một nụ cười đẹp và thu hút người nhìn. Tạo nên cảm giác vui vẻ và dễ chịu cho người đang giao tiếp. Một nụ cười duyên thường là một nụ cười có một nét rất riêng và rất đặc biệt. Là điểm nhận biết của một người mà chúng ta không thể quên.
-Một nụ cười duyên dáng bao gồm rất nhiều yếu tố khác nhau tạo thành. Trong đó có những yếu tố bên ngoài như răng, môi, mắt, cơ mặt và khuôn miệng. Yếu tố bên trong như cảm xúc và những thứ chúng ta đang suy nghĩ và cảm nhận. Những thứ này được thể hiện ra bên ngoài bằng cách biểu hiện cảm xúc của khuôn mặt và hành động của cơ thể.','',''
+exec procAddNews 
+    @title = N'Muốn hạ đường huyết, nên tập thể dục buổi nào là tốt nhất?',
+    @msg = N'Các bằng chứng nghiên cứu trước đây cho thấy tập thể dục ở cường độ 
+	vừa đến mạnh có thể giúp cải thiện đường huyết ở những người bị kháng insulin. 
+	Chưa dừng lại ở đó, một nghiên cứu mới đây còn phát hiện thời điểm tập luyện giúp kiểm soát đường huyết tốt nhất trong ngày.
+	Nghiên cứu được công bố trên chuyên san Obesity. 
+	Trong nghiên cứu, các nhà khoa học đã phân tích dữ liệu thu thập từ 186 người. 
+	Độ tuổi trung bình của họ là 46 tuổi và chỉ số khối cơ thể là 33, tức trạng thái béo phì. 
+	Những người này được mang thiết bị đeo tay để theo dõi cường độ vận động và đường huyết, 
+	theo trang thông tin sức khỏe Everyday Health (Mỹ).
+	Có nhiều nguyên nhân giúp giải thích lợi ích đặc biệt của tập thể dục vào buổi tối. 
+	Nguyên nhân đầu tiên cần nhắc đến là tập thể dục sẽ giúp cải thiện tình trạng kháng insulin, 
+	cho phép cơ thể sử dụng hoóc môn insulin hiệu quả hơn. 
+	Do đó, tập thể dục vào buổi tối sẽ giúp giảm nguy cơ tăng đường huyết sau bữa ăn tối.',
+    @meta = N'muon-ha-duong-huyet-nen-tap-the-duc-buoi-nao-la-tot-nhat'
 go
-
-
+exec procAddNews 
+    @title = N'5 cảnh báo sức khỏe được tiết lộ qua răng',
+    @msg = N'Chăm sóc sức khỏe răng miệng hằng ngày rất quan trọng 
+	vì giúp ngăn ngừa sâu răng và bệnh nướu răng. 
+	Do đó, một số vấn đề răng miệng có thể là lời cảnh báo về bệnh nguy hiểm tiềm ẩn.
+	Đánh răng, dùng chỉ nha khoa và khám răng định kỳ giúp tăng cường sức khỏe răng miệng. 
+	Nhờ đó, mọi người sẽ không phải bị sưng nướu hay sâu răng nghiêm trọng, 
+	theo chuyên trang sức khỏe Healthline (Mỹ). Thiếu máu
+	Các chuyên gia cho biết thiếu sắt sẽ gây thiếu máu. 
+	Thiếu máu khiến các cơ quan trong cơ thể không nhận đủ lượng máu giàu dinh dưỡng và ô xy.
+	Với răng, tình trạng này kéo dài sẽ ảnh hưởng xấu đến men răng và gây sâu răng.
+	Nguy cơ chuyển dạ sớm
+	Ở phụ nữ mang thai, sâu răng hay viêm nướu có thể làm tăng nguy cơ chuyển dạ sớm và sinh non. 
+	Nguyên nhân là do vi khuẩn từ mảng bám hay vị trí viêm nhiễm trong răng sẽ theo mạch máu
+	để đến nhau thai. 
+	Tình trạng này gây viêm và tăng nguy cơ làm vỡ túi ối, dẫn đến chuyển dạ sớm.
+	Ngoài ra, bệnh nướu răng kéo dài cũng khiến cơ thể giải phóng prostaglandin. Chất này hoạt 
+	động khá giống hoóc môn giúp điều hòa quá trình chuyển dạ và tăng nguy cơ sinh non.',
+    @meta = N'5-canh-bao-suc-khoe-duoc-tiet-lo-qua-rang'
+go
+exec procAddNews 
+    @title = N'Xử trí khi bị chấn thương răng miệng',
+    @msg = N'Răng bị sứt hoặc gãy có thể gắn lại được nhưng mảnh răng bị sứt, 
+	gãy cần được bảo quản đúng bằng cách đặt vào khăn hoặc túi ẩm với một vài 
+	giọt nước sạch hoặc nước bọt. Đó là một trong các tình huống cần lưu ý khi xử trí khi 
+	chấn thương răng miệng.
+	Chấn thương răng miệng là sự cố dễ gặp trong đời sống. 
+	Đặc biệt, trong mùa bão lũ, việc tới các cơ sở y tế sẽ mất nhiều thời gian hơn bình 
+	thường khi chấn thương xảy ra.
+	Dưới đây là một số biện pháp xử trí nhanh trong trường hợp bệnh nhân có chấn
+	thương răng miệng nhưng chưa thể đến cơ sở y tế kịp thời:
+	Răng lung lay: dùng đầu ngón tay ấn nhẹ để định vị lại răng đúng vị trí. 
+	Không ép răng vào ổ răng. Cố định răng bằng khăn giấy hoặc gạc ẩm.
+	Liên hệ với bác sĩ răng hàm mặt càng sớm càng tốt để được điều trị kịp thời.
+	Có thể gọi điện cho bác sĩ răng hàm mặt để được hướng dẫn nếu có thể gọi được.
+	Răng bị sứt hoặc gãy: đặt mảnh răng bị sứt, 
+	gãy vào khăn hoặc túi ẩm với một vài giọt nước hoặc nước bọt vì có thể gắn lại được. 
+	Súc miệng bằng nước ấm và giữ sạch cho đến khi bạn có thể đến gặp bác sĩ răng hàm mặt. 
+	Bác sĩ răng hàm mặt có thể sử dụng chính mảnh gãy này để gắn vào phần răng còn lại, 
+	đây là một cách phục hồi rất tốt mà không cần phải sử dụng các vật liệu thay thế khác.
+	Răng bị bật, rơi ra khỏi huyệt ổ răng: nên tìm lại răng, 
+	chỉ cầm vào thân răng (vùng nhẵn, bóng), không chạm vào vùng chân răng (kể cả trong lúc rửa răng), 
+	cắm lại răng vào huyệt ổ răng ngay tại hiện trường tai nạn (nếu có thể).',
+    @meta = N'xu-tri-khi-bi-chan-thuong-rang-mieng'
+go
+--Select * from News
 --Menu
 create proc procAddMenu
   @name NVARCHAR(100),

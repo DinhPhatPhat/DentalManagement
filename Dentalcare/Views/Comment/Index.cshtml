@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model List<Dentalcare.Services.CommentManager.CommentInfo>
+
+<div class="comments-container">
+        @foreach (var comment in ViewBag.Comments)
+        {
+            <div class="comment-box">
+                <div class="comment-header">
+                    <div class="comment-details">
+                        <h4 class="comment-title">@comment.Title</h4>
+                        <p class="comment-author">@comment.PersonName</p>
+                        <p class="comment-date">@comment.DateBegin.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <p>@comment.Message</p>
+                </div>
+            </div>
+        }
+</div>
+
+<style>
+    body {
+        padding: 10px;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    .comments-container {
+        max-width: 900px;
+        margin: 70px auto 10px auto;
+        padding: 20px;
+        background-color: snow;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-box {
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        background-color: snow;
+    }
+
+    .comment-header {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .comment-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+
+    .comment-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comment-title {
+        background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+    }
+
+    .comment-author {
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .comment-date {
+        font-size: 0.8em;
+        color: #888;
+    }
+
+    .comment-content {
+        margin-top: 10px;
+        font-size: 1em;
+        line-height: 1.6;
+        color: #444;
+    }
+</style>
+

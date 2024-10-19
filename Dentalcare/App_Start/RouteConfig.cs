@@ -14,6 +14,26 @@ namespace Dentalcare
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Blog",
+                url: "tin-tuc",
+                defaults: new { controller = "Blog", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "ServiceCategory",
+                url: "dich-vu",
+                defaults: new { controller = "ServiceCategory", action = "Index", meta = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "ServiceCategoryDetails",
+                url: "dich-vu/{meta}",
+                defaults: new { controller = "ServiceCategory", action = "Details", meta = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Comments",
+                url: "binh-luan",
+                defaults: new { controller = "Comment", action = "Index" }
+            );
+            routes.MapRoute(
                 name: "Register", 
                 url: "dang-ky", 
                 defaults: new { controller = "Default", action = "Register" }

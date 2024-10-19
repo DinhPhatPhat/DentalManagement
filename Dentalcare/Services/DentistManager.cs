@@ -23,7 +23,7 @@ namespace Dentalcare.Services
             public string Description { get; set; }
             public string Email { get; set; }
 
-            public int Order {get; set; }
+            public int Order { get; set; }
         }
 
         public List<Dentist> GetAllDentists()
@@ -52,7 +52,7 @@ namespace Dentalcare.Services
                                   Description = dp.Dentist.descrip,
                                   Email = dp.Person.email,
                                   Order = dp.Person.order,
-                                  Avatar = a.imgPath 
+                                  Avatar = a.imgPath
                               })
                         .OrderBy(p => p.Order)
                         .ToList();

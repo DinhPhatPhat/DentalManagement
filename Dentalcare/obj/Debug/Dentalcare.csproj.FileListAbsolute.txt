@@ -232,3 +232,7 @@ D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\De
 D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll
 D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.Base.xml
 D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.Base.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.Base.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.xml

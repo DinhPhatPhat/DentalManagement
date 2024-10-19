@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/css/services.css">
+
+
+<div class="all-services">
+    @foreach (var service in @ViewBag.Services)
+    {
+        <div class="service-detail">
+            <h3>@service.name</h3>
+            <p><strong>Giá:</strong> @service.price.ToString("N0") đ</p>
+            <p><strong>Mô tả:</strong> @service.descrip</p>
+            <p><strong>Ghi chú:</strong> @service.note</p>
+            <p><strong>Đơn vị tính:</strong> @service.calUnit</p>
+        </div>
+    }
+</div>

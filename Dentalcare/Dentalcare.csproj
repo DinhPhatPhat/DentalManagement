@@ -136,8 +136,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceCategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,8 +248,11 @@
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BlogManager.cs" />
+    <Compile Include="Services\CommentManager.cs" />
     <Compile Include="Services\DentistManager.cs" />
     <Compile Include="Services\FacultyManager.cs" />
+    <Compile Include="Services\ServiceCategoryManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -351,6 +357,7 @@
     <Content Include="Content\css\open-iconic-bootstrap.min.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\services.css" />
     <Content Include="Content\css\_404Style.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\flaticon\backup.txt" />
@@ -366,6 +373,9 @@
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
+    <Content Include="Content\images\Blog\NE00000001.jpg" />
+    <Content Include="Content\images\Blog\NE00000002.jpg" />
+    <Content Include="Content\images\Blog\NE00000003.jpg" />
     <Content Include="Content\images\Dentist\AC00000004\avatar.jpg" />
     <Content Include="Content\images\Dentist\AC00000005\avatar.jpg" />
     <Content Include="Content\images\Dentist\AC00000006\avatar.jpg" />
@@ -605,11 +615,14 @@
     <Content Include="Views\Default\About.cshtml" />
     <Content Include="Views\Default\Service.cshtml" />
     <Content Include="Views\Default\Dentist.cshtml" />
-    <Content Include="Views\Default\Blog.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Default\Contact.cshtml" />
     <Content Include="Views\Default\Login.cshtml" />
     <Content Include="Views\Default\Register.cshtml" />
     <Content Include="Views\Default\_404.cshtml" />
+    <Content Include="Views\ServiceCategory\Index.cshtml" />
+    <Content Include="Views\ServiceCategory\Details.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

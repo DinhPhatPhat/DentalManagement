@@ -12,7 +12,6 @@ namespace Dentalcare.Controllers
 
         private readonly FacultyManager facultyManager;
         private readonly DentistManager dentistManager;
-
         public DefaultController()
         {
             this.facultyManager = new FacultyManager();
@@ -39,9 +38,9 @@ namespace Dentalcare.Controllers
                 case "tin-tuc":
                     return View("Blog"); 
                 case "dich-vu":
-                    return View("Service"); 
+                    return RedirectToAction("Index", "ServiceCategory");
                 case "binh-luan":
-                    return View("Comments"); 
+                    return RedirectToAction("Index", "Comment");
                 case "lien-he":
                     return View("Contact"); 
                 case "tai-khoan":

@@ -1,0 +1,46 @@
+﻿body {
+    padding: 25px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.all-services {
+    margin-top: 60px;
+}
+
+.service-detail {
+    background-color: #f9f9f9; /* Màu nền nhạt để làm nổi bật */
+    border: 1px solid #e0e0e0; /* Đường viền nhẹ để phân biệt */
+    border-radius: 8px; /* Góc bo tròn */
+    padding: 20px; /* Khoảng cách bên trong */
+    margin-bottom: 20px; /* Khoảng cách giữa các mục */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng */
+    transition: transform 0.2s, box-shadow 0.2s; /* Hiệu ứng chuyển động */
+}
+
+    .service-detail:hover {
+        transform: translateY(-5px); /* Nâng lên khi di chuột vào */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Tăng bóng */
+    }
+
+    .service-detail h3 {
+        color: #333; /* Màu chữ đậm */
+        font-size: 24px; /* Kích thước chữ */
+        margin-bottom: 10px; /* Khoảng cách dưới */
+        font-weight: bold; /* Chữ đậm */
+    }
+
+    .service-detail p {
+        color: #666; /* Màu chữ nhạt hơn */
+        line-height: 1.6; /* Độ cao dòng để dễ đọc */
+        margin: 8px 0; /* Khoảng cách trên và dưới */
+    }
+
+        .service-detail p strong {
+            color: #444; /* Màu chữ của tiêu đề đậm hơn */
+        }
+
+        .service-detail p:first-of-type {
+            font-size: 18px; /* Chữ giá lớn hơn */
+            color: #e74c3c; /* Màu chữ đỏ nổi bật */
+            font-weight: bold; /* Chữ đậm */
+        }
