@@ -8280,8 +8280,10 @@ textarea.form-control {
   font-size: 20px; }
 
 .ftco-section {
-  padding: 7em 0;
-  position: relative; }
+  padding: 2.5em 0;
+  position: relative; 
+  
+}
   .ftco-section.ftco-section-2 {
     position: relative;
     padding: 3em 0 !important; }
@@ -8497,7 +8499,10 @@ textarea.form-control {
   background-position: center center; }
 
 .testimony-section {
-  position: relative; }
+    position: relative;
+    border-radius: 20px;
+    margin-top: 120px;
+}
   .testimony-section .owl-carousel {
     margin: 0; }
 

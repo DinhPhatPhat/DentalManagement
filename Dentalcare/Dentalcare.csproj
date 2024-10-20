@@ -628,6 +628,7 @@
     <Content Include="Views\ServiceCategory\Index.cshtml" />
     <Content Include="Views\ServiceCategory\Details.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Shared\Milestone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

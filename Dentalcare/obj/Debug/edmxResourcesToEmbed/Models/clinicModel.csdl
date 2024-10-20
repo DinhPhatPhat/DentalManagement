@@ -921,6 +921,7 @@
       <Parameter Name="MetaAccount" Mode="In" Type="String" />
       <Parameter Name="MetaPerson" Mode="In" Type="String" />
       <Parameter Name="MetaPersonDetail" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddAdvertisement">
       <Parameter Name="title" Mode="In" Type="String" />
@@ -966,7 +967,7 @@
       <Parameter Name="youtube" Mode="In" Type="String" />
       <Parameter Name="title" Mode="In" Type="String" />
       <Parameter Name="msg" Mode="In" Type="String" />
-      <Parameter Name="dateStartClinic" Mode="In" Type="DateTime" />
+      <Parameter Name="dateStartClinic" Mode="In" Type="String" />
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddComment">

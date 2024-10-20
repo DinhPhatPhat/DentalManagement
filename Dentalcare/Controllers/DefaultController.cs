@@ -36,11 +36,14 @@ namespace Dentalcare.Controllers
                 return RedirectToAction("_404");
             }
 
+            
+
             // Tùy vào 'meta', chuyển hướng tới các action tương ứng
             switch (meta)
             {
                 case "nha-si":
                     ViewBag.dentists = dentistManager.GetAllDentistsInfo();
+                    ViewBag.patients = patientManager.GetPatients();
                     return View("Dentist");
                 case "tin-tuc":
                     return View("Blog"); 
