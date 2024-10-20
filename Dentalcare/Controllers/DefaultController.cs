@@ -12,10 +12,17 @@ namespace Dentalcare.Controllers
 
         private readonly FacultyManager facultyManager;
         private readonly DentistManager dentistManager;
+        private readonly CommentManager commentManager;
+        private readonly InfoClinicManager infoClinicManager;
+        private readonly PatientManager patientManager;
+
         public DefaultController()
         {
             this.facultyManager = new FacultyManager();
             this.dentistManager = new DentistManager();
+            this.commentManager = new CommentManager();
+            this.infoClinicManager = new InfoClinicManager();
+            this.patientManager = new PatientManager();
         }
 
         public ActionResult PageByMeta(string meta)
@@ -54,8 +61,12 @@ namespace Dentalcare.Controllers
         {
             var faculties = facultyManager.GetAllFaculties();
             var topFourDentists = dentistManager.GetTopFourDentistsInfo();
+            ViewBag.comments = commentManager.GetAllCommentInfo();
             ViewBag.faculties = faculties;
             ViewBag.topFourDentists = topFourDentists;
+            ViewBag.clinic = infoClinicManager.getDataOfClinic();
+            ViewBag.dentists = dentistManager.GetAllDentists();
+            ViewBag.patients = patientManager.GetPatients();
             return View();
         }
         public ActionResult Login()

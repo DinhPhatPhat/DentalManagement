@@ -18,6 +18,7 @@ namespace Dentalcare.Services
             public string Meta { get; set; }
             public string PersonName { get; set; }
             public DateTime DateBegin { get; set; }
+
         }
         public CommentManager()
         {
@@ -36,6 +37,7 @@ namespace Dentalcare.Services
             var query = from comment in db.Comments
                         join patient in db.Patients on comment.patid equals patient.id
                         join person in db.People on patient.id equals person.id
+                        join avatar in db.Avatars on person.id equals avatar.personId
                         where comment.hide == false
                         orderby comment.order
                         select new CommentInfo
@@ -43,7 +45,7 @@ namespace Dentalcare.Services
                             CommentId = comment.id,
                             Title = comment.title,
                             Message = comment.msg,
-                            Image = comment.img,
+                            Image = avatar.imgPath, // Đổi hình ảnh của comment qua hình ảnh của bệnh nhân 
                             Meta = comment.meta,
                             PersonName = person.name,
                             DateBegin = comment.datebegin

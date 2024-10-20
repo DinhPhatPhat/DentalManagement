@@ -119,6 +119,7 @@
     <EntitySetMapping Name="Clinics">
       <EntityTypeMapping TypeName="clinicModel.Clinic">
         <MappingFragment StoreEntitySet="Clinic">
+          <ScalarProperty Name="dateStartClinic" ColumnName="dateStartClinic" />
           <ScalarProperty Name="msg" ColumnName="msg" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />

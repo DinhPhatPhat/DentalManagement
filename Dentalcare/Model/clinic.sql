@@ -26,6 +26,7 @@ begin
 END
 GO
 
+
 CREATE TABLE Account
 (
   id VARCHAR(10) NOT NULL,
@@ -353,6 +354,7 @@ CREATE TABLE Clinic
   title NVARCHAR(MAX) NOT NULL,
   msg NVARCHAR(MAX) NOT NULL,
   meta VARCHAR(MAX) NOT NULL,
+  dateStartClinic DATETIME NOT NULL,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
   PRIMARY KEY (id)
@@ -820,6 +822,12 @@ EXEC procAddAvatar @personId = 'AC00000006';
 EXEC procAddAvatar @personId = 'AC00000007';
 EXEC procAddAvatar @personId = 'AC00000008';
 EXEC procAddAvatar @personId = 'AC00000009';
+
+--patient
+EXEC procAddAvatar @personId = 'AC00000014';
+EXEC procAddAvatar @personId = 'AC00000015';
+EXEC procAddAvatar @personId = 'AC00000016';
+EXEC procAddAvatar @personId = 'AC00000017';
 go
 --Select * from Avatar
 
@@ -2320,6 +2328,7 @@ create proc procAddClinic
   @youtube VARCHAR(MAX),
   @title NVARCHAR(MAX),
   @msg NVARCHAR(MAX),
+  @dateStartClinic VARCHAR(MAX),
   @meta VARCHAR(MAX)
 as
 begin
@@ -2331,8 +2340,8 @@ begin
 		end
 	declare @id VARCHAR(10)
 	set @id = dbo.autoid('CL', @QuanCL+1)
-	insert into Clinic(id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,title,msg,meta)
-	values (@id,@name,@phoneNumber,@address,@img,@email,@facebook,@zalo,@instagram,@youtube,@title,@msg,@meta)
+	insert into Clinic(id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,title,msg,meta,dateStartClinic)
+	values (@id,@name,@phoneNumber,@address,@img,@email,@facebook,@zalo,@instagram,@youtube,@title,@msg,@meta,@dateStartClinic  )
 end
 go
 
@@ -2349,6 +2358,6 @@ N'178 Phạm Hùng, Tân Hưng, Quận 7, Hồ Chí Minh, Việt Nam',
 'https://www.youtube.com/@nhakhoathuyanh',
 N'Chúng tôi hiểu rằng mỗi khách hàng đều có những nhu cầu và mong muốn khác nhau. Vì vậy, chúng tôi luôn lắng nghe và tư vấn tận tình để đưa ra những giải pháp phù hợp nhất cho từng trường hợp. Hãy để chúng tôi đồng hành cùng bạn trên hành trình chinh phục nụ cười hoàn hảo.',
 N'Nha khoa chuyên nghiệp, chăm sóc tận tâm.',
+'2004-12-12',
 'thong-tin-nha-khoa'
 go
-

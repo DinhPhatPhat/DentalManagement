@@ -139,6 +139,7 @@
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="msg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateStartClinic" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -965,6 +966,7 @@
       <Parameter Name="youtube" Mode="In" Type="String" />
       <Parameter Name="title" Mode="In" Type="String" />
       <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="dateStartClinic" Mode="In" Type="DateTime" />
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddComment">

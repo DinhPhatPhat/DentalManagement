@@ -30,5 +30,6 @@ namespace Dentalcare.Models
         public System.DateTime datebegin { get; set; }
         public string title { get; set; }
         public string msg { get; set; }
+        public System.DateTime dateStartClinic { get; set; }
     }
 }

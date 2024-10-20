@@ -244,7 +244,7 @@ namespace Dentalcare.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddCalendar", timeStartParameter, timeEndParameter, personIDParameter, metaParameter);
         }
     
-        public virtual int procAddClinic(string name, string phoneNumber, string address, string img, string email, string facebook, string zalo, string instagram, string youtube, string title, string msg, string meta)
+        public virtual int procAddClinic(string name, string phoneNumber, string address, string img, string email, string facebook, string zalo, string instagram, string youtube, string title, string msg, Nullable<System.DateTime> dateStartClinic, string meta)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -290,11 +290,15 @@ namespace Dentalcare.Models
                 new ObjectParameter("msg", msg) :
                 new ObjectParameter("msg", typeof(string));
     
+            var dateStartClinicParameter = dateStartClinic.HasValue ?
+                new ObjectParameter("dateStartClinic", dateStartClinic) :
+                new ObjectParameter("dateStartClinic", typeof(System.DateTime));
+    
             var metaParameter = meta != null ?
                 new ObjectParameter("meta", meta) :
                 new ObjectParameter("meta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddClinic", nameParameter, phoneNumberParameter, addressParameter, imgParameter, emailParameter, facebookParameter, zaloParameter, instagramParameter, youtubeParameter, titleParameter, msgParameter, metaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddClinic", nameParameter, phoneNumberParameter, addressParameter, imgParameter, emailParameter, facebookParameter, zaloParameter, instagramParameter, youtubeParameter, titleParameter, msgParameter, dateStartClinicParameter, metaParameter);
         }
     
         public virtual int procAddComment(string patID, string title, string msg, string img, string meta)

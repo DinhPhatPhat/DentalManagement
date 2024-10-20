@@ -256,6 +256,7 @@
     <Compile Include="Services\DentistManager.cs" />
     <Compile Include="Services\FacultyManager.cs" />
     <Compile Include="Services\InfoClinicManager.cs" />
+    <Compile Include="Services\PatientManager.cs" />
     <Compile Include="Services\ServiceCategoryManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -630,6 +631,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\Patient\AC00000014\" />
+    <Folder Include="Content\images\Patient\AC00000015\" />
+    <Folder Include="Content\images\Patient\AC00000016\" />
+    <Folder Include="Content\images\Patient\AC00000017\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
