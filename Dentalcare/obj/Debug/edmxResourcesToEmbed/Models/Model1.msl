@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="clinicModelStoreContainer" CdmEntityContainer="clinicEntities1">
+    <FunctionImportMapping FunctionImportName="procAddAccountAndPerson" FunctionName="clinicModel.Store.procAddAccountAndPerson" />
+    <FunctionImportMapping FunctionImportName="procAddAdvertisement" FunctionName="clinicModel.Store.procAddAdvertisement" />
+    <FunctionImportMapping FunctionImportName="procAddAppointment" FunctionName="clinicModel.Store.procAddAppointment" />
+    <FunctionImportMapping FunctionImportName="procAddAvatar" FunctionName="clinicModel.Store.procAddAvatar" />
+    <FunctionImportMapping FunctionImportName="procAddBill" FunctionName="clinicModel.Store.procAddBill" />
+    <FunctionImportMapping FunctionImportName="procAddBill_Service" FunctionName="clinicModel.Store.procAddBill_Service" />
+    <FunctionImportMapping FunctionImportName="procAddCalendar" FunctionName="clinicModel.Store.procAddCalendar" />
+    <FunctionImportMapping FunctionImportName="procAddClinic" FunctionName="clinicModel.Store.procAddClinic" />
+    <FunctionImportMapping FunctionImportName="procAddComment" FunctionName="clinicModel.Store.procAddComment" />
+    <FunctionImportMapping FunctionImportName="procAddConsumableMaterial" FunctionName="clinicModel.Store.procAddConsumableMaterial" />
+    <FunctionImportMapping FunctionImportName="procAddFaculty" FunctionName="clinicModel.Store.procAddFaculty" />
+    <FunctionImportMapping FunctionImportName="procAddFixedMaterial" FunctionName="clinicModel.Store.procAddFixedMaterial" />
+    <FunctionImportMapping FunctionImportName="procAddIngredient" FunctionName="clinicModel.Store.procAddIngredient" />
+    <FunctionImportMapping FunctionImportName="procAddIngredient_ConsumableMaterial" FunctionName="clinicModel.Store.procAddIngredient_ConsumableMaterial" />
+    <FunctionImportMapping FunctionImportName="procAddMaterial" FunctionName="clinicModel.Store.procAddMaterial" />
+    <FunctionImportMapping FunctionImportName="procAddMaterial_Category" FunctionName="clinicModel.Store.procAddMaterial_Category" />
+    <FunctionImportMapping FunctionImportName="procAddMedicine" FunctionName="clinicModel.Store.procAddMedicine" />
+    <FunctionImportMapping FunctionImportName="procAddMenu" FunctionName="clinicModel.Store.procAddMenu" />
+    <FunctionImportMapping FunctionImportName="procAddNews" FunctionName="clinicModel.Store.procAddNews" />
+    <FunctionImportMapping FunctionImportName="procAddPrescription" FunctionName="clinicModel.Store.procAddPrescription" />
+    <FunctionImportMapping FunctionImportName="procAddPrescription_Medicine" FunctionName="clinicModel.Store.procAddPrescription_Medicine" />
+    <FunctionImportMapping FunctionImportName="procAddService" FunctionName="clinicModel.Store.procAddService" />
+    <FunctionImportMapping FunctionImportName="procAddService_Category" FunctionName="clinicModel.Store.procAddService_Category" />
+  </EntityContainerMapping>
+</Mapping>

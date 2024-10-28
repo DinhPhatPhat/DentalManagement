@@ -70,6 +70,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Avatars">
+      <EntityTypeMapping TypeName="clinicModel.Avatar">
+        <MappingFragment StoreEntitySet="Avatar">
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+          <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="clinicModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
@@ -119,8 +128,6 @@
     <EntitySetMapping Name="Clinics">
       <EntityTypeMapping TypeName="clinicModel.Clinic">
         <MappingFragment StoreEntitySet="Clinic">
-          <ScalarProperty Name="msg" ColumnName="msg" />
-          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
@@ -132,6 +139,8 @@
           <ScalarProperty Name="instagram" ColumnName="instagram" />
           <ScalarProperty Name="youtube" ColumnName="youtube" />
           <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
           <ScalarProperty Name="meta" ColumnName="meta" />
           <ScalarProperty Name="order" ColumnName="order" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
@@ -169,7 +178,6 @@
     <EntitySetMapping Name="Dentists">
       <EntityTypeMapping TypeName="clinicModel.Dentist">
         <MappingFragment StoreEntitySet="Dentist">
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="hide" ColumnName="hide" />
           <ScalarProperty Name="meta" ColumnName="meta" />
@@ -177,15 +185,16 @@
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="falid" ColumnName="falid" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Faculties">
       <EntityTypeMapping TypeName="clinicModel.Faculty">
         <MappingFragment StoreEntitySet="Faculty">
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="able" ColumnName="able" />
           <ScalarProperty Name="hide" ColumnName="hide" />
           <ScalarProperty Name="meta" ColumnName="meta" />
@@ -203,6 +212,19 @@
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="able" ColumnName="able" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Footers">
+      <EntityTypeMapping TypeName="clinicModel.Footer">
+        <MappingFragment StoreEntitySet="Footer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -418,6 +440,7 @@
     <FunctionImportMapping FunctionImportName="procAddAccountAndPerson" FunctionName="clinicModel.Store.procAddAccountAndPerson" />
     <FunctionImportMapping FunctionImportName="procAddAdvertisement" FunctionName="clinicModel.Store.procAddAdvertisement" />
     <FunctionImportMapping FunctionImportName="procAddAppointment" FunctionName="clinicModel.Store.procAddAppointment" />
+    <FunctionImportMapping FunctionImportName="procAddAvatar" FunctionName="clinicModel.Store.procAddAvatar" />
     <FunctionImportMapping FunctionImportName="procAddBill" FunctionName="clinicModel.Store.procAddBill" />
     <FunctionImportMapping FunctionImportName="procAddBill_Service" FunctionName="clinicModel.Store.procAddBill_Service" />
     <FunctionImportMapping FunctionImportName="procAddCalendar" FunctionName="clinicModel.Store.procAddCalendar" />
@@ -437,28 +460,5 @@
     <FunctionImportMapping FunctionImportName="procAddPrescription_Medicine" FunctionName="clinicModel.Store.procAddPrescription_Medicine" />
     <FunctionImportMapping FunctionImportName="procAddService" FunctionName="clinicModel.Store.procAddService" />
     <FunctionImportMapping FunctionImportName="procAddService_Category" FunctionName="clinicModel.Store.procAddService_Category" />
-    <EntitySetMapping Name="Avatars">
-      <EntityTypeMapping TypeName="clinicModel.Avatar">
-        <MappingFragment StoreEntitySet="Avatar">
-          <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
-          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
-          <ScalarProperty Name="personId" ColumnName="personId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="procAddAvatar" FunctionName="clinicModel.Store.procAddAvatar" />
-    <EntitySetMapping Name="Footers">
-      <EntityTypeMapping TypeName="clinicModel.Footer">
-        <MappingFragment StoreEntitySet="Footer">
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="link" ColumnName="link" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

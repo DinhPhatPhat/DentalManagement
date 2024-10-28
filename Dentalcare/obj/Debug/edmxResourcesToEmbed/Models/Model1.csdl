@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="clinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="clinicEntities1" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="procAddAccountAndPerson">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phoneNumber" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="salary" Mode="In" Type="Int32" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="Boolean" />
+      <Parameter Name="birthday" Mode="In" Type="DateTime" />
+      <Parameter Name="nation" Mode="In" Type="String" />
+      <Parameter Name="role" Mode="In" Type="Int32" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="falID" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="MetaAccount" Mode="In" Type="String" />
+      <Parameter Name="MetaPerson" Mode="In" Type="String" />
+      <Parameter Name="MetaPersonDetail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddAdvertisement">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddAppointment">
+      <Parameter Name="denID" Mode="In" Type="String" />
+      <Parameter Name="patID" Mode="In" Type="String" />
+      <Parameter Name="timeStart" Mode="In" Type="DateTime" />
+      <Parameter Name="timeEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="symptom" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddAvatar">
+      <Parameter Name="personId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddBill">
+      <Parameter Name="patId" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddBill_Service">
+      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="serId" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddCalendar">
+      <Parameter Name="timeStart" Mode="In" Type="DateTime" />
+      <Parameter Name="timeEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="personID" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddClinic">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phoneNumber" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="facebook" Mode="In" Type="String" />
+      <Parameter Name="zalo" Mode="In" Type="String" />
+      <Parameter Name="instagram" Mode="In" Type="String" />
+      <Parameter Name="youtube" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddComment">
+      <Parameter Name="patID" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddConsumableMaterial">
+      <Parameter Name="expDate" Mode="In" Type="DateTime" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddFaculty">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddFixedMaterial">
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddIngredient">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddIngredient_ConsumableMaterial">
+      <Parameter Name="ingreID" Mode="In" Type="String" />
+      <Parameter Name="consumID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMaterial">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="cateId" Mode="In" Type="String" />
+      <Parameter Name="calUnit" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="func" Mode="In" Type="String" />
+      <Parameter Name="mfgDate" Mode="In" Type="DateTime" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMaterial_Category">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMedicine">
+      <Parameter Name="id" Mode="In" Type="String" />
+      <Parameter Name="ins" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="caredActor" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddMenu">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="link" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddNews">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddPrescription">
+      <Parameter Name="denId" Mode="In" Type="String" />
+      <Parameter Name="patId" Mode="In" Type="String" />
+      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddPrescription_Medicine">
+      <Parameter Name="denId" Mode="In" Type="String" />
+      <Parameter Name="patId" Mode="In" Type="String" />
+      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="medID" Mode="In" Type="String" />
+      <Parameter Name="quantityMedicine" Mode="In" Type="Int32" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddService">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+      <Parameter Name="calUnit" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="img" Mode="In" Type="String" />
+      <Parameter Name="cateId" Mode="In" Type="String" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="caredActor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAddService_Category">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="descip" Mode="In" Type="String" />
+      <Parameter Name="note" Mode="In" Type="String" />
+      <Parameter Name="meta" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

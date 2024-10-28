@@ -21,7 +21,12 @@ namespace Dentalcare.Services
                      .OrderBy(f => f.order)
                      .ToList();
 
-
         }
+        public NEWS GetBlogByMeta(string blogMeta)
+        {
+            var blog = db.NEWS.FirstOrDefault(b => b.meta == blogMeta && b.hide == false);
+            return blog ?? new NEWS();
+        }
+
     }
 }

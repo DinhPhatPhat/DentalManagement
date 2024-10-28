@@ -18,6 +18,12 @@ namespace Dentalcare
                 url: "tin-tuc",
                 defaults: new { controller = "Blog", action = "Index" }
             );
+
+            routes.MapRoute(
+                name: "BlogDetail",
+                url: "tin-tuc/{meta}",
+                defaults: new { controller= "Blog", action = "Details", meta = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "ServiceCategory",
                 url: "dich-vu",
