@@ -1,4 +1,5 @@
 ﻿using Dentalcare.Models;
+using Dentalcare.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Dentalcare.Controllers
         //Mục đích là lấy menu động (Sau này có thể phát triển để lấy thêm Footer động)
         protected clinicEntities db = new clinicEntities();
 
+        protected InfoClinicManager clinicManager = new InfoClinicManager();
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var menuItems = db.Menus
@@ -22,9 +25,10 @@ namespace Dentalcare.Controllers
                               .ToList();
             ViewBag.MenuItems = menuItems;
 
-            //var footerItems = db.
-            //...
-            //ViewBag.FooterItems = footerItems
+
+            var footerItem = clinicManager.getDataOfClinic();
+            ViewBag.FooterItem = footerItem;
+
                 
             var facultyItems = db.Faculties.ToList();
             ViewBag.FacultyItems = facultyItems;

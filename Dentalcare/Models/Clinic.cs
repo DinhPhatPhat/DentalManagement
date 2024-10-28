@@ -25,6 +25,8 @@ namespace Dentalcare.Models
         public string instagram { get; set; }
         public string youtube { get; set; }
         public bool hide { get; set; }
+        public string title { get; set; }
+        public string msg { get; set; }
         public string meta { get; set; }
         public int order { get; set; }
         public System.DateTime datebegin { get; set; }

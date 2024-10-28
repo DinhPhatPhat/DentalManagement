@@ -32,6 +32,7 @@ namespace Dentalcare.Models
         public virtual DbSet<Advertisement> Advertisements { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Assisstant> Assisstants { get; set; }
+        public virtual DbSet<Avatar> Avatars { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Bill_Service> Bill_Service { get; set; }
         public virtual DbSet<Calendar> Calendars { get; set; }
@@ -41,6 +42,7 @@ namespace Dentalcare.Models
         public virtual DbSet<Dentist> Dentists { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
         public virtual DbSet<FixedMaterial> FixedMaterials { get; set; }
+        public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<Ingredient_ConsumableMaterial> Ingredient_ConsumableMaterial { get; set; }
         public virtual DbSet<Material> Materials { get; set; }
@@ -55,7 +57,6 @@ namespace Dentalcare.Models
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Service_Category> Service_Category { get; set; }
         public virtual DbSet<NEWS> NEWS { get; set; }
-        public virtual DbSet<Avatar> Avatars { get; set; }
     
         public virtual int procAddAccountAndPerson(string username, string password, string name, string phoneNumber, string email, Nullable<int> salary, string address, Nullable<bool> gender, Nullable<System.DateTime> birthday, string nation, Nullable<int> role, string img, string falID, string title, string metaAccount, string metaPerson, string metaPersonDetail)
         {
@@ -188,6 +189,15 @@ namespace Dentalcare.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddAppointment", denIDParameter, patIDParameter, timeStartParameter, timeEndParameter, symptomParameter, stateParameter, noteParameter, metaParameter);
         }
     
+        public virtual int procAddAvatar(string personId)
+        {
+            var personIdParameter = personId != null ?
+                new ObjectParameter("personId", personId) :
+                new ObjectParameter("personId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddAvatar", personIdParameter);
+        }
+    
         public virtual int procAddBill(string patId, string meta)
         {
             var patIdParameter = patId != null ?
@@ -243,7 +253,7 @@ namespace Dentalcare.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddCalendar", timeStartParameter, timeEndParameter, personIDParameter, metaParameter);
         }
     
-        public virtual int procAddClinic(string name, string phoneNumber, string address, string img, string email, string facebook, string zalo, string instagram, string youtube, string meta)
+        public virtual int procAddClinic(string name, string phoneNumber, string address, string img, string email, string facebook, string zalo, string instagram, string youtube, string title, string msg, string meta)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -281,11 +291,19 @@ namespace Dentalcare.Models
                 new ObjectParameter("youtube", youtube) :
                 new ObjectParameter("youtube", typeof(string));
     
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var msgParameter = msg != null ?
+                new ObjectParameter("msg", msg) :
+                new ObjectParameter("msg", typeof(string));
+    
             var metaParameter = meta != null ?
                 new ObjectParameter("meta", meta) :
                 new ObjectParameter("meta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddClinic", nameParameter, phoneNumberParameter, addressParameter, imgParameter, emailParameter, facebookParameter, zaloParameter, instagramParameter, youtubeParameter, metaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddClinic", nameParameter, phoneNumberParameter, addressParameter, imgParameter, emailParameter, facebookParameter, zaloParameter, instagramParameter, youtubeParameter, titleParameter, msgParameter, metaParameter);
         }
     
         public virtual int procAddComment(string patID, string title, string msg, string img, string meta)
@@ -486,7 +504,7 @@ namespace Dentalcare.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddMenu", nameParameter, linkParameter, metaParameter);
         }
     
-        public virtual int procAddNews(string title, string msg, string img, string meta)
+        public virtual int procAddNews(string title, string msg, string meta)
         {
             var titleParameter = title != null ?
                 new ObjectParameter("title", title) :
@@ -496,15 +514,11 @@ namespace Dentalcare.Models
                 new ObjectParameter("msg", msg) :
                 new ObjectParameter("msg", typeof(string));
     
-            var imgParameter = img != null ?
-                new ObjectParameter("img", img) :
-                new ObjectParameter("img", typeof(string));
-    
             var metaParameter = meta != null ?
                 new ObjectParameter("meta", meta) :
                 new ObjectParameter("meta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddNews", titleParameter, msgParameter, imgParameter, metaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddNews", titleParameter, msgParameter, metaParameter);
         }
     
         public virtual int procAddPrescription(string denId, string patId, string billId, string note, string meta)
@@ -621,15 +635,6 @@ namespace Dentalcare.Models
                 new ObjectParameter("meta", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddService_Category", nameParameter, descipParameter, noteParameter, metaParameter);
-        }
-    
-        public virtual int procAddAvatar(string personId)
-        {
-            var personIdParameter = personId != null ?
-                new ObjectParameter("personId", personId) :
-                new ObjectParameter("personId", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddAvatar", personIdParameter);
         }
     }
 }

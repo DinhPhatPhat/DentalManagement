@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="clinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="autoid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="NAME" Type="char" Mode="In" />
+    <Parameter Name="QUAN" Type="int" Mode="In" />
+  </Function>
+  <Function Name="funcGetRoleByPersonId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="PersonID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddAccountAndPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="salary" Type="int" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="gender" Type="bit" Mode="In" />
+    <Parameter Name="birthday" Type="datetime" Mode="In" />
+    <Parameter Name="nation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="role" Type="int" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="falID" Type="varchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="MetaAccount" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MetaPerson" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MetaPersonDetail" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddAdvertisement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denID" Type="varchar" Mode="In" />
+    <Parameter Name="patID" Type="varchar" Mode="In" />
+    <Parameter Name="timeStart" Type="datetime" Mode="In" />
+    <Parameter Name="timeEnd" Type="datetime" Mode="In" />
+    <Parameter Name="symptom" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="state" Type="nvarchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="personId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patId" Type="varchar" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddBill_Service" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="serId" Type="varchar" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddCalendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="timeStart" Type="datetime" Mode="In" />
+    <Parameter Name="timeEnd" Type="datetime" Mode="In" />
+    <Parameter Name="personID" Type="varchar" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddClinic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="facebook" Type="varchar(max)" Mode="In" />
+    <Parameter Name="zalo" Type="varchar(max)" Mode="In" />
+    <Parameter Name="instagram" Type="varchar(max)" Mode="In" />
+    <Parameter Name="youtube" Type="varchar(max)" Mode="In" />
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patID" Type="varchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddConsumableMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="expDate" Type="datetime" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddFixedMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddIngredient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddIngredient_ConsumableMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ingreID" Type="varchar" Mode="In" />
+    <Parameter Name="consumID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAddMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="cateId" Type="varchar" Mode="In" />
+    <Parameter Name="calUnit" Type="nvarchar" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="func" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="mfgDate" Type="datetime" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddMaterial_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="ins" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="price" Type="int" Mode="In" />
+    <Parameter Name="caredActor" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="link" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddPrescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denId" Type="varchar" Mode="In" />
+    <Parameter Name="patId" Type="varchar" Mode="In" />
+    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddPrescription_Medicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="denId" Type="varchar" Mode="In" />
+    <Parameter Name="patId" Type="varchar" Mode="In" />
+    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="medID" Type="varchar" Mode="In" />
+    <Parameter Name="quantityMedicine" Type="int" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="procAddService" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="price" Type="int" Mode="In" />
+    <Parameter Name="calUnit" Type="nvarchar" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="varchar(max)" Mode="In" />
+    <Parameter Name="img" Type="varchar(max)" Mode="In" />
+    <Parameter Name="cateId" Type="varchar" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="caredActor" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="procAddService_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="descip" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="clinicModelStoreContainer" />
+</Schema>

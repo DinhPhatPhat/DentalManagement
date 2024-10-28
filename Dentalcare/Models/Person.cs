@@ -39,11 +39,11 @@ namespace Dentalcare.Models
         public virtual Account Account { get; set; }
         public virtual Admin Admin { get; set; }
         public virtual Assisstant Assisstant { get; set; }
+        public virtual Avatar Avatar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calendar> Calendars { get; set; }
         public virtual Dentist Dentist { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Receptionist Receptionist { get; set; }
-        public virtual Avatar Avatar { get; set; }
     }
 }

@@ -350,6 +350,8 @@ CREATE TABLE Clinic
   instagram VARCHAR(MAX) NOT NULL,
   youtube VARCHAR(MAX) NOT NULL,
   hide BIT NOT NULL DEFAULT 0,
+  title NVARCHAR(MAX) NOT NULL,
+  msg NVARCHAR(MAX) NOT NULL,
   meta VARCHAR(MAX) NOT NULL,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
@@ -696,43 +698,6 @@ BEGIN
 END
 GO
 
---THÊM AVATAR
-create proc procAddAvatar
-    @personId VARCHAR(10)
-AS
-BEGIN
-	DECLARE @role INT;
-	DECLARE @imgPath VARCHAR(MAX)
-    -- Kiểm tra xem personId đã tồn tại trong bảng Person chưa
-    IF EXISTS (SELECT 1 FROM Person WHERE id = @personId)
-    BEGIN
-		SET @role = dbo.funcGetRoleByPersonId(@personId)
-        -- Thêm ảnh đại diện vào bảng Avatar
-		SET @imgPath = CONCAT('Content/images/', CASE 
-			WHEN @role = 1 THEN 'Admin' 
-			WHEN @role = 2 THEN 'Receptionist' 
-			WHEN @role = 3 THEN 'Dentist' 
-			WHEN @role = 4 THEN 'Assistant' 
-			WHEN @role = 5 THEN 'Patient' 
-		END, '/', @personId, '/avatar.jpg');
-
-	INSERT INTO Avatar(personId, imgPath) VALUES (@personId, @imgPath);
-			PRINT 'Avatar added successfully.';
-    END
-    ELSE
-    BEGIN
-        PRINT 'Person ID does not exist.';
-    END
-END
-GO
-
-EXEC procAddAvatar @personId = 'AC00000004';
-EXEC procAddAvatar @personId = 'AC00000005';
-EXEC procAddAvatar @personId = 'AC00000006';
-EXEC procAddAvatar @personId = 'AC00000007';
-EXEC procAddAvatar @personId = 'AC00000008';
-EXEC procAddAvatar @personId = 'AC00000009';
---Select * from Avatar
 
 UPDATE Dentist
 SET [descrip] = CASE 
@@ -744,6 +709,7 @@ SET [descrip] = CASE
     WHEN id = 'AC00000009' THEN N'Chuyên gia tư vấn các giải pháp chăm sóc răng miệng cho người cao tuổi, với nhiều năm kinh nghiệm trong lĩnh vực này.'
 END
 WHERE id IN ('AC00000004', 'AC00000005', 'AC00000006', 'AC00000007', 'AC00000008', 'AC00000009');
+go
 
 --THEM KHOA
 create proc procAddFaculty
@@ -817,6 +783,46 @@ exec procAddAccountAndPerson 'patient4','15',N'Hồ Minh Thư','0908829131','thu
 go
 --select * from patient
 
+
+--THÊM AVATAR
+create proc procAddAvatar
+    @personId VARCHAR(10)
+AS
+BEGIN
+	DECLARE @role INT;
+	DECLARE @imgPath VARCHAR(MAX)
+    -- Kiểm tra xem personId đã tồn tại trong bảng Person chưa
+    IF EXISTS (SELECT 1 FROM Person WHERE id = @personId)
+    BEGIN
+		SET @role = dbo.funcGetRoleByPersonId(@personId)
+        -- Thêm ảnh đại diện vào bảng Avatar
+		SET @imgPath = CONCAT('Content/images/', CASE 
+			WHEN @role = 1 THEN 'Admin' 
+			WHEN @role = 2 THEN 'Receptionist' 
+			WHEN @role = 3 THEN 'Dentist' 
+			WHEN @role = 4 THEN 'Assistant' 
+			WHEN @role = 5 THEN 'Patient' 
+		END, '/', @personId, '/avatar.jpg');
+
+	INSERT INTO Avatar(personId, imgPath) VALUES (@personId, @imgPath);
+			PRINT 'Avatar added successfully.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'Person ID does not exist.';
+    END
+END
+GO
+
+EXEC procAddAvatar @personId = 'AC00000004';
+EXEC procAddAvatar @personId = 'AC00000005';
+EXEC procAddAvatar @personId = 'AC00000006';
+EXEC procAddAvatar @personId = 'AC00000007';
+EXEC procAddAvatar @personId = 'AC00000008';
+EXEC procAddAvatar @personId = 'AC00000009';
+go
+--Select * from Avatar
+
 --Service_Category
 create proc procAddService_Category
 	@name NVARCHAR(100),
@@ -889,7 +895,7 @@ UPDATE Service_Category SET meta = 'mang-xuong-tu-than' WHERE name = N'Màng, x�
 UPDATE Service_Category SET meta = 'nang-xoang' WHERE name = N'Nâng xoang';
 UPDATE Service_Category SET meta = 'chup-ct-cone-beam' WHERE name = N'Chụp CT CONE BEAM';
 UPDATE Service_Category SET meta = 'mang-huong-dan-in-so-mat' WHERE name = N'Máng Hướng Dẫn / in Sọ Mặt';
-
+go
 
 --Service
 create proc procAddService
@@ -2298,6 +2304,7 @@ exec procAddMenu N'Tài khoản','/Login','tai-khoan'
 go
 
 update Menu set name = 'Dentist' where name ='Doctors'
+go
 --Select * from menu
 
 --CLinic
@@ -2311,6 +2318,8 @@ create proc procAddClinic
   @zalo VARCHAR(MAX),
   @instagram VARCHAR(MAX),
   @youtube VARCHAR(MAX),
+  @title NVARCHAR(MAX),
+  @msg NVARCHAR(MAX),
   @meta VARCHAR(MAX)
 as
 begin
@@ -2322,21 +2331,23 @@ begin
 		end
 	declare @id VARCHAR(10)
 	set @id = dbo.autoid('CL', @QuanCL+1)
-	insert into Clinic(id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,meta)
-	values (@id,@name,@phoneNumber,@address,@img,@email,@facebook,@zalo,@instagram,@youtube,@meta)
+	insert into Clinic(id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,title,msg,meta)
+	values (@id,@name,@phoneNumber,@address,@img,@email,@facebook,@zalo,@instagram,@youtube,@title,@msg,@meta)
 end
 go
 
 --them thong tin phong kham 
 exec procAddClinic 
 N'Bình Minh',
+'0909908752',
+N'178 Phạm Hùng, Tân Hưng, Quận 7, Hồ Chí Minh, Việt Nam',
 '',
-N'',
+'phongkhambinhminh@gmail.com',
+'https://www.facebook.com/profile.php?id=61551934727425',
 '',
-'',
-'',
-'',
-'',
-'',
-''
+'https://www.instagram.com/_demo_official',
+'https://www.youtube.com/@nhakhoathuyanh',
+N'Chúng tôi hiểu rằng mỗi khách hàng đều có những nhu cầu và mong muốn khác nhau. Vì vậy, chúng tôi luôn lắng nghe và tư vấn tận tình để đưa ra những giải pháp phù hợp nhất cho từng trường hợp. Hãy để chúng tôi đồng hành cùng bạn trên hành trình chinh phục nụ cười hoàn hảo.',
+N'Nha khoa chuyên nghiệp, chăm sóc tận tâm.',
+'thong-tin-nha-khoa'
 go

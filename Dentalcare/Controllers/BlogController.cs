@@ -22,5 +22,18 @@ namespace Dentalcare.Controllers
             ViewBag.Blogs = blogs;
             return View();
         }
+
+        public ActionResult Details(string meta)
+        {
+            var blog = blogManager.GetBlogByMeta(meta);
+            if (blog == null)
+            {
+                return RedirectToAction("_404", "Default");
+            }
+
+            ViewBag.blog = blog;
+            return View();
+        }
+
     }
 }
