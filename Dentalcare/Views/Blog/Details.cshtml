@@ -5,13 +5,21 @@
 }
 
 <link rel="stylesheet" href="~/Content/css/services.css">
-
+<style>
+    img{
+        display: block;
+        margin: auto auto;
+        max-height: 500px;
+        width: auto;
+    }
+</style>
 
 <div class="all-services">
-        <div class="service-detail">
-            <h3>@ViewBag.blog.title</h3>
-            <p>@ViewBag.blog.datebegin</p>
-            <p>@ViewBag.blog.msg</p>
-        </div>
-    }
+    <div class="service-detail">
+        <h3>@ViewBag.blog.title</h3>
+        <p>@ViewBag.blog.datebegin</p>
+        <img src="@Url.Content("~/" + ViewBag.blog.img)" alt="@ViewBag.blog.title" />
+        <p>@ViewBag.blog.msg</p>
+    </div>
+    
 </div>
