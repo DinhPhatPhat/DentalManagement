@@ -22,12 +22,12 @@ namespace Dentalcare.Models
     
         public string id { get; set; }
         public string name { get; set; }
+        public string descrip { get; set; }
         public bool able { get; set; }
         public bool hide { get; set; }
         public string meta { get; set; }
         public int order { get; set; }
         public System.DateTime datebegin { get; set; }
-        public string descrip { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dentist> Dentists { get; set; }
