@@ -14,7 +14,7 @@ namespace Dentalcare.Services
         {
             db = new clinicEntities();
         }
-
+        //Lấy thông tin của bệnh nhân
         public List<Patient> GetPatients()
         {
             return db.Patients

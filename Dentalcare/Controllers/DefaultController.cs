@@ -9,7 +9,7 @@ namespace Dentalcare.Controllers
 {
     public class DefaultController : BaseController
     {
-
+        //Các Manager dùng để truy xuất dữ liệu
         private readonly FacultyManager facultyManager;
         private readonly DentistManager dentistManager;
         private readonly CommentManager commentManager;

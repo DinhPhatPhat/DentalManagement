@@ -7,6 +7,7 @@ namespace Dentalcare.Controllers
 {
     public class ServiceCategoryController : BaseController
     {
+        //Các manager để truy xuất dữ liệu
         private readonly ServiceCategoryManager serviceCategoryManager;
         private readonly PatientManager patientManager;
         private readonly DentistManager dentistManager;
@@ -18,7 +19,7 @@ namespace Dentalcare.Controllers
             this.dentistManager = new DentistManager();
         }
 
-        // Hiển thị trang dịch vụ
+        // Hiển thị trang dịch vụ (dùng các manager để lấy dữ liệu)
         public ActionResult Index()
         {
             var services = serviceCategoryManager.GetAllServiceCategory();
@@ -27,6 +28,7 @@ namespace Dentalcare.Controllers
             ViewBag.patients = patientManager.GetPatients();
             return View();
         }
+        //Hiển thị trang chi tiết dịch vụ (dùng các manager để lấy dữ liệu)
         public ActionResult Details(string meta)
         {
             var services = serviceCategoryManager.GetServicesByCategoryMeta(meta);

@@ -14,7 +14,8 @@ namespace Dentalcare.Services
         {
             db = new clinicEntities();
         }
-
+        
+        //Lấy tất cả các service
         public List<Service_Category> GetAllServiceCategory()
         {
             return db.Service_Category
@@ -22,6 +23,7 @@ namespace Dentalcare.Services
                      .ToList();
         }
 
+        //Lấy các service theo meta
         public List<Service> GetServicesByCategoryMeta(string categoryMeta)
         {
             var category = db.Service_Category.FirstOrDefault(sc => sc.meta == categoryMeta && sc.hide == false);
