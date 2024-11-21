@@ -16,48 +16,57 @@ namespace Dentalcare
             routes.MapRoute(
                 name: "Blog",
                 url: "tin-tuc",
-                defaults: new { controller = "Blog", action = "Index" }
+                defaults: new { controller = "Blog", action = "Index" },
+                namespaces: new[] { "Dentalcare.Controllers"}
             );
 
             routes.MapRoute(
                 name: "BlogDetail",
                 url: "tin-tuc/{meta}",
-                defaults: new { controller= "Blog", action = "Details", meta = UrlParameter.Optional }
+                defaults: new { controller= "Blog", action = "Details", meta = UrlParameter.Optional },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
                 name: "ServiceCategory",
                 url: "dich-vu",
-                defaults: new { controller = "ServiceCategory", action = "Index", meta = UrlParameter.Optional }
+                defaults: new { controller = "ServiceCategory", action = "Index", meta = UrlParameter.Optional },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
                 name: "ServiceCategoryDetails",
                 url: "dich-vu/{meta}",
-                defaults: new { controller = "ServiceCategory", action = "Details", meta = UrlParameter.Optional }
+                defaults: new { controller = "ServiceCategory", action = "Details", meta = UrlParameter.Optional },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
                 name: "Comments",
                 url: "binh-luan",
-                defaults: new { controller = "Comment", action = "Index" }
+                defaults: new { controller = "Comment", action = "Index" },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
                 name: "Register", 
                 url: "dang-ky", 
-                defaults: new { controller = "Default", action = "Register" }
+                defaults: new { controller = "Default", action = "Register" },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
                 name: "Login",
                 url: "dang-nhap",
-                defaults: new { controller = "Default", action = "Login" }
+                defaults: new { controller = "Default", action = "Login" },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
-                name: "MenuRoute",  // Tên route có thể tùy chỉnh
-                url: "{meta}",      // Dùng 'meta' để thay thế cho URL
-                defaults: new { controller = "Default", action = "PageByMeta" }  // Điều hướng về controller và action tương ứng
+                name: "MenuRoute",  
+                url: "{meta}",      
+                defaults: new { controller = "Default", action = "PageByMeta" },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Default", action = "Home", id = UrlParameter.Optional }
+                defaults: new { controller = "Default", action = "Home", id = UrlParameter.Optional },
+                namespaces: new[] { "Dentalcare.Controllers" }
             );
 
 
