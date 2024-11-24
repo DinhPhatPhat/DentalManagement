@@ -292,18 +292,9 @@
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="NEWS">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="img" />
-      <PropertyRef Name="title" />
-      <PropertyRef Name="msg" />
-      <PropertyRef Name="meta" />
-      <PropertyRef Name="hide" />
-      <PropertyRef Name="order" />
-      <PropertyRef Name="datebegin" />
     </Key>
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="img" Type="varchar(max)" Nullable="false" />
@@ -945,6 +936,7 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
     <EntitySet Name="Material_Category" EntityType="Self.Material_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEWS" EntityType="Self.NEWS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Prescription" EntityType="Self.Prescription" Schema="dbo" store:Type="Tables" />
@@ -952,18 +944,6 @@ warning 6002: The table/view 'clinic.dbo.NEWS' does not have a primary key defin
     <EntitySet Name="Receptionist" EntityType="Self.Receptionist" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Service_Category" EntityType="Self.Service_Category" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="NEWS" EntityType="Self.NEWS" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [NEWS].[id] AS [id], 
-    [NEWS].[img] AS [img], 
-    [NEWS].[title] AS [title], 
-    [NEWS].[msg] AS [msg], 
-    [NEWS].[meta] AS [meta], 
-    [NEWS].[hide] AS [hide], 
-    [NEWS].[order] AS [order], 
-    [NEWS].[datebegin] AS [datebegin]
-    FROM [dbo].[NEWS] AS [NEWS]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__Admin__id__4BAC3F29" Association="Self.FK__Admin__id__4BAC3F29">
       <End Role="Person" EntitySet="Person" />
       <End Role="Admin" EntitySet="Admin" />

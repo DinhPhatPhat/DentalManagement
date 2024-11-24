@@ -458,13 +458,6 @@
   <EntityType Name="NEWS">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="img" />
-      <PropertyRef Name="title" />
-      <PropertyRef Name="msg" />
-      <PropertyRef Name="meta" />
-      <PropertyRef Name="hide" />
-      <PropertyRef Name="order" />
-      <PropertyRef Name="datebegin" />
     </Key>
     <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
