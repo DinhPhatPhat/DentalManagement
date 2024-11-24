@@ -273,6 +273,7 @@
     <Compile Include="Services\DentistManager.cs" />
     <Compile Include="Services\FacultyManager.cs" />
     <Compile Include="Services\InfoClinicManager.cs" />
+    <Compile Include="Services\PatientManager.cs" />
     <Compile Include="Services\ServiceCategoryManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2496,6 +2497,16 @@
     <Content Include="Areas\admin\Views\Services\Details.cshtml" />
     <Content Include="Areas\admin\Views\Services\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Services\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category1\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category1\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category1\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category1\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
