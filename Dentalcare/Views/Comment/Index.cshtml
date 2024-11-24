@@ -6,32 +6,50 @@
 
 @model List<Dentalcare.Services.CommentManager.CommentInfo>
 
-<div class="comments-container">
-        @foreach (var comment in ViewBag.Comments)
-        {
-            <div class="comment-box">
-                <div class="comment-header">
-                    <div class="comment-details">
-                        <h4 class="comment-title">@comment.Title</h4>
-                        <p class="comment-author">@comment.PersonName</p>
-                        <p class="comment-date">@comment.DateBegin.ToString("dd/MM/yyyy")</p>
-                    </div>
-                </div>
-                <div class="comment-content">
-                    <p>@comment.Message</p>
+<section class="ftco-section testimony-section bg-light ">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-2">Bình luận</h2>
+                <span class="subheading">Đánh giá của khách hàng</span>
+            </div>
+        </div>
+        <div class="row justify-content-center ftco-animate">
+            <div class="col-md-8">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+                    @foreach (var comment in ViewBag.Comments)
+                    { 
+                        <div class="item">
+                            <div class="testimony-wrap p-4 pb-5">
+                                <div class="user-img mb-5" style="background-image: url('@Url.Content("~/" + comment.Image)')">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                </div>
+                                <div class="text text-center">
+                                    <p class="mb-5">
+                                        @comment.Message
+                                    </p>
+                                    <p class="name">@comment.PersonName</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
-        }
-</div>
+        </div>
+    </div>
+</section>
+
 
 <style>
     body {
-        padding: 10px;
+        padding: 0px;
         background: linear-gradient(135deg, #71b7e6, #9b59b6);
     }
     .comments-container {
         max-width: 900px;
-        margin: 70px auto 10px auto;
+        margin: 160px auto 10px auto;
         padding: 20px;
         background-color: snow;
         border-radius: 10px;

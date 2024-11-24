@@ -14,6 +14,7 @@ namespace Dentalcare.Services
             db = new clinicEntities();
         }
 
+        //Lấy dữ liệu tin tức
         public List<NEWS> GetAllBlogs()
         {
             return db.NEWS
@@ -22,6 +23,8 @@ namespace Dentalcare.Services
                      .ToList();
 
         }
+
+        //Lấy tin tức bằng trường meta
         public NEWS GetBlogByMeta(string blogMeta)
         {
             var blog = db.NEWS.FirstOrDefault(b => b.meta == blogMeta && b.hide == false);

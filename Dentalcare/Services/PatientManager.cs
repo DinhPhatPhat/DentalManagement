@@ -6,18 +6,18 @@ using System.Web;
 
 namespace Dentalcare.Services
 {
-    public class FacultyManager
+    public class PatientManager
     {
         private readonly clinicEntities db;
 
-        public FacultyManager()
+        public PatientManager()
         {
             db = new clinicEntities();
         }
-        //Lấy dữ liệu bảng khoa
-        public List<Faculty> GetAllFaculties()
+        //Lấy thông tin của bệnh nhân
+        public List<Patient> GetPatients()
         {
-            return db.Faculties
+            return db.Patients
                      .Where(f => f.hide == false)
                      .OrderBy(f => f.order)
                      .ToList();

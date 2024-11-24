@@ -19,17 +19,18 @@ namespace Dentalcare.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            //Lấy dữ liệu menu cho View
             var menuItems = db.Menus
                               .Where(m => m.hide == false)
                               .OrderBy(m => m.order)
                               .ToList();
             ViewBag.MenuItems = menuItems;
 
-
+            //Lấy dữ liệu chung của clinic cho View
             var footerItem = clinicManager.getDataOfClinic();
             ViewBag.FooterItem = footerItem;
 
-                
+            //Lấy dữ liệu của khoa cho View
             var facultyItems = db.Faculties.ToList();
             ViewBag.FacultyItems = facultyItems;
 
