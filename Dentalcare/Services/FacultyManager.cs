@@ -14,6 +14,7 @@ namespace Dentalcare.Services
         {
             db = new clinicEntities();
         }
+        //Lấy dữ liệu bảng khoa
         public List<Faculty> GetAllFaculties()
         {
             return db.Faculties
