@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dentalcare.Models.Patient>
+﻿@model IEnumerable<Dentalcare.Models.Service>
 
 @{
     ViewBag.Title = "Index";
@@ -8,10 +8,10 @@
 <!-- HTML -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách phụ tá</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách dịch vụ</h6>
     </div>
     <div style="margin-left: 20px; margin-top: 20px">
-        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Patients")'">Thêm mới</button>
+        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Servies")'">Thêm mới</button>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,13 +19,28 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.isVip)
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.note)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.descrip)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.caredActor)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.meta)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.hide)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.meta)
+                            @Html.DisplayNameFor(model => model.able)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.order)
@@ -34,10 +49,13 @@
                             @Html.DisplayNameFor(model => model.datebegin)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Person.meta)
+                            @Html.DisplayNameFor(model => model.calUnit)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Person.name)
+                            @Html.DisplayNameFor(model => model.img)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Service_Category.name)
                         </th>
                         <th></th>
                     </tr>
@@ -47,13 +65,28 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.isVip)
+                                @Html.DisplayFor(modelItem => item.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.note)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descrip)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.caredActor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.meta)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.hide)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.meta)
+                                @Html.DisplayFor(modelItem => item.able)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.order)
@@ -62,12 +95,14 @@
                                 @Html.DisplayFor(modelItem => item.datebegin)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Person.meta)
+                                @Html.DisplayFor(modelItem => item.calUnit)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Person.name)
+                                @Html.DisplayFor(modelItem => item.img)
                             </td>
-
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Service_Category.name)
+                            </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.id }) |
@@ -91,3 +126,20 @@
     <script src="@Url.Content("~/Areas/admin/Content/js/demo/datatables-demo.js")"></script>
 }
 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+        </tr>
+    }
+
+</table>

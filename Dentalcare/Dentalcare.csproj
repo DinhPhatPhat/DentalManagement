@@ -136,13 +136,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AssisstantsController.cs" />
     <Compile Include="Areas\admin\Controllers\ClinicsController.cs" />
     <Compile Include="Areas\admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\admin\Controllers\DentistsController.cs" />
+    <Compile Include="Areas\admin\Controllers\MaterialsController.cs" />
     <Compile Include="Areas\admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\admin\Controllers\NEWSController.cs" />
     <Compile Include="Areas\admin\Controllers\PatientsController.cs" />
+    <Compile Include="Areas\admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\admin\Controllers\Service_CategoryController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -2478,6 +2481,21 @@
     <Content Include="Areas\admin\Views\Service_Category\Details.cshtml" />
     <Content Include="Areas\admin\Views\Service_Category\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Service_Category\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Assisstants\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Assisstants\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Assisstants\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Assisstants\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Assisstants\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Materials\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Materials\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Materials\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Materials\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Materials\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Services\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Services\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Services\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Services\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Services\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

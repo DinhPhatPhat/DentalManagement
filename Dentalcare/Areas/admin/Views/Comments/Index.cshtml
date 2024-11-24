@@ -5,72 +5,94 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Index</h2>
+<!-- HTML -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách bình luận</h6>
+    </div>
+    <div style="margin-left: 20px; margin-top: 20px">
+        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Comments")'">Thêm mới</button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.msg)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.img)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.hide)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.meta)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.datebegin)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Patient.meta)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.msg)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.img)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.hide)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.meta)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.order)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.datebegin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Patient.meta)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <link href="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.css")" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <!-- Page level plugins -->
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.js")"></script>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.msg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hide)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.meta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.order)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datebegin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Patient.meta)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.msg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hide)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.meta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.order)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.datebegin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Patient.meta)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+    <!-- Page level custom scripts -->
+    <script src="@Url.Content("~/Areas/admin/Content/js/demo/datatables-demo.js")"></script>
 }
 
-</table>

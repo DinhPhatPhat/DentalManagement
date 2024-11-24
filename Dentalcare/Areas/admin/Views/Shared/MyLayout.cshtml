@@ -116,6 +116,15 @@
                 </a>
             </li>
 
+            <!-- Nav Item - Phụ tá-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","assisstants")"
+                   aria-expanded="true">
+                    <i class="fas fa-fw fa-user-nurse"></i>
+                    <span>Phụ tá</span>
+                </a>
+            </li>
+
             <!-- Nav Item - Khách hàng-->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="@Url.Action("Index","patients")"
@@ -137,8 +146,26 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="@Url.Action("Index","service_category")"
                    aria-expanded="true">
-                    <i class="fas fa-fw fa-tooth"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Danh mục dịch vụ</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Dịch vụ-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","services")"
+                   aria-expanded="true">
+                    <i class="fas fa-fw fa-tooth"></i>
+                    <span>Dịch vụ</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Vật liệu-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","materials")"
+                   aria-expanded="true">
+                    <i class="fas fa-fw fa-toolbox"></i>
+                    <span>Vật liệu</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -419,13 +446,8 @@
     <!-- Custom scripts for all pages-->
     <script src="@Url.Content("~/Areas/admin/Content/js/sb-admin-2.min.js")"></script>
 
-    <!-- Page level plugins -->
-    <script src="@Url.Content("~/Areas/admin/Content/vendor/chart.js/Chart.min.js")"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="@Url.Content("~/Areas/admin/Content/js/demo/chart-area-demo.js")"></script>
-    <script src="@Url.Content("~/Areas/admin/Content/js/demo/chart-pie-demo.js")"></script>
-
+    @RenderSection("Scripts", false)
+    @RenderSection("Header", false)
 
 </body>
 
