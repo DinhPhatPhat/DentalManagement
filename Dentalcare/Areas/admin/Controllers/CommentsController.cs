@@ -18,6 +18,7 @@ namespace Dentalcare.Areas.admin.Controllers
         public ActionResult Index()
         {
             var comments = db.Comments.Include(c => c.Patient);
+          
             return View(comments.ToList());
         }
 
