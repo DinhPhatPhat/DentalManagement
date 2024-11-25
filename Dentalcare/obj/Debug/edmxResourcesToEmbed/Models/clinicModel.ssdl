@@ -134,6 +134,7 @@
     <Property Name="title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
+    <Property Name="dateStartClinic" Type="datetime" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
   </EntityType>
@@ -766,6 +767,7 @@
     <Parameter Name="MetaAccount" Type="varchar(max)" Mode="In" />
     <Parameter Name="MetaPerson" Type="varchar(max)" Mode="In" />
     <Parameter Name="MetaPersonDetail" Type="varchar(max)" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="procAddAdvertisement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
@@ -814,6 +816,7 @@
     <Parameter Name="youtube" Type="varchar(max)" Mode="In" />
     <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="dateStartClinic" Type="varchar(max)" Mode="In" />
     <Parameter Name="meta" Type="varchar(max)" Mode="In" />
   </Function>
   <Function Name="procAddComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

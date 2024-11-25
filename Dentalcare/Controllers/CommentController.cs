@@ -16,6 +16,7 @@ namespace Dentalcare.Controllers
         {
             commentManager = new CommentManager();
         }
+        //Lấy dữ liệu của comment cho Vỉew Comment
         public ActionResult Index()
         {
             var comments = commentManager.GetAllCommentInfo();

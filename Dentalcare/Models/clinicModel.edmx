@@ -139,6 +139,7 @@
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
           <Property Name="meta" Type="varchar(max)" Nullable="false" />
+          <Property Name="dateStartClinic" Type="datetime" Nullable="false" />
           <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datebegin" Type="datetime" Nullable="false" />
         </EntityType>
@@ -771,6 +772,7 @@
           <Parameter Name="MetaAccount" Type="varchar(max)" Mode="In" />
           <Parameter Name="MetaPerson" Type="varchar(max)" Mode="In" />
           <Parameter Name="MetaPersonDetail" Type="varchar(max)" Mode="In" />
+          <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="procAddAdvertisement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
@@ -819,6 +821,7 @@
           <Parameter Name="youtube" Type="varchar(max)" Mode="In" />
           <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="dateStartClinic" Type="varchar(max)" Mode="In" />
           <Parameter Name="meta" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="procAddComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1202,11 +1205,12 @@
           <Property Name="instagram" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="youtube" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="hide" Type="Boolean" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="meta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="msg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateStartClinic" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -2011,6 +2015,7 @@
             <Parameter Name="MetaAccount" Mode="In" Type="String" />
             <Parameter Name="MetaPerson" Mode="In" Type="String" />
             <Parameter Name="MetaPersonDetail" Mode="In" Type="String" />
+            <Parameter Name="descrip" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="procAddAdvertisement">
             <Parameter Name="title" Mode="In" Type="String" />
@@ -2059,6 +2064,7 @@
             <Parameter Name="youtube" Mode="In" Type="String" />
             <Parameter Name="title" Mode="In" Type="String" />
             <Parameter Name="msg" Mode="In" Type="String" />
+            <Parameter Name="dateStartClinic" Mode="In" Type="String" />
             <Parameter Name="meta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="procAddComment">
@@ -2289,6 +2295,9 @@
           <EntitySetMapping Name="Clinics">
             <EntityTypeMapping TypeName="clinicModel.Clinic">
               <MappingFragment StoreEntitySet="Clinic">
+                <ScalarProperty Name="dateStartClinic" ColumnName="dateStartClinic" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
@@ -2300,8 +2309,6 @@
                 <ScalarProperty Name="instagram" ColumnName="instagram" />
                 <ScalarProperty Name="youtube" ColumnName="youtube" />
                 <ScalarProperty Name="hide" ColumnName="hide" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="msg" ColumnName="msg" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
                 <ScalarProperty Name="order" ColumnName="order" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />

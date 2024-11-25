@@ -58,7 +58,7 @@ namespace Dentalcare.Models
         public virtual DbSet<Service_Category> Service_Category { get; set; }
         public virtual DbSet<NEWS> NEWS { get; set; }
     
-        public virtual int procAddAccountAndPerson(string username, string password, string name, string phoneNumber, string email, Nullable<int> salary, string address, Nullable<bool> gender, Nullable<System.DateTime> birthday, string nation, Nullable<int> role, string img, string falID, string title, string metaAccount, string metaPerson, string metaPersonDetail)
+        public virtual int procAddAccountAndPerson(string username, string password, string name, string phoneNumber, string email, Nullable<int> salary, string address, Nullable<bool> gender, Nullable<System.DateTime> birthday, string nation, Nullable<int> role, string img, string falID, string title, string metaAccount, string metaPerson, string metaPersonDetail, string descrip)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
@@ -128,7 +128,11 @@ namespace Dentalcare.Models
                 new ObjectParameter("MetaPersonDetail", metaPersonDetail) :
                 new ObjectParameter("MetaPersonDetail", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddAccountAndPerson", usernameParameter, passwordParameter, nameParameter, phoneNumberParameter, emailParameter, salaryParameter, addressParameter, genderParameter, birthdayParameter, nationParameter, roleParameter, imgParameter, falIDParameter, titleParameter, metaAccountParameter, metaPersonParameter, metaPersonDetailParameter);
+            var descripParameter = descrip != null ?
+                new ObjectParameter("descrip", descrip) :
+                new ObjectParameter("descrip", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddAccountAndPerson", usernameParameter, passwordParameter, nameParameter, phoneNumberParameter, emailParameter, salaryParameter, addressParameter, genderParameter, birthdayParameter, nationParameter, roleParameter, imgParameter, falIDParameter, titleParameter, metaAccountParameter, metaPersonParameter, metaPersonDetailParameter, descripParameter);
         }
     
         public virtual int procAddAdvertisement(string title, string msg, string img, string meta)
@@ -253,7 +257,7 @@ namespace Dentalcare.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddCalendar", timeStartParameter, timeEndParameter, personIDParameter, metaParameter);
         }
     
-        public virtual int procAddClinic(string name, string phoneNumber, string address, string img, string email, string facebook, string zalo, string instagram, string youtube, string title, string msg, string meta)
+        public virtual int procAddClinic(string name, string phoneNumber, string address, string img, string email, string facebook, string zalo, string instagram, string youtube, string title, string msg, string dateStartClinic, string meta)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -299,11 +303,15 @@ namespace Dentalcare.Models
                 new ObjectParameter("msg", msg) :
                 new ObjectParameter("msg", typeof(string));
     
+            var dateStartClinicParameter = dateStartClinic != null ?
+                new ObjectParameter("dateStartClinic", dateStartClinic) :
+                new ObjectParameter("dateStartClinic", typeof(string));
+    
             var metaParameter = meta != null ?
                 new ObjectParameter("meta", meta) :
                 new ObjectParameter("meta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddClinic", nameParameter, phoneNumberParameter, addressParameter, imgParameter, emailParameter, facebookParameter, zaloParameter, instagramParameter, youtubeParameter, titleParameter, msgParameter, metaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("procAddClinic", nameParameter, phoneNumberParameter, addressParameter, imgParameter, emailParameter, facebookParameter, zaloParameter, instagramParameter, youtubeParameter, titleParameter, msgParameter, dateStartClinicParameter, metaParameter);
         }
     
         public virtual int procAddComment(string patID, string title, string msg, string img, string meta)

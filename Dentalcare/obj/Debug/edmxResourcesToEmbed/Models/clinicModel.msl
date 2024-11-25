@@ -128,6 +128,9 @@
     <EntitySetMapping Name="Clinics">
       <EntityTypeMapping TypeName="clinicModel.Clinic">
         <MappingFragment StoreEntitySet="Clinic">
+          <ScalarProperty Name="dateStartClinic" ColumnName="dateStartClinic" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
@@ -139,8 +142,6 @@
           <ScalarProperty Name="instagram" ColumnName="instagram" />
           <ScalarProperty Name="youtube" ColumnName="youtube" />
           <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="msg" ColumnName="msg" />
           <ScalarProperty Name="meta" ColumnName="meta" />
           <ScalarProperty Name="order" ColumnName="order" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />

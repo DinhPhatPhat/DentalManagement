@@ -26,6 +26,7 @@ begin
 END
 GO
 
+
 CREATE TABLE Account
 (
   id VARCHAR(10) NOT NULL,
@@ -353,6 +354,7 @@ CREATE TABLE Clinic
   title NVARCHAR(MAX) NOT NULL,
   msg NVARCHAR(MAX) NOT NULL,
   meta VARCHAR(MAX) NOT NULL,
+  dateStartClinic DATETIME NOT NULL,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
   PRIMARY KEY (id)
@@ -566,7 +568,10 @@ create proc procAddAccountAndPerson
 	--Cac the meta
 	@MetaAccount VARCHAR(MAX),
 	@MetaPerson VARCHAR(MAX),
-	@MetaPersonDetail VARCHAR(MAX)
+	@MetaPersonDetail VARCHAR(MAX),
+
+	--thuoc tinh descrip
+	@descrip NVARCHAR(MAX)
 as
 begin
 	--insert vao account
@@ -630,8 +635,8 @@ begin
 				begin
 					set @MetaPersonDetail = 'nha-si-' + CONVERT(varchar(MAX), @QuanDen+1)
 				end
-			insert into Dentist(id,title,falid,meta)
-			values (@AccID,@title,@falID,@MetaPersonDetail)
+			insert into Dentist(id,title,falid,meta,descrip)
+			values (@AccID,@title,@falID,@MetaPersonDetail,@descrip)
 		end
 	--insert vao phu ta
 	else if (@role = 4)
@@ -666,14 +671,14 @@ go
 
 --them quan li
 exec procAddAccountAndPerson 'admin','123',N'Tạ Triết','0908823743','tatriet16@gmail.com',23000000
-,N'23 Lê Hồng Phong, Châu Thành, Trà Vinh',1,'2004-09-21',N'Việt Nam',1,'','','','tai-khoan-thu-nhat', 'nguoi-dung-dau-tien', 'ta-triet'
+,N'23 Lê Hồng Phong, Châu Thành, Trà Vinh',1,'2004-09-21',N'Việt Nam',1,'','','','tai-khoan-thu-nhat', 'nguoi-dung-dau-tien', 'ta-triet',''
 --select * from Admin
 
 --them le tan
 exec procAddAccountAndPerson 'recep1','234',N'Đinh Phát Phát','0908832142','phatphat@gmail.com',23000000
-,N'154 Phạm Ngũ Lão, Thành Thái, Gò Vấp',1,'2004-11-28',N'Việt Nam',2,'','','','tai-khoan-thu-2', 'nguoi-dung-sau', 'dinh-phat-phat'
+,N'154 Phạm Ngũ Lão, Thành Thái, Gò Vấp',1,'2004-11-28',N'Việt Nam',2,'','','','tai-khoan-thu-2', 'nguoi-dung-sau', 'dinh-phat-phat',''
 exec procAddAccountAndPerson 'recep2','11',N'Đăng Văn Trọng','0893842173','dvv@gmail.com',22000000
-,N'182 Tạ Quang Bữu, Phường 9, Quận 10',1,'2004-01-02',N'Việt Nam',2,'','','','', 'nguoi-dung-tam', ''
+,N'182 Tạ Quang Bữu, Phường 9, Quận 10',1,'2004-01-02',N'Việt Nam',2,'','','','', 'nguoi-dung-tam', '',''
 go
 --select * from receptionist
 
@@ -699,19 +704,6 @@ BEGIN
     RETURN @Role;
 END
 GO
-
-
-UPDATE Dentist
-SET [descrip] = CASE 
-    WHEN id = 'AC00000004' THEN N'Nha sĩ có hơn 10 năm kinh nghiệm trong lĩnh vực nha khoa tổng quát, chuyên về chăm sóc răng miệng cho trẻ em.'
-    WHEN id = 'AC00000005' THEN N'Chuyên gia hàng đầu về chỉnh nha và cấy ghép implant, đã thực hiện hàng trăm ca phẫu thuật thành công.'
-    WHEN id = 'AC00000006' THEN N'Nha sĩ tận tâm, chuyên về phục hình răng sứ và các dịch vụ thẩm mỹ nha khoa hiện đại.'
-    WHEN id = 'AC00000007' THEN N'Giảng viên đại học chuyên về nghiên cứu các phương pháp điều trị viêm nướu và bệnh lý nha chu.'
-    WHEN id = 'AC00000008' THEN N'Kỹ năng xuất sắc trong điều trị tủy và chữa trị các bệnh lý răng miệng phức tạp.'
-    WHEN id = 'AC00000009' THEN N'Chuyên gia tư vấn các giải pháp chăm sóc răng miệng cho người cao tuổi, với nhiều năm kinh nghiệm trong lĩnh vực này.'
-END
-WHERE id IN ('AC00000004', 'AC00000005', 'AC00000006', 'AC00000007', 'AC00000008', 'AC00000009');
-go
 
 --THEM KHOA
 create proc procAddFaculty
@@ -748,40 +740,53 @@ GO
 
 --them nha si
 exec procAddAccountAndPerson 'dentist1','123',N'Lâm Đình Kiêm','09023511284',  'lamvak@gmail.com', 9000000,N'Tây Ninh'
-,  1,'2003-01-02',N'Việt Nam',3,'', 'FA00000001',N'Thạc sĩ','','',''
+,  1,'2003-01-02',N'Việt Nam',3,'', 'FA00000001',N'Thạc sĩ','','','',''
 exec procAddAccountAndPerson 'dentist2','123',N'Hoa Hồ Quốc Đại', '09092815226', 'hoadai@gmail.com', 8700000,N'Kiên Giang'
-,  1,'1998-07-02',N'Việt Nam',3,'', 'FA00000002',N'Tiến sĩ','','',''
+,  1,'1998-07-02',N'Việt Nam',3,'', 'FA00000002',N'Tiến sĩ','','','',''
 exec procAddAccountAndPerson 'dentist3','123',N'Bùi Xuân Huấn', '09062715226', 'buixhuan@gmail.com', 8000000,N'Trà Vinh'
-,  1,'2010-11-11',N'Việt Nam',3,'', 'FA00000003',N'Thạc sĩ','','',''
+,  1,'2010-11-11',N'Việt Nam',3,'', 'FA00000003',N'Thạc sĩ','','','',''
 exec procAddAccountAndPerson 'dentist4','123',N'Linh Văn Sơn', '09028365226', 'linhnui@gmail.com', 8000000,N'Thanh Hoá'
-,  1,'2014-03-14',N'Việt Nam',3,'', 'FA00000004',N'Tiến sĩ','','',''
+,  1,'2014-03-14',N'Việt Nam',3,'', 'FA00000004',N'Tiến sĩ','','','',''
 exec procAddAccountAndPerson 'dentist5','123',N'Tạ Minh Triết', '09024635226', 'taminhtriet16@gmail.com', 9300000,N'An Giang'
-,  1,'1980-01-21',N'Việt Nam',3,'', 'FA00000005',N'Thạc sĩ','','',''
+,  1,'1980-01-21',N'Việt Nam',3,'', 'FA00000005',N'Thạc sĩ','','','',''
 exec procAddAccountAndPerson 'dentist6','123',N'Hoa Yến Anh', '09022915226', 'anhvippro@gmail.com', 9400000,N'Tân Biên'
-,  0,'1990-01-01',N'Việt Nam',3,'', 'FA00000006',N'Tiến sĩ','','',''
+,  0,'1990-01-01',N'Việt Nam',3,'', 'FA00000006',N'Tiến sĩ','','','',''
 GO
 --select * from dentist
 
+--them mo ta cho nha si
+UPDATE Dentist
+SET [descrip] = CASE 
+    WHEN id = 'AC00000004' THEN N'Nha sĩ có hơn 10 năm kinh nghiệm trong lĩnh vực nha khoa tổng quát, chuyên về chăm sóc răng miệng cho trẻ em.'
+    WHEN id = 'AC00000005' THEN N'Chuyên gia hàng đầu về chỉnh nha và cấy ghép implant, đã thực hiện hàng trăm ca phẫu thuật thành công.'
+    WHEN id = 'AC00000006' THEN N'Nha sĩ tận tâm, chuyên về phục hình răng sứ và các dịch vụ thẩm mỹ nha khoa hiện đại.'
+    WHEN id = 'AC00000007' THEN N'Giảng viên đại học chuyên về nghiên cứu các phương pháp điều trị viêm nướu và bệnh lý nha chu.'
+    WHEN id = 'AC00000008' THEN N'Kỹ năng xuất sắc trong điều trị tủy và chữa trị các bệnh lý răng miệng phức tạp.'
+    WHEN id = 'AC00000009' THEN N'Chuyên gia tư vấn các giải pháp chăm sóc răng miệng cho người cao tuổi, với nhiều năm kinh nghiệm trong lĩnh vực này.'
+END
+WHERE id IN ('AC00000004', 'AC00000005', 'AC00000006', 'AC00000007', 'AC00000008', 'AC00000009');
+go
+
 --them phu ta 
 exec procAddAccountAndPerson 'assisstant1','12',N'Thiết Kiến Công Chúa','0893320123','congchuaslay@gmail.com',3000000
-,N'291 Phố Đi Bộ, Nguyễn Huệ, Quận 1',1,'2004-04-12',N'Việt Nam',4,'','','','   ','   ','  '
+,N'291 Phố Đi Bộ, Nguyễn Huệ, Quận 1',1,'2004-04-12',N'Việt Nam',4,'','','','   ','   ','  ',''
 exec procAddAccountAndPerson 'assisstant2','13',N'Cô Văn Nan','0892930213','shinichi@gmail.com',2400000
-,N'19 Phố Baker, Phường An Lạc, Bình Dương',1,'2004-05-12',N'Nhật Bản',4,'','','','','',''
+,N'19 Phố Baker, Phường An Lạc, Bình Dương',1,'2004-05-12',N'Nhật Bản',4,'','','','','','',''
 exec procAddAccountAndPerson 'assisstant3','14',N'Đặc Vụ Ngầm','0902931823','aibiet@gmail.com',2200000
-,N'12 Lạc long quân, Hàng Chài, Phú Thọ',0,'2001-01-02',N'Anh',4,'','','','','',''
+,N'12 Lạc long quân, Hàng Chài, Phú Thọ',0,'2001-01-02',N'Anh',4,'','','','','','',''
 exec procAddAccountAndPerson 'assisstant4','15',N'Mai Quốc Khánh','0902839141','khanhvippro@gmail.com',2800000
-,N'20 Nguyễn Du, Phường Đồng Khánh, Quận 3',0,'2004-09-02',N'Việt Nam',4,'','','','','',''
+,N'20 Nguyễn Du, Phường Đồng Khánh, Quận 3',0,'2004-09-02',N'Việt Nam',4,'','','','','','',''
 --select * from assisstant
 
 --them benh nhan
 exec procAddAccountAndPerson 'patient1','12',N'Thân Quốc Thịnh','0908827372','thinhthinh@gmail.com',0
-,N'12 Phạm Văn Đồng, Phường Tân Khải, Quận 5',1,'1998-05-30',N'Việt Nam',5,'','','','','',''
+,N'12 Phạm Văn Đồng, Phường Tân Khải, Quận 5',1,'1998-05-30',N'Việt Nam',5,'','','','','','',''
 exec procAddAccountAndPerson 'patient2','13',N'Châu Nguyễn Khánh Trình','0908829374','trinhchicken@gmail.com',0
-,N'19 Văn Thành, Phường Khởi Định, Quận 3',1,'1998-03-25',N'Việt Nam',5,'','','','','',''
+,N'19 Văn Thành, Phường Khởi Định, Quận 3',1,'1998-03-25',N'Việt Nam',5,'','','','','','',''
 exec procAddAccountAndPerson 'patient3','14',N'Trịnh Thị Hồng Phúc','0908861419','phuccute@gmail.com',0
-,N'12 Long Thành Bắc, Khu Phố 3, Hòa Thành, Tây Ninh',0,'2004-02-02',N'Việt Nam',5,'','','','','',''
+,N'12 Long Thành Bắc, Khu Phố 3, Hòa Thành, Tây Ninh',0,'2004-02-02',N'Việt Nam',5,'','','','','','',''
 exec procAddAccountAndPerson 'patient4','15',N'Hồ Minh Thư','0908829131','thuho@gmail.com',0
-,N'2 Hà Thanh, Khu Phố 2, Châu Thành, An GIang',0,'2001-10-12',N'Việt Nam',5,'','','','','',''
+,N'2 Hà Thanh, Khu Phố 2, Châu Thành, An GIang',0,'2001-10-12',N'Việt Nam',5,'','','','','','',''
 go
 --select * from patient
 
@@ -822,6 +827,12 @@ EXEC procAddAvatar @personId = 'AC00000006';
 EXEC procAddAvatar @personId = 'AC00000007';
 EXEC procAddAvatar @personId = 'AC00000008';
 EXEC procAddAvatar @personId = 'AC00000009';
+
+--patient
+EXEC procAddAvatar @personId = 'AC00000014';
+EXEC procAddAvatar @personId = 'AC00000015';
+EXEC procAddAvatar @personId = 'AC00000016';
+EXEC procAddAvatar @personId = 'AC00000017';
 go
 --Select * from Avatar
 
@@ -2322,6 +2333,7 @@ create proc procAddClinic
   @youtube VARCHAR(MAX),
   @title NVARCHAR(MAX),
   @msg NVARCHAR(MAX),
+  @dateStartClinic VARCHAR(MAX),
   @meta VARCHAR(MAX)
 as
 begin
@@ -2333,8 +2345,8 @@ begin
 		end
 	declare @id VARCHAR(10)
 	set @id = dbo.autoid('CL', @QuanCL+1)
-	insert into Clinic(id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,title,msg,meta)
-	values (@id,@name,@phoneNumber,@address,@img,@email,@facebook,@zalo,@instagram,@youtube,@title,@msg,@meta)
+	insert into Clinic(id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,title,msg,meta,dateStartClinic)
+	values (@id,@name,@phoneNumber,@address,@img,@email,@facebook,@zalo,@instagram,@youtube,@title,@msg,@meta,@dateStartClinic  )
 end
 go
 
@@ -2351,5 +2363,6 @@ N'178 Phạm Hùng, Tân Hưng, Quận 7, Hồ Chí Minh, Việt Nam',
 'https://www.youtube.com/@nhakhoathuyanh',
 N'Chúng tôi hiểu rằng mỗi khách hàng đều có những nhu cầu và mong muốn khác nhau. Vì vậy, chúng tôi luôn lắng nghe và tư vấn tận tình để đưa ra những giải pháp phù hợp nhất cho từng trường hợp. Hãy để chúng tôi đồng hành cùng bạn trên hành trình chinh phục nụ cười hoàn hảo.',
 N'Nha khoa chuyên nghiệp, chăm sóc tận tâm.',
+'2004-12-12',
 'thong-tin-nha-khoa'
 go

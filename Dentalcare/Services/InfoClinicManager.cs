@@ -15,6 +15,7 @@ namespace Dentalcare.Services
             this.db = new clinicEntities();
         }
 
+        //Lấy thông tin bảng clinic
         public Clinic getDataOfClinic()
         {
             return db.Clinics.

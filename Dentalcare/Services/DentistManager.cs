@@ -26,6 +26,7 @@ namespace Dentalcare.Services
             public int Order { get; set; }
         }
 
+        //Lấy thông tin tất cả nha sĩ
         public List<Dentist> GetAllDentists()
         {
             return db.Dentists
@@ -34,6 +35,8 @@ namespace Dentalcare.Services
                      .ToList();
         }
 
+
+        //Lấy thông tin nha sĩ không bị ẩn
         public List<DentistInfo> GetAllDentistsInfo()
         {
             var dentists = db.Dentists
@@ -60,6 +63,7 @@ namespace Dentalcare.Services
             return dentists;
         }
 
+        //Lấy 4 nha sĩ đầu tiên
         public List<DentistInfo> GetTopFourDentistsInfo()
         {
             var dentists = db.Dentists

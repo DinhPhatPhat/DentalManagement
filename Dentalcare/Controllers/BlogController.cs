@@ -16,6 +16,8 @@ namespace Dentalcare.Controllers
         {
             blogManager = new BlogManager();
         }
+
+        //Lấy dữ liệu của blog để tải lên View của Blog
         public ActionResult Index()
         {
             var blogs = blogManager.GetAllBlogs();
@@ -25,6 +27,8 @@ namespace Dentalcare.Controllers
 
         public ActionResult Details(string meta)
         {
+            //Kiểm tra blog có meta không, nếu blog null thì trả về trang Page Not Found.
+            //Ngược lại thì ta hiển thị View Blog
             var blog = blogManager.GetBlogByMeta(meta);
             if (blog == null)
             {
