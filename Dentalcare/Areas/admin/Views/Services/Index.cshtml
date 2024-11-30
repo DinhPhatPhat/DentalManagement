@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Dentalcare.Models.Service>
+﻿@using Dental.Help
+@model Dentalcare.Models.Service_Category
 
 @{
     ViewBag.Title = "Index";
@@ -10,110 +11,20 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Danh sách dịch vụ</h6>
     </div>
-    <div style="margin-left: 20px; margin-top: 20px">
-        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Servies")'">Thêm mới</button>
-    </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.price)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.note)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.descrip)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.caredActor)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.meta)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.hide)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.able)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.order)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.datebegin)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.calUnit)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.img)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Service_Category.name)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.price)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.note)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descrip)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.caredActor)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.meta)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.hide)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.able)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.order)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.datebegin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.calUnit)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.img)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Service_Category.name)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            <div class="bs-example" style="text-align:right; padding-bottom:10px;">
+
+                <div class="btn-group">
+                    @Html.DropDownListFor(model => model.id, (SelectList)ViewBag.Category, " --- Tất cả dịch vụ --- ",
+                                                            new { @class = "form-control", @id = "Category" })
+                </div>
+                <div class="btn-group">
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span> Thêm mới", "Create", "Create", "Services", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div id="getService"></div>
         </div>
-    </div>
 </div>
 @section Scripts {
     <link href="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.css")" rel="stylesheet">
@@ -124,22 +35,26 @@
 
     <!-- Page level custom scripts -->
     <script src="@Url.Content("~/Areas/admin/Content/js/demo/datatables-demo.js")"></script>
+    <script>
+    $(document).ready(function () {
+        function getService() {
+            var CategoryId = $('#Category').val();
+            $.ajax({
+                url: '@Url.Action("getService", "Services")',
+                type: "GET",
+                data: { id: CategoryId },
+                success: function (data) {
+                    $("#getService").html(data);
+                },
+                error: function (data) {
+                    alert("something went wrong.");
+                }
+            });
+        }
+        getService();
+        $("#Category").change(function () {
+            getService();
+        })
+    });
+    </script>
 }
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-
-        </tr>
-    }
-
-</table>
