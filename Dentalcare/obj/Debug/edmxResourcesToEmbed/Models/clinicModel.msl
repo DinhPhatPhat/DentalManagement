@@ -1,443 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="clinicModelStoreContainer" CdmEntityContainer="clinicEntities">
-    <EntitySetMapping Name="Accounts">
-      <EntityTypeMapping TypeName="clinicModel.Account">
-        <MappingFragment StoreEntitySet="Account">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="able" ColumnName="able" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Admins">
-      <EntityTypeMapping TypeName="clinicModel.Admin">
-        <MappingFragment StoreEntitySet="Admin">
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Advertisements">
-      <EntityTypeMapping TypeName="clinicModel.Advertisement">
-        <MappingFragment StoreEntitySet="Advertisement">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="msg" ColumnName="msg" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="img" ColumnName="img" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Appointments">
-      <EntityTypeMapping TypeName="clinicModel.Appointment">
-        <MappingFragment StoreEntitySet="Appointment">
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="symptom" ColumnName="symptom" />
-          <ScalarProperty Name="state" ColumnName="state" />
-          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
-          <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="denid" ColumnName="denid" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Assisstants">
-      <EntityTypeMapping TypeName="clinicModel.Assisstant">
-        <MappingFragment StoreEntitySet="Assisstant">
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Avatars">
-      <EntityTypeMapping TypeName="clinicModel.Avatar">
-        <MappingFragment StoreEntitySet="Avatar">
-          <ScalarProperty Name="personId" ColumnName="personId" />
-          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
-          <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="clinicModel.Bill">
-        <MappingFragment StoreEntitySet="Bill">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
-          <ScalarProperty Name="ServicesPrice" ColumnName="ServicesPrice" />
-          <ScalarProperty Name="PrescriptionPrice" ColumnName="PrescriptionPrice" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="isPayed" ColumnName="isPayed" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Bill_Service">
-      <EntityTypeMapping TypeName="clinicModel.Bill_Service">
-        <MappingFragment StoreEntitySet="Bill_Service">
-          <ScalarProperty Name="quantity" ColumnName="quantity" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="billID" ColumnName="billID" />
-          <ScalarProperty Name="SerID" ColumnName="SerID" />
-          <ScalarProperty Name="able" ColumnName="able" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Calendars">
-      <EntityTypeMapping TypeName="clinicModel.Calendar">
-        <MappingFragment StoreEntitySet="Calendar">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
-          <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="Personid" ColumnName="Personid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Clinics">
-      <EntityTypeMapping TypeName="clinicModel.Clinic">
-        <MappingFragment StoreEntitySet="Clinic">
-          <ScalarProperty Name="dateStartClinic" ColumnName="dateStartClinic" />
-          <ScalarProperty Name="msg" ColumnName="msg" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="img" ColumnName="img" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="facebook" ColumnName="facebook" />
-          <ScalarProperty Name="zalo" ColumnName="zalo" />
-          <ScalarProperty Name="instagram" ColumnName="instagram" />
-          <ScalarProperty Name="youtube" ColumnName="youtube" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Comments">
-      <EntityTypeMapping TypeName="clinicModel.Comment">
-        <MappingFragment StoreEntitySet="Comment">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="msg" ColumnName="msg" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="img" ColumnName="img" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ConsumableMaterials">
-      <EntityTypeMapping TypeName="clinicModel.ConsumableMaterial">
-        <MappingFragment StoreEntitySet="ConsumableMaterial">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="expDate" ColumnName="expDate" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="able" ColumnName="able" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Dentists">
-      <EntityTypeMapping TypeName="clinicModel.Dentist">
-        <MappingFragment StoreEntitySet="Dentist">
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="falid" ColumnName="falid" />
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Faculties">
-      <EntityTypeMapping TypeName="clinicModel.Faculty">
-        <MappingFragment StoreEntitySet="Faculty">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FixedMaterials">
-      <EntityTypeMapping TypeName="clinicModel.FixedMaterial">
-        <MappingFragment StoreEntitySet="FixedMaterial">
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Footers">
-      <EntityTypeMapping TypeName="clinicModel.Footer">
-        <MappingFragment StoreEntitySet="Footer">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="link" ColumnName="link" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ingredients">
-      <EntityTypeMapping TypeName="clinicModel.Ingredient">
-        <MappingFragment StoreEntitySet="Ingredient">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="able" ColumnName="able" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ingredient_ConsumableMaterial">
-      <EntityTypeMapping TypeName="clinicModel.Ingredient_ConsumableMaterial">
-        <MappingFragment StoreEntitySet="Ingredient_ConsumableMaterial">
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="ingreId" ColumnName="ingreId" />
-          <ScalarProperty Name="consumId" ColumnName="consumId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Materials">
-      <EntityTypeMapping TypeName="clinicModel.Material">
-        <MappingFragment StoreEntitySet="Material">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="cateId" ColumnName="cateId" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="quantity" ColumnName="quantity" />
-          <ScalarProperty Name="calUnit" ColumnName="calUnit" />
-          <ScalarProperty Name="func" ColumnName="func" />
-          <ScalarProperty Name="mfgDate" ColumnName="mfgDate" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="img" ColumnName="img" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Material_Category">
-      <EntityTypeMapping TypeName="clinicModel.Material_Category">
-        <MappingFragment StoreEntitySet="Material_Category">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Medicines">
-      <EntityTypeMapping TypeName="clinicModel.Medicine">
-        <MappingFragment StoreEntitySet="Medicine">
-          <ScalarProperty Name="caredACtor" ColumnName="caredACtor" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="instruction" ColumnName="instruction" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Menus">
-      <EntityTypeMapping TypeName="clinicModel.Menu">
-        <MappingFragment StoreEntitySet="Menu">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="link" ColumnName="link" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Patients">
-      <EntityTypeMapping TypeName="clinicModel.Patient">
-        <MappingFragment StoreEntitySet="Patient">
-          <ScalarProperty Name="isVip" ColumnName="isVip" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="People">
-      <EntityTypeMapping TypeName="clinicModel.Person">
-        <MappingFragment StoreEntitySet="Person">
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="salary" ColumnName="salary" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="gender" ColumnName="gender" />
-          <ScalarProperty Name="birthday" ColumnName="birthday" />
-          <ScalarProperty Name="nation" ColumnName="nation" />
-          <ScalarProperty Name="role" ColumnName="role" />
-          <ScalarProperty Name="img" ColumnName="img" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Prescriptions">
-      <EntityTypeMapping TypeName="clinicModel.Prescription">
-        <MappingFragment StoreEntitySet="Prescription">
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="denid" ColumnName="denid" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-          <ScalarProperty Name="billid" ColumnName="billid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Prescription_Medicine">
-      <EntityTypeMapping TypeName="clinicModel.Prescription_Medicine">
-        <MappingFragment StoreEntitySet="Prescription_Medicine">
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="denid" ColumnName="denid" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-          <ScalarProperty Name="billid" ColumnName="billid" />
-          <ScalarProperty Name="medId" ColumnName="medId" />
-          <ScalarProperty Name="quantityMedicine" ColumnName="quantityMedicine" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Receptionists">
-      <EntityTypeMapping TypeName="clinicModel.Receptionist">
-        <MappingFragment StoreEntitySet="Receptionist">
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Services">
-      <EntityTypeMapping TypeName="clinicModel.Service">
-        <MappingFragment StoreEntitySet="Service">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="cateId" ColumnName="cateId" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
-          <ScalarProperty Name="caredActor" ColumnName="caredActor" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="calUnit" ColumnName="calUnit" />
-          <ScalarProperty Name="img" ColumnName="img" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Service_Category">
-      <EntityTypeMapping TypeName="clinicModel.Service_Category">
-        <MappingFragment StoreEntitySet="Service_Category">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="descrip" ColumnName="descrip" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NEWS">
-      <EntityTypeMapping TypeName="clinicModel.NEWS">
-        <MappingFragment StoreEntitySet="NEWS">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="img" ColumnName="img" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="msg" ColumnName="msg" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="procAddAccountAndPerson" FunctionName="clinicModel.Store.procAddAccountAndPerson" />
     <FunctionImportMapping FunctionImportName="procAddAdvertisement" FunctionName="clinicModel.Store.procAddAdvertisement" />
     <FunctionImportMapping FunctionImportName="procAddAppointment" FunctionName="clinicModel.Store.procAddAppointment" />
@@ -461,5 +24,441 @@
     <FunctionImportMapping FunctionImportName="procAddPrescription_Medicine" FunctionName="clinicModel.Store.procAddPrescription_Medicine" />
     <FunctionImportMapping FunctionImportName="procAddService" FunctionName="clinicModel.Store.procAddService" />
     <FunctionImportMapping FunctionImportName="procAddService_Category" FunctionName="clinicModel.Store.procAddService_Category" />
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="clinicModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="clinicModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Advertisements">
+      <EntityTypeMapping TypeName="clinicModel.Advertisement">
+        <MappingFragment StoreEntitySet="Advertisement">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="clinicModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="patid" ColumnName="patid" />
+          <ScalarProperty Name="denid" ColumnName="denid" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
+          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="symptom" ColumnName="symptom" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="able" ColumnName="able" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assisstants">
+      <EntityTypeMapping TypeName="clinicModel.Assisstant">
+        <MappingFragment StoreEntitySet="Assisstant">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Avatars">
+      <EntityTypeMapping TypeName="clinicModel.Avatar">
+        <MappingFragment StoreEntitySet="Avatar">
+          <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
+          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="clinicModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="patid" ColumnName="patid" />
+          <ScalarProperty Name="isPayed" ColumnName="isPayed" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="PrescriptionPrice" ColumnName="PrescriptionPrice" />
+          <ScalarProperty Name="ServicesPrice" ColumnName="ServicesPrice" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bill_Service">
+      <EntityTypeMapping TypeName="clinicModel.Bill_Service">
+        <MappingFragment StoreEntitySet="Bill_Service">
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="SerID" ColumnName="SerID" />
+          <ScalarProperty Name="billID" ColumnName="billID" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendars">
+      <EntityTypeMapping TypeName="clinicModel.Calendar">
+        <MappingFragment StoreEntitySet="Calendar">
+          <ScalarProperty Name="Personid" ColumnName="Personid" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
+          <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clinics">
+      <EntityTypeMapping TypeName="clinicModel.Clinic">
+        <MappingFragment StoreEntitySet="Clinic">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="dateStartClinic" ColumnName="dateStartClinic" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="youtube" ColumnName="youtube" />
+          <ScalarProperty Name="instagram" ColumnName="instagram" />
+          <ScalarProperty Name="zalo" ColumnName="zalo" />
+          <ScalarProperty Name="facebook" ColumnName="facebook" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="clinicModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="patid" ColumnName="patid" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsumableMaterials">
+      <EntityTypeMapping TypeName="clinicModel.ConsumableMaterial">
+        <MappingFragment StoreEntitySet="ConsumableMaterial">
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dentists">
+      <EntityTypeMapping TypeName="clinicModel.Dentist">
+        <MappingFragment StoreEntitySet="Dentist">
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="falid" ColumnName="falid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculties">
+      <EntityTypeMapping TypeName="clinicModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FixedMaterials">
+      <EntityTypeMapping TypeName="clinicModel.FixedMaterial">
+        <MappingFragment StoreEntitySet="FixedMaterial">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Footers">
+      <EntityTypeMapping TypeName="clinicModel.Footer">
+        <MappingFragment StoreEntitySet="Footer">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredients">
+      <EntityTypeMapping TypeName="clinicModel.Ingredient">
+        <MappingFragment StoreEntitySet="Ingredient">
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredient_ConsumableMaterial">
+      <EntityTypeMapping TypeName="clinicModel.Ingredient_ConsumableMaterial">
+        <MappingFragment StoreEntitySet="Ingredient_ConsumableMaterial">
+          <ScalarProperty Name="consumId" ColumnName="consumId" />
+          <ScalarProperty Name="ingreId" ColumnName="ingreId" />
+          <ScalarProperty Name="able" ColumnName="able" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="clinicModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="mfgDate" ColumnName="mfgDate" />
+          <ScalarProperty Name="func" ColumnName="func" />
+          <ScalarProperty Name="calUnit" ColumnName="calUnit" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="cateId" ColumnName="cateId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material_Category">
+      <EntityTypeMapping TypeName="clinicModel.Material_Category">
+        <MappingFragment StoreEntitySet="Material_Category">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="clinicModel.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="instruction" ColumnName="instruction" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="caredACtor" ColumnName="caredACtor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="clinicModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NEWS">
+      <EntityTypeMapping TypeName="clinicModel.NEWS">
+        <MappingFragment StoreEntitySet="NEWS">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="clinicModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="isVip" ColumnName="isVip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="clinicModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="nation" ColumnName="nation" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="clinicModel.Prescription">
+        <MappingFragment StoreEntitySet="Prescription">
+          <ScalarProperty Name="billid" ColumnName="billid" />
+          <ScalarProperty Name="patid" ColumnName="patid" />
+          <ScalarProperty Name="denid" ColumnName="denid" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescription_Medicine">
+      <EntityTypeMapping TypeName="clinicModel.Prescription_Medicine">
+        <MappingFragment StoreEntitySet="Prescription_Medicine">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="quantityMedicine" ColumnName="quantityMedicine" />
+          <ScalarProperty Name="medId" ColumnName="medId" />
+          <ScalarProperty Name="billid" ColumnName="billid" />
+          <ScalarProperty Name="patid" ColumnName="patid" />
+          <ScalarProperty Name="denid" ColumnName="denid" />
+          <ScalarProperty Name="able" ColumnName="able" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receptionists">
+      <EntityTypeMapping TypeName="clinicModel.Receptionist">
+        <MappingFragment StoreEntitySet="Receptionist">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="clinicModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="calUnit" ColumnName="calUnit" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="caredActor" ColumnName="caredActor" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="cateId" ColumnName="cateId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service_Category">
+      <EntityTypeMapping TypeName="clinicModel.Service_Category">
+        <MappingFragment StoreEntitySet="Service_Category">
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

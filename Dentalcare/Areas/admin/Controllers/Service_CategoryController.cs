@@ -46,7 +46,7 @@ namespace Dentalcare.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,descrip,note,meta,hide,able,order,datebegin")] Service_Category service_Category)
+        public ActionResult Create([Bind(Include = "id,name,descrip,note,meta,hide,order,datebegin")] Service_Category service_Category)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Dentalcare.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,descrip,note,meta,hide,able,order,datebegin")] Service_Category service_Category)
+        public ActionResult Edit([Bind(Include = "id,name,descrip,note,meta,hide,order,datebegin")] Service_Category service_Category)
         {
             if (ModelState.IsValid)
             {

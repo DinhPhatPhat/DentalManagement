@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -80,12 +81,32 @@ namespace Dentalcare.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,phoneNumber,address,img,email,facebook,zalo,instagram,youtube,hide,title,msg,meta,order,datebegin")] Clinic clinic)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(clinic).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    Clinic temp = db.Clinics.Find(clinic.id);
+                    temp.zalo = clinic.zalo;
+                    temp.img = clinic.img;
+                    temp.facebook = clinic.facebook;
+                    temp.email = clinic.email;
+                    temp.title = clinic.title;
+                    temp.datebegin = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                    db.Entry(temp).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+                throw e;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             return View(clinic);
         }
 

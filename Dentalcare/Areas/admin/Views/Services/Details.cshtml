@@ -5,12 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <div>
-    <h4>Service</h4>
+    <h4>Dịch vụ</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Service_Category.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service_Category.name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
@@ -64,15 +72,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.hide)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.able)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.able)
+            @(Model.hide ? "Ẩn": "Hiển thị" )
         </dd>
 
         <dt>
@@ -88,7 +88,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.datebegin)
+            @(Model.datebegin != null ? Model.datebegin.ToString("dd/MM/yyyy") : "")
         </dd>
 
         <dt>
@@ -104,20 +104,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.img)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Service_Category.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Service_Category.name)
+            <img src="~/@Model.img" width="150px" />
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Quay lại", "Index")
 </p>

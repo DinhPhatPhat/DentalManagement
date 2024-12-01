@@ -19,7 +19,8 @@
         <h3>@ViewBag.blog.title</h3>
         <p>@ViewBag.blog.datebegin</p>
         <img src="@Url.Content("~/" + ViewBag.blog.img)" alt="@ViewBag.blog.title" />
-        <p>@ViewBag.blog.msg</p>
+        <p>@Html.Raw(ViewBag.blog.msg)</p>
+
     </div>
     
 </div>

@@ -143,7 +143,6 @@ CREATE TABLE Service_Category
   note NVARCHAR(MAX) NOT NULL,
   meta VARCHAR(MAX) NOT NULL,
   hide BIT NOT NULL DEFAULT 0,
-  able BIT NOT NULL DEFAULT 1,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
   PRIMARY KEY (id)
@@ -160,7 +159,6 @@ CREATE TABLE Service
   caredActor NVARCHAR(50) NOT NUll,
   meta VARCHAR(MAX) NOT NULL,
   hide BIT NOT NULL DEFAULT 0,
-  able BIT NOT NULL DEFAULT 1,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
   calUnit NVARCHAR(50) NOT NULL,
@@ -457,6 +455,7 @@ CREATE TABLE NEWS
   id VARCHAR(10) NOT NULL,
   img VARCHAR(MAX) NOT NULL,
   title NVARCHAR(MAX) NOT NULL,
+  descrip NVARCHAR(MAX) NOT NULL,
   msg NVARCHAR(MAX) NOT NULL,
   meta VARCHAR(MAX) NOT NULL,
   hide BIT NOT NULL DEFAULT 0,
@@ -2203,6 +2202,7 @@ go
 
 CREATE PROCEDURE procAddNews
   @title NVARCHAR(MAX),
+  @descrip NVARCHAR(MAX),
   @msg NVARCHAR(MAX),
   @meta VARCHAR(MAX)
 AS
@@ -2219,13 +2219,14 @@ BEGIN
     SET @imgPath = CONCAT('Content/images/Blog/', @id, '.jpg')
 
     -- Thực hiện chèn vào bảng NEWS
-    INSERT INTO NEWS (id, title, msg, img, meta)
-    VALUES (@id, @title, @msg, @imgPath, @meta)
+    INSERT INTO NEWS (id, title, descrip,msg, img, meta)
+    VALUES (@id, @title, @descrip,@msg, @imgPath, @meta)
 END
 GO
 --them news
 exec procAddNews 
     @title = N'Muốn hạ đường huyết, nên tập thể dục buổi nào là tốt nhất?',
+	@descrip = N'Những nghiên cứu giúp ích cho việc cải thiện đường huyết',
     @msg = N'Các bằng chứng nghiên cứu trước đây cho thấy tập thể dục ở cường độ 
 	vừa đến mạnh có thể giúp cải thiện đường huyết ở những người bị kháng insulin. 
 	Chưa dừng lại ở đó, một nghiên cứu mới đây còn phát hiện thời điểm tập luyện giúp kiểm soát đường huyết tốt nhất trong ngày.
@@ -2242,6 +2243,7 @@ exec procAddNews
 go
 exec procAddNews 
     @title = N'5 cảnh báo sức khỏe được tiết lộ qua răng',
+	@descrip = N'Một vài lời khuyên cho việc chăm sóc răng miệng',
     @msg = N'Chăm sóc sức khỏe răng miệng hằng ngày rất quan trọng 
 	vì giúp ngăn ngừa sâu răng và bệnh nướu răng. 
 	Do đó, một số vấn đề răng miệng có thể là lời cảnh báo về bệnh nguy hiểm tiềm ẩn.
@@ -2262,6 +2264,7 @@ exec procAddNews
 go
 exec procAddNews 
     @title = N'Xử trí khi bị chấn thương răng miệng',
+	@descrip = N'Một số biện pháp hữu ít sau khi bị chấn thương răng miệng',
     @msg = N'Răng bị sứt hoặc gãy có thể gắn lại được nhưng mảnh răng bị sứt, 
 	gãy cần được bảo quản đúng bằng cách đặt vào khăn hoặc túi ẩm với một vài 
 	giọt nước sạch hoặc nước bọt. Đó là một trong các tình huống cần lưu ý khi xử trí khi 

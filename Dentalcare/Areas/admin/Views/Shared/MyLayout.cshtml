@@ -24,6 +24,12 @@
     <!-- Custom styles for this template-->
     <link href="@Url.Content("~/Areas/admin/Content/css/sb-admin-2.min.css")" rel="stylesheet">
 
+    <link href="@Url.Content("~/Areas/admin/Content/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="@Url.Content("~/Areas/admin/Content/vendor/metisMenu/metisMenu.min.css")" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="@Url.Content("~/Areas/admin/Content/vendor/morrisjs/morris.css")" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -190,12 +196,12 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <!--<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
-                    </button>
+                    </button>-->
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                    aria-label="Search" aria-describedby="basic-addon2">
@@ -205,7 +211,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>-->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -439,6 +445,10 @@
     <!-- Bootstrap core JavaScript-->
     <script src="@Url.Content("~/Areas/admin/Content/vendor/jquery/jquery.min.js")"></script>
     <script src="@Url.Content("~/Areas/admin/Content/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/metisMenu/metisMenu.min.js")"></script>
+
+
 
     <!-- Core plugin JavaScript-->
     <script src="@Url.Content("~/Areas/admin/Content/vendor/jquery-easing/jquery.easing.min.js")"></script>
@@ -448,6 +458,8 @@
 
     @RenderSection("Scripts", false)
     @RenderSection("Header", false)
+
+
 
 </body>
 

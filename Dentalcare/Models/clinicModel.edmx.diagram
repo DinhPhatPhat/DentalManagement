@@ -5,63 +5,63 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="acb8e1420b054ddf9c1f8dbae31a25da" Name="Diagram1">
-        <EntityTypeShape EntityType="clinicModel.Account" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Admin" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Appointment" Width="1.5" PointX="7.5" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Assisstant" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Avatar" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Bill" Width="1.5" PointX="7.5" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Bill_Service" Width="1.5" PointX="9.75" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Calendar" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Clinic" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Comment" Width="1.5" PointX="7.5" PointY="27.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.ConsumableMaterial" Width="1.5" PointX="10.5" PointY="35.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Dentist" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Faculty" Width="1.5" PointX="3" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.FixedMaterial" Width="1.5" PointX="10.5" PointY="39.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Footer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Ingredient" Width="1.5" PointX="13.5" PointY="31.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Ingredient_ConsumableMaterial" Width="1.5" PointX="15.75" PointY="36" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Material" Width="1.5" PointX="8.25" PointY="34.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Material_Category" Width="1.5" PointX="6" PointY="35.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Medicine" Width="1.5" PointX="12.75" PointY="35.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Menu" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Patient" Width="1.5" PointX="5.25" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Person" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Prescription" Width="1.5" PointX="12.75" PointY="22.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Prescription_Medicine" Width="1.5" PointX="15" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Receptionist" Width="1.5" PointX="5.25" PointY="31.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Service" Width="1.5" PointX="7.5" PointY="39.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.Service_Category" Width="1.5" PointX="5.25" PointY="40.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="clinicModel.NEWS" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="clinicModel.FK__Person__id__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Admin__id__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Appointme__denid__5F7E2DAC" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Appointme__patid__607251E5" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Assisstant__id__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Avatar__personId__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Bill__patid__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Bill_Serv__billI__22751F6C" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__billi__531856C7" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Bill_Serv__SerID__236943A5" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Calendar__Person__2EDAF651" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Comment__patid__339FAB6E" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__ConsumableMa__id__114A936A" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Ingredien__consu__160F4887" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Medicine__id__1CBC4616" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Dentist__falid__498EEC8D" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Dentist__id__489AC854" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__denid__51300E55" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__FixedMateria__id__05D8E0BE" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Ingredien__ingre__151B244E" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Material__cateId__00200768" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__medId__59C55456" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Patient__id__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__patid__5224328E" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Receptionist__id__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Prescription_Med__58D1301D" ManuallyRouted="false" />
-        <AssociationConnector Association="clinicModel.FK__Service__cateId__72C60C4A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="clinicModel.Account" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="clinicModel.Admin" Width="1.5" PointX="5.25" PointY="22.125" />
+        <EntityTypeShape EntityType="clinicModel.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="clinicModel.Appointment" Width="1.5" PointX="13.5" PointY="12.5" />
+        <EntityTypeShape EntityType="clinicModel.Assisstant" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="clinicModel.Avatar" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="clinicModel.Bill" Width="1.5" PointX="7.5" PointY="7" />
+        <EntityTypeShape EntityType="clinicModel.Bill_Service" Width="1.5" PointX="9.75" PointY="7.375" />
+        <EntityTypeShape EntityType="clinicModel.Calendar" Width="1.5" PointX="5.25" PointY="27.625" />
+        <EntityTypeShape EntityType="clinicModel.Clinic" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="clinicModel.Comment" Width="1.5" PointX="7.5" PointY="11.375" />
+        <EntityTypeShape EntityType="clinicModel.ConsumableMaterial" Width="1.5" PointX="11.25" PointY="38.875" />
+        <EntityTypeShape EntityType="clinicModel.Dentist" Width="1.5" PointX="8.25" PointY="16.5" />
+        <EntityTypeShape EntityType="clinicModel.Faculty" Width="1.5" PointX="6" PointY="34.75" />
+        <EntityTypeShape EntityType="clinicModel.FixedMaterial" Width="1.5" PointX="11.25" PointY="43.25" />
+        <EntityTypeShape EntityType="clinicModel.Footer" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="clinicModel.Ingredient" Width="1.5" PointX="14.25" PointY="35.125" />
+        <EntityTypeShape EntityType="clinicModel.Ingredient_ConsumableMaterial" Width="1.5" PointX="16.5" PointY="39.375" />
+        <EntityTypeShape EntityType="clinicModel.Material" Width="1.5" PointX="9" PointY="38.375" />
+        <EntityTypeShape EntityType="clinicModel.Material_Category" Width="1.5" PointX="6.75" PointY="38.875" />
+        <EntityTypeShape EntityType="clinicModel.Medicine" Width="1.5" PointX="13.5" PointY="38.875" />
+        <EntityTypeShape EntityType="clinicModel.Menu" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="clinicModel.NEWS" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="clinicModel.Patient" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="clinicModel.Person" Width="1.5" PointX="3" PointY="15.375" />
+        <EntityTypeShape EntityType="clinicModel.Prescription" Width="1.5" PointX="10.5" PointY="11.5" />
+        <EntityTypeShape EntityType="clinicModel.Prescription_Medicine" Width="1.5" PointX="15.75" PointY="11.75" />
+        <EntityTypeShape EntityType="clinicModel.Receptionist" Width="1.5" PointX="5.25" PointY="31.25" />
+        <EntityTypeShape EntityType="clinicModel.Service" Width="1.5" PointX="7.5" PointY="1.875" />
+        <EntityTypeShape EntityType="clinicModel.Service_Category" Width="1.5" PointX="5.25" PointY="2.5" />
+        <AssociationConnector Association="clinicModel.FK__Person__id__4316F928" />
+        <AssociationConnector Association="clinicModel.FK__Admin__id__4BAC3F29" />
+        <AssociationConnector Association="clinicModel.FK__Appointme__denid__5D95E53A" />
+        <AssociationConnector Association="clinicModel.FK__Appointme__patid__5E8A0973" />
+        <AssociationConnector Association="clinicModel.FK__Assisstant__id__5535A963" />
+        <AssociationConnector Association="clinicModel.FK__Avatar__personId__46E78A0C" />
+        <AssociationConnector Association="clinicModel.FK__Bill__patid__66603565" />
+        <AssociationConnector Association="clinicModel.FK__Bill_Serv__billI__208CD6FA" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__billi__51300E55" />
+        <AssociationConnector Association="clinicModel.FK__Bill_Serv__SerID__2180FB33" />
+        <AssociationConnector Association="clinicModel.FK__Calendar__Person__2CF2ADDF" />
+        <AssociationConnector Association="clinicModel.FK__Comment__patid__31B762FC" />
+        <AssociationConnector Association="clinicModel.FK__ConsumableMa__id__0F624AF8" />
+        <AssociationConnector Association="clinicModel.FK__Ingredien__consu__14270015" />
+        <AssociationConnector Association="clinicModel.FK__Medicine__id__1AD3FDA4" />
+        <AssociationConnector Association="clinicModel.FK__Dentist__falid__47A6A41B" />
+        <AssociationConnector Association="clinicModel.FK__Dentist__id__46B27FE2" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__denid__4F47C5E3" />
+        <AssociationConnector Association="clinicModel.FK__FixedMateria__id__03F0984C" />
+        <AssociationConnector Association="clinicModel.FK__Ingredien__ingre__1332DBDC" />
+        <AssociationConnector Association="clinicModel.FK__Material__cateId__7E37BEF6" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__medId__57DD0BE4" />
+        <AssociationConnector Association="clinicModel.FK__Patient__id__59FA5E80" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__patid__503BEA1C" />
+        <AssociationConnector Association="clinicModel.FK__Receptionist__id__5070F446" />
+        <AssociationConnector Association="clinicModel.FK__Prescription_Med__56E8E7AB" />
+        <AssociationConnector Association="clinicModel.FK__Service__cateId__70DDC3D8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
