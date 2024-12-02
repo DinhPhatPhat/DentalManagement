@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Dentalcare.Models.Dentist>
-
+﻿@model IEnumerable<Dentalcare.Areas.admin.Models.CreateDentistViewModel>
+@using Dental.Help
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
@@ -8,7 +8,7 @@
 <!-- HTML -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách nha sĩ</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách nha sĩ</h6>
     </div>
     <div style="margin-left: 20px; margin-top: 20px">
         <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Dentists")'">Thêm mới</button>
@@ -18,77 +18,53 @@
             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Person.Avatar.imgPath)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Person.name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.title)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.hide)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.meta)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.order)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.datebegin)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.descrip)
-                        </th>
-                        <th>
-                            faculty @Html.DisplayNameFor(model => model.Faculty.name)
-                        </th>
-                        <th>
-                            person @Html.DisplayNameFor(model => model.Person.meta)
-                        </th>
-                        <th></th>
+                        <th>Thứ tự</th>
+                        <th>Mã</th>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>Chức danh</th>
+                        <th>Ẩn/Hiện</th>
+                        <th>Meta</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Mô tả</th>
+                        <th>Tên khoa</th>
+                        <th>Tên tài khoản</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.order)</td>
+                            <td>@Html.DisplayFor(modelItem => item.account.id)</td>
                             <td>
-                                <img class="doctor-avatar" src="~/@item.Person.Avatar.imgPath" alt="Alternate Text" style="max-width: 100px"/>
+                                @if (!string.IsNullOrEmpty(item.person.img))
+                                {
+                                    <img class="doctor-avatar" src="@item.person.img" alt="Avatar" style="max-width: 100px" />
+                                }
+                                else
+                                {
+                                    <img class="doctor-avatar" src="~/Content/images/default-avatar.png" alt="Default Avatar" style="max-width: 100px" />
+                                }
                             </td>
+                            <td>@Html.DisplayFor(modelItem => item.person.name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.hide)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.meta)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.datebegin)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.descrip)</td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Person.name)
+                                @if (item.dentist.Faculty != null)
+                                {@item.dentist.Faculty.name }
+                            else
+                            { <span>Không có khoa</span>}
                             </td>
+                            <td>@Html.DisplayFor(modelItem => item.account.username)</td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.title)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.hide)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.meta)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.order)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.datebegin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descrip)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Faculty.name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Person.meta)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

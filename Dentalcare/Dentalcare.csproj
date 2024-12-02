@@ -148,6 +148,7 @@
     <Compile Include="Areas\admin\Controllers\PatientsController.cs" />
     <Compile Include="Areas\admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\admin\Controllers\Service_CategoryController.cs" />
+    <Compile Include="Areas\admin\Models\CreateDentistViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -1394,7 +1395,6 @@
     <Content Include="Areas\admin\Content\js\demo\datatables-demo.js" />
     <Content Include="Areas\admin\Content\js\sb-admin-2.js" />
     <Content Include="Areas\admin\Content\js\sb-admin-2.min.js" />
-    <Content Include="Areas\admin\Content\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Areas\admin\Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Areas\admin\Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\admin\Content\vendor\bootstrap\js\bootstrap.js" />
@@ -3064,8 +3064,6 @@
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.js" />
-    <Content Include="Areas\admin\Content\vendor\morrisjs\morris.css" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Dentalcare.dll" />
@@ -3184,14 +3182,9 @@
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
-    <Content Include="Content\images\Blog\banner-post-bus-ghengoi-2.jpg" />
-    <Content Include="Content\images\Blog\image2 %282%29.jpg" />
     <Content Include="Content\images\Blog\NE00000001.jpg" />
     <Content Include="Content\images\Blog\NE00000002.jpg" />
     <Content Include="Content\images\Blog\NE00000003.jpg" />
-    <Content Include="Content\images\Blog\Screenshot 2024-10-31 234618.png" />
-    <Content Include="Content\images\Blog\Screenshot 2024-11-01 172304.png" />
-    <Content Include="Content\images\Blog\Screenshot 2024-11-01 221228.png" />
     <Content Include="Content\images\Dentist\AC00000004\avatar.jpg" />
     <Content Include="Content\images\Dentist\AC00000005\avatar.jpg" />
     <Content Include="Content\images\Dentist\AC00000006\avatar.jpg" />
@@ -3223,6 +3216,7 @@
     <Content Include="Content\images\person_7.jpg" />
     <Content Include="Content\images\person_8.jpg" />
     <Content Include="Content\images\Service\SE00000001.jpg" />
+    <Content Include="Content\images\Service\teeth-cleaning-sydney-643x410-1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -3618,12 +3612,7 @@
     <Content Include="Areas\admin\Views\Material_Category\Details.cshtml" />
     <Content Include="Areas\admin\Views\Material_Category\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Material_Category\Index.cshtml" />
-    <Content Include="Areas\admin\Views\Material_Category1\Create.cshtml" />
-    <Content Include="Areas\admin\Views\Material_Category1\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\Material_Category1\Details.cshtml" />
-    <Content Include="Areas\admin\Views\Material_Category1\Edit.cshtml" />
-    <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
-    <None Include=".editorconfig" />
+    <Content Include=".editorconfig" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\CHANGES.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\LICENSE.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\plugins\bower.json" />
@@ -3645,8 +3634,6 @@
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\skins\moonocolor\readme.md" />
     <Content Include="Areas\admin\Content\ckfinder\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Areas\admin\Content\ckfinder\ckfinder\userfiles\.htaccess" />
-    <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
-    <Content Include="Areas\admin\Views\Services\getService.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3711,9 +3698,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\admin\Content\vendor\bootstrap\fonts\" />
     <Folder Include="Areas\admin\Data\" />
-    <Folder Include="Areas\admin\Models\" />
+    <Folder Include="Content\images\Avatar\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -3745,9 +3731,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="Areas\admin\Content\ckfinder\ckfinder\bin\Debug\CKFinder.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
