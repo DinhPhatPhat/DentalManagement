@@ -124,8 +124,8 @@ CREATE TABLE Bill
   totalPrice INT NOT NULL DEFAULT 0 check(totalPrice>=0),
   ServicesPrice INT NOT NULL DEFAULT 0 check(ServicesPrice>=0),
   PrescriptionPrice INT NOT NULL DEFAULT 0 check(PrescriptionPrice>=0),
-  able BIT NOT NULL DEFAULT 1,
   hide BIT NOT NULL DEFAULT 0,
+  able BIT NOT NULL DEFAULT 1,
   meta VARCHAR(MAX) NOT NULL,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
@@ -397,17 +397,18 @@ CREATE TABLE Dentist
 
 CREATE TABLE Prescription
 (
+  id VARCHAR(10) NOT NULL,
   note NVARCHAR(MAX) NOT NULL,
-  able BIT NOT NULL DEFAULT 1,
   price INT NOT NULL DEFAULT 0 check(price>=0),
+  able BIT NOT NULL DEFAULT 1,
   hide BIT NOT NULL DEFAULT 0,
   meta VARCHAR(MAX) NOT NULL,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
   denid VARCHAR(10) NOT NULL,
   patid VARCHAR(10) NOT NULL,
-  billid VARCHAR(10) NOT NULL,
-  PRIMARY KEY (denID,patID,billID),
+  billid VARCHAR(10) NOT NULL  DEFAULT 'BI00000001',
+  PRIMARY KEY (id),
   FOREIGN KEY (denID) REFERENCES Dentist(id),
   FOREIGN KEY (patID) REFERENCES Patient(id),
   FOREIGN KEY (billID) REFERENCES Bill(id)
@@ -415,19 +416,17 @@ CREATE TABLE Prescription
 
 CREATE TABLE Prescription_Medicine
 (
-  able BIT NOT NULL DEFAULT 1,
-  denid VARCHAR(10) NOT NULL,
-  patid VARCHAR(10) NOT NULL,
-  billid VARCHAR(10) NOT NULL,
+  preId VARCHAR(10) NOT NULL,
   medId VARCHAR(10) NOT NULL,
   quantityMedicine INT NOT NULL,
   meta VARCHAR(MAX) NOT NULL,
   hide BIT NOT NULL DEFAULT 0,
+  able BIT NOT NULL DEFAULT 1,
   [order] INT NOT NULL IDENTITY(1,1),
   datebegin DATETIME NOT NULL DEFAULT GETDATE(),
-  PRIMARY KEY (denID,patID,billID,medID),
-  FOREIGN KEY (denID,patID,billID) REFERENCES Prescription(denID,patID,billID),
-  FOREIGN KEY (MedID) REFERENCES Medicine(id)
+  PRIMARY KEY (preId,medID),
+  FOREIGN KEY (preId) REFERENCES Prescription(id),
+  FOREIGN KEY (medId) REFERENCES Medicine(id)
 );
 
 CREATE TABLE Appointment
@@ -466,7 +465,7 @@ CREATE TABLE NEWS
 
 GO
 --Tao Trigger
-
+/*
 --Cap nhat tien cua bill khi them dong trong Bill_Service
 CREATE TRIGGER ADD_OR_UPDATE_Bill_Service
 ON Bill_Service
@@ -505,7 +504,6 @@ BEGIN
   WHERE Bill.id = (select billid from inserted) 
 END
 GO
-
 --Cap nhat tien cua Prescription khi them dong trong Prescription_Medicine
 CREATE TRIGGER ADD_OR_UPDATE_Prescription_Medicine
 ON Prescription_Medicine 
@@ -539,6 +537,8 @@ BEGIN
   END
 END
 GO
+
+*/
 
 --STORE PROCEDURE
 --Them du lieu
@@ -1906,8 +1906,10 @@ BEGIN
 		BEGIN
 			set @meta = 'toa-thuoc-' + CONVERT(varchar(MAX), @QuanPR+1)
 		end
-  insert into Prescription(denid,patid,billID,note,meta)
-  VALUES (@denId,@patId,@billId,@note,@meta)
+	declare @id varchar(10)
+	set @id = dbo.autoid('PR', @QuanPR+1)
+  insert into Prescription(id,denid,patid,billID,note,meta)
+  VALUES (@id,@denId,@patId,@billId,@note,@meta)
 END
 go
 
@@ -1918,9 +1920,7 @@ GO
 
 --Prescription_Medicine
 create proc procAddPrescription_Medicine
-  @denId varchar(10),
-  @patId varchar(10),
-  @billId varchar(10),
+  @preID varchar(10),
   @medID varchar(10),
   @quantityMedicine int,
   @meta NVARCHAR(MAX)
@@ -1932,18 +1932,18 @@ BEGIN
 		BEGIN
 			set @meta = 'chi-tiet-toa-thuoc' + CONVERT(varchar(MAX), @QuanPM+1)
 		end
-  insert into Prescription_Medicine(denid,patid,billID,medId,quantityMedicine,meta)
-  VALUES (@denId,@patId,@billId,@medID,@quantityMedicine,@meta)
+  insert into Prescription_Medicine(preID,medId,quantityMedicine,meta)
+  VALUES (@preID,@medID,@quantityMedicine,@meta)
 END
 go
 
 --them Prescription_Medicine
-exec procAddPrescription_Medicine 'AC00000007','AC00000014','BI00000001','MA00000058',3,N''
-exec procAddPrescription_Medicine 'AC00000007','AC00000014','BI00000001','MA00000062',2,N''
-exec procAddPrescription_Medicine 'AC00000007','AC00000014','BI00000001','MA00000061',2,N''
-exec procAddPrescription_Medicine 'AC00000007','AC00000014','BI00000001','MA00000060',2,N''
+exec procAddPrescription_Medicine 'PR00000001','MA00000058',3,N''
+exec procAddPrescription_Medicine 'PR00000001','MA00000062',2,N''
+exec procAddPrescription_Medicine 'PR00000001','MA00000061',2,N''
+exec procAddPrescription_Medicine 'PR00000001','MA00000060',2,N''
 
-exec procAddPrescription_Medicine 'AC00000004','AC00000015','BI00000002','MA00000055',3,N''
+exec procAddPrescription_Medicine 'PR00000002','MA00000055',3,N''
 GO
 
 --them calendar
@@ -2390,8 +2390,6 @@ UPDATE Service_Category
 SET new_order = [order];
 go
 
-
-
 --bang service
 ALTER TABLE Service
 ADD new_order INT
@@ -2400,3 +2398,32 @@ go
 UPDATE Service
 SET new_order = [order];
 go
+
+--bang bill
+ALTER TABLE Bill
+ADD new_order INT
+go
+
+UPDATE Bill
+SET new_order = [order];
+go
+
+
+--bang prescription
+ALTER TABLE Prescription
+ADD new_order INT
+go
+
+UPDATE Prescription
+SET new_order = [order];
+go
+
+--bang prescription_Medicine
+ALTER TABLE Prescription_Medicine
+ADD new_order INT
+go
+
+UPDATE Prescription_Medicine
+SET new_order = [order];
+go
+

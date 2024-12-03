@@ -14,15 +14,14 @@ namespace Dentalcare.Models
     
     public partial class Prescription_Medicine
     {
-        public bool able { get; set; }
-        public string denid { get; set; }
-        public string patid { get; set; }
-        public string billid { get; set; }
+        public string preId { get; set; }
         public string medId { get; set; }
         public int quantityMedicine { get; set; }
         public string meta { get; set; }
+        public bool able { get; set; }
         public bool hide { get; set; }
         public int order { get; set; }
+        public int new_order { get; set; }
         public System.DateTime datebegin { get; set; }
     
         public virtual Medicine Medicine { get; set; }

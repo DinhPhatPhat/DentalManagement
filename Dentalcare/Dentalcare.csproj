@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AssisstantsController.cs" />
+    <Compile Include="Areas\admin\Controllers\BillsController.cs" />
     <Compile Include="Areas\admin\Controllers\ClinicsController.cs" />
     <Compile Include="Areas\admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Areas\admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\admin\Controllers\NEWSController.cs" />
     <Compile Include="Areas\admin\Controllers\PatientsController.cs" />
+    <Compile Include="Areas\admin\Controllers\PrescriptionsController.cs" />
     <Compile Include="Areas\admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\admin\Controllers\Service_CategoryController.cs" />
     <Compile Include="Areas\admin\Models\CreateDentistViewModel.cs" />
@@ -3065,6 +3067,7 @@
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Areas\admin\Content\vendor\morrisjs\morris.css" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Dentalcare.dll" />
@@ -3619,10 +3622,6 @@
     <Content Include="Areas\admin\Views\Material_Category1\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
     <None Include=".editorconfig" />
-    <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
-    <None Include=".editorconfig" />
-    <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
-    <None Include=".editorconfig" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\CHANGES.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\LICENSE.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\plugins\bower.json" />
@@ -3646,6 +3645,16 @@
     <Content Include="Areas\admin\Views\Services\getService.cshtml" />
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Areas\admin\Views\Services\getService.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Bills\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Prescriptions\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Prescriptions\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Prescriptions\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Prescriptions\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Prescriptions\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

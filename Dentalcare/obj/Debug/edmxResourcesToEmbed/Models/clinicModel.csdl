@@ -142,9 +142,7 @@
       <Parameter Name="meta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="procAddPrescription_Medicine">
-      <Parameter Name="denId" Mode="In" Type="String" />
-      <Parameter Name="patId" Mode="In" Type="String" />
-      <Parameter Name="billId" Mode="In" Type="String" />
+      <Parameter Name="preID" Mode="In" Type="String" />
       <Parameter Name="medID" Mode="In" Type="String" />
       <Parameter Name="quantityMedicine" Mode="In" Type="Int32" />
       <Parameter Name="meta" Mode="In" Type="String" />
@@ -191,8 +189,6 @@
     <EntitySet Name="NEWS" EntityType="clinicModel.NEWS" />
     <EntitySet Name="Patients" EntityType="clinicModel.Patient" />
     <EntitySet Name="People" EntityType="clinicModel.Person" />
-    <EntitySet Name="Prescriptions" EntityType="clinicModel.Prescription" />
-    <EntitySet Name="Prescription_Medicine" EntityType="clinicModel.Prescription_Medicine" />
     <EntitySet Name="Receptionists" EntityType="clinicModel.Receptionist" />
     <EntitySet Name="Services" EntityType="clinicModel.Service" />
     <EntitySet Name="Service_Category" EntityType="clinicModel.Service_Category" />
@@ -228,10 +224,6 @@
       <End Role="Bill" EntitySet="Bills" />
       <End Role="Bill_Service" EntitySet="Bill_Service" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__billi__51300E55" Association="clinicModel.FK__Prescript__billi__51300E55">
-      <End Role="Bill" EntitySet="Bills" />
-      <End Role="Prescription" EntitySet="Prescriptions" />
-    </AssociationSet>
     <AssociationSet Name="FK__Bill_Serv__SerID__2180FB33" Association="clinicModel.FK__Bill_Serv__SerID__2180FB33">
       <End Role="Service" EntitySet="Services" />
       <End Role="Bill_Service" EntitySet="Bill_Service" />
@@ -264,10 +256,6 @@
       <End Role="Person" EntitySet="People" />
       <End Role="Dentist" EntitySet="Dentists" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__denid__4F47C5E3" Association="clinicModel.FK__Prescript__denid__4F47C5E3">
-      <End Role="Dentist" EntitySet="Dentists" />
-      <End Role="Prescription" EntitySet="Prescriptions" />
-    </AssociationSet>
     <AssociationSet Name="FK__FixedMateria__id__03F0984C" Association="clinicModel.FK__FixedMateria__id__03F0984C">
       <End Role="Material" EntitySet="Materials" />
       <End Role="FixedMaterial" EntitySet="FixedMaterials" />
@@ -280,29 +268,39 @@
       <End Role="Material_Category" EntitySet="Material_Category" />
       <End Role="Material" EntitySet="Materials" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__medId__57DD0BE4" Association="clinicModel.FK__Prescript__medId__57DD0BE4">
-      <End Role="Medicine" EntitySet="Medicines" />
-      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
-    </AssociationSet>
     <AssociationSet Name="FK__Patient__id__59FA5E80" Association="clinicModel.FK__Patient__id__59FA5E80">
       <End Role="Person" EntitySet="People" />
       <End Role="Patient" EntitySet="Patients" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Prescript__patid__503BEA1C" Association="clinicModel.FK__Prescript__patid__503BEA1C">
-      <End Role="Patient" EntitySet="Patients" />
-      <End Role="Prescription" EntitySet="Prescriptions" />
     </AssociationSet>
     <AssociationSet Name="FK__Receptionist__id__5070F446" Association="clinicModel.FK__Receptionist__id__5070F446">
       <End Role="Person" EntitySet="People" />
       <End Role="Receptionist" EntitySet="Receptionists" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescription_Med__56E8E7AB" Association="clinicModel.FK__Prescription_Med__56E8E7AB">
-      <End Role="Prescription" EntitySet="Prescriptions" />
-      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
-    </AssociationSet>
     <AssociationSet Name="FK__Service__cateId__70DDC3D8" Association="clinicModel.FK__Service__cateId__70DDC3D8">
       <End Role="Service_Category" EntitySet="Service_Category" />
       <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <EntitySet Name="Prescriptions" EntityType="clinicModel.Prescription" />
+    <EntitySet Name="Prescription_Medicine" EntityType="clinicModel.Prescription_Medicine" />
+    <AssociationSet Name="FK__Prescript__billi__5224328E" Association="clinicModel.FK__Prescript__billi__5224328E">
+      <End Role="Bill" EntitySet="Bills" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__denid__503BEA1C" Association="clinicModel.FK__Prescript__denid__503BEA1C">
+      <End Role="Dentist" EntitySet="Dentists" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__medId__58D1301D" Association="clinicModel.FK__Prescript__medId__58D1301D">
+      <End Role="Medicine" EntitySet="Medicines" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__patid__51300E55" Association="clinicModel.FK__Prescript__patid__51300E55">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prescript__preId__57DD0BE4" Association="clinicModel.FK__Prescript__preId__57DD0BE4">
+      <End Role="Prescription" EntitySet="Prescriptions" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Account">
@@ -391,7 +389,6 @@
     <Property Name="totalPrice" Type="Int32" Nullable="false" />
     <Property Name="ServicesPrice" Type="Int32" Nullable="false" />
     <Property Name="PrescriptionPrice" Type="Int32" Nullable="false" />
-    <Property Name="able" Type="Boolean" Nullable="false" />
     <Property Name="hide" Type="Boolean" Nullable="false" />
     <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -400,7 +397,9 @@
     <Property Name="patid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Patient" Relationship="clinicModel.FK__Bill__patid__66603565" FromRole="Bill" ToRole="Patient" />
     <NavigationProperty Name="Bill_Service" Relationship="clinicModel.FK__Bill_Serv__billI__208CD6FA" FromRole="Bill" ToRole="Bill_Service" />
-    <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__billi__51300E55" FromRole="Bill" ToRole="Prescription" />
+    <Property Name="new_order" Type="Int32" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__billi__5224328E" FromRole="Bill" ToRole="Prescription" />
   </EntityType>
   <EntityType Name="Bill_Service">
     <Key>
@@ -500,7 +499,7 @@
     <NavigationProperty Name="Appointments" Relationship="clinicModel.FK__Appointme__denid__5D95E53A" FromRole="Dentist" ToRole="Appointment" />
     <NavigationProperty Name="Faculty" Relationship="clinicModel.FK__Dentist__falid__47A6A41B" FromRole="Dentist" ToRole="Faculty" />
     <NavigationProperty Name="Person" Relationship="clinicModel.FK__Dentist__id__46B27FE2" FromRole="Dentist" ToRole="Person" />
-    <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__denid__4F47C5E3" FromRole="Dentist" ToRole="Prescription" />
+    <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__denid__503BEA1C" FromRole="Dentist" ToRole="Prescription" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -614,7 +613,7 @@
     <Property Name="able" Type="Boolean" Nullable="false" />
     <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ConsumableMaterial" Relationship="clinicModel.FK__Medicine__id__1AD3FDA4" FromRole="Medicine" ToRole="ConsumableMaterial" />
-    <NavigationProperty Name="Prescription_Medicine" Relationship="clinicModel.FK__Prescript__medId__57DD0BE4" FromRole="Medicine" ToRole="Prescription_Medicine" />
+    <NavigationProperty Name="Prescription_Medicine" Relationship="clinicModel.FK__Prescript__medId__58D1301D" FromRole="Medicine" ToRole="Prescription_Medicine" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -657,7 +656,7 @@
     <NavigationProperty Name="Bills" Relationship="clinicModel.FK__Bill__patid__66603565" FromRole="Patient" ToRole="Bill" />
     <NavigationProperty Name="Comments" Relationship="clinicModel.FK__Comment__patid__31B762FC" FromRole="Patient" ToRole="Comment" />
     <NavigationProperty Name="Person" Relationship="clinicModel.FK__Patient__id__59FA5E80" FromRole="Patient" ToRole="Person" />
-    <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__patid__503BEA1C" FromRole="Patient" ToRole="Prescription" />
+    <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__patid__51300E55" FromRole="Patient" ToRole="Prescription" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -686,47 +685,6 @@
     <NavigationProperty Name="Dentist" Relationship="clinicModel.FK__Dentist__id__46B27FE2" FromRole="Person" ToRole="Dentist" />
     <NavigationProperty Name="Patient" Relationship="clinicModel.FK__Patient__id__59FA5E80" FromRole="Person" ToRole="Patient" />
     <NavigationProperty Name="Receptionist" Relationship="clinicModel.FK__Receptionist__id__5070F446" FromRole="Person" ToRole="Receptionist" />
-  </EntityType>
-  <EntityType Name="Prescription">
-    <Key>
-      <PropertyRef Name="denid" />
-      <PropertyRef Name="patid" />
-      <PropertyRef Name="billid" />
-    </Key>
-    <Property Name="note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="able" Type="Boolean" Nullable="false" />
-    <Property Name="price" Type="Int32" Nullable="false" />
-    <Property Name="hide" Type="Boolean" Nullable="false" />
-    <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="denid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="patid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="billid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Bill" Relationship="clinicModel.FK__Prescript__billi__51300E55" FromRole="Prescription" ToRole="Bill" />
-    <NavigationProperty Name="Dentist" Relationship="clinicModel.FK__Prescript__denid__4F47C5E3" FromRole="Prescription" ToRole="Dentist" />
-    <NavigationProperty Name="Patient" Relationship="clinicModel.FK__Prescript__patid__503BEA1C" FromRole="Prescription" ToRole="Patient" />
-    <NavigationProperty Name="Prescription_Medicine" Relationship="clinicModel.FK__Prescription_Med__56E8E7AB" FromRole="Prescription" ToRole="Prescription_Medicine" />
-  </EntityType>
-  <EntityType Name="Prescription_Medicine">
-    <Key>
-      <PropertyRef Name="denid" />
-      <PropertyRef Name="patid" />
-      <PropertyRef Name="billid" />
-      <PropertyRef Name="medId" />
-    </Key>
-    <Property Name="able" Type="Boolean" Nullable="false" />
-    <Property Name="denid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="patid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="billid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="medId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="quantityMedicine" Type="Int32" Nullable="false" />
-    <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="hide" Type="Boolean" Nullable="false" />
-    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Medicine" Relationship="clinicModel.FK__Prescript__medId__57DD0BE4" FromRole="Prescription_Medicine" ToRole="Medicine" />
-    <NavigationProperty Name="Prescription" Relationship="clinicModel.FK__Prescription_Med__56E8E7AB" FromRole="Prescription_Medicine" ToRole="Prescription" />
   </EntityType>
   <EntityType Name="Receptionist">
     <Key>
@@ -871,18 +829,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__billi__51300E55">
-    <End Type="clinicModel.Bill" Role="Bill" Multiplicity="1" />
-    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Bill">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Prescription">
-        <PropertyRef Name="billid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Bill_Serv__SerID__2180FB33">
     <End Type="clinicModel.Service" Role="Service" Multiplicity="1" />
     <End Type="clinicModel.Bill_Service" Role="Bill_Service" Multiplicity="*" />
@@ -979,18 +925,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__denid__4F47C5E3">
-    <End Type="clinicModel.Dentist" Role="Dentist" Multiplicity="1" />
-    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Dentist">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Prescription">
-        <PropertyRef Name="denid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__FixedMateria__id__03F0984C">
     <End Type="clinicModel.Material" Role="Material" Multiplicity="1" />
     <End Type="clinicModel.FixedMaterial" Role="FixedMaterial" Multiplicity="0..1" />
@@ -1027,18 +961,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__medId__57DD0BE4">
-    <End Type="clinicModel.Medicine" Role="Medicine" Multiplicity="1" />
-    <End Type="clinicModel.Prescription_Medicine" Role="Prescription_Medicine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Medicine">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Prescription_Medicine">
-        <PropertyRef Name="medId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Patient__id__59FA5E80">
     <End Type="clinicModel.Person" Role="Person" Multiplicity="1" />
     <End Type="clinicModel.Patient" Role="Patient" Multiplicity="0..1" />
@@ -1048,18 +970,6 @@
       </Principal>
       <Dependent Role="Patient">
         <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Prescript__patid__503BEA1C">
-    <End Type="clinicModel.Patient" Role="Patient" Multiplicity="1" />
-    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Patient">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Prescription">
-        <PropertyRef Name="patid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1075,22 +985,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescription_Med__56E8E7AB">
-    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="1" />
-    <End Type="clinicModel.Prescription_Medicine" Role="Prescription_Medicine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Prescription">
-        <PropertyRef Name="denid" />
-        <PropertyRef Name="patid" />
-        <PropertyRef Name="billid" />
-      </Principal>
-      <Dependent Role="Prescription_Medicine">
-        <PropertyRef Name="denid" />
-        <PropertyRef Name="patid" />
-        <PropertyRef Name="billid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Service__cateId__70DDC3D8">
     <End Type="clinicModel.Service_Category" Role="Service_Category" Multiplicity="1" />
     <End Type="clinicModel.Service" Role="Service" Multiplicity="*" />
@@ -1100,6 +994,104 @@
       </Principal>
       <Dependent Role="Service">
         <PropertyRef Name="cateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="denid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="patid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="billid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="new_order" Type="Int32" />
+    <NavigationProperty Name="Bill" Relationship="clinicModel.FK__Prescript__billi__5224328E" FromRole="Prescription" ToRole="Bill" />
+    <NavigationProperty Name="Dentist" Relationship="clinicModel.FK__Prescript__denid__503BEA1C" FromRole="Prescription" ToRole="Dentist" />
+    <NavigationProperty Name="Patient" Relationship="clinicModel.FK__Prescript__patid__51300E55" FromRole="Prescription" ToRole="Patient" />
+    <NavigationProperty Name="Prescription_Medicine" Relationship="clinicModel.FK__Prescript__preId__57DD0BE4" FromRole="Prescription" ToRole="Prescription_Medicine" />
+  </EntityType>
+  <EntityType Name="Prescription_Medicine">
+    <Key>
+      <PropertyRef Name="preId" />
+      <PropertyRef Name="medId" />
+    </Key>
+    <Property Name="preId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="medId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="quantityMedicine" Type="Int32" Nullable="false" />
+    <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="new_order" Type="Int32" />
+    <NavigationProperty Name="Medicine" Relationship="clinicModel.FK__Prescript__medId__58D1301D" FromRole="Prescription_Medicine" ToRole="Medicine" />
+    <NavigationProperty Name="Prescription" Relationship="clinicModel.FK__Prescript__preId__57DD0BE4" FromRole="Prescription_Medicine" ToRole="Prescription" />
+  </EntityType>
+  <Association Name="FK__Prescript__billi__5224328E">
+    <End Type="clinicModel.Bill" Role="Bill" Multiplicity="1" />
+    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="billid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__denid__503BEA1C">
+    <End Type="clinicModel.Dentist" Role="Dentist" Multiplicity="1" />
+    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dentist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="denid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__medId__58D1301D">
+    <End Type="clinicModel.Medicine" Role="Medicine" Multiplicity="1" />
+    <End Type="clinicModel.Prescription_Medicine" Role="Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="medId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__patid__51300E55">
+    <End Type="clinicModel.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="patid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prescript__preId__57DD0BE4">
+    <End Type="clinicModel.Prescription" Role="Prescription" Multiplicity="1" />
+    <End Type="clinicModel.Prescription_Medicine" Role="Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescription">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="preId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

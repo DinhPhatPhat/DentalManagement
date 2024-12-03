@@ -80,13 +80,14 @@
     <Property Name="totalPrice" Type="int" Nullable="false" />
     <Property Name="ServicesPrice" Type="int" Nullable="false" />
     <Property Name="PrescriptionPrice" Type="int" Nullable="false" />
-    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="isPayed" Type="bit" Nullable="false" />
     <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Bill_Service">
     <Key>
@@ -340,13 +341,12 @@
   </EntityType>
   <EntityType Name="Prescription">
     <Key>
-      <PropertyRef Name="denid" />
-      <PropertyRef Name="patid" />
-      <PropertyRef Name="billid" />
+      <PropertyRef Name="id" />
     </Key>
+    <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="note" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="hide" Type="bit" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -354,24 +354,22 @@
     <Property Name="denid" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="billid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Prescription_Medicine">
     <Key>
-      <PropertyRef Name="denid" />
-      <PropertyRef Name="patid" />
-      <PropertyRef Name="billid" />
+      <PropertyRef Name="preId" />
       <PropertyRef Name="medId" />
     </Key>
-    <Property Name="able" Type="bit" Nullable="false" />
-    <Property Name="denid" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="patid" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="billid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="preId" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="medId" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="quantityMedicine" Type="int" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="hide" Type="bit" Nullable="false" />
+    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Receptionist">
     <Key>
@@ -428,7 +426,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__denid__5D95E53A">
+  <Association Name="FK__Appointme__denid__5E8A0973">
     <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -440,7 +438,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__patid__5E8A0973">
+  <Association Name="FK__Appointme__patid__5F7E2DAC">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -656,7 +654,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__billi__51300E55">
+  <Association Name="FK__Prescript__billi__5224328E">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
     <ReferentialConstraint>
@@ -668,7 +666,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__denid__4F47C5E3">
+  <Association Name="FK__Prescript__denid__503BEA1C">
     <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
     <ReferentialConstraint>
@@ -680,7 +678,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__medId__57DD0BE4">
+  <Association Name="FK__Prescript__medId__58D1301D">
     <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
     <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
     <ReferentialConstraint>
@@ -692,7 +690,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__patid__503BEA1C">
+  <Association Name="FK__Prescript__patid__51300E55">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
     <ReferentialConstraint>
@@ -704,19 +702,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescription_Med__56E8E7AB">
+  <Association Name="FK__Prescript__preId__57DD0BE4">
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
     <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Prescription">
-        <PropertyRef Name="denid" />
-        <PropertyRef Name="patid" />
-        <PropertyRef Name="billid" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Prescription_Medicine">
-        <PropertyRef Name="denid" />
-        <PropertyRef Name="patid" />
-        <PropertyRef Name="billid" />
+        <PropertyRef Name="preId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -892,9 +886,7 @@
     <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="procAddPrescription_Medicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="denId" Type="varchar" Mode="In" />
-    <Parameter Name="patId" Type="varchar" Mode="In" />
-    <Parameter Name="billId" Type="varchar" Mode="In" />
+    <Parameter Name="preID" Type="varchar" Mode="In" />
     <Parameter Name="medID" Type="varchar" Mode="In" />
     <Parameter Name="quantityMedicine" Type="int" Mode="In" />
     <Parameter Name="meta" Type="nvarchar(max)" Mode="In" />
@@ -951,11 +943,11 @@
       <End Role="Person" EntitySet="Person" />
       <End Role="Admin" EntitySet="Admin" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__denid__5D95E53A" Association="Self.FK__Appointme__denid__5D95E53A">
+    <AssociationSet Name="FK__Appointme__denid__5E8A0973" Association="Self.FK__Appointme__denid__5E8A0973">
       <End Role="Dentist" EntitySet="Dentist" />
       <End Role="Appointment" EntitySet="Appointment" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__patid__5E8A0973" Association="Self.FK__Appointme__patid__5E8A0973">
+    <AssociationSet Name="FK__Appointme__patid__5F7E2DAC" Association="Self.FK__Appointme__patid__5F7E2DAC">
       <End Role="Patient" EntitySet="Patient" />
       <End Role="Appointment" EntitySet="Appointment" />
     </AssociationSet>
@@ -1027,23 +1019,23 @@
       <End Role="Account" EntitySet="Account" />
       <End Role="Person" EntitySet="Person" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__billi__51300E55" Association="Self.FK__Prescript__billi__51300E55">
+    <AssociationSet Name="FK__Prescript__billi__5224328E" Association="Self.FK__Prescript__billi__5224328E">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="Prescription" EntitySet="Prescription" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__denid__4F47C5E3" Association="Self.FK__Prescript__denid__4F47C5E3">
+    <AssociationSet Name="FK__Prescript__denid__503BEA1C" Association="Self.FK__Prescript__denid__503BEA1C">
       <End Role="Dentist" EntitySet="Dentist" />
       <End Role="Prescription" EntitySet="Prescription" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__medId__57DD0BE4" Association="Self.FK__Prescript__medId__57DD0BE4">
+    <AssociationSet Name="FK__Prescript__medId__58D1301D" Association="Self.FK__Prescript__medId__58D1301D">
       <End Role="Medicine" EntitySet="Medicine" />
       <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__patid__503BEA1C" Association="Self.FK__Prescript__patid__503BEA1C">
+    <AssociationSet Name="FK__Prescript__patid__51300E55" Association="Self.FK__Prescript__patid__51300E55">
       <End Role="Patient" EntitySet="Patient" />
       <End Role="Prescription" EntitySet="Prescription" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescription_Med__56E8E7AB" Association="Self.FK__Prescription_Med__56E8E7AB">
+    <AssociationSet Name="FK__Prescript__preId__57DD0BE4" Association="Self.FK__Prescript__preId__57DD0BE4">
       <End Role="Prescription" EntitySet="Prescription" />
       <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
     </AssociationSet>

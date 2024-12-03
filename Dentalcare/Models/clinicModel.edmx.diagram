@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="acb8e1420b054ddf9c1f8dbae31a25da" Name="Diagram1">
+      <Diagram DiagramId="acb8e1420b054ddf9c1f8dbae31a25da" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="clinicModel.Account" Width="1.5" PointX="0.75" PointY="16.75" />
         <EntityTypeShape EntityType="clinicModel.Admin" Width="1.5" PointX="5.25" PointY="22.125" />
         <EntityTypeShape EntityType="clinicModel.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" />
@@ -30,8 +30,6 @@
         <EntityTypeShape EntityType="clinicModel.NEWS" Width="1.5" PointX="11.75" PointY="0.75" />
         <EntityTypeShape EntityType="clinicModel.Patient" Width="1.5" PointX="5.25" PointY="9.125" />
         <EntityTypeShape EntityType="clinicModel.Person" Width="1.5" PointX="3" PointY="15.375" />
-        <EntityTypeShape EntityType="clinicModel.Prescription" Width="1.5" PointX="10.5" PointY="11.5" />
-        <EntityTypeShape EntityType="clinicModel.Prescription_Medicine" Width="1.5" PointX="15.75" PointY="11.75" />
         <EntityTypeShape EntityType="clinicModel.Receptionist" Width="1.5" PointX="5.25" PointY="31.25" />
         <EntityTypeShape EntityType="clinicModel.Service" Width="1.5" PointX="7.5" PointY="1.875" />
         <EntityTypeShape EntityType="clinicModel.Service_Category" Width="1.5" PointX="5.25" PointY="2.5" />
@@ -43,7 +41,6 @@
         <AssociationConnector Association="clinicModel.FK__Avatar__personId__46E78A0C" />
         <AssociationConnector Association="clinicModel.FK__Bill__patid__66603565" />
         <AssociationConnector Association="clinicModel.FK__Bill_Serv__billI__208CD6FA" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__billi__51300E55" />
         <AssociationConnector Association="clinicModel.FK__Bill_Serv__SerID__2180FB33" />
         <AssociationConnector Association="clinicModel.FK__Calendar__Person__2CF2ADDF" />
         <AssociationConnector Association="clinicModel.FK__Comment__patid__31B762FC" />
@@ -52,16 +49,19 @@
         <AssociationConnector Association="clinicModel.FK__Medicine__id__1AD3FDA4" />
         <AssociationConnector Association="clinicModel.FK__Dentist__falid__47A6A41B" />
         <AssociationConnector Association="clinicModel.FK__Dentist__id__46B27FE2" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__denid__4F47C5E3" />
         <AssociationConnector Association="clinicModel.FK__FixedMateria__id__03F0984C" />
         <AssociationConnector Association="clinicModel.FK__Ingredien__ingre__1332DBDC" />
         <AssociationConnector Association="clinicModel.FK__Material__cateId__7E37BEF6" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__medId__57DD0BE4" />
         <AssociationConnector Association="clinicModel.FK__Patient__id__59FA5E80" />
-        <AssociationConnector Association="clinicModel.FK__Prescript__patid__503BEA1C" />
         <AssociationConnector Association="clinicModel.FK__Receptionist__id__5070F446" />
-        <AssociationConnector Association="clinicModel.FK__Prescription_Med__56E8E7AB" />
         <AssociationConnector Association="clinicModel.FK__Service__cateId__70DDC3D8" />
+        <EntityTypeShape EntityType="clinicModel.Prescription" Width="1.5" PointX="10.5" PointY="11.375" />
+        <EntityTypeShape EntityType="clinicModel.Prescription_Medicine" Width="1.5" PointX="15.75" PointY="25.125" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__billi__5224328E" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__denid__503BEA1C" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__medId__58D1301D" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__patid__51300E55" />
+        <AssociationConnector Association="clinicModel.FK__Prescript__preId__57DD0BE4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
