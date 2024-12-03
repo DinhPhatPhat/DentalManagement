@@ -1,5 +1,4 @@
 *.vsidx
 Web.config
 .vs/*
-/.vs/Dentalcare/v17/DocumentLayout.backup.json
-/.vs/Dentalcare/v17/DocumentLayout.json
+/bin/

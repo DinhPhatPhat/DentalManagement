@@ -128,23 +128,11 @@ C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalca
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\roslyn\vbc.rsp
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\roslyn\VBCSCompiler.exe
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.Helpers.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.Mvc.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.Optimization.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.Razor.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.WebPages.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Web.WebPages.Razor.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Newtonsoft.Json.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Antlr3.Runtime.pdb
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.csproj.AssemblyReference.cache
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.csproj.CoreCompileInputs.cache
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.csproj.CopyComplete
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.dll
 C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\obj\Debug\Dentalcare.pdb
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\EntityFramework.xml
-C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\EntityFramework.SqlServer.xml
 D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\Dentalcare\bin\Dentalcare.dll.config
 D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\Dentalcare\bin\Dentalcare.dll
 D:\College\SummaryTDTU\NetTechnology\CK_main\MainApplication\DentalManagement\Dentalcare\bin\Dentalcare.pdb
