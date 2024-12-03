@@ -3065,6 +3065,7 @@
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Areas\admin\Content\vendor\morrisjs\morris.css" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Dentalcare.dll" />
@@ -3619,10 +3620,6 @@
     <Content Include="Areas\admin\Views\Material_Category1\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
     <None Include=".editorconfig" />
-    <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
-    <None Include=".editorconfig" />
-    <Content Include="Areas\admin\Views\Material_Category1\Index.cshtml" />
-    <None Include=".editorconfig" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\CHANGES.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\LICENSE.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\plugins\bower.json" />
@@ -3644,10 +3641,8 @@
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\skins\moonocolor\readme.md" />
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Areas\admin\Views\Services\getService.cshtml" />
->>>>>>>>> Temporary merge branch 2
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Areas\admin\Views\Services\getService.cshtml" />
->>>>>>>>> Temporary merge branch 2
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
