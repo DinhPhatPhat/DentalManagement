@@ -5,10 +5,10 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Xóa</h2>
+<h2 style="padding: 24px;">Xóa</h2>
 
-<h3>Bạn có muốn xóa thông tin này</h3>
-<div>
+<h3 style="padding: 24px;">Bạn có muốn xóa thông tin này</h3>
+<div style="padding: 24px;">
     <h4>Tin tức</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -51,11 +51,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.order)
+            @Html.DisplayNameFor(model => model.new_order)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.order)
+            @Html.DisplayFor(model => model.new_order)
         </dd>
 
         <dt>
@@ -72,7 +72,7 @@
     {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
+<div class="form-actions no-color" style="padding: 24px;">
     <input type="submit" value="Delete" class="btn btn-danger" /> |
     @Html.ActionLink("Quay lại", "Index")
 </div>

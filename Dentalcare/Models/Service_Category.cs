@@ -12,6 +12,7 @@ namespace Dentalcare.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Service_Category
     {
@@ -20,15 +21,31 @@ namespace Dentalcare.Models
         {
             this.Services = new HashSet<Service>();
         }
-    
+
+        [DisplayName("Mã số")]
         public string id { get; set; }
-        [DisplayName("Loại dịch vụ")]
+        [DisplayName("Tên loại dịch vụ")]
+        [Required(ErrorMessage = "Vui lòng nhập loại dịch vụ.")]
         public string name { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập mô tả.")]
+        [DisplayName("Mô tả")]
         public string descrip { get; set; }
+        [DisplayName("Ghi chú")]
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string note { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập meta.")]
         public string meta { get; set; }
+        [DisplayName("Hiển thị")]
         public bool hide { get; set; }
+        [DisplayName("Vị trí")]
         public int order { get; set; }
+
+        [ValidPositiveInt]
+        [DisplayName("Vị trí")]
+        [Required(ErrorMessage = "Vui lòng nhập vị trí.")]
+        public int new_order { get; set; }
+        [DisplayName("Ngày cập nhật")]
         public System.DateTime datebegin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

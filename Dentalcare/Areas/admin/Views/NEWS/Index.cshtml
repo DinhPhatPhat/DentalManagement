@@ -32,7 +32,7 @@
                             @Html.DisplayNameFor(model => model.hide)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.order)
+                            @Html.DisplayNameFor(model => model.new_order)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.datebegin)
@@ -57,7 +57,7 @@
                                 @(item.hide ? "Ẩn":"Hiển thị")
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.order)
+                                @Html.DisplayFor(modelItem => item.new_order)
                             </td>
                             <td>
                                 @(item.datebegin != null ? item.datebegin.ToString("dd/MM/yyyy") : "")

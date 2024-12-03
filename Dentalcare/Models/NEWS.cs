@@ -16,7 +16,7 @@ namespace Dentalcare.Models
 
     public partial class NEWS
     {
-        [DisplayName("STT")]
+        [DisplayName("Mã số")]
         public string id { get; set; }
 
         [DisplayName("Hình ảnh")]
@@ -46,6 +46,11 @@ namespace Dentalcare.Models
         [DisplayName("Vị trí")]
         [Required(ErrorMessage = "Vui lòng nhập thứ tự.")]
         public int order { get; set; }
+
+        [DisplayName("Vị trí")]
+        [Required(ErrorMessage = "Vui lòng nhập vị trí.")]
+        [ValidPositiveInt]
+        public int new_order { get; set; }
 
         [DisplayName("Ngày cập nhật")]
         public System.DateTime datebegin { get; set; }

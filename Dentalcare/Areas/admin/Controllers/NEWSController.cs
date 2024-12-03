@@ -52,7 +52,7 @@ namespace Dentalcare.Areas.admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "id,img,title,descrip,msg,meta,hide,order,datebegin")] NEWS news, HttpPostedFileBase img)
+        public ActionResult Create([Bind(Include = "id,img,title,descrip,msg,meta,hide,new_order,datebegin")] NEWS news, HttpPostedFileBase img)
         {
             try
             {
@@ -95,12 +95,9 @@ namespace Dentalcare.Areas.admin.Controllers
                     news.datebegin = Convert.ToDateTime(DateTime.Now.ToShortDateString());
                     news.meta = Functions.ConvertToUnSign(news.meta);
                     news.msg = news.msg;
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT NEWS ON");
-                    news.order = getMaxOrder();
-                    // Save the news item to the database
+                    news.new_order = getMaxOrder();
                     db.NEWS.Add(news);
                     db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT NEWS OFF");
                     return RedirectToAction("Index");
                 }
             }
@@ -138,7 +135,7 @@ namespace Dentalcare.Areas.admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "id,title,img,descrip,msg,meta,hide,order,datebegin")] NEWS news, HttpPostedFileBase img)
+        public ActionResult Edit([Bind(Include = "id,title,img,descrip,msg,meta,hide,new_order,datebegin")] NEWS news, HttpPostedFileBase img)
         {
             try
             {
@@ -161,11 +158,9 @@ namespace Dentalcare.Areas.admin.Controllers
                     temp.msg = news.msg;
                     temp.meta = Functions.ConvertToUnSign(news.meta); //convert Tiếng Việt không dấu
                     temp.hide = news.hide;
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT NEWS ON");
-                    temp.order = news.order;
+                    temp.new_order = news.new_order;
                     db.Entry(temp).State = EntityState.Modified;
                     db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT NEWS OFF");
                     return RedirectToAction("Index");
                 }
             }
@@ -224,11 +219,11 @@ namespace Dentalcare.Areas.admin.Controllers
 
         public int getMaxOrder()
         {
-            if (db.NEWS.Count() == 0)
-            {
-                return 1;
-            }
-            return db.NEWS.Count() + 1;
+            int lastOrder = db.NEWS
+                               .OrderByDescending(n => n.order)
+                               .Select(n => n.order)
+                               .FirstOrDefault();
+            return lastOrder + 1;
         }
     }
 }

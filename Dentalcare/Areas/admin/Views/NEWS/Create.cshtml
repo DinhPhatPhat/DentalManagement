@@ -5,9 +5,9 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Thêm mới</h2>
+<h2 style="padding: 24px;">Thêm mới</h2>
 
-@using (Html.BeginForm("Create", "NEWS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "NEWS", FormMethod.Post, new { enctype = "multipart/form-data", @style = "padding: 24px;" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -81,7 +81,7 @@
     </div>
 }
 
-<div>
+<div style="padding: 24px;">
     @Html.ActionLink("Quay lại", "Index")
 </div>
 

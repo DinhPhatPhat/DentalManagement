@@ -305,6 +305,7 @@
     <Property Name="hide" Type="bit" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Patient">
     <Key>
@@ -399,6 +400,7 @@
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="calUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Service_Category">
     <Key>
@@ -412,6 +414,7 @@
     <Property Name="hide" Type="bit" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <Association Name="FK__Admin__id__4BAC3F29">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />

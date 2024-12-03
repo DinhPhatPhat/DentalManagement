@@ -5,9 +5,9 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Thêm mới</h2>
+<h2 style="padding: 24px;">Thêm mới</h2>
 
-@using (Html.BeginForm("Create", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Services", FormMethod.Post, new { enctype = "multipart/form-data" , @style = "padding: 24px;" }))
 {
     @Html.AntiForgeryToken()
 
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", data_val = "true"} })
                 @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -105,7 +105,7 @@
     </div>
 }
 
-<div>
+<div style="padding: 24px;">
     @Html.ActionLink("Quay lại", "Index")
 </div>
 

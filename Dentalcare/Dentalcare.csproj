@@ -277,6 +277,7 @@
     <Compile Include="Services\InfoClinicManager.cs" />
     <Compile Include="Services\PatientManager.cs" />
     <Compile Include="Services\ServiceCategoryManager.cs" />
+    <Compile Include="ValidateValue\ValidPositiveIntegerAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\adapters\jquery.js" />

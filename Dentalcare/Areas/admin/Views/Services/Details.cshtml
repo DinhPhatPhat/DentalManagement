@@ -5,9 +5,9 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Chi tiết</h2>
+<h2 style="padding: 24px;">Chi tiết</h2>
 
-<div>
+<div style="padding: 24px;">
     <h4>Dịch vụ</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -109,7 +109,7 @@
 
     </dl>
 </div>
-<p>
+<p style="padding: 24px;">
     @Html.ActionLink("Cập nhật", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Quay lại", "Index")
 </p>

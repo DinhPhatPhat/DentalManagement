@@ -69,7 +69,7 @@ namespace Dentalcare.Areas.admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "id,cateId,name,price,note,descrip,caredActor,meta,hide,order,datebegin,calUnit,img")] Service service,HttpPostedFileBase img)
+        public ActionResult Create([Bind(Include = "id,cateId,name,price,note,descrip,caredActor,meta,hide,new_order,datebegin,calUnit,img")] Service service,HttpPostedFileBase img)
         {
             getCategory();
             try
@@ -109,11 +109,9 @@ namespace Dentalcare.Areas.admin.Controllers
                     }
                     service.datebegin = Convert.ToDateTime(DateTime.Now.ToShortDateString());
                     service.meta = Functions.ConvertToUnSign(service.meta); //convert Tiếng Việt không dấu
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT SERVICE ON");
-                    service.order = getMaxOrder();
+                    service.new_order = getMaxOrder();
                     db.Services.Add(service);
                     db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT SERVICE OFF");
                     return RedirectToAction("Index", "Services", new { id = service.cateId });
                 }
             }
@@ -152,7 +150,7 @@ namespace Dentalcare.Areas.admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "id,cateId,name,price,note,descrip,caredActor,meta,hide,order,datebegin,calUnit,img")] Service service,HttpPostedFileBase img)
+        public ActionResult Edit([Bind(Include = "id,cateId,name,price,note,descrip,caredActor,meta,hide,new_order,datebegin,calUnit,img")] Service service,HttpPostedFileBase img)
         {
             getCategory();
             try
@@ -187,11 +185,9 @@ namespace Dentalcare.Areas.admin.Controllers
                     temp.calUnit = service.calUnit;
                     temp.hide = service.hide;
 
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT SERVICE ON");
-                    temp.order = service.order;
+                    temp.new_order = service.new_order;
                     db.Entry(temp).State = EntityState.Modified;
                     db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT SERVICE OFF");
                     return RedirectToAction("Index", "Services", new { id = service.cateId });
                 }
             }
@@ -245,11 +241,11 @@ namespace Dentalcare.Areas.admin.Controllers
 
         public int getMaxOrder()
         {
-            if(db.Services.Count() == 0)
-            {
-                return 1;
-            }
-            return db.Services.Count() + 1;
+            int lastOrder = db.Services
+                               .OrderByDescending(n => n.order)
+                               .Select(n => n.order)
+                               .FirstOrDefault();
+            return lastOrder + 1;
         }
     }
 }

@@ -69,11 +69,5 @@ namespace Dental.Help
             // Format the new id to have 8 digits
             return prefix + numericValue.ToString("D8"); // "D8" ensures 8 digits
         }
-
-
-
-
     }
-
-
 }

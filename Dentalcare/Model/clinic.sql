@@ -2369,3 +2369,34 @@ N'Nha khoa chuyên nghiệp, chăm sóc tận tâm.',
 '2004-12-12',
 'thong-tin-nha-khoa'
 go
+
+--them new order 
+
+--bang tin tuc
+ALTER TABLE NEWS
+ADD new_order INT
+go
+
+UPDATE NEWS
+SET new_order = [order];
+go
+
+--bang service_category
+ALTER TABLE Service_Category
+ADD new_order INT
+go
+
+UPDATE Service_Category
+SET new_order = [order];
+go
+
+
+
+--bang service
+ALTER TABLE Service
+ADD new_order INT
+go
+
+UPDATE Service
+SET new_order = [order];
+go

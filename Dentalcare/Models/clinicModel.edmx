@@ -310,6 +310,7 @@
           <Property Name="hide" Type="bit" Nullable="false" />
           <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datebegin" Type="datetime" Nullable="false" />
+          <Property Name="new_order" Type="int" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -404,6 +405,7 @@
           <Property Name="datebegin" Type="datetime" Nullable="false" />
           <Property Name="calUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="img" Type="varchar(max)" Nullable="false" />
+          <Property Name="new_order" Type="int" />
         </EntityType>
         <EntityType Name="Service_Category">
           <Key>
@@ -417,6 +419,7 @@
           <Property Name="hide" Type="bit" Nullable="false" />
           <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datebegin" Type="datetime" Nullable="false" />
+          <Property Name="new_order" Type="int" />
         </EntityType>
         <Association Name="FK__Admin__id__4BAC3F29">
           <End Role="Person" Type="Self.Person" Multiplicity="1" />
@@ -1703,6 +1706,7 @@
           <Property Name="hide" Type="Boolean" Nullable="false" />
           <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="new_order" Type="Int32" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -1819,6 +1823,7 @@
           <Property Name="img" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill_Service" Relationship="clinicModel.FK__Bill_Serv__SerID__2180FB33" FromRole="Service" ToRole="Bill_Service" />
           <NavigationProperty Name="Service_Category" Relationship="clinicModel.FK__Service__cateId__70DDC3D8" FromRole="Service" ToRole="Service_Category" />
+          <Property Name="new_order" Type="Int32" />
         </EntityType>
         <EntityType Name="Service_Category">
           <Key>
@@ -1833,6 +1838,7 @@
           <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Services" Relationship="clinicModel.FK__Service__cateId__70DDC3D8" FromRole="Service_Category" ToRole="Service" />
+          <Property Name="new_order" Type="Int32" />
         </EntityType>
         <Association Name="FK__Person__id__4316F928">
           <End Type="clinicModel.Account" Role="Account" Multiplicity="1" />
@@ -2506,6 +2512,7 @@
           <EntitySetMapping Name="NEWS">
             <EntityTypeMapping TypeName="clinicModel.NEWS">
               <MappingFragment StoreEntitySet="NEWS">
+                <ScalarProperty Name="new_order" ColumnName="new_order" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
                 <ScalarProperty Name="order" ColumnName="order" />
                 <ScalarProperty Name="hide" ColumnName="hide" />
@@ -2597,6 +2604,7 @@
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="clinicModel.Service">
               <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="new_order" ColumnName="new_order" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="calUnit" ColumnName="calUnit" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
@@ -2616,6 +2624,7 @@
           <EntitySetMapping Name="Service_Category">
             <EntityTypeMapping TypeName="clinicModel.Service_Category">
               <MappingFragment StoreEntitySet="Service_Category">
+                <ScalarProperty Name="new_order" ColumnName="new_order" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
                 <ScalarProperty Name="order" ColumnName="order" />
                 <ScalarProperty Name="hide" ColumnName="hide" />

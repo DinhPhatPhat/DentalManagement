@@ -339,6 +339,7 @@
     <EntitySetMapping Name="NEWS">
       <EntityTypeMapping TypeName="clinicModel.NEWS">
         <MappingFragment StoreEntitySet="NEWS">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
           <ScalarProperty Name="hide" ColumnName="hide" />
@@ -430,6 +431,7 @@
     <EntitySetMapping Name="Services">
       <EntityTypeMapping TypeName="clinicModel.Service">
         <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="calUnit" ColumnName="calUnit" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
@@ -449,6 +451,7 @@
     <EntitySetMapping Name="Service_Category">
       <EntityTypeMapping TypeName="clinicModel.Service_Category">
         <MappingFragment StoreEntitySet="Service_Category">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
           <ScalarProperty Name="hide" ColumnName="hide" />

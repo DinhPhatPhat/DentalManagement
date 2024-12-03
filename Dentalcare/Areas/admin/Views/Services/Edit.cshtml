@@ -5,9 +5,9 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Chỉnh sửa</h2>
+<h2 style="padding: 24px;">Chỉnh sửa</h2>
 
-@using (Html.BeginForm("Edit", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Services", FormMethod.Post, new { enctype = "multipart/form-data", @style = "padding: 24px;" }))
 {
     @Html.AntiForgeryToken()
 
@@ -87,7 +87,7 @@
             <div class="col-md-10">
                 <div class="checkbox">
                     @{
-                        bool hide = (Model.hide ? false : true);
+                        bool hide = (Model.hide ? true : false);
                     }
                     @Html.CheckBoxFor(model => hide)
                 </div>
@@ -103,10 +103,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.order, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.new_order, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.order, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.order, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.new_order, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.new_order, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -118,6 +118,30 @@
     </div>
 }
 
-<div>
+<div style="padding: 24px;">
     @Html.ActionLink("Quay lại", "Index")
 </div>
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            $("#name").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+
+                // Thay thế các ký tự có dấu thành không dấu
+                text_create = text
+                    .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ẳ|ẵ|ặ/g, "a")
+                    .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
+                    .replace(/ì|í|ị|ỉ|ĩ/g, "i")
+                    .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
+                    .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
+                    .replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
+                    .replace(/đ/g, "d")
+                    .replace(/\ /g, '-'); // Thay thế khoảng trắng thành dấu '-'
+                $("#meta").val(text_create);
+            }).keyup();
+        });
+    </script>
+}

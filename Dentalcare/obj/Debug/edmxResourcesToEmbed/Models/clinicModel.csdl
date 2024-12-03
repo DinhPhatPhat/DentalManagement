@@ -641,6 +641,7 @@
     <Property Name="hide" Type="Boolean" Nullable="false" />
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Patient">
     <Key>
@@ -757,6 +758,7 @@
     <Property Name="img" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Bill_Service" Relationship="clinicModel.FK__Bill_Serv__SerID__2180FB33" FromRole="Service" ToRole="Bill_Service" />
     <NavigationProperty Name="Service_Category" Relationship="clinicModel.FK__Service__cateId__70DDC3D8" FromRole="Service" ToRole="Service_Category" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Service_Category">
     <Key>
@@ -771,6 +773,7 @@
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Services" Relationship="clinicModel.FK__Service__cateId__70DDC3D8" FromRole="Service_Category" ToRole="Service" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <Association Name="FK__Person__id__4316F928">
     <End Type="clinicModel.Account" Role="Account" Multiplicity="1" />

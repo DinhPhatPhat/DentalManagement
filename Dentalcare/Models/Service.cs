@@ -22,7 +22,7 @@ namespace Dentalcare.Models
             this.Bill_Service = new HashSet<Bill_Service>();
         }
 
-        [DisplayName("STT")]
+        [DisplayName("Mã số")]
 
         public string id { get; set; }
         [DisplayName("Danh mục")]
@@ -33,6 +33,7 @@ namespace Dentalcare.Models
         public string name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập giá.")]
         [DisplayName("Giá")]
+        [ValidPositiveInt]
         public int price { get; set; }
 
         [DisplayFormat(ConvertEmptyStringToNull = false)]
@@ -49,10 +50,16 @@ namespace Dentalcare.Models
 
         [DisplayName("Hiển thị")]
         public bool hide { get; set; }
-
+        
+        [ValidPositiveInt]
         [DisplayName("Vị trí")]
         [Required(ErrorMessage = "Vui lòng nhập vị trí.")]
         public int order { get; set; }
+
+        [ValidPositiveInt]
+        [DisplayName("Vị trí")]
+        [Required(ErrorMessage = "Vui lòng nhập vị trí.")]
+        public int new_order { get; set; }
 
         [DisplayName("Ngày cập nhật")]
         public System.DateTime datebegin { get; set; }
