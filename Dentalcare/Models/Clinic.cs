@@ -11,16 +11,19 @@ namespace Dentalcare.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Clinic
     {
         public string id { get; set; }
         public string name { get; set; }
         public string phoneNumber { get; set; }
         public string address { get; set; }
+        [Required(AllowEmptyStrings = true)]
         public string img { get; set; }
         public string email { get; set; }
         public string facebook { get; set; }
+        [Required(AllowEmptyStrings = true)]
         public string zalo { get; set; }
         public string instagram { get; set; }
         public string youtube { get; set; }

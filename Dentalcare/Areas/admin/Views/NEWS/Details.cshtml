@@ -5,24 +5,22 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="padding: 24px;">Chi tiết</h2>
 
-<div>
-    <h4>NEWS</h4>
+<div style="padding: 24px;">
+    <h4>Tin tức</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.img)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.img)
+            <img src="~/@Model.img" width="150px" />
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.title)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.title)
         </dd>
@@ -32,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.msg)
+            @Html.Raw(Model.msg)
         </dd>
 
         <dt>
@@ -48,15 +46,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.hide)
+            @(Model.hide ? "Ẩn": "Hiển thị" )
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.order)
+            @Html.DisplayNameFor(model => model.new_order)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.order)
+            @Html.DisplayFor(model => model.new_order)
         </dd>
 
         <dt>
@@ -64,12 +62,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.datebegin)
+            @(Model.datebegin != null ? Model.datebegin.ToString("dd/MM/yyyy") : "")
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="padding: 24px;">
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Quay lại", "Index")
 </p>

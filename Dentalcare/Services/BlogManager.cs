@@ -19,7 +19,7 @@ namespace Dentalcare.Services
         {
             return db.NEWS
                      .Where(f => f.hide == false)
-                     .OrderBy(f => f.order)
+                     .OrderBy(f => f.new_order)
                      .ToList();
 
         }

@@ -299,11 +299,13 @@
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="img" Type="varchar(max)" Nullable="false" />
     <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
     <Property Name="msg" Type="nvarchar(max)" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="hide" Type="bit" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Patient">
     <Key>
@@ -394,11 +396,11 @@
     <Property Name="caredActor" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="hide" Type="bit" Nullable="false" />
-    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="calUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="img" Type="varchar(max)" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Service_Category">
     <Key>
@@ -410,9 +412,9 @@
     <Property Name="note" Type="nvarchar(max)" Nullable="false" />
     <Property Name="meta" Type="varchar(max)" Nullable="false" />
     <Property Name="hide" Type="bit" Nullable="false" />
-    <Property Name="able" Type="bit" Nullable="false" />
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <Association Name="FK__Admin__id__4BAC3F29">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
@@ -426,7 +428,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__denid__5F7E2DAC">
+  <Association Name="FK__Appointme__denid__5D95E53A">
     <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -438,7 +440,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__patid__607251E5">
+  <Association Name="FK__Appointme__patid__5E8A0973">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -486,7 +488,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill_Serv__billI__22751F6C">
+  <Association Name="FK__Bill_Serv__billI__208CD6FA">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="Bill_Service" Type="Self.Bill_Service" Multiplicity="*" />
     <ReferentialConstraint>
@@ -498,7 +500,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill_Serv__SerID__236943A5">
+  <Association Name="FK__Bill_Serv__SerID__2180FB33">
     <End Role="Service" Type="Self.Service" Multiplicity="1" />
     <End Role="Bill_Service" Type="Self.Bill_Service" Multiplicity="*" />
     <ReferentialConstraint>
@@ -510,7 +512,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Calendar__Person__2EDAF651">
+  <Association Name="FK__Calendar__Person__2CF2ADDF">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Calendar" Type="Self.Calendar" Multiplicity="*" />
     <ReferentialConstraint>
@@ -522,7 +524,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comment__patid__339FAB6E">
+  <Association Name="FK__Comment__patid__31B762FC">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -534,7 +536,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ConsumableMa__id__114A936A">
+  <Association Name="FK__ConsumableMa__id__0F624AF8">
     <End Role="Material" Type="Self.Material" Multiplicity="1" />
     <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -546,7 +548,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Dentist__falid__498EEC8D">
+  <Association Name="FK__Dentist__falid__47A6A41B">
     <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
     <End Role="Dentist" Type="Self.Dentist" Multiplicity="*" />
     <ReferentialConstraint>
@@ -558,7 +560,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Dentist__id__489AC854">
+  <Association Name="FK__Dentist__id__46B27FE2">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Dentist" Type="Self.Dentist" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -570,7 +572,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FixedMateria__id__05D8E0BE">
+  <Association Name="FK__FixedMateria__id__03F0984C">
     <End Role="Material" Type="Self.Material" Multiplicity="1" />
     <End Role="FixedMaterial" Type="Self.FixedMaterial" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -582,7 +584,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Ingredien__consu__160F4887">
+  <Association Name="FK__Ingredien__consu__14270015">
     <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="1" />
     <End Role="Ingredient_ConsumableMaterial" Type="Self.Ingredient_ConsumableMaterial" Multiplicity="*" />
     <ReferentialConstraint>
@@ -594,7 +596,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Ingredien__ingre__151B244E">
+  <Association Name="FK__Ingredien__ingre__1332DBDC">
     <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
     <End Role="Ingredient_ConsumableMaterial" Type="Self.Ingredient_ConsumableMaterial" Multiplicity="*" />
     <ReferentialConstraint>
@@ -606,7 +608,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Material__cateId__00200768">
+  <Association Name="FK__Material__cateId__7E37BEF6">
     <End Role="Material_Category" Type="Self.Material_Category" Multiplicity="1" />
     <End Role="Material" Type="Self.Material" Multiplicity="*" />
     <ReferentialConstraint>
@@ -618,7 +620,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Medicine__id__1CBC4616">
+  <Association Name="FK__Medicine__id__1AD3FDA4">
     <End Role="ConsumableMaterial" Type="Self.ConsumableMaterial" Multiplicity="1" />
     <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -654,7 +656,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__billi__531856C7">
+  <Association Name="FK__Prescript__billi__51300E55">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
     <ReferentialConstraint>
@@ -666,7 +668,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__denid__51300E55">
+  <Association Name="FK__Prescript__denid__4F47C5E3">
     <End Role="Dentist" Type="Self.Dentist" Multiplicity="1" />
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
     <ReferentialConstraint>
@@ -678,7 +680,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__medId__59C55456">
+  <Association Name="FK__Prescript__medId__57DD0BE4">
     <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
     <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
     <ReferentialConstraint>
@@ -690,7 +692,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescript__patid__5224328E">
+  <Association Name="FK__Prescript__patid__503BEA1C">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
     <ReferentialConstraint>
@@ -702,7 +704,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Prescription_Med__58D1301D">
+  <Association Name="FK__Prescription_Med__56E8E7AB">
     <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
     <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
     <ReferentialConstraint>
@@ -730,7 +732,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Service__cateId__72C60C4A">
+  <Association Name="FK__Service__cateId__70DDC3D8">
     <End Role="Service_Category" Type="Self.Service_Category" Multiplicity="1" />
     <End Role="Service" Type="Self.Service" Multiplicity="*" />
     <ReferentialConstraint>
@@ -878,6 +880,7 @@
   </Function>
   <Function Name="procAddNews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="meta" Type="varchar(max)" Mode="In" />
   </Function>
@@ -948,11 +951,11 @@
       <End Role="Person" EntitySet="Person" />
       <End Role="Admin" EntitySet="Admin" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__denid__5F7E2DAC" Association="Self.FK__Appointme__denid__5F7E2DAC">
+    <AssociationSet Name="FK__Appointme__denid__5D95E53A" Association="Self.FK__Appointme__denid__5D95E53A">
       <End Role="Dentist" EntitySet="Dentist" />
       <End Role="Appointment" EntitySet="Appointment" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__patid__607251E5" Association="Self.FK__Appointme__patid__607251E5">
+    <AssociationSet Name="FK__Appointme__patid__5E8A0973" Association="Self.FK__Appointme__patid__5E8A0973">
       <End Role="Patient" EntitySet="Patient" />
       <End Role="Appointment" EntitySet="Appointment" />
     </AssociationSet>
@@ -968,51 +971,51 @@
       <End Role="Patient" EntitySet="Patient" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill_Serv__billI__22751F6C" Association="Self.FK__Bill_Serv__billI__22751F6C">
+    <AssociationSet Name="FK__Bill_Serv__billI__208CD6FA" Association="Self.FK__Bill_Serv__billI__208CD6FA">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="Bill_Service" EntitySet="Bill_Service" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill_Serv__SerID__236943A5" Association="Self.FK__Bill_Serv__SerID__236943A5">
+    <AssociationSet Name="FK__Bill_Serv__SerID__2180FB33" Association="Self.FK__Bill_Serv__SerID__2180FB33">
       <End Role="Service" EntitySet="Service" />
       <End Role="Bill_Service" EntitySet="Bill_Service" />
     </AssociationSet>
-    <AssociationSet Name="FK__Calendar__Person__2EDAF651" Association="Self.FK__Calendar__Person__2EDAF651">
+    <AssociationSet Name="FK__Calendar__Person__2CF2ADDF" Association="Self.FK__Calendar__Person__2CF2ADDF">
       <End Role="Person" EntitySet="Person" />
       <End Role="Calendar" EntitySet="Calendar" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comment__patid__339FAB6E" Association="Self.FK__Comment__patid__339FAB6E">
+    <AssociationSet Name="FK__Comment__patid__31B762FC" Association="Self.FK__Comment__patid__31B762FC">
       <End Role="Patient" EntitySet="Patient" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
-    <AssociationSet Name="FK__ConsumableMa__id__114A936A" Association="Self.FK__ConsumableMa__id__114A936A">
+    <AssociationSet Name="FK__ConsumableMa__id__0F624AF8" Association="Self.FK__ConsumableMa__id__0F624AF8">
       <End Role="Material" EntitySet="Material" />
       <End Role="ConsumableMaterial" EntitySet="ConsumableMaterial" />
     </AssociationSet>
-    <AssociationSet Name="FK__Dentist__falid__498EEC8D" Association="Self.FK__Dentist__falid__498EEC8D">
+    <AssociationSet Name="FK__Dentist__falid__47A6A41B" Association="Self.FK__Dentist__falid__47A6A41B">
       <End Role="Faculty" EntitySet="Faculty" />
       <End Role="Dentist" EntitySet="Dentist" />
     </AssociationSet>
-    <AssociationSet Name="FK__Dentist__id__489AC854" Association="Self.FK__Dentist__id__489AC854">
+    <AssociationSet Name="FK__Dentist__id__46B27FE2" Association="Self.FK__Dentist__id__46B27FE2">
       <End Role="Person" EntitySet="Person" />
       <End Role="Dentist" EntitySet="Dentist" />
     </AssociationSet>
-    <AssociationSet Name="FK__FixedMateria__id__05D8E0BE" Association="Self.FK__FixedMateria__id__05D8E0BE">
+    <AssociationSet Name="FK__FixedMateria__id__03F0984C" Association="Self.FK__FixedMateria__id__03F0984C">
       <End Role="Material" EntitySet="Material" />
       <End Role="FixedMaterial" EntitySet="FixedMaterial" />
     </AssociationSet>
-    <AssociationSet Name="FK__Ingredien__consu__160F4887" Association="Self.FK__Ingredien__consu__160F4887">
+    <AssociationSet Name="FK__Ingredien__consu__14270015" Association="Self.FK__Ingredien__consu__14270015">
       <End Role="ConsumableMaterial" EntitySet="ConsumableMaterial" />
       <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
     </AssociationSet>
-    <AssociationSet Name="FK__Ingredien__ingre__151B244E" Association="Self.FK__Ingredien__ingre__151B244E">
+    <AssociationSet Name="FK__Ingredien__ingre__1332DBDC" Association="Self.FK__Ingredien__ingre__1332DBDC">
       <End Role="Ingredient" EntitySet="Ingredient" />
       <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
     </AssociationSet>
-    <AssociationSet Name="FK__Material__cateId__00200768" Association="Self.FK__Material__cateId__00200768">
+    <AssociationSet Name="FK__Material__cateId__7E37BEF6" Association="Self.FK__Material__cateId__7E37BEF6">
       <End Role="Material_Category" EntitySet="Material_Category" />
       <End Role="Material" EntitySet="Material" />
     </AssociationSet>
-    <AssociationSet Name="FK__Medicine__id__1CBC4616" Association="Self.FK__Medicine__id__1CBC4616">
+    <AssociationSet Name="FK__Medicine__id__1AD3FDA4" Association="Self.FK__Medicine__id__1AD3FDA4">
       <End Role="ConsumableMaterial" EntitySet="ConsumableMaterial" />
       <End Role="Medicine" EntitySet="Medicine" />
     </AssociationSet>
@@ -1024,23 +1027,23 @@
       <End Role="Account" EntitySet="Account" />
       <End Role="Person" EntitySet="Person" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__billi__531856C7" Association="Self.FK__Prescript__billi__531856C7">
+    <AssociationSet Name="FK__Prescript__billi__51300E55" Association="Self.FK__Prescript__billi__51300E55">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="Prescription" EntitySet="Prescription" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__denid__51300E55" Association="Self.FK__Prescript__denid__51300E55">
+    <AssociationSet Name="FK__Prescript__denid__4F47C5E3" Association="Self.FK__Prescript__denid__4F47C5E3">
       <End Role="Dentist" EntitySet="Dentist" />
       <End Role="Prescription" EntitySet="Prescription" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__medId__59C55456" Association="Self.FK__Prescript__medId__59C55456">
+    <AssociationSet Name="FK__Prescript__medId__57DD0BE4" Association="Self.FK__Prescript__medId__57DD0BE4">
       <End Role="Medicine" EntitySet="Medicine" />
       <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescript__patid__5224328E" Association="Self.FK__Prescript__patid__5224328E">
+    <AssociationSet Name="FK__Prescript__patid__503BEA1C" Association="Self.FK__Prescript__patid__503BEA1C">
       <End Role="Patient" EntitySet="Patient" />
       <End Role="Prescription" EntitySet="Prescription" />
     </AssociationSet>
-    <AssociationSet Name="FK__Prescription_Med__58D1301D" Association="Self.FK__Prescription_Med__58D1301D">
+    <AssociationSet Name="FK__Prescription_Med__56E8E7AB" Association="Self.FK__Prescription_Med__56E8E7AB">
       <End Role="Prescription" EntitySet="Prescription" />
       <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
     </AssociationSet>
@@ -1048,7 +1051,7 @@
       <End Role="Person" EntitySet="Person" />
       <End Role="Receptionist" EntitySet="Receptionist" />
     </AssociationSet>
-    <AssociationSet Name="FK__Service__cateId__72C60C4A" Association="Self.FK__Service__cateId__72C60C4A">
+    <AssociationSet Name="FK__Service__cateId__70DDC3D8" Association="Self.FK__Service__cateId__70DDC3D8">
       <End Role="Service_Category" EntitySet="Service_Category" />
       <End Role="Service" EntitySet="Service" />
     </AssociationSet>

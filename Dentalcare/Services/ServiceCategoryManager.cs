@@ -20,6 +20,7 @@ namespace Dentalcare.Services
         {
             return db.Service_Category
                      .Where(f => f.hide == false)
+                     .OrderBy(f => f.new_order)
                      .ToList();
         }
 
