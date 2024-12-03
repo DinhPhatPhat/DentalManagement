@@ -1,0 +1,99 @@
+﻿@model Dentalcare.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicesPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicesPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrescriptionPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrescriptionPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.able)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.able)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hide)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hide)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datebegin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datebegin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isPayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isPayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.meta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,124 @@
+﻿@using Dental.Help
+@model IEnumerable<Dentalcare.Models.Prescription>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+<!-- HTML -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách toa thuốc</h6>
+    </div>
+    <div style="margin-left: 20px; margin-top: 20px">
+        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Prescriptions")'">Thêm mới</button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.note)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.hide)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.meta)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.order)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.datebegin)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.new_order)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.able)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Bill.meta)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Dentist.title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Patient.meta)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.note)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hide)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.meta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.order)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.datebegin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.new_order)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.able)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bill.meta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dentist.title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient.meta)
+                        </td>
+                        <td>
+                            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Prescriptions", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Prescriptions", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <link href="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.css")" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <!-- Page level plugins -->
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.js")"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="@Url.Content("~/Areas/admin/Content/js/demo/datatables-demo.js")"></script>
+}

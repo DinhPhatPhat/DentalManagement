@@ -105,13 +105,14 @@
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="clinicModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="patid" ColumnName="patid" />
           <ScalarProperty Name="isPayed" ColumnName="isPayed" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
           <ScalarProperty Name="meta" ColumnName="meta" />
           <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="able" ColumnName="able" />
           <ScalarProperty Name="PrescriptionPrice" ColumnName="PrescriptionPrice" />
           <ScalarProperty Name="ServicesPrice" ColumnName="ServicesPrice" />
           <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
@@ -385,38 +386,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Prescriptions">
-      <EntityTypeMapping TypeName="clinicModel.Prescription">
-        <MappingFragment StoreEntitySet="Prescription">
-          <ScalarProperty Name="billid" ColumnName="billid" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-          <ScalarProperty Name="denid" ColumnName="denid" />
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="able" ColumnName="able" />
-          <ScalarProperty Name="note" ColumnName="note" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Prescription_Medicine">
-      <EntityTypeMapping TypeName="clinicModel.Prescription_Medicine">
-        <MappingFragment StoreEntitySet="Prescription_Medicine">
-          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
-          <ScalarProperty Name="order" ColumnName="order" />
-          <ScalarProperty Name="hide" ColumnName="hide" />
-          <ScalarProperty Name="meta" ColumnName="meta" />
-          <ScalarProperty Name="quantityMedicine" ColumnName="quantityMedicine" />
-          <ScalarProperty Name="medId" ColumnName="medId" />
-          <ScalarProperty Name="billid" ColumnName="billid" />
-          <ScalarProperty Name="patid" ColumnName="patid" />
-          <ScalarProperty Name="denid" ColumnName="denid" />
-          <ScalarProperty Name="able" ColumnName="able" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Receptionists">
       <EntityTypeMapping TypeName="clinicModel.Receptionist">
         <MappingFragment StoreEntitySet="Receptionist">
@@ -460,6 +429,39 @@
           <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="clinicModel.Prescription">
+        <MappingFragment StoreEntitySet="Prescription">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
+          <ScalarProperty Name="billid" ColumnName="billid" />
+          <ScalarProperty Name="patid" ColumnName="patid" />
+          <ScalarProperty Name="denid" ColumnName="denid" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescription_Medicine">
+      <EntityTypeMapping TypeName="clinicModel.Prescription_Medicine">
+        <MappingFragment StoreEntitySet="Prescription_Medicine">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="quantityMedicine" ColumnName="quantityMedicine" />
+          <ScalarProperty Name="medId" ColumnName="medId" />
+          <ScalarProperty Name="preId" ColumnName="preId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
