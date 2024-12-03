@@ -22,11 +22,11 @@
             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>@Html.DisplayNameFor(model => model.Person.name)</th>
                         <th>@Html.DisplayNameFor(model => model.hide)</th>
                         <th>@Html.DisplayNameFor(model => model.meta)</th>
                         <th>@Html.DisplayNameFor(model => model.order)</th>
                         <th>@Html.DisplayNameFor(model => model.datebegin)</th>
-                        <th>@Html.DisplayNameFor(model => model.Person.meta)</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -34,11 +34,12 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Person.name)</td>
                             <td>@Html.DisplayFor(modelItem => item.hide)</td>
                             <td>@Html.DisplayFor(modelItem => item.meta)</td>
                             <td>@Html.DisplayFor(modelItem => item.order)</td>
                             <td>@Html.DisplayFor(modelItem => item.datebegin)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Person.meta)</td>
+
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.id }) |

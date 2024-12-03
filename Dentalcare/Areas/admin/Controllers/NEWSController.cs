@@ -69,7 +69,7 @@ namespace Dentalcare.Areas.admin.Controllers
                             .OrderByDescending(id => id) // Order by the alphanumeric id
                             .FirstOrDefault();
 
-                    if (lastId!= null)
+                    if (lastId != null)
                     {
                         news.id = Functions.GenerateNewId(prefix, lastId);
                     }
@@ -113,6 +113,7 @@ namespace Dentalcare.Areas.admin.Controllers
 
             return View(news);
         }
+
 
         // GET: admin/NEWS/Edit/5
         public ActionResult Edit(string id)

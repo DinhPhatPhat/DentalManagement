@@ -19,6 +19,9 @@
                 <thead>
                     <tr>
                         <th>
+                            @Html.DisplayNameFor(model => model.Patient.Person.name)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.msg)
                         </th>
                         <th>
@@ -39,9 +42,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.datebegin)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Patient.meta)
-                        </th>
+
                         <th></th>
                     </tr>
                 </thead>
@@ -49,6 +50,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Patient.Person.name)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.msg)
                             </td>
@@ -70,9 +74,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.datebegin)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Patient.meta)
-                            </td>
+
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.id }) |
