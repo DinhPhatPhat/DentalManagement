@@ -3644,10 +3644,8 @@
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\skins\moonocolor\readme.md" />
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Areas\admin\Views\Services\getService.cshtml" />
->>>>>>>>> Temporary merge branch 2
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Areas\admin\Views\Services\getService.cshtml" />
->>>>>>>>> Temporary merge branch 2
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
