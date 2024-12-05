@@ -24,8 +24,7 @@ namespace Dentalcare.Models
         [DisplayName("Mã số")]
         public string id { get; set; }
         [DisplayName("Ghi chú")]
-        [Required(AllowEmptyStrings = true)]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [Required(ErrorMessage = "Vui lòng nhập ghi chú.")]
         public string note { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập giá.")]
         [DisplayName("Giá")]
@@ -35,6 +34,7 @@ namespace Dentalcare.Models
         public bool hide { get; set; }
         [DisplayName("Trạng thái")]
         public bool able { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập meta.")]
         public string meta { get; set; }
         public int order { get; set; }
         [ValidPositiveInt]
@@ -43,7 +43,10 @@ namespace Dentalcare.Models
         public int new_order { get; set; }
         [DisplayName("Ngày cập nhật")]
         public System.DateTime datebegin { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập giá.")]
+        [DisplayName("Nha sĩ")]
         public string denid { get; set; }
+        [DisplayName("Bệnh nhân")]
         public string patid { get; set; }
         public string billid { get; set; }
     

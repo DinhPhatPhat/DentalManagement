@@ -14,10 +14,15 @@ namespace Dentalcare.Models
     
     public partial class Ingredient_ConsumableMaterial
     {
-        public int able { get; set; }
+        public bool able { get; set; }
+        public bool hide { get; set; }
         public string ingreId { get; set; }
         public string consumId { get; set; }
-    
+        public int order { get; set; }
+        public int new_order { get; set; }
+        public string meta { get; set; }
+        public System.DateTime datebegin { get; set; }
+
         public virtual ConsumableMaterial ConsumableMaterial { get; set; }
         public virtual Ingredient Ingredient { get; set; }
     }

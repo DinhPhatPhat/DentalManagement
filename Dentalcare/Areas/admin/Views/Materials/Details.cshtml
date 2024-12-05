@@ -5,12 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="padding: 24px;">Chi tiết</h2>
 
-<div>
-    <h4>Material</h4>
+<div style="padding: 24px;">
+    <h4>Vật liệu</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
@@ -48,15 +56,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.mfgDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.able)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.able)
+            @(Model.datebegin != null ? Model.mfgDate.ToString("dd/MM/yyyy") : "")
         </dd>
 
         <dt>
@@ -64,7 +64,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.hide)
+            @(Model.hide ? "Ẩn": "Hiển thị" )
         </dd>
 
         <dt>
@@ -76,11 +76,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.order)
+            @Html.DisplayNameFor(model => model.new_order)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.order)
+            @Html.DisplayFor(model => model.new_order)
         </dd>
 
         <dt>
@@ -88,7 +88,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.datebegin)
+            @(Model.datebegin != null ? Model.datebegin.ToString("dd/MM/yyyy") : "")
         </dd>
 
         <dt>
@@ -96,36 +96,26 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.img)
+            <img src="~/@Model.img" width="150px" />
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ConsumableMaterial.meta)
+            Là vật liệu cố định:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ConsumableMaterial.meta)
+            @if (Model.FixedMaterial != null)
+            {
+                @:Đúng
+            }
+            else
+            {
+                @:Sai
+            }
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FixedMaterial.meta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FixedMaterial.meta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Material_Category.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Material_Category.name)
-        </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="padding: 24px;">
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Quay lại", "Index")
 </p>

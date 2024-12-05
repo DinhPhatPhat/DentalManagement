@@ -181,7 +181,6 @@
     <EntitySet Name="FixedMaterials" EntityType="clinicModel.FixedMaterial" />
     <EntitySet Name="Footers" EntityType="clinicModel.Footer" />
     <EntitySet Name="Ingredients" EntityType="clinicModel.Ingredient" />
-    <EntitySet Name="Ingredient_ConsumableMaterial" EntityType="clinicModel.Ingredient_ConsumableMaterial" />
     <EntitySet Name="Materials" EntityType="clinicModel.Material" />
     <EntitySet Name="Material_Category" EntityType="clinicModel.Material_Category" />
     <EntitySet Name="Medicines" EntityType="clinicModel.Medicine" />
@@ -240,10 +239,6 @@
       <End Role="Material" EntitySet="Materials" />
       <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
     </AssociationSet>
-    <AssociationSet Name="FK__Ingredien__consu__14270015" Association="clinicModel.FK__Ingredien__consu__14270015">
-      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
-      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
-    </AssociationSet>
     <AssociationSet Name="FK__Medicine__id__1AD3FDA4" Association="clinicModel.FK__Medicine__id__1AD3FDA4">
       <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
       <End Role="Medicine" EntitySet="Medicines" />
@@ -259,10 +254,6 @@
     <AssociationSet Name="FK__FixedMateria__id__03F0984C" Association="clinicModel.FK__FixedMateria__id__03F0984C">
       <End Role="Material" EntitySet="Materials" />
       <End Role="FixedMaterial" EntitySet="FixedMaterials" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Ingredien__ingre__1332DBDC" Association="clinicModel.FK__Ingredien__ingre__1332DBDC">
-      <End Role="Ingredient" EntitySet="Ingredients" />
-      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
     </AssociationSet>
     <AssociationSet Name="FK__Material__cateId__7E37BEF6" Association="clinicModel.FK__Material__cateId__7E37BEF6">
       <End Role="Material_Category" EntitySet="Material_Category" />
@@ -301,6 +292,15 @@
     <AssociationSet Name="FK__Prescript__preId__57DD0BE4" Association="clinicModel.FK__Prescript__preId__57DD0BE4">
       <End Role="Prescription" EntitySet="Prescriptions" />
       <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <EntitySet Name="Ingredient_ConsumableMaterial" EntityType="clinicModel.Ingredient_ConsumableMaterial" />
+    <AssociationSet Name="FK__Ingredien__consu__160F4887" Association="clinicModel.FK__Ingredien__consu__160F4887">
+      <End Role="ConsumableMaterial" EntitySet="ConsumableMaterials" />
+      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingredien__ingre__151B244E" Association="clinicModel.FK__Ingredien__ingre__151B244E">
+      <End Role="Ingredient" EntitySet="Ingredients" />
+      <End Role="Ingredient_ConsumableMaterial" EntitySet="Ingredient_ConsumableMaterial" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Account">
@@ -481,8 +481,9 @@
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="able" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Material" Relationship="clinicModel.FK__ConsumableMa__id__0F624AF8" FromRole="ConsumableMaterial" ToRole="Material" />
-    <NavigationProperty Name="Ingredient_ConsumableMaterial" Relationship="clinicModel.FK__Ingredien__consu__14270015" FromRole="ConsumableMaterial" ToRole="Ingredient_ConsumableMaterial" />
     <NavigationProperty Name="Medicine" Relationship="clinicModel.FK__Medicine__id__1AD3FDA4" FromRole="ConsumableMaterial" ToRole="Medicine" />
+    <Property Name="new_order" Type="Int32" />
+    <NavigationProperty Name="Ingredient_ConsumableMaterial" Relationship="clinicModel.FK__Ingredien__consu__160F4887" FromRole="ConsumableMaterial" ToRole="Ingredient_ConsumableMaterial" />
   </EntityType>
   <EntityType Name="Dentist">
     <Key>
@@ -526,6 +527,7 @@
     <Property Name="able" Type="Boolean" Nullable="false" />
     <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Material" Relationship="clinicModel.FK__FixedMateria__id__03F0984C" FromRole="FixedMaterial" ToRole="Material" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Footer">
     <Key>
@@ -550,18 +552,7 @@
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="able" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Ingredient_ConsumableMaterial" Relationship="clinicModel.FK__Ingredien__ingre__1332DBDC" FromRole="Ingredient" ToRole="Ingredient_ConsumableMaterial" />
-  </EntityType>
-  <EntityType Name="Ingredient_ConsumableMaterial">
-    <Key>
-      <PropertyRef Name="ingreId" />
-      <PropertyRef Name="consumId" />
-    </Key>
-    <Property Name="able" Type="Int32" Nullable="false" />
-    <Property Name="ingreId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="consumId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="ConsumableMaterial" Relationship="clinicModel.FK__Ingredien__consu__14270015" FromRole="Ingredient_ConsumableMaterial" ToRole="ConsumableMaterial" />
-    <NavigationProperty Name="Ingredient" Relationship="clinicModel.FK__Ingredien__ingre__1332DBDC" FromRole="Ingredient_ConsumableMaterial" ToRole="Ingredient" />
+    <NavigationProperty Name="Ingredient_ConsumableMaterial" Relationship="clinicModel.FK__Ingredien__ingre__151B244E" FromRole="Ingredient" ToRole="Ingredient_ConsumableMaterial" />
   </EntityType>
   <EntityType Name="Material">
     <Key>
@@ -583,6 +574,7 @@
     <NavigationProperty Name="ConsumableMaterial" Relationship="clinicModel.FK__ConsumableMa__id__0F624AF8" FromRole="Material" ToRole="ConsumableMaterial" />
     <NavigationProperty Name="FixedMaterial" Relationship="clinicModel.FK__FixedMateria__id__03F0984C" FromRole="Material" ToRole="FixedMaterial" />
     <NavigationProperty Name="Material_Category" Relationship="clinicModel.FK__Material__cateId__7E37BEF6" FromRole="Material" ToRole="Material_Category" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Material_Category">
     <Key>
@@ -598,6 +590,7 @@
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Materials" Relationship="clinicModel.FK__Material__cateId__7E37BEF6" FromRole="Material_Category" ToRole="Material" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Medicine">
     <Key>
@@ -614,6 +607,7 @@
     <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ConsumableMaterial" Relationship="clinicModel.FK__Medicine__id__1AD3FDA4" FromRole="Medicine" ToRole="ConsumableMaterial" />
     <NavigationProperty Name="Prescription_Medicine" Relationship="clinicModel.FK__Prescript__medId__58D1301D" FromRole="Medicine" ToRole="Prescription_Medicine" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -877,18 +871,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Ingredien__consu__14270015">
-    <End Type="clinicModel.ConsumableMaterial" Role="ConsumableMaterial" Multiplicity="1" />
-    <End Type="clinicModel.Ingredient_ConsumableMaterial" Role="Ingredient_ConsumableMaterial" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ConsumableMaterial">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Ingredient_ConsumableMaterial">
-        <PropertyRef Name="consumId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Medicine__id__1AD3FDA4">
     <End Type="clinicModel.ConsumableMaterial" Role="ConsumableMaterial" Multiplicity="1" />
     <End Type="clinicModel.Medicine" Role="Medicine" Multiplicity="0..1" />
@@ -934,18 +916,6 @@
       </Principal>
       <Dependent Role="FixedMaterial">
         <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Ingredien__ingre__1332DBDC">
-    <End Type="clinicModel.Ingredient" Role="Ingredient" Multiplicity="1" />
-    <End Type="clinicModel.Ingredient_ConsumableMaterial" Role="Ingredient_ConsumableMaterial" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ingredient">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Ingredient_ConsumableMaterial">
-        <PropertyRef Name="ingreId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1092,6 +1062,46 @@
       </Principal>
       <Dependent Role="Prescription_Medicine">
         <PropertyRef Name="preId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Ingredient_ConsumableMaterial">
+    <Key>
+      <PropertyRef Name="ingreId" />
+      <PropertyRef Name="consumId" />
+    </Key>
+    <Property Name="ingreId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="consumId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="hide" Type="Boolean" Nullable="false" />
+    <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="able" Type="Boolean" Nullable="false" />
+    <Property Name="new_order" Type="Int32" />
+    <NavigationProperty Name="ConsumableMaterial" Relationship="clinicModel.FK__Ingredien__consu__160F4887" FromRole="Ingredient_ConsumableMaterial" ToRole="ConsumableMaterial" />
+    <NavigationProperty Name="Ingredient" Relationship="clinicModel.FK__Ingredien__ingre__151B244E" FromRole="Ingredient_ConsumableMaterial" ToRole="Ingredient" />
+  </EntityType>
+  <Association Name="FK__Ingredien__consu__160F4887">
+    <End Type="clinicModel.ConsumableMaterial" Role="ConsumableMaterial" Multiplicity="1" />
+    <End Type="clinicModel.Ingredient_ConsumableMaterial" Role="Ingredient_ConsumableMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConsumableMaterial">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ingredient_ConsumableMaterial">
+        <PropertyRef Name="consumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingredien__ingre__151B244E">
+    <End Type="clinicModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+    <End Type="clinicModel.Ingredient_ConsumableMaterial" Role="Ingredient_ConsumableMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ingredient_ConsumableMaterial">
+        <PropertyRef Name="ingreId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

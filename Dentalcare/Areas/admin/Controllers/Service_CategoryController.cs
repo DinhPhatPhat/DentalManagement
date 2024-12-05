@@ -87,6 +87,7 @@ namespace Dentalcare.Areas.admin.Controllers
                     }
 
                     service_Category.datebegin = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                    service_Category.hide = false;
                     service_Category.meta = Functions.ConvertToUnSign(service_Category.meta);
                     service_Category.new_order = getMaxOrder();
                     db.Service_Category.Add(service_Category);

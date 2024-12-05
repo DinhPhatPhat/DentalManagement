@@ -23,7 +23,6 @@ namespace Dentalcare.Models
         }
 
         [DisplayName("Mã số")]
-
         public string id { get; set; }
         [DisplayName("Danh mục")]
         [Required(ErrorMessage = "Vui lòng chọn loại dịch vụ.")]
@@ -36,11 +35,11 @@ namespace Dentalcare.Models
         [ValidPositiveInt]
         public int price { get; set; }
 
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DisplayName("Ghi chú")]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string note { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập mô tả.")]
         [DisplayName("Mô tả")]
+        [Required(ErrorMessage = "Vui lòng nhập mô tả.")]
         public string descrip { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập đối tượng chữa trị.")]
         [DisplayName("Đối tượng chữa trị")]
@@ -60,7 +59,6 @@ namespace Dentalcare.Models
         [DisplayName("Vị trí")]
         [Required(ErrorMessage = "Vui lòng nhập vị trí.")]
         public int new_order { get; set; }
-
         [DisplayName("Ngày cập nhật")]
         public System.DateTime datebegin { get; set; }
         [DisplayName("Đơn vị")]

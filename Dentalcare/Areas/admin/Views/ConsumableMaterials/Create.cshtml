@@ -1,0 +1,99 @@
+﻿@model Dentalcare.Models.ConsumableMaterial
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+<h2 style="padding: 24px;">Thêm mới</h2>
+
+@using (Html.BeginForm("Create", "ConsumableMaterials", FormMethod.Post, new { @style = "padding: 24px;" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Vật liệu tiêu hao</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.id, "Tên vật liệu", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("id",
+                                (SelectList)ViewBag.Material,
+                               htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.expDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.expDate, new { htmlAttributes = new { @class = "form-control", id = "expDate", type = "date" } })
+            @Html.ValidationMessageFor(model => model.expDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @* Multi-select dropdown for ingredients *@
+    <div class="form-group">
+        @Html.Label("Thành phần", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.ListBoxFor(model => model.selectedIngredients, (SelectList)ViewBag.Ingredients, htmlAttributes: new { @class = "form-control", size = 6, multiple = "multiple" })
+            @Html.ValidationMessageFor(model => model.selectedIngredients, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Tạo mới" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div style="padding: 24px;">
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+
+@section Scripts
+{
+
+    <script>
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("expDate").setAttribute("min", today);
+
+    </script>
+    <script>
+        $(function () {
+            $("#name").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+
+                // Thay thế các ký tự có dấu thành không dấu
+                text_create = text
+                    .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ẳ|ẵ|ặ/g, "a")
+                    .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
+                    .replace(/ì|í|ị|ỉ|ĩ/g, "i")
+                    .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
+                    .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
+                    .replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
+                    .replace(/đ/g, "d")
+                    .replace(/\ /g, '-'); // Thay thế khoảng trắng thành dấu '-'
+                $("#meta").val(text_create);
+            }).keyup();
+        });
+    </script>
+}

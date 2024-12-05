@@ -140,6 +140,7 @@
     <Compile Include="Areas\admin\Controllers\BillsController.cs" />
     <Compile Include="Areas\admin\Controllers\ClinicsController.cs" />
     <Compile Include="Areas\admin\Controllers\CommentsController.cs" />
+    <Compile Include="Areas\admin\Controllers\ConsumableMaterialsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\admin\Controllers\DentistsController.cs" />
     <Compile Include="Areas\admin\Controllers\MaterialsController.cs" />
@@ -280,6 +281,7 @@
     <Compile Include="Services\InfoClinicManager.cs" />
     <Compile Include="Services\PatientManager.cs" />
     <Compile Include="Services\ServiceCategoryManager.cs" />
+    <Compile Include="System\Date.cs" />
     <Compile Include="ValidateValue\ValidPositiveIntegerAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3183,6 +3185,7 @@
     <Content Include="Content\fonts\open-iconic\open-iconic.svg" />
     <Content Include="Content\images\about-2.jpg" />
     <Content Include="Content\images\about.jpg" />
+    <Content Include="Content\images\AC00000018\avatar.png" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
@@ -3642,9 +3645,7 @@
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\admin\Content\ckeditor\ckeditor\skins\moonocolor\readme.md" />
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
-    <Content Include="Areas\admin\Views\Services\getService.cshtml" />
     <Content Include="Areas\admin\Content\vendor\metisMenu\metisMenu.min.css" />
-    <Content Include="Areas\admin\Views\Services\getService.cshtml" />
     <Content Include="Areas\admin\Views\Bills\Create.cshtml" />
     <Content Include="Areas\admin\Views\Bills\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Bills\Details.cshtml" />
@@ -3655,6 +3656,13 @@
     <Content Include="Areas\admin\Views\Prescriptions\Details.cshtml" />
     <Content Include="Areas\admin\Views\Prescriptions\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Prescriptions\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Services\getService.cshtml" />
+    <Content Include="Areas\admin\Views\Materials\getMaterial.cshtml" />
+    <Content Include="Areas\admin\Views\ConsumableMaterials\Create.cshtml" />
+    <Content Include="Areas\admin\Views\ConsumableMaterials\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\ConsumableMaterials\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ConsumableMaterials\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\ConsumableMaterials\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3721,6 +3729,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
     <Folder Include="Content\images\Avatar\" />
+    <Folder Include="Content\images\Material\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

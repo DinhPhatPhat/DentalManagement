@@ -1,6 +1,6 @@
 ﻿
 @using Dental.Help
-@model IEnumerable<Dentalcare.Models.Service>
+@model IEnumerable<Dentalcare.Models.Material>
 
 <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
     <thead>
@@ -12,22 +12,31 @@
                 @Html.DisplayNameFor(model => model.name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.img)
+                @Html.DisplayNameFor(model => model.quantity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.price)
+                @Html.DisplayNameFor(model => model.calUnit)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.caredActor)
+                @Html.DisplayNameFor(model => model.func)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mfgDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.hide)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.meta)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.new_order)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.datebegin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img)
             </th>
             <th></th>
         </tr>
@@ -43,16 +52,22 @@
                     @Html.DisplayFor(modelItem => item.name)
                 </td>
                 <td>
-                    <img src="~/@item.img" width="50px" />
+                    @Html.DisplayFor(modelItem => item.quantity)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.price)
+                    @Html.DisplayFor(modelItem => item.calUnit)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.caredActor)
+                    @Html.DisplayFor(modelItem => item.func)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mfgDate)
                 </td>
                 <td>
                     @(item.hide ? "Ẩn":"Hiển thị")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.meta)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.new_order)
@@ -61,9 +76,13 @@
                     @(item.datebegin != null ? item.datebegin.ToString("dd/MM/yyyy") : "")
                 </td>
                 <td>
-                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Services", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
-                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Services", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
-                    @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Services", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })*@
+                    <img src="~/@item.img" width="50px" />
+                </td>
+                <td>
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Materials", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Materials", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+                    @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Materials", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })*@
+
                 </td>
             </tr>
         }

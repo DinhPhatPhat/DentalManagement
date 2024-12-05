@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Dental.Help;
 using Dentalcare.Models;
 
 namespace Dentalcare.Areas.admin.Controllers
@@ -48,11 +50,57 @@ namespace Dentalcare.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,name,descrip,note,meta,hide,able,order,datebegin")] Material_Category material_Category)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Material_Category.Add(material_Category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                if (ModelState.IsValid)
+                {
+                    //check name exists or not
+                    bool nameExists = db.Material_Category
+                                 .Any(s => s.name.Equals(material_Category.name, StringComparison.OrdinalIgnoreCase));
+
+                    if (nameExists)
+                    {
+                        // Add a model error for the 'name' field
+                        ModelState.AddModelError("name", "Tên loại dịch vụ đã tồn tại");
+                        return View(material_Category); // Return the view with the error
+                    }
+
+
+                    // Generate the new ID
+                    string prefix = "MC";
+                    var lastId = db.Material_Category
+                            .Where(n => n.id.StartsWith(prefix)) // Ensure the id starts with the prefix
+                            .Select(n => n.id)
+                            .OrderByDescending(id => id) // Order by the alphanumeric id
+                            .FirstOrDefault();
+
+                    if (lastId != null)
+                    {
+                        material_Category.id = Functions.GenerateNewId(prefix, lastId);
+                    }
+                    else
+                    {
+                        material_Category.id = prefix + "00000001";
+                    }
+
+                    material_Category.hide = false;
+                    material_Category.datebegin = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                    material_Category.meta = Functions.ConvertToUnSign(material_Category.meta);
+                    material_Category.new_order = getMaxOrder();
+                    db.Material_Category.Add(material_Category);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+                throw e;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
             return View(material_Category);
@@ -122,6 +170,14 @@ namespace Dentalcare.Areas.admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public int getMaxOrder()
+        {
+            int lastOrder = db.Material_Category
+                               .OrderByDescending(n => n.order)
+                               .Select(n => n.order)
+                               .FirstOrDefault();
+            return lastOrder + 1;
         }
     }
 }

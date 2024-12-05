@@ -23,9 +23,10 @@ namespace Dentalcare.Models
         public string caredACtor { get; set; }
         public int price { get; set; }
         public bool hide { get; set; }
-        public string meta { get; set; }
         public string instruction { get; set; }
+        public string meta { get; set; }
         public int order { get; set; }
+        public int new_order { get; set; }
         public System.DateTime datebegin { get; set; }
         public bool able { get; set; }
         public string id { get; set; }
