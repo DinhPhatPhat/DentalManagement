@@ -55,7 +55,7 @@ namespace Dentalcare.Controllers
             // Nếu đăng nhập thất bại
             TempData["ErrorMessage"] = "Tên đăng nhập hoặc mật khẩu không đúng.";
 
-            return RedirectToAction("Login", "Default");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]

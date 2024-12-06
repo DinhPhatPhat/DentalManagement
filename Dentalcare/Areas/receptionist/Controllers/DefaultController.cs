@@ -11,7 +11,7 @@ namespace Dentalcare.Areas.receptionist.Controllers
     public class DefaultController : BaseController
     {
         private clinicEntities db = new clinicEntities();
-        // GET: admin/Default
+        // GET: receptionist/Default
         public ActionResult Index()
         {
             var model = new CreateReceptionistViewModel

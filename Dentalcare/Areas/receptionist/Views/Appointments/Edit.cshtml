@@ -14,7 +14,9 @@
 <div class="form-horizontal" style="margin-left: 20px; margin-top: 20px">
     <h4>Lịch đặt hẹn bệnh nhân @Model.Patient.Person.name ngày @Model.datebegin.ToString()</h4>
     <hr />
-
+    <div class="form-group text-danger">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
     @Html.HiddenFor(model => model.id)
 
     <div class="form-group">
@@ -24,11 +26,13 @@
             @Html.ValidationMessageFor(model => model.symptom, "", new { @class = "text-danger" })
         </div>
     </div>
-
     <div class="form-group">
         @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownListFor(model => model.state,
+                new SelectList(new[] { "Chưa khám", "Đang khám", "Đã khám" }, Model.state),
+                "Chọn trạng thái",
+                new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
         </div>
     </div>

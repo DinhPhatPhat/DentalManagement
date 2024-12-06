@@ -60,28 +60,52 @@ namespace Dentalcare.Areas.dentist.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Appointment model, string date, string timeStart, string timeEnd)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var appointment = db.Appointments.Find(model.id);
-                if (appointment == null)
+                if (ModelState.IsValid)
+                {
+                    var appointment = db.Appointments.Find(model.id);
+                    if (appointment == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    appointment.symptom = model.symptom;
+                    appointment.state = model.state;
+                    appointment.note = model.note;
+
+                    appointment.timeStart = DateTime.Parse(date + " " + timeStart);
+                    appointment.timeEnd = DateTime.Parse(date + " " + timeEnd);
+
+                    db.Entry(appointment).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                var appointment2 = db.Appointments.Find(model.id);
+                if (appointment2 == null)
                 {
                     return HttpNotFound();
                 }
+                ViewBag.denid = new SelectList(db.Dentists, "id", "title", appointment2.denid);
+                ViewBag.patid = new SelectList(db.Patients, "id", "meta", appointment2.patid);
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin");
+                return View(appointment2);
 
-                appointment.symptom = model.symptom;
-                appointment.state = model.state;
-                appointment.note = model.note;
-
-                appointment.timeStart = DateTime.Parse(date + " " + timeStart);
-                appointment.timeEnd = DateTime.Parse(date + " " + timeEnd);
-
-                db.Entry(appointment).State = EntityState.Modified;
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
+            } catch
+            {
+                Appointment appointment2 = db.Appointments.Find(model.id);
+                if (appointment2 == null)
+                {
+                    return HttpNotFound();
+                }
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin");
+                ViewBag.denid = new SelectList(db.Dentists, "id", "title", appointment2.denid);
+                ViewBag.patid = new SelectList(db.Patients, "id", "meta", appointment2.patid);
+                return View(appointment2);
             }
 
-            return View(model);
+            
         }
 
 

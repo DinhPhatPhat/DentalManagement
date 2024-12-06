@@ -3697,6 +3697,7 @@
     <Content Include="Areas\receptionist\Views\Calendars\Print.cshtml" />
     <Content Include="Areas\receptionist\Views\Default\Index.cshtml" />
     <Content Include="Areas\receptionist\Views\Shared\MyLayout.cshtml" />
+    <Content Include="Areas\receptionist\Views\Appointments\Create.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Dentalcare.Areas.receptionist.Controllers;
 using Dentalcare.Models;
 
-namespace Dentalcare.Areas.rceptionist.Controllers
+namespace Dentalcare.Areas.receptionist.Controllers
 {
     public class AppointmentsController : BaseController
     {
         private clinicEntities db = new clinicEntities();
 
-        // GET: dentist/Appointments
+        // GET: receptionist/Appointments
         public ActionResult Index()
         {
             Account account = Session["Account"] as Account;
@@ -26,12 +26,10 @@ namespace Dentalcare.Areas.rceptionist.Controllers
                 return HttpNotFound();
             }
 
-            var appointments = db.Appointments
-                .Where(c => c.denid == id)
+            var appointments = db.Appointments              
                 .Include(a => a.Dentist)  
-                .Include(a => a.Patient); 
+                .Include(a => a.Patient);
 
-            ViewBag.Person = person;
             return View(appointments.ToList());
         }
 
@@ -60,29 +58,168 @@ namespace Dentalcare.Areas.rceptionist.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Appointment model, string date, string timeStart, string timeEnd)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var appointment = db.Appointments.Find(model.id);
-                if (appointment == null)
+                if (ModelState.IsValid)
+                {
+                    var appointment = db.Appointments.Find(model.id);
+                    if (appointment == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    appointment.symptom = model.symptom;
+                    appointment.state = model.state;
+                    appointment.note = model.note;
+
+                    appointment.timeStart = DateTime.Parse(date + " " + timeStart);
+                    appointment.timeEnd = DateTime.Parse(date + " " + timeEnd);
+
+                    db.Entry(appointment).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin");
+                Appointment appointment2 = db.Appointments.Find(model.id);
+                if (appointment2 == null)
                 {
                     return HttpNotFound();
                 }
+                ViewBag.denid = new SelectList(db.Dentists, "id", "title", appointment2.denid);
+                ViewBag.patid = new SelectList(db.Patients, "id", "meta", appointment2.patid);
+                return View(appointment2);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin");
+                Appointment appointment2 = db.Appointments.Find(model.id);
+                if (appointment2 == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.denid = new SelectList(db.Dentists, "id", "title", appointment2.denid);
+                ViewBag.patid = new SelectList(db.Patients, "id", "meta", appointment2.patid);
+                return View(appointment2);
+            }
+            
+        }
 
-                appointment.symptom = model.symptom;
-                appointment.state = model.state;
-                appointment.note = model.note;
+        private string GenerateNewAppointment()
+        {
+            var lastAppointment = db.Appointments
+                                 .OrderByDescending(a => a.id)
+                                 .Select(a => a.id)
+                                 .FirstOrDefault();
 
-                appointment.timeStart = DateTime.Parse(date + " " + timeStart);
-                appointment.timeEnd = DateTime.Parse(date + " " + timeEnd);
+            if (string.IsNullOrEmpty(lastAppointment))
+                return "AP00000001";
 
-                db.Entry(appointment).State = EntityState.Modified;
-                db.SaveChanges();
+            int numberPart = int.Parse(lastAppointment.Substring(2));
 
-                return RedirectToAction("Index");
+            numberPart++;
+
+            return $"AP{numberPart:D8}";
+        }
+
+        // GET: receptionist/Appointments/Create
+        public ActionResult Create()
+        {
+            ViewBag.Dentists = db.Dentists
+                .Select(d => new { Id = d.Person.Account.id, Name = d.Person.name })
+                .ToList();
+
+            ViewBag.Patients = db.Patients
+                .Select(p => new { Id = p.Person.Account.id, Name = p.Person.name })
+                .ToList();
+
+            return View();
+        }
+
+        // POST: receptionist/Appointments/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Appointment appointment, string date, string timeStart, string timeEnd)
+        {
+            // Kiểm tra các giá trị đầu vào
+            if (string.IsNullOrEmpty(date) || string.IsNullOrEmpty(timeStart) || string.IsNullOrEmpty(timeEnd))
+            {
+                ModelState.AddModelError("", "Ngày, giờ bắt đầu và giờ kết thúc không được để trống.");
+            }
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        string id = GenerateNewAppointment();
+                        // Nếu các giá trị không rỗng, tiến hành xử lý
+                        var newAppointment = new Appointment
+                        {
+                            id = id,
+                            able = true,
+                            symptom = appointment.symptom,
+                            state = "Chưa xong",
+                            timeStart = DateTime.Parse(date + " " + timeStart),
+                            timeEnd = DateTime.Parse(date + " " + timeEnd),
+                            note = appointment.note,
+                            hide = false,
+                            meta = "lich-hen" + id,
+                            datebegin = DateTime.Now,
+                            denid = appointment.denid,
+                            patid = appointment.patid
+
+                        };
+
+
+
+                        db.Appointments.Add(newAppointment);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi khi không thể chuyển đổi giá trị ngày giờ
+                        ModelState.AddModelError("", $"Lỗi khi thêm, vui lòng kiểm tra đầy đủ thông tin");
+                        ViewBag.Dentists = db.Dentists
+                            .Select(d => new { Id = d.Person.Account.id, Name = d.Person.name })
+                            .ToList();
+
+                        ViewBag.Patients = db.Patients
+                            .Select(p => new { Id = p.Person.Account.id, Name = p.Person.name })
+                            .ToList();
+                        return View();
+                    }
+                }
+
+                ModelState.AddModelError("", $"Vui lòng kiểm tra đầy đủ thông tin");
+                ViewBag.Dentists = db.Dentists
+                    .Select(d => new { Id = d.Person.Account.id, Name = d.Person.name })
+                    .ToList();
+
+                ViewBag.Patients = db.Patients
+                    .Select(p => new { Id = p.Person.Account.id, Name = p.Person.name })
+                    .ToList();
+                return View();
+
+            }
+            catch (DbEntityValidationException e)
+            {
+
+                ModelState.AddModelError("", $"Vui lòng kiểm tra đầy đủ thông tin");
+                ViewBag.Dentists = db.Dentists
+                    .Select(d => new { Id = d.Person.Account.id, Name = d.Person.name })
+                    .ToList();
+
+                ViewBag.Patients = db.Patients
+                    .Select(p => new { Id = p.Person.Account.id, Name = p.Person.name })
+                    .ToList();
+                return View();
             }
 
-            return View(model);
         }
+
 
 
 
