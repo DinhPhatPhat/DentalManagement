@@ -29,7 +29,8 @@ namespace Dentalcare.Models
         public string id { get; set; }
         public string falid { get; set; }
         public string descrip { get; set; }
-    
+        public int new_order { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual Faculty Faculty { get; set; }

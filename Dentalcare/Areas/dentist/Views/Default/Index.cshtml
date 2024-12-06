@@ -1,0 +1,63 @@
+﻿@model Dentalcare.Areas.admin.Models.CreateDentistViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/dentist/Views/Shared/MyLayout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="container-fluid bg-light p-4 rounded shadow-sm">
+            <h3 class="text-center text-primary mb-4">Thông tin Nha Sĩ @Model.person.name</h3>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @if (!string.IsNullOrEmpty(Model.person.img))
+                        {
+                            <img class="doctor-avatar" src="@Model.person.img" alt="Avatar" style="max-width: 150px; border-radius: 8px;" />
+                        }
+                        else
+                        {
+                            <img class="doctor-avatar" src="~/Content/images/default-avatar.png" alt="Default Avatar" style="max-width: 150px; border-radius: 8px;" />
+                        }
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <strong>Tên đăng nhập:</strong> @Model.account.username
+                    </div>
+                    <div class="mb-3">
+                        <strong>Hoạt động:</strong> @(Model.account.able ? "Có" : "Không")
+                    </div>
+                    <div class="mb-3">
+                        <strong>Tên nha sĩ:</strong> @Model.person.name
+                    </div>
+                    <div class="mb-3">
+                        <strong>Số điện thoại:</strong> @Model.person.phoneNumber
+                    </div>
+                    <div class="mb-3">
+                        <strong>Email:</strong> @Model.person.email
+                    </div>
+                    <div class="mb-3">
+                        <strong>Địa chỉ:</strong> @Model.person.address
+                    </div>
+                    <div class="mb-3">
+                        <strong>Giới tính:</strong> @(Model.person.gender ? "Nam" : "Nữ")
+                    </div>
+                    <div class="mb-3">
+                        <strong>Học vị:</strong> @Model.dentist.title
+                    </div>
+                    <div class="mb-3">
+                        <strong>Chuyên khoa:</strong> @Model.dentist.Faculty.name
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /.container-fluid -->

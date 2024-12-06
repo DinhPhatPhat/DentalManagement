@@ -68,6 +68,7 @@
           <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datebegin" Type="datetime" Nullable="false" />
           <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="new_order" Type="int" />
         </EntityType>
         <EntityType Name="Avatar">
           <Key>
@@ -182,6 +183,7 @@
           <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="falid" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="new_order" Type="int" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -385,6 +387,7 @@
           <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="datebegin" Type="datetime" Nullable="false" />
           <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="new_order" Type="int" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -1428,6 +1431,7 @@
           <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Person" Relationship="clinicModel.FK__Assisstant__id__5535A963" FromRole="Assisstant" ToRole="Person" />
+          <Property Name="new_order" Type="Int32" />
         </EntityType>
         <EntityType Name="Avatar">
           <Key>
@@ -1557,6 +1561,7 @@
           <NavigationProperty Name="Faculty" Relationship="clinicModel.FK__Dentist__falid__47A6A41B" FromRole="Dentist" ToRole="Faculty" />
           <NavigationProperty Name="Person" Relationship="clinicModel.FK__Dentist__id__46B27FE2" FromRole="Dentist" ToRole="Person" />
           <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__denid__503BEA1C" FromRole="Dentist" ToRole="Prescription" />
+          <Property Name="new_order" Type="Int32" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -1753,6 +1758,7 @@
           <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Person" Relationship="clinicModel.FK__Receptionist__id__5070F446" FromRole="Receptionist" ToRole="Person" />
+          <Property Name="new_order" Type="Int32" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -2242,6 +2248,7 @@
           <EntitySetMapping Name="Assisstants">
             <EntityTypeMapping TypeName="clinicModel.Assisstant">
               <MappingFragment StoreEntitySet="Assisstant">
+                <ScalarProperty Name="new_order" ColumnName="new_order" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
                 <ScalarProperty Name="order" ColumnName="order" />
@@ -2360,6 +2367,7 @@
           <EntitySetMapping Name="Dentists">
             <EntityTypeMapping TypeName="clinicModel.Dentist">
               <MappingFragment StoreEntitySet="Dentist">
+                <ScalarProperty Name="new_order" ColumnName="new_order" />
                 <ScalarProperty Name="descrip" ColumnName="descrip" />
                 <ScalarProperty Name="falid" ColumnName="falid" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -2546,6 +2554,7 @@
           <EntitySetMapping Name="Receptionists">
             <EntityTypeMapping TypeName="clinicModel.Receptionist">
               <MappingFragment StoreEntitySet="Receptionist">
+                <ScalarProperty Name="new_order" ColumnName="new_order" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
                 <ScalarProperty Name="order" ColumnName="order" />

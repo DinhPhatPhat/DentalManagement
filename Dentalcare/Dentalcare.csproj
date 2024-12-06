@@ -137,7 +137,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AssisstantsController.cs" />
+    <Compile Include="Areas\admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\admin\Controllers\BillsController.cs" />
+    <Compile Include="Areas\admin\Controllers\CalendarsController.cs" />
     <Compile Include="Areas\admin\Controllers\ClinicsController.cs" />
     <Compile Include="Areas\admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
@@ -148,9 +150,23 @@
     <Compile Include="Areas\admin\Controllers\NEWSController.cs" />
     <Compile Include="Areas\admin\Controllers\PatientsController.cs" />
     <Compile Include="Areas\admin\Controllers\PrescriptionsController.cs" />
+    <Compile Include="Areas\admin\Controllers\ReceptionistsController.cs" />
     <Compile Include="Areas\admin\Controllers\ServicesController.cs" />
     <Compile Include="Areas\admin\Controllers\Service_CategoryController.cs" />
+    <Compile Include="Areas\admin\Models\CreateAssisstantViewModel.cs" />
     <Compile Include="Areas\admin\Models\CreateDentistViewModel.cs" />
+    <Compile Include="Areas\admin\Models\CreateReceptionistViewModel.cs" />
+    <Compile Include="Areas\dentist\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\dentist\Controllers\BaseController.cs" />
+    <Compile Include="Areas\dentist\Controllers\CalendarsController.cs" />
+    <Compile Include="Areas\dentist\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\dentist\dentistAreaRegistration.cs" />
+    <Compile Include="Areas\receptionist\Controllers\AppointmentsController.cs" />
+    <Compile Include="Areas\receptionist\Controllers\BaseController.cs" />
+    <Compile Include="Areas\receptionist\Controllers\CalendarsController.cs" />
+    <Compile Include="Areas\receptionist\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\receptionist\receptionistAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -1384,6 +1400,7 @@
     <Content Include="Areas\admin\Content\ckfinder\ckfinder\skins\v1\skin.js" />
     <Content Include="Areas\admin\Content\ckfinder\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Areas\admin\Content\ckfinder\ckfinder\translations.txt" />
+    <Content Include="Areas\admin\Content\css\calendar.css" />
     <Content Include="Areas\admin\Content\css\sb-admin-2.css" />
     <Content Include="Areas\admin\Content\css\sb-admin-2.min.css" />
     <Content Include="Areas\admin\Content\img\undraw_posting_photo.svg" />
@@ -3655,6 +3672,31 @@
     <Content Include="Areas\admin\Views\Prescriptions\Details.cshtml" />
     <Content Include="Areas\admin\Views\Prescriptions\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Prescriptions\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Calendars\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Calendars\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Calendars\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Calendars\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Calendars\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Calendars\Print.cshtml" />
+    <Content Include="Areas\admin\Views\Receptionists\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Receptionists\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Receptionists\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Receptionists\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Receptionists\Index.cshtml" />
+    <Content Include="Areas\dentist\Views\web.config" />
+    <Content Include="Areas\dentist\Views\Shared\MyLayout.cshtml" />
+    <Content Include="Areas\dentist\Views\Default\Index.cshtml" />
+    <Content Include="Areas\dentist\Views\Calendars\Index.cshtml" />
+    <Content Include="Areas\dentist\Views\Calendars\Print.cshtml" />
+    <Content Include="Areas\dentist\Views\Appointments\Edit.cshtml" />
+    <Content Include="Areas\dentist\Views\Appointments\Index.cshtml" />
+    <Content Include="Areas\receptionist\Views\web.config" />
+    <Content Include="Areas\receptionist\Views\Appointments\Edit.cshtml" />
+    <Content Include="Areas\receptionist\Views\Appointments\Index.cshtml" />
+    <Content Include="Areas\receptionist\Views\Calendars\Index.cshtml" />
+    <Content Include="Areas\receptionist\Views\Calendars\Print.cshtml" />
+    <Content Include="Areas\receptionist\Views\Default\Index.cshtml" />
+    <Content Include="Areas\receptionist\Views\Shared\MyLayout.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3720,7 +3762,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
+    <Folder Include="Areas\dentist\Data\" />
+    <Folder Include="Areas\dentist\Views\Base\" />
+    <Folder Include="Areas\receptionist\Data\" />
     <Folder Include="Content\images\Avatar\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

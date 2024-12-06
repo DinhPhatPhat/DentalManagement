@@ -1,0 +1,90 @@
+﻿@using Dentalcare.Models
+@using Dental.Help
+@{
+    ViewBag.Title = "Calendar";
+    Layout = "~/Areas/receptionist/Views/Shared/MyLayout.cshtml";
+
+    var personName = ViewBag.PersonName;
+    var personRole = ViewBag.PersonRole;
+    var year = (int)ViewBag.Year;
+    var month = (int)ViewBag.Month;
+    var monthName = ViewBag.MonthName as string;
+    var daysInMonth = (int)ViewBag.DaysInMonth;
+    var schedules = ViewBag.Schedules as List<dynamic>;
+}
+@section Header {
+    <link href="@Url.Content("~/Areas/admin/Content/css/calendar.css")" rel="stylesheet">
+}
+<div class="calendar">
+    <h1>@monthName @year</h1>
+    <p>Lịch làm việc của @personName (@(personRole))</p>
+    <br />
+    <button class="btn btn-info" onclick="openPrintWindow('/admin/Calendars/Print?id=@ViewBag.PersonId&month=@ViewBag.Month&year=@ViewBag.Year')">
+        <span class="glyphicon glyphicon-print"></span> In lịch làm việc
+    </button>
+    
+    <br />
+    <div class="form-inline">
+        <label for="selectMonth" style="margin: 10px">Chọn tháng: </label>
+        <select id="selectMonth" class="form-control" onchange="changeMonth()">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <option value="@i" @(i == @month ? "selected" : "")>@i</option>
+            }
+        </select>
+
+        <label for="selectYear" style="margin: 10px">Chọn năm: </label>
+        <select id="selectYear" class="form-control" onchange="changeMonth()">
+            @for (int i = @year - 5; i <= @year + 5; i++)
+            {
+                <option value="@i" @(i == @year ? "selected" : "")>@i</option>
+            }
+        </select>
+    </div>
+    <ul>
+        @for (int day = 1; day <= ViewBag.DaysInMonth; day++)
+        {
+            var daySchedules = ((List<Calendar>)ViewBag.Schedules)
+                                .Where(s => s.timeStart.Day == day)
+                                .ToList();
+
+            <li>
+                <time datetime="@string.Format("{0:yyyy-MM-dd}", new DateTime(year, month, day))">@day</time>
+
+                @if (daySchedules.Any())
+                {
+                    <div>
+                        @foreach (var schedule in daySchedules)
+                        {
+                            <p style="font-size: 14px; margin: 0; display: flex; align-items: center;">
+                                <span>@schedule.timeStart.ToString("HH:mm") - @schedule.timeEnd.ToString("HH:mm")</span>
+                            </p>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p></p>
+                }
+            </li>
+        }
+    </ul>
+
+</div>
+
+
+<script>
+    function changeMonth() {
+        const month = document.getElementById('selectMonth').value;
+        const year = document.getElementById('selectYear').value;
+        window.location.href = `?month=${month}&year=${year}&id=@ViewBag.PersonId`;
+    }
+
+    function openPrintWindow(url) {
+        const printWindow = window.open(url, '_blank', 'width=800,height=600');
+        printWindow.onload = function () {
+            printWindow.print();
+        };
+    }
+
+</script>

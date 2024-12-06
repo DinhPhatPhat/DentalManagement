@@ -1,0 +1,59 @@
+﻿
+
+body .calendar{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: rgb(238, 174, 202);
+    background: radial-gradient( circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100% );
+}
+
+.calendar h1 {
+    font-weight: 800;
+    margin: 1rem 0 0;
+}
+
+.calendar ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.calendar li {
+    display: flex;
+    width: 15rem;
+    height: 10rem;
+    margin: 0.25rem;
+    flex-flow: column;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    font-weight: 300;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.calendar time
+{
+    font-size: 2rem;
+    margin: 0 0 0.2rem 0;
+    font-weight: 500;
+}
+
+.calendar .today time {
+    font-weight: 800;
+    background: #ffffff70;
+}
+
+.btn-tiny {
+    margin-left: 5px;
+    padding: 1px 4px; /* Rất nhỏ */
+    font-size: 12px; /* Cỡ chữ nhỏ */
+    line-height: 1;
+    display: inline; /* Cùng hàng với nội dung */
+    vertical-align: middle; /* Canh giữa nội dung */
+}

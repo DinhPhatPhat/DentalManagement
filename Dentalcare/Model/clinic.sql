@@ -2427,3 +2427,30 @@ UPDATE Prescription_Medicine
 SET new_order = [order];
 go
 
+--bang Dentist
+ALTER TABLE Dentist
+ADD new_order INT
+go
+
+
+UPDATE Dentist
+SET new_order = [order];
+go
+
+--bang Assisstant
+ALTER TABLE Assisstant
+ADD new_order INT
+go
+
+UPDATE Assisstant
+SET new_order = [order];
+go
+
+--bang Receptionist
+ALTER TABLE Receptionist
+ADD new_order INT
+go
+
+UPDATE Receptionist
+SET new_order = [order];
+go

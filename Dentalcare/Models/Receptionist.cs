@@ -19,6 +19,7 @@ namespace Dentalcare.Models
         public int order { get; set; }
         public System.DateTime datebegin { get; set; }
         public string id { get; set; }
+        public int new_order { get; set; }
     
         public virtual Person Person { get; set; }
     }

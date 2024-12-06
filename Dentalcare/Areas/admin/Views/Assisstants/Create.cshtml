@@ -1,62 +1,130 @@
-﻿@model Dentalcare.Models.Assisstant
+﻿@model Dentalcare.Areas.admin.Models.CreateAssisstantViewModel
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 style="padding: 24px;">Thêm mới</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Assisstants", FormMethod.Post, new { enctype = "multipart/form-data", @style = "padding: 24px;" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Assisstant</h4>
+        <h4>Phụ tá</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+        <!-- Account Information -->
         <div class="form-group">
-            @Html.LabelFor(model => model.hide, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.account.username, "Tên người dùng", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.hide)
-                    @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.account.username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.account.username)
+            </div>
+        </div>
+
+        <!-- Person Information -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.person.name, "Họ tên", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.person.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.person.name)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.person.phoneNumber, "Số điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.person.phoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.person.phoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.person.email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.person.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.person.email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.person.salary, "Lương", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.person.salary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.person.salary)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.person.address, "Địa chỉ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.person.address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.person.address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Gender", "Giới tính", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="form-control">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="male" name="person.gender" value=false class="form-check-input">
+                        <label for="male" class="form-check-label">Nữ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="female" name="person.gender" value=true class="form-check-input">
+                        <label for="female" class="form-check-label">Nam</label>
+                    </div>
                 </div>
+                @Html.ValidationMessageFor(model => model.person.gender, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.meta, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.person.birthday, "Ngày sinh", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.person.birthday, new { @class = "form-control", @type = "date" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.person.nation, "Quốc tịch", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.person.nation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.person.nation)
+            </div>
+        </div>
+
+        <!-- Assisstant Information -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.assisstant.meta, "Meta", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.assisstant.meta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.assisstant.meta)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.datebegin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="avatar" class="control-label col-md-2">Avatar</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.datebegin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.datebegin, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.id, "id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+                <input type="file" id="avatar" name="avatar" accept="image/*" class="form-control" />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div style="padding: 24px;">
+    @Html.ActionLink("Quay lại", "Index")
 </div>

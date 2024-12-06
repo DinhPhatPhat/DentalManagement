@@ -1,0 +1,59 @@
+﻿@model Dentalcare.Models.Calendar
+
+@{
+    ViewBag.Title = "Create Calendar";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+<h2 style="padding: 24px;">Thêm mới</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal" style="padding: 24px">
+    <h4>Lịch làm việc cho @ViewBag.PersonRole - @ViewBag.PersonName</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Personid, "Person", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p class="form-control-static">@ViewBag.PersonName (ID: @ViewBag.PersonId)</p>
+            @Html.HiddenFor(model => model.Personid, new { @Value = ViewBag.PersonId })
+        </div>
+    </div>
+
+    <!-- Chọn ngày trực -->
+    <div class="form-group">
+        @Html.Label("Working Date", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="date" name="workingDate" value="@ViewBag.Today" class="form-control" />
+            @Html.ValidationMessage("workingDate", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Chọn ca trực -->
+    <div class="form-group">
+        @Html.Label("Shift", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("shift", new SelectList(new[]
+            {
+                new { Value = "morning", Text = "Ca sáng (07:30 - 12:00)" },
+                new { Value = "afternoon", Text = "Ca chiều (13:30 - 17:00)" }
+            }, "Value", "Text"), "Select Shift", new { @class = "form-control" })
+            @Html.ValidationMessage("shift", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div style="padding: 24px;">
+    @Html.ActionLink("Quay lại", "Index", new{ id = @ViewBag.PersonId })
+</div>
