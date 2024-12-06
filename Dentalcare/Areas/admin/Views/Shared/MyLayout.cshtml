@@ -131,12 +131,21 @@
                 Quản lý toa thuốc
             </div>
 
-            <!-- Nav Item - Bill-->
+            <!-- Nav Item - Prescription-->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="@Url.Action("Index","prescriptions")"
                    aria-expanded="true">
-                    <i class="fas fa-tablets"></i>
+                    <i class="fas fa-prescription-bottle-alt"></i>
                     <span>Toa Thuốc</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Prescription-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","medicines")"
+                   aria-expanded="true">
+                    <i class="fas fa-tablets"></i>
+                    <span>Thuốc</span>
                 </a>
             </li>
 
@@ -197,8 +206,25 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="@Url.Action("Index","services")"
                    aria-expanded="true">
-                    <i class="fas fa-fw fa-tooth"></i>
+                    <i class="fas fa-stethoscope"></i>
                     <span>Dịch vụ</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Quản lý vật liệu
+            </div>
+
+            <!-- Nav Item - Danh mục vật liệu-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","material_category")"
+                   aria-expanded="true">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Danh mục vật liệu</span>
                 </a>
             </li>
 
@@ -208,6 +234,15 @@
                    aria-expanded="true">
                     <i class="fas fa-fw fa-toolbox"></i>
                     <span>Vật liệu</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Vật liệu tiêu hao-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","consumableMaterials")"
+                   aria-expanded="true">
+                    <i class="fas fa-syringe"></i>
+                    <span>Vật liệu tiêu hao</span>
                 </a>
             </li>
             <!-- Divider -->

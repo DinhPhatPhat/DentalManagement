@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dentalcare.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -69,5 +70,27 @@ namespace Dental.Help
             // Format the new id to have 8 digits
             return prefix + numericValue.ToString("D8"); // "D8" ensures 8 digits
         }
+
+        public static string ShowTitleNameByRole(object role)
+        {
+            if (role is Dentist)
+            {
+                return "Tên nha sĩ";
+            }
+            else if (role is Admin)
+            {
+                return "Tên quản lý";
+            }
+            else if (role is Patient)
+            {
+                return "Tên bệnh nhân";
+            }
+            else if (role is Assisstant)
+            {
+                return "Tên phụ tá";
+            }
+            return "Không xác định vai trò"; // Default case if the role is not one of the recognized types
+        }
+
     }
 }

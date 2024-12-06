@@ -242,9 +242,13 @@ CREATE TABLE ConsumableMaterial
 
 CREATE TABLE Ingredient_ConsumableMaterial
 (
-  able int not null DEFAULT 1,
   ingreId VARCHAR(10) NOT NULL,
   consumId VARCHAR(10) NOT NULL,
+  hide BIT NOT NULL DEFAULT 0,
+  meta VARCHAR(MAX) NOT NULL,
+  [order] INT NOT NULL IDENTITY(1,1),
+  datebegin DATETIME NOT NULL DEFAULT GETDATE(),
+  able BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (ingreId,consumId),
   FOREIGN KEY (ingreId) REFERENCES Ingredient(id),
   FOREIGN KEY (consumId) REFERENCES ConsumableMaterial(id)
@@ -1410,8 +1414,10 @@ create proc procAddIngredient_ConsumableMaterial
   @consumID VARCHAR(10)
 AS
 BEGIN
-  INSERT into Ingredient_ConsumableMaterial(ingreId,consumId)
-  VALUES (@ingreID,@consumID)
+    DECLARE @rowCount INT;
+	SELECT @rowCount = COUNT(*) FROM Ingredient_ConsumableMaterial;
+	INSERT into Ingredient_ConsumableMaterial(ingreId,consumId,meta)
+	VALUES (@ingreID,@consumID, CONCAT('chi-tiet-thanh-phan-', @rowCount + 1))
 END
 GO
 
@@ -1422,7 +1428,7 @@ exec procAddIngredient N'urethane dimethacrylate (UDMA)',''
 exec procAddIngredient N'polyceram bán tinh thể (PEX)',''
 exec procAddIngredient N'nhựa silica',''
 
-exec procAddIngredient_ConsumableMaterial 'IN00000001','MA00000017'
+exec procaddingredient_consumablematerial 'IN00000001','MA00000017'
 exec procAddIngredient_ConsumableMaterial 'IN00000001','MA00000018'
 exec procAddIngredient_ConsumableMaterial 'IN00000001','MA00000019'
 exec procAddIngredient_ConsumableMaterial 'IN00000001','MA00000020'
@@ -2427,6 +2433,61 @@ UPDATE Prescription_Medicine
 SET new_order = [order];
 go
 
+--bang Material_Category
+ALTER TABLE Material_Category
+ADD new_order INT
+go
+
+UPDATE Material_Category
+SET new_order = [order];
+go
+
+--bang Material
+ALTER TABLE Material
+ADD new_order INT
+go
+
+UPDATE Material
+SET new_order = [order];
+go
+
+
+--Bang  FixedMaterial
+ALTER TABLE FixedMaterial
+ADD new_order INT
+go
+
+UPDATE FixedMaterial
+SET new_order = [order];
+go
+
+
+--Bang  ConsumableMaterial
+ALTER TABLE ConsumableMaterial
+ADD new_order INT
+go
+
+UPDATE ConsumableMaterial
+SET new_order = [order];
+go
+
+--bang Material_Category
+ALTER TABLE Ingredient_ConsumableMaterial
+ADD new_order INT
+go
+
+UPDATE Ingredient_ConsumableMaterial
+SET new_order = [order];
+go
+
+--bang Medicine
+ALTER TABLE Medicine
+ADD new_order INT
+go
+
+UPDATE Medicine
+SET new_order = [order];
+go
 --bang Dentist
 ALTER TABLE Dentist
 ADD new_order INT

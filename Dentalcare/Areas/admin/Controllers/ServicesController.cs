@@ -74,6 +74,18 @@ namespace Dentalcare.Areas.admin.Controllers
             getCategory();
             try
             {
+                // Check if the service name already exists
+                var existingService = db.Services
+                    .FirstOrDefault(m => m.name.ToLower() == service.name.ToLower()); // Case-insensitive check for the same name
+
+                if (existingService != null)
+                {
+                    // If the name exists, add a model error
+                    ModelState.AddModelError("name", "Tên dịch vụ đã tồn tại.");
+                    return View(service); // Return to the form with the error message
+                }
+
+
                 var path = "";
                 var filename = "";
                 if (ModelState.IsValid)
@@ -155,6 +167,17 @@ namespace Dentalcare.Areas.admin.Controllers
             getCategory();
             try
             {
+                // Check if the service name already exists (except for the current material being edited)
+                var existingService = db.Materials
+                    .FirstOrDefault(m => m.name.ToLower() == service.name.ToLower() && m.id != service.id); // Exclude the current material by checking different ID
+
+                if (existingService != null)
+                {
+                    // If the name exists, add a model error
+                    ModelState.AddModelError("name", "Tên dịch vụ đã tồn tại.");
+                    return View(service); // Return to the form with the error message
+                }
+
                 var path = "";
                 var filename = "";
                 Service temp = db.Services.Find(service.id);

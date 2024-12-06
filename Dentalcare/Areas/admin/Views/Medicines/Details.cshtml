@@ -1,0 +1,90 @@
+﻿@model Dentalcare.Models.Medicine
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+<h2 style="padding: 24px;">Chi tiết</h2>
+
+<div style="padding: 24px;">
+    <h4>Thuốc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsumableMaterial.Material.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConsumableMaterial.Material.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caredACtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caredACtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hide)
+        </dt>
+
+        <dd>
+            @(Model.hide ? "Ẩn": "Hiển thị" )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instruction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instruction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datebegin)
+        </dt>
+
+        <dd>
+            @(Model.datebegin != null ? Model.datebegin.ToString("dd/MM/yyyy") : "")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.new_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.new_order)
+        </dd>
+    </dl>
+</div>
+<p style="padding: 24px;">
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

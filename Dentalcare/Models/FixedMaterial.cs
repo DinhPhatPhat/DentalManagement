@@ -16,6 +16,7 @@ namespace Dentalcare.Models
     {
         public bool hide { get; set; }
         public string meta { get; set; }
+        public int new_order { get; set; }
         public int order { get; set; }
         public System.DateTime datebegin { get; set; }
         public bool able { get; set; }

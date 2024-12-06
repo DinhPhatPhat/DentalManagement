@@ -5,12 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 style="padding: 24px;">Chi tiết</h2>
 
-<div>
-    <h4>Bill</h4>
+<div style="padding: 24px;">
+    <h4>Hóa đơn</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.totalPrice)
         </dt>
@@ -36,64 +44,101 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.able)
+            @Html.DisplayNameFor(model => model.patid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.able)
+            @Html.DisplayFor(model => model.patid) - @Model.Patient.Person.name
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.hide)
+            Bác sĩ
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.hide)
+            @Model.Prescriptions.FirstOrDefault().Dentist.Person.id - @Model.Prescriptions.FirstOrDefault().Dentist.Person.name
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.meta)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.hide)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.meta)
-        </dd>
+            <dd>
+                @(Model.hide ? "Ẩn": "Hiển thị" )
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.order)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.meta)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.order)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.meta)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.datebegin)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.new_order)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.datebegin)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.new_order)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.isPayed)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.datebegin)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.isPayed)
-        </dd>
+            <dd>
+                @(Model.datebegin != null ? Model.datebegin.ToString("dd/MM/yyyy") : "")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Patient.meta)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.isPayed)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Patient.meta)
-        </dd>
+            <dd>
+                @(Model.isPayed ? "Đã thanh toán": "Chưa thanh toán" )
+            </dd>
 
-    </dl>
+            <!-- Display Services -->
+            <dt>Dịch vụ:</dt>
+            @if (Model.Bill_Service != null && Model.Bill_Service.Any())
+            {
+                var bill_Services = Model.Bill_Service;
+
+                foreach (var billService in bill_Services)
+                {
+                    <dd>
+                        @billService.Service.name - @billService.Service.new_order
+                    </dd>
+                }
+            }
+            else
+            {
+                <dd>Không có dịch vụ nào.</dd>
+            }
+
+            <!-- Display Prescription -->
+            <dt>Toa thuốc:</dt>
+            @if (Model.Prescriptions != null && Model.Prescriptions.Any())
+            {
+                var prescriptions = Model.Prescriptions;
+
+                foreach (var per in prescriptions)
+                {
+                    <dd>
+                        @per.id - @per.new_order
+                    </dd>
+                }
+            }
+            else
+            {
+                <dd>Không có toa thuốc nào.</dd>
+            }
+
+
+        </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+<p style="padding: 24px;">
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Quay lại", "Index")
 </p>

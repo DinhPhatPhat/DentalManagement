@@ -191,6 +191,7 @@
     <EntitySetMapping Name="ConsumableMaterials">
       <EntityTypeMapping TypeName="clinicModel.ConsumableMaterial">
         <MappingFragment StoreEntitySet="ConsumableMaterial">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="able" ColumnName="able" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
@@ -233,6 +234,7 @@
     <EntitySetMapping Name="FixedMaterials">
       <EntityTypeMapping TypeName="clinicModel.FixedMaterial">
         <MappingFragment StoreEntitySet="FixedMaterial">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="able" ColumnName="able" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
@@ -268,18 +270,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Ingredient_ConsumableMaterial">
-      <EntityTypeMapping TypeName="clinicModel.Ingredient_ConsumableMaterial">
-        <MappingFragment StoreEntitySet="Ingredient_ConsumableMaterial">
-          <ScalarProperty Name="consumId" ColumnName="consumId" />
-          <ScalarProperty Name="ingreId" ColumnName="ingreId" />
-          <ScalarProperty Name="able" ColumnName="able" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Materials">
       <EntityTypeMapping TypeName="clinicModel.Material">
         <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
@@ -299,6 +293,7 @@
     <EntitySetMapping Name="Material_Category">
       <EntityTypeMapping TypeName="clinicModel.Material_Category">
         <MappingFragment StoreEntitySet="Material_Category">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
           <ScalarProperty Name="able" ColumnName="able" />
@@ -314,6 +309,7 @@
     <EntitySetMapping Name="Medicines">
       <EntityTypeMapping TypeName="clinicModel.Medicine">
         <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="able" ColumnName="able" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
@@ -465,6 +461,20 @@
           <ScalarProperty Name="quantityMedicine" ColumnName="quantityMedicine" />
           <ScalarProperty Name="medId" ColumnName="medId" />
           <ScalarProperty Name="preId" ColumnName="preId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredient_ConsumableMaterial">
+      <EntityTypeMapping TypeName="clinicModel.Ingredient_ConsumableMaterial">
+        <MappingFragment StoreEntitySet="Ingredient_ConsumableMaterial">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
+          <ScalarProperty Name="able" ColumnName="able" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="order" ColumnName="order" />
+          <ScalarProperty Name="meta" ColumnName="meta" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="consumId" ColumnName="consumId" />
+          <ScalarProperty Name="ingreId" ColumnName="ingreId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

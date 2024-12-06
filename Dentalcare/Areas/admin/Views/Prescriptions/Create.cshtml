@@ -5,14 +5,15 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 style="padding: 24px;">Thêm mới</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Prescriptions", FormMethod.Post, new { @style = "padding: 24px;" }))
+
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Prescription</h4>
+        <h4>Toa thuốc</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -23,21 +24,12 @@
             </div>
         </div>
 
+        <!-- Total Price -->
         <div class="form-group">
             @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", id = "totalPrice" } })
                 @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.hide, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.hide)
-                    @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
-                </div>
             </div>
         </div>
 
@@ -50,63 +42,173 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.datebegin, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.denid, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.datebegin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.datebegin, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.denid, "denid", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("denid", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("denid", (IEnumerable<SelectListItem>)ViewBag.denid, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.denid, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.patid, "patid", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.patid, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("patid", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.patid, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.billid, "billid", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("billid", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.billid, "", new { @class = "text-danger" })
-            </div>
+        @*Thêm thuốc*@
+        <div id="medicines-container">
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.new_order, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.new_order, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.new_order, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.able, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.able)
-                    @Html.ValidationMessageFor(model => model.able, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
+        <button type="button" class="btn btn-info" id="add-medicine">Thêm thuốc</button>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Tạo mới" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div style="padding: 24px;">
+    @Html.ActionLink("Quay lại", "Index")
 </div>
+
+
+@section Scripts
+{
+    <script>
+        // Medicines data passed from the controller (ViewBag)
+        var medicines = @Html.Raw(ViewBag.MedicinesJson);
+        var medicineCount = 0;
+
+        // Populate medicine dropdown with name and price attributes
+        function populateMedicineDropdown() {
+            var dropdownHtml = '';
+            medicines.forEach(function(medicine) {
+                dropdownHtml += '<option value="' + medicine.id + '" data-price="' + medicine.price + '">' + medicine.name + '</option>';
+            });
+            return dropdownHtml;
+        }
+
+        // Update the price for each medicine based on quantity
+        function updatePrice(medicineId, quantity, medicineCount) {
+            var selectedMedicine = medicines.find(function(medicine) {
+                return medicine.id == medicineId;
+            });
+
+            if (selectedMedicine && quantity > 0) {
+                var totalPrice = selectedMedicine.price * quantity;
+                $('#total-price-' + medicineCount).text('Tổng giá: ' + totalPrice + ' VND');
+                $('#hidden-price-' + medicineCount).val(totalPrice);
+
+                // Update the main price field dynamically
+                updateTotalPrice();
+            }
+        }
+
+        // Update the total price in the main price field
+        function updateTotalPrice() {
+            var totalPrice = 0;
+            $('[id^=hidden-price-]').each(function() {
+                totalPrice += parseFloat($(this).val()) || 0;
+            });
+            $('#totalPrice').val(totalPrice);  // Update the total price field
+        }
+
+        // When the "Add Prescription Medicine" button is clicked
+        $("#add-medicine").click(function () {
+            var newMedicineHtml = '<div class="form-group" id="medicine-row-' + medicineCount + '">' +
+                '<label class="control-label col-md-2">Thuốc</label>' +
+                '<div class="col-md-10">' +
+                '<select name="prescription_Medicines[' + medicineCount + '].medId" class="form-control" onchange="updatePrice(this.value, $(this).closest(\'.form-group\').find(\'input\').val(), ' + medicineCount + ')">' +
+                populateMedicineDropdown() +
+                '</select>' +
+                '<input type="number" name="prescription_Medicines[' + medicineCount + '].quantityMedicine" class="form-control mt-3" placeholder="Số lượng" oninput="updatePrice($(this).closest(\'.form-group\').find(\'select\').val(), this.value, ' + medicineCount + ')" />' +
+                '<div id="total-price-' + medicineCount + '" class="text-info">Tổng giá: 0 VND</div>' +
+                '<input type="hidden" id="hidden-price-' + medicineCount + '" name="prescription_Medicines[' + medicineCount + '].totalPrice" value="0" />' +
+                '<button type="button" class="btn btn-danger remove-medicine" data-medicine-count="' + medicineCount + '">Xóa</button>' +
+                '</div>' +
+                '</div>';
+            $("#medicines-container").append(newMedicineHtml);
+            medicineCount++;
+
+            // Re-attach event handlers for new medicine rows
+            $(".remove-medicine").off('click').on('click', function () {
+                var medicineCountToRemove = $(this).data("medicine-count");
+                $("#medicine-row-" + medicineCountToRemove).remove();
+                reindexMedicines();
+                updateTotalPrice(); // Recalculate total price after row is removed
+            });
+        });
+
+        $(function () {
+            $("form").submit(function (event) {
+                var medicineCount = $('[name^="prescription_Medicines["]').length; // Count the number of Prescription_Medicines
+                var isValid = true;  // Flag to track if the form is valid
+
+                // Check if at least one medicine has been added
+                if (medicineCount === 0) {
+                    alert("Vui lòng thêm ít nhất một loại thuốc.");
+                    isValid = false; // Set to false if no medicines have been added
+                }
+
+                // Loop through each medicine and check if both the medicine is selected and a valid quantity is entered
+                $('[name^="prescription_Medicines["]').each(function () {
+                    var medicineId = $(this).val(); // Get selected medicine ID
+                    var quantityInput = $(this).closest('.form-group').find('input[name*="quantityMedicine"]'); // Get the quantity input
+                    var quantity = quantityInput.val();
+
+                    if (!quantity) {
+                        alert("Vui lòng nhập số lượng.");
+                        isValid = false;  // Set the flag to false to prevent form submission
+                        return false;  // Break out of the loop
+                    }else if (quantity <= 0) {
+                        // If medicine is not selected or quantity is empty/zero
+                        alert("Số lượng không hợp lệ.");
+                        isValid = false;  // Set the flag to false to prevent form submission
+                        return false;  // Break out of the loop
+                    }
+                });
+
+                // Prevent form submission if the validation fails
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+        // Re-indexing the remaining medicines after deletion
+        function reindexMedicines() {
+            $("#medicines-container .form-group").each(function (index) {
+                $(this).find("select").attr("name", "prescription_Medicines[" + index + "].medId");
+                $(this).find("input[type='number']").attr("name", "prescription_Medicines[" + index + "].quantityMedicine");
+                $(this).find("input[type='hidden']").attr("name", "prescription_Medicines[" + index + "].totalPrice");
+            });
+        }
+    </script>
+
+    <script>
+        $(function () {
+            $("#note").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+
+                // Thay thế các ký tự có dấu thành không dấu
+                text_create = text
+                    .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ẳ|ẵ|ặ/g, "a")
+                    .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
+                    .replace(/ì|í|ị|ỉ|ĩ/g, "i")
+                    .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
+                    .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
+                    .replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
+                    .replace(/đ/g, "d")
+                    .replace(/\ /g, '-'); // Thay thế khoảng trắng thành dấu '-'
+                $("#meta").val(text_create);
+            }).keyup();
+        });
+    </script>
+}

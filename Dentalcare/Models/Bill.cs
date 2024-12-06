@@ -9,7 +9,6 @@
 
 namespace Dentalcare.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
@@ -28,27 +27,42 @@ namespace Dentalcare.Models
         [DisplayName("Tổng giá")]
         [ValidPositiveInt]
         public int totalPrice { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập giá dịch vụ.")]
+        [ValidPositiveInt]
         [DisplayName("Giá dịch vụ")]
-        [ValidPositiveInt]
+        [Required(ErrorMessage = "Vui lòng nhập giá dịch vụ.")]
         public int ServicesPrice { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập giá đơn thuốc.")]
-        [DisplayName("Giá đơn thuốc")]
         [ValidPositiveInt]
+        [DisplayName("Giá toa thuốc")]
+        [Required(ErrorMessage = "Vui lòng nhập giá toa thuốc.")]
         public int PrescriptionPrice { get; set; }
         public bool able { get; set; }
+        [DisplayName("Hiển thị")]
         public bool hide { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập meta.")]
         public string meta { get; set; }
         public int order { get; set; }
+        [DisplayName("Ngày cập nhật")]
         public System.DateTime datebegin { get; set; }
+        [DisplayName("Đã thanh toán")]
         public bool isPayed { get; set; }
+        [DisplayName("Bệnh nhân")]
+        [Required(ErrorMessage = "Vui lòng chọn bệnh nhân.")]
         public string patid { get; set; }
+        [ValidPositiveInt]
+        [DisplayName("Vị trí")]
+        [Required(ErrorMessage = "Vui lòng nhập vị trí.")]
         public int new_order { get; set; }
+
+        public List<string> selectedBill_Service { get; set; }
+        public string selectedPrescription { get; set; }
+
 
         public virtual Patient Patient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DisplayName("Dịch vụ")]
         public virtual ICollection<Bill_Service> Bill_Service { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DisplayName("Toa thuốc")]
         public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }
