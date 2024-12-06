@@ -72,8 +72,13 @@ namespace Dentalcare.Areas.admin.Controllers
                 "id", "name");  // Set the value field to 'id' and the display field to 'name'
 
             var medicines = db.Medicines
-                .Include(m => m.ConsumableMaterial) // Include ConsumableMaterial
-                .Include(m => m.ConsumableMaterial.Material) // Include Material via ConsumableMaterial
+                .Where(m => m.able == true)  // Example filter: only medicines that are available
+                .Select(m => new {
+                    m.id,
+                    m.price,
+                    m.ConsumableMaterial.Material.name,  // Material name from ConsumableMaterial
+                    m.ConsumableMaterial.Material.quantity,  // Material name from ConsumableMaterial
+                })
                 .ToList();
 
             // Serialize with settings to handle circular references
@@ -127,25 +132,8 @@ namespace Dentalcare.Areas.admin.Controllers
                         .ToList(),
                     "id", "name");  // Set the value field to 'id' and the display field to 'name'
 
-                var medicines = db.Medicines
-                   .Include(m => m.ConsumableMaterial) // Include ConsumableMaterial
-                   .Include(m => m.ConsumableMaterial.Material) // Include Material via ConsumableMaterial
-                   .ToList();
 
-                // Serialize with settings to handle circular references
-                var serializedMedicines = JsonConvert.SerializeObject(
-                    medicines,
-                    new JsonSerializerSettings
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    }
-                );
-
-                int currentPrescriptionCount = db.Prescription_Medicine
-                    .Where(pm => pm.preId == prescription.id)  // Filter by the current prescription's ID
-                    .Count();
-
-                ViewBag.MedicinesJson = serializedMedicines;
+                
                 if (ModelState.IsValid)
                 {
                     // Generate the new ID
@@ -206,7 +194,7 @@ namespace Dentalcare.Areas.admin.Controllers
 
                             // Subtract the prescribed quantity from the Material's quantity
                             var medicine = db.Medicines
-                                .Include(m => m.ConsumableMaterial)
+                                //.Include(m => m.ConsumableMaterial)
                                 .FirstOrDefault(m => m.id == item.medId);
                             if (medicine != null && medicine.ConsumableMaterial != null)
                             {
@@ -218,7 +206,31 @@ namespace Dentalcare.Areas.admin.Controllers
                                 }
                                 else
                                 {
-                                    throw new Exception("Không đủ thuốc.");
+                                    var currMedicines = db.Medicines
+                                        .Where(m => m.able == true)  // Example filter: only medicines that are available
+                                        .Select(m => new {
+                                            m.id,
+                                            m.price,
+                                            m.ConsumableMaterial.Material.name,  // Material name from ConsumableMaterial
+                                            m.ConsumableMaterial.Material.quantity,  // Material name from ConsumableMaterial
+                                        })
+                                        .ToList();
+
+                                    // Serialize with settings to handle circular references
+                                    var currSerializedMedicines = JsonConvert.SerializeObject(
+                                        currMedicines,
+                                        new JsonSerializerSettings
+                                        {
+                                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                        }
+                                    );
+
+                                    
+                                    ViewBag.MedicinesJson = currSerializedMedicines;
+
+                                    ModelState.AddModelError("", medicine.ConsumableMaterial.Material.name + " không đủ thuốc. (Còn " 
+                                        + item.totalQuantity + " " + medicine.ConsumableMaterial.Material.quantity);
+                                    return View(prescription);
                                 }
                             }
 
@@ -243,7 +255,26 @@ namespace Dentalcare.Areas.admin.Controllers
                 throw ex;
             }
 
+            var medicines = db.Medicines
+                .Where(m => m.able == true)  // Example filter: only medicines that are available
+                .Select(m => new {
+                    m.id,
+                    m.price,
+                    m.ConsumableMaterial.Material.name,  // Material name from ConsumableMaterial
+                    m.ConsumableMaterial.Material.quantity,  // Material name from ConsumableMaterial
+                })
+                .ToList();
 
+            // Serialize with settings to handle circular references
+            var serializedMedicines = JsonConvert.SerializeObject(
+                medicines,
+                new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }
+            );
+
+            ViewBag.MedicinesJson = serializedMedicines;
             return View(prescription);
         }
 
@@ -290,8 +321,13 @@ namespace Dentalcare.Areas.admin.Controllers
                 "id", "name");  // Set the value field to 'id' and the display field to 'name'
 
             var medicines = db.Medicines
-                .Include(m => m.ConsumableMaterial) // Include ConsumableMaterial
-                .Include(m => m.ConsumableMaterial.Material) // Include Material via ConsumableMaterial
+                .Where(m => m.able == true)  // Example filter: only medicines that are available
+                .Select(m => new {
+                    m.id,
+                    m.price,
+                    m.ConsumableMaterial.Material.name,  // Material name from ConsumableMaterial
+                    m.ConsumableMaterial.Material.quantity,  // Material name from ConsumableMaterial
+                })
                 .ToList();
 
             // Serialize with settings to handle circular references
@@ -304,8 +340,8 @@ namespace Dentalcare.Areas.admin.Controllers
             );
             ViewBag.PrescriptionMedicines = prescription.Prescription_Medicine;
             ViewBag.Medicines = db.Medicines
-                .Include(m => m.ConsumableMaterial) // Include ConsumableMaterial
-                .Include(m => m.ConsumableMaterial.Material) // Include Material via ConsumableMaterial
+                .Include(m => m.ConsumableMaterial)
+                .Include(m => m.ConsumableMaterial.Material)
                 .ToList();
             ViewBag.MedicinesJson = serializedMedicines;
             ViewBag.MedicineCount = prescription.Prescription_Medicine.Count;
@@ -459,8 +495,13 @@ namespace Dentalcare.Areas.admin.Controllers
                     "id", "name");  // Set the value field to 'id' and the display field to 'name'
 
                 var medicines = db.Medicines
-                    .Include(m => m.ConsumableMaterial) // Include ConsumableMaterial
-                    .Include(m => m.ConsumableMaterial.Material) // Include Material via ConsumableMaterial
+                    .Where(m => m.able == true)  // Example filter: only medicines that are available
+                    .Select(m => new {
+                        m.id,
+                        m.price,
+                        m.ConsumableMaterial.Material.name,  // Material name from ConsumableMaterial
+                        m.ConsumableMaterial.Material.quantity,  // Material name from ConsumableMaterial
+                    })
                     .ToList();
 
                 // Serialize with settings to handle circular references
@@ -512,6 +553,12 @@ namespace Dentalcare.Areas.admin.Controllers
             {
                 // Find the Prescription being deleted
                 Prescription prescription = db.Prescriptions.Find(id);
+
+                if(prescription.billid != "BI00000001")
+                {
+                    ModelState.AddModelError("", "Toa thuốc không thể xóa vì đã tồn tại trong hóa đơn.");
+                    return View(prescription);
+                }
 
                 if (prescription != null)
                 {

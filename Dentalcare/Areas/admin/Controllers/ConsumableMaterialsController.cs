@@ -35,6 +35,12 @@ namespace Dentalcare.Areas.admin.Controllers
             {
                 return HttpNotFound();
             }
+            var ingredientConsumableMaterials = db.Ingredient_ConsumableMaterial
+                .Where(m => m.consumId == id)
+                .Include(m => m.Ingredient)  // Assuming Ingredient is a navigation property
+                .ToList();
+            // Pass the ingredients to ViewBag
+            ViewBag.ingredientConsumableMaterial = ingredientConsumableMaterials;
             return View(consumableMaterial);
         }
 
@@ -239,9 +245,9 @@ namespace Dentalcare.Areas.admin.Controllers
                             able = true,
                             hide = false,
                             datebegin = DateTime.Now,
-                            meta = $"vat-lieu-tieu-hao-va-thanh-phan-{getMaxOrder()}"
+                            meta = $"vat-lieu-tieu-hao-va-thanh-phan-{getMaxOrder()}",
+                            new_order = getMaxOrderIngredientConsumableMaterial()
                         };
-                        consumableMaterialIngredient.new_order = consumableMaterialIngredient.order;
 
                         db.Ingredient_ConsumableMaterial.Add(consumableMaterialIngredient);
                     }
@@ -270,6 +276,12 @@ namespace Dentalcare.Areas.admin.Controllers
             {
                 return HttpNotFound();
             }
+            var ingredientConsumableMaterials = db.Ingredient_ConsumableMaterial
+                .Where(m => m.consumId == id)
+                .Include(m => m.Ingredient)  // Assuming Ingredient is a navigation property
+                .ToList();
+            // Pass the ingredients to ViewBag
+            ViewBag.ingredientConsumableMaterial = ingredientConsumableMaterials;
             return View(consumableMaterial);
         }
 
@@ -278,11 +290,42 @@ namespace Dentalcare.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            // Find the ConsumableMaterial by its ID
             ConsumableMaterial consumableMaterial = db.ConsumableMaterials.Find(id);
+            if (consumableMaterial == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Check if the ConsumableMaterial is associated with any Medicine
+            var associatedMedicine = db.Medicines.FirstOrDefault(m => m.id == consumableMaterial.id);
+
+            if (associatedMedicine != null)
+            {
+                // If there is an associated Medicine, show an error message
+                ModelState.AddModelError("", "Không thể xóa vì vật liệu hao này là thuốc.");
+                return View(consumableMaterial); // Return to the view with an error message
+            }
+
+            // Remove the associated Ingredient_ConsumableMaterial relationships
+            var ingredientConsumableMaterials = db.Ingredient_ConsumableMaterial
+                .Where(icm => icm.consumId == consumableMaterial.id)
+                .ToList();
+
+            foreach (var ingredientConsumableMaterial in ingredientConsumableMaterials)
+            {
+                db.Ingredient_ConsumableMaterial.Remove(ingredientConsumableMaterial);
+            }
+
+            // Remove the ConsumableMaterial
             db.ConsumableMaterials.Remove(consumableMaterial);
+
+            // Save changes to the database
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
@@ -296,6 +339,15 @@ namespace Dentalcare.Areas.admin.Controllers
         public int getMaxOrder()
         {
             int lastOrder = db.ConsumableMaterials
+                               .OrderByDescending(n => n.order)
+                               .Select(n => n.order)
+                               .FirstOrDefault();
+            return lastOrder + 1;
+        }
+
+        public int getMaxOrderIngredientConsumableMaterial()
+        {
+            int lastOrder = db.Ingredient_ConsumableMaterial
                                .OrderByDescending(n => n.order)
                                .Select(n => n.order)
                                .FirstOrDefault();

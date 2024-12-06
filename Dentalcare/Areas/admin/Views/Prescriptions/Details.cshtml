@@ -36,12 +36,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.hide)
+            @Html.DisplayNameFor(model => model.hide)
         </dt>
 
         <dd>
             @(Model.hide ? "Ẩn": "Hiển thị" )
-
         </dd>
 
         <dt>
@@ -73,6 +72,8 @@
         </dt>
 
         <dd>
+            @Html.DisplayFor(model => model.Dentist.Person.id)
+            -
             @Html.DisplayFor(model => model.Dentist.Person.name)
         </dd>
 
@@ -81,6 +82,8 @@
         </dt>
 
         <dd>
+            @Html.DisplayFor(model => model.Patient.Person.id)
+            -
             @Html.DisplayFor(model => model.Patient.Person.name)
         </dd>
 

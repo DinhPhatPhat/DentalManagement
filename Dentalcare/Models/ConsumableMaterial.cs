@@ -29,6 +29,7 @@ namespace Dentalcare.Models
         public System.DateTime expDate { get; set; }
         [DisplayName("Hiển thị")]
         public bool hide { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập meta.")]
         public string meta { get; set; }
         [ValidPositiveInt]
         [DisplayName("Vị trí")]

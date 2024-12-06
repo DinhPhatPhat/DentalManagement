@@ -1,4 +1,4 @@
-﻿@model Dentalcare.Models.ConsumableMaterial
+﻿@model Dentalcare.Models.Medicine
 
 @{
     ViewBag.Title = "Details";
@@ -8,7 +8,7 @@
 <h2 style="padding: 24px;">Chi tiết</h2>
 
 <div style="padding: 24px;">
-    <h4>Vật liệu tiêu hao</h4>
+    <h4>Thuốc</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,27 +20,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Material.cateId)
+            @Html.DisplayNameFor(model => model.ConsumableMaterial.Material.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Material.cateId)
+            @Html.DisplayFor(model => model.ConsumableMaterial.Material.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Material.name)
+            @Html.DisplayNameFor(model => model.caredACtor)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Material.name)
+            @Html.DisplayFor(model => model.caredACtor)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.expDate)
+            @Html.DisplayNameFor(model => model.price)
         </dt>
 
         <dd>
-            @(Model.datebegin != null ? Model.expDate.ToString("dd/MM/yyyy") : "")
+            @Html.DisplayFor(model => model.price)
         </dd>
 
         <dt>
@@ -60,6 +60,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.instruction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instruction)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.datebegin)
         </dt>
 
@@ -74,31 +82,6 @@
         <dd>
             @Html.DisplayFor(model => model.new_order)
         </dd>
-
-        <!-- Display Ingredients -->
-        <dt>Thành phần:</dt>
-        @if (ViewBag.ingredientConsumableMaterial != null)
-        {
-            var ingredientConsumableMaterials = ViewBag.ingredientConsumableMaterial as List<Dentalcare.Models.Ingredient_ConsumableMaterial>;
-
-            if (ingredientConsumableMaterials != null && ingredientConsumableMaterials.Any())
-            {
-                foreach (var ingredient in ingredientConsumableMaterials)
-                {
-                    <dd>
-                        @ingredient.Ingredient.name - @ingredient.new_order
-                    </dd>
-                }
-            }
-            else
-            {
-                <dd>Không có thành phần nào.</dd>
-            }
-        }
-        else
-        {
-            <dd>Không có thành phần nào.</dd>
-        }
     </dl>
 </div>
 <p style="padding: 24px;">

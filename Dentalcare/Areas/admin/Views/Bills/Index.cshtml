@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Dentalcare.Models.Bill>
+﻿@using Dental.Help
+@model IEnumerable<Dentalcare.Models.Bill>
 
 @{
     ViewBag.Title = "Index";
@@ -10,87 +11,81 @@
         <h6 class="m-0 font-weight-bold text-primary">Danh sách hóa đơn</h6>
     </div>
     <div style="margin-left: 20px; margin-top: 20px">
-        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "NEWS")'">Thêm mới</button>
+        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Bills")'">Thêm mới</button>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.totalPrice)
-                    <th>
-                        @Html.DisplayNameFor(model => model.ServicesPrice)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PrescriptionPrice)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.able)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.hide)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.meta)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.order)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.datebegin)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.isPayed)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Patient.meta)
-                    </th>
-                    <th></th>
-                </tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.totalPrice)
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServicesPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PrescriptionPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.hide)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.meta)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.datebegin)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.isPayed)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.new_order)
+                        </th>
+                        <th></th>
+                    </tr>
                 </thead>
 
                 <tbody>
                     @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.totalPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServicesPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PrescriptionPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.able)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.hide)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.meta)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.order)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.datebegin)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.isPayed)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Patient.meta)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                        </td>
-                    </tr>
-                }
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.totalPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServicesPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrescriptionPrice)
+                            </td>
+                            <td>
+                                @(item.hide ? "Ẩn":"Hiển thị")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.meta)
+                            </td>
+                            <td>
+                                @(item.datebegin != null ? item.datebegin.ToString("dd/MM/yyyy") : "")
+                            </td>
+                            <td>
+                                @(item.isPayed ? "Đã thanh toán":"Chưa thanh toán");
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.new_order)
+                            </td>
+                            <td>
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Bills", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Bills", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+                                @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Bills", routeValues: new { id = item.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })*@
+                            </td>
+                        </tr>
+                    }
                 </tbody>
 
             </table>

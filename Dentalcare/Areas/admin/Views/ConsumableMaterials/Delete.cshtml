@@ -5,67 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 style="padding: 24px;">Xóa</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ConsumableMaterial</h4>
+<!-- Display Validation Errors -->
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div style="padding: 24px;">
+    <h4>Vật liệu tiêu hao</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.expDate)
+            @Html.DisplayNameFor(model => model.id)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.expDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hide)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hide)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.meta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.meta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.order)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.order)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.datebegin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.datebegin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.able)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.able)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.new_order)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.new_order)
+            @Html.DisplayFor(model => model.id)
         </dd>
 
         <dt>
@@ -77,21 +30,86 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Medicine.caredACtor)
+            @Html.DisplayNameFor(model => model.Material.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Medicine.caredACtor)
+            @Html.DisplayFor(model => model.Material.name)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.expDate)
+        </dt>
+
+        <dd>
+            @(Model.datebegin != null ? Model.expDate.ToString("dd/MM/yyyy") : "")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hide)
+        </dt>
+
+        <dd>
+            @(Model.hide ? "Ẩn": "Hiển thị" )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datebegin)
+        </dt>
+
+        <dd>
+            @(Model.datebegin != null ? Model.datebegin.ToString("dd/MM/yyyy") : "")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.new_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.new_order)
+        </dd>
+
+        <!-- Display Ingredients -->
+        <dt>Thành phần:</dt>
+        @if (ViewBag.ingredientConsumableMaterial != null)
+        {
+            var ingredientConsumableMaterials = ViewBag.ingredientConsumableMaterial as List<Dentalcare.Models.Ingredient_ConsumableMaterial>;
+
+            if (ingredientConsumableMaterials != null && ingredientConsumableMaterials.Any())
+            {
+                foreach (var ingredient in ingredientConsumableMaterials)
+                {
+                    <dd>
+                        @ingredient.Ingredient.name - @ingredient.new_order
+                    </dd>
+                }
+            }
+            else
+            {
+                <dd>Không có thành phần nào.</dd>
+            }
+        }
+        else
+        {
+            <dd>Không có thành phần nào.</dd>
+        }
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions no-color" style="padding: 24px;">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay lại", "Index")
         </div>
     }
 </div>

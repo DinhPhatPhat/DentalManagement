@@ -145,6 +145,7 @@
     <Compile Include="Areas\admin\Controllers\DentistsController.cs" />
     <Compile Include="Areas\admin\Controllers\MaterialsController.cs" />
     <Compile Include="Areas\admin\Controllers\Material_CategoryController.cs" />
+    <Compile Include="Areas\admin\Controllers\MedicinesController.cs" />
     <Compile Include="Areas\admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\admin\Controllers\NEWSController.cs" />
     <Compile Include="Areas\admin\Controllers\PatientsController.cs" />
@@ -3663,6 +3664,11 @@
     <Content Include="Areas\admin\Views\ConsumableMaterials\Details.cshtml" />
     <Content Include="Areas\admin\Views\ConsumableMaterials\Edit.cshtml" />
     <Content Include="Areas\admin\Views\ConsumableMaterials\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Medicines\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Medicines\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Medicines\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Medicines\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Medicines\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
