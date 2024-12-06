@@ -63,6 +63,7 @@
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Avatar">
     <Key>
@@ -178,6 +179,7 @@
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="falid" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="descrip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -390,6 +392,7 @@
     <Property Name="order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="datebegin" Type="datetime" Nullable="false" />
     <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="new_order" Type="int" />
   </EntityType>
   <EntityType Name="Service">
     <Key>

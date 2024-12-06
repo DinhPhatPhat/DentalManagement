@@ -5,9 +5,9 @@
     Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
 }
 
-<h2>Edit Dentist</h2>
+<h2 style="padding: 24px;">Sửa</h2>
 
-@using (Html.BeginForm("Edit", "Dentists", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Dentists", FormMethod.Post, new { enctype = "multipart/form-data", @style = "padding: 24px;" }))
 {
     @Html.AntiForgeryToken()
 
@@ -15,20 +15,31 @@
     <!-- Hidden field for Dentist ID -->
     @Html.HiddenFor(model => model.dentist.id)
 
-    <h4>Account Information</h4>
+    <h4>Thông tin tài khoản</h4>
     <hr />
     <div class="form-group">
-        @Html.LabelFor(model => model.account.username, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.account.username, "Tên đăng nhập", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.account.username, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             @Html.ValidationMessageFor(model => model.account.username)
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.account.able, "Hoạt động", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @{
+                    bool able = (Model.account.able ? true : false);
+                }
+                @Html.CheckBoxFor(model => model.account.able)
+            </div>
+        </div>
+    </div>
 
-    <h4>Person Information</h4>
+    <h4>Thông tin chung</h4>
     <hr />
     <div class="form-group">
-        @Html.LabelFor(model => model.person.name, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.name, "Tên nha sĩ", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.person.name, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.person.name)
@@ -36,7 +47,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.phoneNumber, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.phoneNumber, "Số điện thoại", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.person.phoneNumber, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.person.phoneNumber)
@@ -44,7 +55,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.email, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.email, "Email", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.person.email, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.person.email)
@@ -52,7 +63,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.salary, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.salary, "Lương tháng", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.person.salary, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.person.salary)
@@ -60,7 +71,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.address, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.address, "Địa chỉ", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.person.address, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.person.address, "", new { @class = "text-danger" })
@@ -68,7 +79,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.gender, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.gender, "Giới tính", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.RadioButtonFor(model => model.person.gender, true) <label>Male</label>
             @Html.RadioButtonFor(model => model.person.gender, false) <label>Female</label>
@@ -77,15 +88,15 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.birthday, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.birthday, "Ngày sinh", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.person.birthday, new { @class = "form-control", @type = "date" })
+            @Html.TextBoxFor(model => model.person.birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
             @Html.ValidationMessageFor(model => model.person.birthday)
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.person.nation, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.person.nation, "Quốc tịch", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.person.nation, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.person.nation)
@@ -93,16 +104,16 @@
     </div>
 
     <div class="form-group">
-        @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+        @Html.Label("Avatar", "Ảnh đại diện", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="file" id="avatar" name="avatar" accept="image/*" class="form-control" />
         </div>
     </div>
 
-    <h4>Dentist Information</h4>
+    <h4>Thông tin nha sĩ</h4>
     <hr />
     <div class="form-group">
-        @Html.LabelFor(model => model.dentist.title, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.dentist.title, "Học vị", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.dentist.title, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.dentist.title)
@@ -110,7 +121,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.dentist.falid, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.dentist.falid, "Chuyên khoa", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.dentist.falid, (SelectList)ViewBag.falid, "-- Select Faculty --", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.dentist.falid)
@@ -126,21 +137,31 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.dentist.descrip, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.dentist.descrip, "Mô tả", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.dentist.descrip, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.dentist.descrip, "", new { @class = "text-danger" })
         </div>
     </div>
 
+
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+        @Html.LabelFor(model => model.dentist.new_order, "Vị trí", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dentist.new_order, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dentist.new_order, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div style="padding: 24px;">
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+
 </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index", new { area = "admin" }, new { @class = "btn btn-secondary" })
-</div>

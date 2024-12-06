@@ -85,6 +85,7 @@
     <EntitySetMapping Name="Assisstants">
       <EntityTypeMapping TypeName="clinicModel.Assisstant">
         <MappingFragment StoreEntitySet="Assisstant">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />
@@ -204,6 +205,7 @@
     <EntitySetMapping Name="Dentists">
       <EntityTypeMapping TypeName="clinicModel.Dentist">
         <MappingFragment StoreEntitySet="Dentist">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="descrip" ColumnName="descrip" />
           <ScalarProperty Name="falid" ColumnName="falid" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -385,6 +387,7 @@
     <EntitySetMapping Name="Receptionists">
       <EntityTypeMapping TypeName="clinicModel.Receptionist">
         <MappingFragment StoreEntitySet="Receptionist">
+          <ScalarProperty Name="new_order" ColumnName="new_order" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="datebegin" ColumnName="datebegin" />
           <ScalarProperty Name="order" ColumnName="order" />

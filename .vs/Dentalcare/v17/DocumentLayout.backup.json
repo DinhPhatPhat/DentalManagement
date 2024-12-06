@@ -7,6 +7,18 @@
       "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\areas\\admin\\views\\prescriptions\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|d:\\college\\summarytdtu\\nettechnology\\ck\\mainapplication\\dentalmanagement\\dentalcare\\areas\\admin\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\areas\\admin\\views\\news\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|d:\\college\\summarytdtu\\nettechnology\\ck\\mainapplication\\dentalmanagement\\dentalcare\\models\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\models\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|d:\\college\\summarytdtu\\nettechnology\\ck\\mainapplication\\dentalmanagement\\dentalcare\\areas\\admin\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\areas\\admin\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|d:\\college\\summarytdtu\\nettechnology\\ck\\mainapplication\\dentalmanagement\\dentalcare\\areas\\admin\\controllers\\prescriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11F999E9-8AC5-4389-889E-46403800A9C9}|Dentalcare\\Dentalcare.csproj|solutionrelative:dentalcare\\areas\\admin\\controllers\\prescriptionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -54,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "PrescriptionsController.cs",
               "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Areas\\admin\\Controllers\\PrescriptionsController.cs",
               "RelativeDocumentMoniker": "Dentalcare\\Areas\\admin\\Controllers\\PrescriptionsController.cs",
@@ -80,13 +92,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Details.cshtml",
-              "RelativeDocumentMoniker": "Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Details.cshtml",
-              "ToolTip": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Details.cshtml",
-              "RelativeToolTip": "Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Prescription.cs",
+              "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Models\\Prescription.cs",
+              "RelativeDocumentMoniker": "Dentalcare\\Models\\Prescription.cs",
+              "ToolTip": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Models\\Prescription.cs",
+              "RelativeToolTip": "Dentalcare\\Models\\Prescription.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:36:28.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Index.cshtml",
+              "RelativeDocumentMoniker": "Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Index.cshtml",
+              "ToolTip": "D:\\College\\SummaryTDTU\\NetTechnology\\CK\\MainApplication\\DentalManagement\\Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Index.cshtml",
+              "RelativeToolTip": "Dentalcare\\Areas\\admin\\Views\\Prescriptions\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAEgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-06T14:38:17.94Z",
               "EditorCaption": ""

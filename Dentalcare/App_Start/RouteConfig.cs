@@ -21,6 +21,13 @@ namespace Dentalcare
             );
 
             routes.MapRoute(
+                name: "Account",
+                url: "tai-khoan",
+                defaults: new { controller = "Account", action = "Login" },
+                namespaces: new[] { "Dentalcare.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "BlogDetail",
                 url: "tin-tuc/{meta}",
                 defaults: new { controller= "Blog", action = "Details", meta = UrlParameter.Optional },
@@ -53,7 +60,14 @@ namespace Dentalcare
             routes.MapRoute(
                 name: "Login",
                 url: "dang-nhap",
-                defaults: new { controller = "Default", action = "Login" },
+                defaults: new { controller = "Account", action = "Login" },
+                namespaces: new[] { "Dentalcare.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Default", action = "Home", id = UrlParameter.Optional },
                 namespaces: new[] { "Dentalcare.Controllers" }
             );
             routes.MapRoute(
@@ -62,12 +76,8 @@ namespace Dentalcare
                 defaults: new { controller = "Default", action = "PageByMeta" },
                 namespaces: new[] { "Dentalcare.Controllers" }
             );
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Default", action = "Home", id = UrlParameter.Optional },
-                namespaces: new[] { "Dentalcare.Controllers" }
-            );
+
+
 
 
         }

@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="clinicModel.Clinic" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="clinicModel.Comment" Width="1.5" PointX="7.5" PointY="11.375" />
         <EntityTypeShape EntityType="clinicModel.ConsumableMaterial" Width="1.5" PointX="11.25" PointY="38.875" />
-        <EntityTypeShape EntityType="clinicModel.Dentist" Width="1.5" PointX="8.25" PointY="16.5" />
+        <EntityTypeShape EntityType="clinicModel.Dentist" Width="1.5" PointX="8.25" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="clinicModel.Faculty" Width="1.5" PointX="6" PointY="34.75" />
         <EntityTypeShape EntityType="clinicModel.FixedMaterial" Width="1.5" PointX="11.25" PointY="43.25" />
         <EntityTypeShape EntityType="clinicModel.Footer" Width="1.5" PointX="9.75" PointY="0.75" />

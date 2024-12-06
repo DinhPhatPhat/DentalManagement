@@ -28,7 +28,7 @@ namespace Dentalcare.Areas.admin.Controllers
             {
                 dentist = d,
                 person = d.Person,
-                account = db.Accounts.FirstOrDefault(a => a.id == d.Person.id) // Giả sử mối quan hệ giữa Account và Person là qua id
+                account = db.Accounts.FirstOrDefault(a => a.id == d.Person.id)
             }).ToList();
             return View(dentistViewModels);
         }
@@ -82,87 +82,120 @@ namespace Dentalcare.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateDentistViewModel model, HttpPostedFileBase avatar)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var newAccountId = GenerateNewAccountId();
-
-                // Tạo mới Account với userName và password
-                var account = new Account
+                if (ModelState.IsValid)
                 {
-                    id = newAccountId,
-                    username = model.account.username,
-                    password = "123", // Sử dụng mật khẩu mặc định là "123"
-                    meta = newAccountId,
-                    hide = false,
-                    datebegin = DateTime.UtcNow,
-                    able = true,
-                };
+                    var newAccountId = GenerateNewAccountId();
 
-                // Xử lý upload file avatar
-                string avatarPath = "123";
-                if (avatar != null && avatar.ContentLength > 0)
-                {
-                    // Lấy đuôi file (ví dụ .jpg, .png)
-                    string fileExtension = Path.GetExtension(avatar.FileName);
+                    // Kiểm tra trùng tên người dùng
+                    if (db.Accounts.Any(a => a.username == model.account.username))
+                    {
+                        ModelState.AddModelError("account.username", "Tên người dùng đã tồn tại.");
+                        ViewBag.falid = new SelectList(db.Faculties, "id", "name");
+                        return View(model);
+                    }
 
-                    // Đường dẫn thư mục lưu trữ
-                    string folderPath = Server.MapPath($"~/Content/images/{newAccountId}/");
+                    // Kiểm tra trùng số điện thoại
+                    if (db.People.Any(p => p.phoneNumber == model.person.phoneNumber))
+                    {
+                        ModelState.AddModelError("person.phoneNumber", "Số điện thoại đã tồn tại.");
+                        ViewBag.falid = new SelectList(db.Faculties, "id", "name");
+                        return View(model);
+                    }
 
-                    // Tạo thư mục nếu chưa tồn tại
-                    if (!Directory.Exists(folderPath))
-                        Directory.CreateDirectory(folderPath);
+                    // Kiểm tra trùng email
+                    if (db.People.Any(p => p.email == model.person.email))
+                    {
+                        ModelState.AddModelError("person.email", "Email đã tồn tại.");
+                        ViewBag.falid = new SelectList(db.Faculties, "id", "name");
+                        return View(model);
+                    }
 
-                    // Đường dẫn đầy đủ của file
-                    avatarPath = $"/Content/images/{newAccountId}/avatar{fileExtension}";
+                    // Tạo mới Account với userName và password
+                    var account = new Account
+                    {
+                        id = newAccountId,
+                        username = model.account.username,
+                        password = "123", // Sử dụng mật khẩu mặc định là "123"
+                        meta = newAccountId,
+                        hide = false,
+                        datebegin = DateTime.UtcNow,
+                        able = true,
+                    };
 
-                    // Lưu file lên server
-                    avatar.SaveAs(Path.Combine(folderPath, $"avatar{fileExtension}"));
-                }
+                    // Xử lý upload file avatar
+                    string avatarPath = "123";
+                    if (avatar != null && avatar.ContentLength > 0)
+                    {
+                        // Lấy đuôi file (ví dụ .jpg, .png)
+                        string fileExtension = Path.GetExtension(avatar.FileName);
 
-                // Tạo mới Person và lưu đường dẫn avatar vào trường img
-                var person = new Person
-                {
-                    id = newAccountId,
-                    name = model.person.name,
-                    phoneNumber = model.person.phoneNumber,
-                    email = model.person.email,
-                    salary = model.person.salary,
-                    address = model.person.address,
-                    gender = model.person.gender,
-                    birthday = model.person.birthday,
-                    nation = model.person.nation,
-                    img = avatarPath,  // Lưu đường dẫn avatar vào trường img
-                    meta = model.dentist.meta,
-                    role = 3,
-                    hide = false,
-                    datebegin = DateTime.UtcNow
-                };
+                        // Đường dẫn thư mục lưu trữ
+                        string folderPath = Server.MapPath($"~/Content/images/{newAccountId}/");
 
-                // Tạo mới Dentist
-                var dentist = new Dentist
-                {
-                    id = newAccountId,
-                    title = model.dentist.title,
-                    hide = model.dentist.hide,
-                    meta = model.dentist.meta,
-                    descrip = model.dentist.descrip,
-                    falid = model.dentist.falid, // Lưu faculty ID
-                    datebegin = DateTime.UtcNow
-                };
+                        // Tạo thư mục nếu chưa tồn tại
+                        if (!Directory.Exists(folderPath))
+                            Directory.CreateDirectory(folderPath);
 
-                // Lưu các đối tượng vào cơ sở dữ liệu
-             
+                        // Đường dẫn đầy đủ của file
+                        avatarPath = $"/Content/images/{newAccountId}/avatar{fileExtension}";
+
+                        // Lưu file lên server
+                        avatar.SaveAs(Path.Combine(folderPath, $"avatar{fileExtension}"));
+                    }
+
+                    // Tạo mới Person và lưu đường dẫn avatar vào trường img
+                    var person = new Person
+                    {
+                        id = newAccountId,
+                        name = model.person.name,
+                        phoneNumber = model.person.phoneNumber,
+                        email = model.person.email,
+                        salary = model.person.salary,
+                        address = model.person.address,
+                        gender = model.person.gender,
+                        birthday = model.person.birthday,
+                        nation = model.person.nation,
+                        img = avatarPath,  // Lưu đường dẫn avatar vào trường img
+                        meta = model.dentist.meta,
+                        role = 3,
+                        hide = false,
+                        datebegin = DateTime.UtcNow
+                    };
+
+                    // Tạo mới Dentist
+                    var dentist = new Dentist
+                    {
+                        id = newAccountId,
+                        title = model.dentist.title,
+                        hide = model.dentist.hide,
+                        meta = model.dentist.meta,
+                        descrip = model.dentist.descrip,
+                        falid = model.dentist.falid, // Lưu faculty ID
+                        datebegin = DateTime.UtcNow,
+                        new_order = getMaxOrder()
+                    };
+
+                    // Lưu các đối tượng vào cơ sở dữ liệu
                     db.Accounts.Add(account);
                     db.People.Add(person);
                     db.Dentists.Add(dentist);
                     db.SaveChanges();
-                
-                return RedirectToAction("Index"); // Chuyển hướng về danh sách Dentist
+
+                    return RedirectToAction("Index"); // Chuyển hướng về danh sách Dentist
+                }
+
+                // Nếu ModelState không hợp lệ, trả lại view với model để người dùng sửa lại thông tin
+                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin."); // Thêm lỗi tổng quát
+                ViewBag.falid = new SelectList(db.Faculties, "id", "name");
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
-            // Nếu ModelState không hợp lệ, trả lại view với model để người dùng sửa lại thông tin
-            ViewBag.falid = new SelectList(db.Faculties, "id", "name");
-            return View(model);
         }
 
         // GET: admin/Dentists/Edit/5
@@ -186,7 +219,8 @@ namespace Dentalcare.Areas.admin.Controllers
                 dentist = dentist,
                 person = db.People.Find(dentist.id),
                 account = db.Accounts.Find(dentist.id) // Adjust as necessary to map account data
-            };
+  
+        };
 
             // Populate the dropdown lists for faculty and person data
             ViewBag.falid = new SelectList(db.Faculties, "id", "name", dentist.falid);
@@ -207,6 +241,22 @@ namespace Dentalcare.Areas.admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // Kiểm tra trùng số điện thoại
+                    if (db.People.Any(p => p.phoneNumber == model.person.phoneNumber && p.id != model.dentist.id))
+                    {
+                        ModelState.AddModelError("person.phoneNumber", "Số điện thoại đã tồn tại.");
+                        ViewBag.falid = new SelectList(db.Faculties, "id", "name", model.dentist.falid);
+                        return View(model);
+                    }
+
+                    // Kiểm tra trùng email
+                    if (db.People.Any(p => p.email == model.person.email && p.id != model.dentist.id))
+                    {
+                        ModelState.AddModelError("person.email", "Email đã tồn tại.");
+                        ViewBag.falid = new SelectList(db.Faculties, "id", "name", model.dentist.falid);
+                        return View(model);
+                    }
+
                     // Cập nhật Dentist
                     var dentist = db.Dentists.Find(model.dentist.id);
                     if (dentist == null)
@@ -220,9 +270,10 @@ namespace Dentalcare.Areas.admin.Controllers
                     dentist.falid = model.dentist.falid;
                     dentist.descrip = model.dentist.descrip;
                     dentist.datebegin = DateTime.UtcNow;
+                    dentist.new_order = model.dentist.new_order;
 
                     // Cập nhật Person
-                   var person = db.People.Find(model.dentist.id);
+                    var person = db.People.Find(model.dentist.id);
                     if (person != null)
                     {
                         person.name = model.person.name;
@@ -234,7 +285,6 @@ namespace Dentalcare.Areas.admin.Controllers
                         person.birthday = model.person.birthday;
                         person.nation = model.person.nation;
 
-                        System.Diagnostics.Debug.WriteLine(person.birthday);
                         // Xử lý upload file avatar nếu có
                         if (avatar != null && avatar.ContentLength > 0)
                         {
@@ -250,17 +300,16 @@ namespace Dentalcare.Areas.admin.Controllers
                         }
                     }
 
-                    // Cập nhật Account (nếu có chỉnh sửa)
                     var account = db.Accounts.Find(model.dentist.id);
                     if (account != null)
                     {
-                        account.username = model.account.username;
                         account.able = model.account.able;
                     }
 
                     db.SaveChanges(); // Lưu tất cả thay đổi vào database
                     return RedirectToAction("Index");
                 }
+
                 // Nếu ModelState không hợp lệ
                 ViewBag.falid = new SelectList(db.Faculties, "id", "name", model.dentist.falid);
                 return View(model);
@@ -274,14 +323,10 @@ namespace Dentalcare.Areas.admin.Controllers
                         System.Diagnostics.Debug.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
                     }
                 }
-
-                // Ghi thêm log nếu cần
                 System.Diagnostics.Debug.WriteLine("Full exception: " + e);
 
-                throw; // Không cần truyền lại 'e' vào throw, chỉ cần throw là đủ
+                throw;
             }
-
-
         }
 
 
@@ -322,6 +367,15 @@ namespace Dentalcare.Areas.admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private int getMaxOrder()
+        {
+            int lastOrder = db.Dentists
+                               .OrderByDescending(n => n.order)
+                               .Select(n => n.order)
+                               .FirstOrDefault();
+            return lastOrder + 1;
         }
     }
 }

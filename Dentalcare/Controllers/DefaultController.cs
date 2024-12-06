@@ -54,7 +54,7 @@ namespace Dentalcare.Controllers
                 case "lien-he":
                     return View("Contact"); 
                 case "tai-khoan":
-                    return View("Login"); 
+                    return RedirectToAction("Login", "Account");
                 default:
                     return RedirectToAction("_404");
             }
@@ -72,11 +72,7 @@ namespace Dentalcare.Controllers
             ViewBag.patients = patientManager.GetPatients();
             return View();
         }
-        public ActionResult Login()
-        {
-            ViewBag.Message = "Login.";
-            return View();
-        }
+     
 
         public ActionResult Register()
         {

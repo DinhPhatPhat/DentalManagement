@@ -371,6 +371,7 @@
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Person" Relationship="clinicModel.FK__Assisstant__id__5535A963" FromRole="Assisstant" ToRole="Person" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Avatar">
     <Key>
@@ -501,6 +502,7 @@
     <NavigationProperty Name="Faculty" Relationship="clinicModel.FK__Dentist__falid__47A6A41B" FromRole="Dentist" ToRole="Faculty" />
     <NavigationProperty Name="Person" Relationship="clinicModel.FK__Dentist__id__46B27FE2" FromRole="Dentist" ToRole="Person" />
     <NavigationProperty Name="Prescriptions" Relationship="clinicModel.FK__Prescript__denid__503BEA1C" FromRole="Dentist" ToRole="Prescription" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -690,6 +692,7 @@
     <Property Name="datebegin" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Person" Relationship="clinicModel.FK__Receptionist__id__5070F446" FromRole="Receptionist" ToRole="Person" />
+    <Property Name="new_order" Type="Int32" />
   </EntityType>
   <EntityType Name="Service">
     <Key>

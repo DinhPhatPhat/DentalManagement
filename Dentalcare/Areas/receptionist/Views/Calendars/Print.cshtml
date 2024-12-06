@@ -1,0 +1,80 @@
+﻿@model List<Dentalcare.Models.Calendar>
+@using Dentalcare.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>In lịch làm việc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .calendar {
+            width: 100%;
+            margin: 20px auto;
+        }
+
+            .calendar h1 {
+                text-align: center;
+            }
+
+            .calendar table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .calendar th, .calendar td {
+                border: 1px solid #000;
+                padding: 8px;
+                text-align: center;
+            }
+
+            .calendar th {
+                background-color: #f2f2f2;
+            }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <h1>@ViewBag.MonthName @ViewBag.Year</h1>
+        <p>Lịch làm việc của @ViewBag.PersonName (@(ViewBag.PersonRole)) - tháng @ViewBag.Month</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Thời gian</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int day = 1; day <= (int)ViewBag.DaysInMonth; day++)
+                {
+                    var daySchedules = ((List<Calendar>)ViewBag.Schedules)
+                                        .Where(s => s.timeStart.Day == day)
+                                        .ToList();
+
+                    <tr>
+                        <td>@day/@ViewBag.Month/@ViewBag.Year</td>
+                        <td>
+                            @if (daySchedules.Any())
+                            {
+                                foreach (var schedule in daySchedules)
+                                {
+                                    <div>@schedule.timeStart.ToString("HH:mm") - @schedule.timeEnd.ToString("HH:mm")</div>
+                                }
+                            }
+                            else
+                            {
+                                <div>Không có lịch</div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

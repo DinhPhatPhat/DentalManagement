@@ -23,7 +23,7 @@
                         <th>Ảnh</th>
                         <th>Tên</th>
                         <th>Chức danh</th>
-                        <th>Ẩn/Hiện</th>
+                        <th>Hoạt động</th>
                         <th>Meta</th>
                         <th>Ngày bắt đầu</th>
                         <th>Mô tả</th>
@@ -36,7 +36,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.dentist.order)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.new_order)</td>
                             <td>@Html.DisplayFor(modelItem => item.account.id)</td>
                             <td>
                                 @if (!string.IsNullOrEmpty(item.person.img))
@@ -50,7 +50,7 @@
                             </td>
                             <td>@Html.DisplayFor(modelItem => item.person.name)</td>
                             <td>@Html.DisplayFor(modelItem => item.dentist.title)</td>
-                            <td>@Html.DisplayFor(modelItem => item.dentist.hide)</td>
+                            <td>@Html.DisplayFor(modelItem => item.account.able)</td>
                             <td>@Html.DisplayFor(modelItem => item.dentist.meta)</td>
                             <td>@Html.DisplayFor(modelItem => item.dentist.datebegin)</td>
                             <td>@Html.DisplayFor(modelItem => item.dentist.descrip)</td>
@@ -65,6 +65,7 @@
                                 @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
                                 @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
                                 @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-calendar'></span>", "Calendar", "Index", "Calendars", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-info" })
                             </td>
                         </tr>
                     }
