@@ -15,7 +15,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class NEWSController : Controller
+    public class NEWSController : BaseController
     {
         private clinicEntities db = new clinicEntities();
 

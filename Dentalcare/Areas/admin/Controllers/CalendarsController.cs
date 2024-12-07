@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class CalendarsController : Controller
+    public class CalendarsController : BaseController
     {
         private clinicEntities db = new clinicEntities();
 

@@ -14,7 +14,7 @@ using Dentalcare.Models;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class Service_CategoryController : Controller
+    public class Service_CategoryController : BaseController
     {
         private clinicEntities db = new clinicEntities();
 

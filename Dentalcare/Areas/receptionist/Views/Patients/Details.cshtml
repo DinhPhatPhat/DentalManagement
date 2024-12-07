@@ -1,0 +1,73 @@
+﻿@model Dentalcare.Models.Patient
+
+@{
+    ViewBag.Title = "Thông tin bệnh nhân";
+    Layout = "~/Areas/receptionist/Views/Shared/MyLayout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Content Row -->
+    <div class="row" >
+        <div class="container-fluid bg-light p-4 rounded shadow-sm">
+            <h3 class="text-center text-primary mb-4">Thông tin Bệnh nhân @Model.Person.name</h3>
+
+            <div class="row" style="margin-left: 30px">
+                <div class="col-md-10">
+                    @if (!string.IsNullOrEmpty(Model.Person.img))
+                    {
+                        <img class="doctor-avatar" src="@Model.Person.img" alt="Avatar" style="max-width: 150px; border-radius: 8px;" />
+                    }
+                    else
+                    {
+                        <img class="doctor-avatar" src="~/Content/images/default-avatar.png" alt="Default Avatar" style="max-width: 150px; border-radius: 8px;" />
+                    }
+                </div>
+                
+                <div class="col-md-8" style="margin-top: 30px">
+                    <div class="mb-3">
+                        <strong>Tên đăng nhập:</strong> @Model.Person.Account.username
+                    </div>
+                    <div class="mb-3">
+                        <strong>Hoạt động:</strong> @(Model.Person.Account.able ? "Có" : "Không")
+                    </div>
+                    <div class="mb-3">
+                        <strong>Tên bệnh nhân:</strong> @Model.Person.name
+                    </div>
+                    <div class="mb-3">
+                        <strong>Số điện thoại:</strong> @Model.Person.phoneNumber
+                    </div>
+                    <div class="mb-3">
+                        <strong>Email:</strong> @Model.Person.email
+                    </div>
+                    <div class="mb-3">
+                        <strong>Địa chỉ:</strong> @Model.Person.address
+                    </div>
+                    <div class="mb-3">
+                        <strong>Giới tính:</strong> @(Model.Person.gender ? "Nam" : "Nữ")
+                    </div>
+                    <div class="mb-3">
+                        <strong>Ngày sinh:</strong> @Model.Person.birthday
+                    </div>
+                    <div class="mb-3">
+                        <strong>Quốc tịch:</strong> @Model.Person.nation
+                    </div>
+                    <div class="mb-3">
+                        <strong>Meta:</strong> @Model.Person.meta
+                    </div>
+                    <div class="mb-3">
+                        <strong>Vip:</strong> @(Model.isVip)
+                    </div>
+
+                    @Html.ActionLink("Quay lại", "Index")
+                </div>
+            </div>
+            <div>
+ 
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

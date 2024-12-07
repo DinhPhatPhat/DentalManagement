@@ -13,7 +13,7 @@ using System.Data.Entity.Validation;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class DentistsController : Controller
+    public class DentistsController : BaseController
     {
         private clinicEntities db = new clinicEntities();
         // GET: admin/Dentists
@@ -117,7 +117,7 @@ namespace Dentalcare.Areas.admin.Controllers
                     {
                         id = newAccountId,
                         username = model.account.username,
-                        password = "123", // Sử dụng mật khẩu mặc định là "123"
+                        password = BCrypt.Net.BCrypt.HashPassword("123"), // Dùng BCrypt Hash mật khẩu
                         meta = newAccountId,
                         hide = false,
                         datebegin = DateTime.UtcNow,

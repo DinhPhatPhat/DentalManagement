@@ -10,7 +10,7 @@ namespace Dentalcare.Areas.admin.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (Session["Dentist"] == null)
+            if (Session["Admin"] == null)
             {
                 filterContext.Result = new RedirectResult(Url.Action("Home", "Default", new { area = "" }));
             }    

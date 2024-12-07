@@ -10,7 +10,7 @@ using Dentalcare.Models;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class PrescriptionsController : Controller
+    public class PrescriptionsController : BaseController
     {
         private clinicEntities db = new clinicEntities();
 

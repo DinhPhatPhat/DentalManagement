@@ -284,3 +284,13 @@ D:\College\SummaryTDTU\NetTechnology\CK\MainApplication\DentalManagement\Dentalc
 D:\College\SummaryTDTU\NetTechnology\CK\MainApplication\DentalManagement\Dentalcare\obj\Debug\Dentalcare.csproj.Up2Date
 D:\College\SummaryTDTU\NetTechnology\CK\MainApplication\DentalManagement\Dentalcare\obj\Debug\Dentalcare.dll
 D:\College\SummaryTDTU\NetTechnology\CK\MainApplication\DentalManagement\Dentalcare\obj\Debug\Dentalcare.pdb
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\BCrypt.Net-Next.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Buffers.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Memory.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Numerics.Vectors.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\BCrypt.Net-Next.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Buffers.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Memory.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Numerics.Vectors.xml
+C:\Users\Admin\OneDrive\StudyPlace\NAM 3\HK1\.Net Technology\Dentalcare\Dentalcare\bin\System.Runtime.CompilerServices.Unsafe.xml

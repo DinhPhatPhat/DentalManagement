@@ -42,21 +42,19 @@ namespace Dentalcare.Controllers
             switch (meta)
             {
                 case "nha-si":
-                    ViewBag.dentists = dentistManager.GetAllDentistsInfo();
-                    ViewBag.patients = patientManager.GetPatients();
-                    return View("Dentist");
+                    return RedirectToAction("Index", "Dentist");
                 case "tin-tuc":
-                    return View("Blog"); 
+                    return RedirectToAction("Index", "Blog");
                 case "dich-vu":
                     return RedirectToAction("Index", "ServiceCategory");
                 case "binh-luan":
                     return RedirectToAction("Index", "Comment");
                 case "lien-he":
-                    return View("Contact"); 
+                    return RedirectToAction("Contact", "Default");
                 case "tai-khoan":
                     return RedirectToAction("Login", "Account");
                 default:
-                    return RedirectToAction("_404");
+                    return RedirectToAction("_404", "Default");
             }
         }
 
@@ -73,13 +71,10 @@ namespace Dentalcare.Controllers
             return View();
         }
      
-
-        public ActionResult Register()
+        public ActionResult Contact()
         {
-            ViewBag.Message = "Register.";
-            return View();
+            return View("Contact");
         }
-
 
         public ActionResult _404()
         {

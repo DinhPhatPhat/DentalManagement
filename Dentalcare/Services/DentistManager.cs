@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
+using System.Xml.Linq;
 
 namespace Dentalcare.Services
 {
@@ -17,13 +19,14 @@ namespace Dentalcare.Services
 
         public class DentistInfo
         {
-            public string Avatar { get; set; }
             public string Name { get; set; }
             public string Title { get; set; }
             public string Description { get; set; }
             public string Email { get; set; }
 
             public int Order { get; set; }
+
+            public string img { get; set; }
         }
 
         //Lấy thông tin tất cả nha sĩ
@@ -36,32 +39,29 @@ namespace Dentalcare.Services
         }
 
 
-        //Lấy thông tin nha sĩ không bị ẩn
+        // Lấy thông tin nha sĩ không bị ẩn, bao gồm ảnh từ bảng People
         public List<DentistInfo> GetAllDentistsInfo()
         {
             var dentists = db.Dentists
-                        .Where(d => !d.hide)
-                        .Join(db.People.Where(p => !p.hide),
-                              d => d.id,
-                              p => p.id,
-                              (d, p) => new { Dentist = d, Person = p })
-                        .Join(db.Avatars,
-                              dp => dp.Person.id,
-                              a => a.personId,
-                              (dp, a) => new DentistInfo
-                              {
-                                  Name = dp.Person.name,
-                                  Title = dp.Dentist.title,
-                                  Description = dp.Dentist.descrip,
-                                  Email = dp.Person.email,
-                                  Order = dp.Person.order,
-                                  Avatar = a.imgPath
-                              })
-                        .OrderBy(p => p.Order)
-                        .ToList();
+                             .Where(d => !d.hide)
+                             .Join(db.People.Where(p => !p.hide),
+                                   d => d.id,
+                                   p => p.id,
+                                   (d, p) => new DentistInfo
+                                   {
+                                       Name = p.name,
+                                       Title = d.title,
+                                       Description = d.descrip,
+                                       Email = p.email,
+                                       Order = d.order,
+                                       img = p.img
+                                   })
+                             .OrderBy(di => di.Order)
+                             .ToList();
 
             return dentists;
         }
+
 
         //Lấy 4 nha sĩ đầu tiên
         public List<DentistInfo> GetTopFourDentistsInfo()
@@ -71,20 +71,16 @@ namespace Dentalcare.Services
                         .Join(db.People.Where(p => !p.hide),
                               d => d.id,
                               p => p.id,
-                              (d, p) => new { Dentist = d, Person = p })
-                        .Join(db.Avatars,
-                              dp => dp.Person.id,
-                              a => a.personId,
-                              (dp, a) => new DentistInfo
+                              (d, p) => new DentistInfo
                               {
-                                  Name = dp.Person.name,
-                                  Title = dp.Dentist.title,
-                                  Description = dp.Dentist.descrip,
-                                  Email = dp.Person.email,
-                                  Order = dp.Person.order,
-                                  Avatar = a.imgPath
-                              })
-                        .OrderBy(p => p.Order)
+                                  Name = p.name,
+                                  Title = d.title,
+                                  Description = d.descrip,
+                                  Email = p.email,
+                                  Order = d.order,
+                                  img = p.img
+                              })                            
+                        .OrderBy(di => di.Order)
                         .Take(4)
                         .ToList();
 

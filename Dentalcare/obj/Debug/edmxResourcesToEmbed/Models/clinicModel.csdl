@@ -309,7 +309,7 @@
     </Key>
     <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="72" FixedLength="false" Unicode="true" />
     <Property Name="meta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="hide" Type="Boolean" Nullable="false" />
     <Property Name="order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />

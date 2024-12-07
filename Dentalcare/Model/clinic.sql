@@ -2454,3 +2454,5 @@ go
 UPDATE Receptionist
 SET new_order = [order];
 go
+
+ALTER TABLE Account ALTER COLUMN password NVARCHAR(72);

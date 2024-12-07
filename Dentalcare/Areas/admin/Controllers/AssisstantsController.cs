@@ -10,10 +10,11 @@ using Dentalcare.Models;
 using Dentalcare.Areas.admin.Models;
 using System.IO;
 using System.Data.Entity.Validation;
+using BCrypt.Net;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class AssisstantsController : Controller
+    public class AssisstantsController : BaseController
     {
         private clinicEntities db = new clinicEntities();
 
@@ -109,7 +110,7 @@ namespace Dentalcare.Areas.admin.Controllers
                     {
                         id = newAccountId,
                         username = model.account.username,
-                        password = "123", // Sử dụng mật khẩu mặc định là "123"
+                        password = BCrypt.Net.BCrypt.HashPassword("123"), // Dùng BCrypt Hash mật khẩu
                         meta = newAccountId,
                         hide = false,
                         datebegin = DateTime.UtcNow,

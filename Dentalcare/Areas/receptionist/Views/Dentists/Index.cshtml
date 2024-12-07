@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Dentalcare.Areas.admin.Models.CreateDentistViewModel>
+@using Dental.Help
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/receptionist/Views/Shared/MyLayout.cshtml";
+}
+
+<!-- HTML -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách nha sĩ</h6>
+    </div>
+    <div style="margin-left: 20px; margin-top: 20px">
+        <button type="button" class="btn btn-info" onclick="window.location='@Url.Action("Create", "Dentists")'">Thêm mới</button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Thứ tự</th>
+                        <th>Mã</th>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>Chức danh</th>
+                        <th>Hoạt động</th>
+                        <th>Meta</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Mô tả</th>
+                        <th>Tên khoa</th>
+                        <th>Tên tài khoản</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.new_order)</td>
+                            <td>@Html.DisplayFor(modelItem => item.account.id)</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.person.img))
+                                {
+                                    <img class="doctor-avatar" src="@item.person.img" alt="Avatar" style="max-width: 100px" />
+                                }
+                                else
+                                {
+                                    <img class="doctor-avatar" src="~/Content/images/default-avatar.png" alt="Default Avatar" style="max-width: 100px" />
+                                }
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.person.name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.account.able)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.meta)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.datebegin)</td>
+                            <td>@Html.DisplayFor(modelItem => item.dentist.descrip)</td>
+                            <td>
+                                @if (item.dentist.Faculty != null)
+                                {@item.dentist.Faculty.name }
+                            else
+                            { <span>Không có khoa</span>}
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.account.username)</td>
+                            <td>
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-zoom-in'></span>", "Detail", "Details", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Dentists", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-calendar'></span>", "Calendar", "Index", "Calendars", routeValues: new { id = item.account.id }, htmlAttributes: new { data_modal = "", @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <link href="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.css")" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <!-- Page level plugins -->
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/datatables/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Areas/admin/Content/vendor/datatables/dataTables.bootstrap4.min.js")"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="@Url.Content("~/Areas/admin/Content/js/demo/datatables-demo.js")"></script>
+}

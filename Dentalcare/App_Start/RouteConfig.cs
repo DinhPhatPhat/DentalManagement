@@ -13,12 +13,8 @@ namespace Dentalcare
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Blog",
-                url: "tin-tuc",
-                defaults: new { controller = "Blog", action = "Index" },
-                namespaces: new[] { "Dentalcare.Controllers"}
-            );
+
+
 
             routes.MapRoute(
                 name: "Account",
@@ -27,6 +23,26 @@ namespace Dentalcare
                 namespaces: new[] { "Dentalcare.Controllers" }
             );
 
+            routes.MapRoute(
+                name: "Dentist",
+                url: "nha-si",
+                defaults: new { controller = "Dentist", action = "Index" },
+                namespaces: new[] { "Dentalcare.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Contact",
+                url: "lien-he",
+                defaults: new { controller = "Default", action = "Contact" },
+                namespaces: new[] { "Dentalcare.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Blog",
+                url: "tin-tuc",
+                defaults: new { controller = "Blog", action = "Index" },
+                namespaces: new[] { "Dentalcare.Controllers" }
+            );
             routes.MapRoute(
                 name: "BlogDetail",
                 url: "tin-tuc/{meta}",
@@ -51,12 +67,7 @@ namespace Dentalcare
                 defaults: new { controller = "Comment", action = "Index" },
                 namespaces: new[] { "Dentalcare.Controllers" }
             );
-            routes.MapRoute(
-                name: "Register", 
-                url: "dang-ky", 
-                defaults: new { controller = "Default", action = "Register" },
-                namespaces: new[] { "Dentalcare.Controllers" }
-            );
+
             routes.MapRoute(
                 name: "Login",
                 url: "dang-nhap",

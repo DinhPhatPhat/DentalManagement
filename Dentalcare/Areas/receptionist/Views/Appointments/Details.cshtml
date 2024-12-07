@@ -1,0 +1,115 @@
+﻿@model Dentalcare.Models.Appointment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/receptionist/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.able)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.able)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.symptom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.symptom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hide)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hide)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datebegin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datebegin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dentist.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dentist.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.meta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

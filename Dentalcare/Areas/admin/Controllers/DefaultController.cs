@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Dentalcare.Areas.admin.Controllers
 {
-    public class DefaultController : Controller
+    public class DefaultController : BaseController
     {
         // GET: admin/Default
         public ActionResult Index()

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<link href="../../Content/css/register_style.css" rel="stylesheet" />
+<div class="register-container">
+    <!-- Title section -->
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+            Tên đăng nhập hoặc mật khẩu không đúng
+        </div>
+    }
+    @if (TempData["logout"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            Đăng xuất thành công
+        </div>
+    }
+    <div class="title">Đăng nhập</div>
+    <div class="content">
+        <!-- Registration form -->
+        <form action="/Account/Login" method="post">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Tên đăng nhập</span>
+                    <input type="text" placeholder="Nhập tên tài khoản" name="userName" id="user-name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Mật khẩu</span>
+                    <input type="password" placeholder="Nhập mật khẩu" name="password" id="password" required>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="Đăng nhập">
+            </div>
+        </form>
+
+    </div>
+</div>

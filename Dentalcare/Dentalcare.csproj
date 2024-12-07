@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -60,8 +63,21 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -155,6 +171,7 @@
     <Compile Include="Areas\admin\Controllers\Service_CategoryController.cs" />
     <Compile Include="Areas\admin\Models\CreateAssisstantViewModel.cs" />
     <Compile Include="Areas\admin\Models\CreateDentistViewModel.cs" />
+    <Compile Include="Areas\admin\Models\CreatePatientViewModel.cs" />
     <Compile Include="Areas\admin\Models\CreateReceptionistViewModel.cs" />
     <Compile Include="Areas\dentist\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\dentist\Controllers\BaseController.cs" />
@@ -165,12 +182,15 @@
     <Compile Include="Areas\receptionist\Controllers\BaseController.cs" />
     <Compile Include="Areas\receptionist\Controllers\CalendarsController.cs" />
     <Compile Include="Areas\receptionist\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\receptionist\Controllers\DentistsController.cs" />
+    <Compile Include="Areas\receptionist\Controllers\PatientsController.cs" />
     <Compile Include="Areas\receptionist\receptionistAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DentistController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceCategoryController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3583,8 +3603,6 @@
     <Content Include="Areas\admin\Views\Menus\Details.cshtml" />
     <Content Include="Areas\admin\Views\Menus\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Menus\Index.cshtml" />
-    <Content Include="Areas\admin\Views\Clinics\Create.cshtml" />
-    <Content Include="Areas\admin\Views\Clinics\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Clinics\Details.cshtml" />
     <Content Include="Areas\admin\Views\Clinics\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Clinics\Index.cshtml" />
@@ -3698,6 +3716,17 @@
     <Content Include="Areas\receptionist\Views\Default\Index.cshtml" />
     <Content Include="Areas\receptionist\Views\Shared\MyLayout.cshtml" />
     <Content Include="Areas\receptionist\Views\Appointments\Create.cshtml" />
+    <Content Include="Areas\receptionist\Views\Dentists\Create.cshtml" />
+    <Content Include="Areas\receptionist\Views\Dentists\Delete.cshtml" />
+    <Content Include="Areas\receptionist\Views\Dentists\Details.cshtml" />
+    <Content Include="Areas\receptionist\Views\Dentists\Edit.cshtml" />
+    <Content Include="Areas\receptionist\Views\Dentists\Index.cshtml" />
+    <Content Include="Areas\receptionist\Views\Patients\Create.cshtml" />
+    <Content Include="Areas\receptionist\Views\Patients\Details.cshtml" />
+    <Content Include="Areas\receptionist\Views\Patients\Edit.cshtml" />
+    <Content Include="Areas\receptionist\Views\Patients\Index.cshtml" />
+    <Content Include="Areas\receptionist\Views\Appointments\Delete.cshtml" />
+    <Content Include="Areas\receptionist\Views\Appointments\Details.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3759,6 +3788,8 @@
     <Content Include="Views\ServiceCategory\Details.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Dentist\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3767,8 +3798,6 @@
     <Folder Include="Areas\dentist\Views\Base\" />
     <Folder Include="Areas\receptionist\Data\" />
     <Folder Include="Content\images\Avatar\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -11,28 +11,59 @@ namespace Dentalcare.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Clinic
     {
+        [DisplayName("Mã số")]
         public string id { get; set; }
+
+        [DisplayName("Tên")]
         public string name { get; set; }
+
+        [DisplayName("Số điện thoại phòng khám")]
         public string phoneNumber { get; set; }
+
+        [DisplayName("Địa chỉ")]
         public string address { get; set; }
+
         [Required(AllowEmptyStrings = true)]
         public string img { get; set; }
+
+        [DisplayName("Email")]
         public string email { get; set; }
+
+        [DisplayName("Facebook")]
         public string facebook { get; set; }
+
+        [DisplayName("Zalo")]
         [Required(AllowEmptyStrings = true)]
         public string zalo { get; set; }
+
+        [DisplayName("Instagram")]
         public string instagram { get; set; }
+
+        [DisplayName("Youtube")]
         public string youtube { get; set; }
+
         public bool hide { get; set; }
+
+        [DisplayName("Meta")]
         public string meta { get; set; }
+
         public int order { get; set; }
+
+        [DisplayName("Ngày tạo thông tin")]
         public System.DateTime datebegin { get; set; }
+
+        [DisplayName("Phương châm")]
         public string title { get; set; }
+
+        [DisplayName("Thông điệp")]
         public string msg { get; set; }
+
+        [DisplayName("Ngày thành lập")]
         public System.DateTime dateStartClinic { get; set; }
     }
 }
