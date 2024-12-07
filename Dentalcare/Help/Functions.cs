@@ -92,5 +92,31 @@ namespace Dental.Help
             return "Không xác định vai trò"; // Default case if the role is not one of the recognized types
         }
 
+        public static string FormatIntWithDots(int number)
+        {
+            // Convert the integer to a string
+            string numberStr = number.ToString();
+
+            // Initialize an empty string to hold the formatted result
+            string formattedNumber = string.Empty;
+
+            // Start from the end of the number string and add dots every 3 digits
+            int counter = 0;
+            for (int i = numberStr.Length - 1; i >= 0; i--)
+            {
+                counter++;
+                formattedNumber = numberStr[i] + formattedNumber;
+
+                // After every 3 digits, insert a dot if it's not the first group
+                if (counter == 3 && i != 0)
+                {
+                    formattedNumber = "." + formattedNumber;
+                    counter = 0;
+                }
+            }
+
+            return formattedNumber;
+        }
+
     }
 }

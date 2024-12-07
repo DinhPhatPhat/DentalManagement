@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Dentalcare.Areas.admin.Models; 
-using Dentalcare.Models; 
+using Dentalcare.Models;
+using Dentalcare.Services;
 
 namespace Dentalcare.Areas.receptionist.Controllers
 {

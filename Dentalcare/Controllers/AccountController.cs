@@ -17,7 +17,7 @@ namespace Dentalcare.Controllers
                 var person = db.People.FirstOrDefault(p => p.id == account.id);
                 if (person != null)
                 {
-                    var role = person.role; 
+                    var role = person.role;
 
                     switch (role)
                     {
@@ -55,7 +55,7 @@ namespace Dentalcare.Controllers
             // Nếu đăng nhập thất bại
             TempData["ErrorMessage"] = "Tên đăng nhập hoặc mật khẩu không đúng.";
 
-            return RedirectToAction("Login", "Default");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]

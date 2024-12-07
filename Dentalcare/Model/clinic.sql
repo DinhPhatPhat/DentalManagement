@@ -166,9 +166,7 @@ CREATE TABLE Service
   PRIMARY KEY (id),
   FOREIGN KEY (cateId) REFERENCES Service_Category(id)
 );
-SELECT * FROM Service_Category WHERE meta = 'chua-tuy' AND hide = 0;
 
-SELECT * FROM Service WHERE cateId = 'SC00000006' AND hide = 0;
 CREATE TABLE Material_Category
 (
   id VARCHAR(10) NOT NULL,
@@ -1867,8 +1865,25 @@ go
 
 --them bill
 exec procAddBill 'AC00000014',''
+exec procAddBill 'AC00000014',''
 exec procAddBill 'AC00000015',''
+exec procAddBill 'AC00000016',''
 go
+
+UPDATE Bill
+SET datebegin = '2023-09-09', totalPrice = 1100000, ServicesPrice = 100000, isPayed = 1
+WHERE id = 'BI00000002'
+go
+UPDATE Bill
+SET datebegin = '2024-08-09', totalPrice = 100000, ServicesPrice = 100000, isPayed = 1
+WHERE id = 'BI00000003'
+go
+UPDATE Bill
+SET datebegin = '2024-09-09', totalPrice = 3000000 + 100000, ServicesPrice = 3000000 + 100000, isPayed = 1
+WHERE id = 'BI00000004'
+go
+
+
 
 --Bill_Service
 create proc procAddBill_Service
@@ -1890,10 +1905,11 @@ END
 go
 
 --them Bill_Service
-exec procAddBill_Service 'BI00000001','SE00000002',1,''
-exec procAddBill_Service 'BI00000001','SE00000003',1,''
-
-exec procAddBill_Service 'BI00000002','SE00000030',2,''
+exec procAddBill_Service 'BI00000002','SE00000002',1,''
+exec procAddBill_Service 'BI00000002','SE00000003',1,''
+exec procAddBill_Service 'BI00000003','SE00000030',1,''
+exec procAddBill_Service 'BI00000004','SE00000030',1,''
+exec procAddBill_Service 'BI00000004','SE00000029',1,''
 GO
 
 

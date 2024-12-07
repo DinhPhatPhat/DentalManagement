@@ -22,7 +22,7 @@
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="@Url.Content("~/Areas/admin/Content/css/sb-admin-2.min.css?v=1.1")" rel="stylesheet">
+    <link href="@Url.Content("~/Areas/admin/Content/css/sb-admin-2.min.css?v=" + DateTime.Now.Ticks)" rel="stylesheet">
 
 
     <link href="@Url.Content("~/Areas/admin/Content/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
@@ -270,7 +270,6 @@
                     <!--<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>-->
-
                     <!-- Topbar Search -->
                     <!--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -283,7 +282,6 @@
                             </div>
                         </div>
                     </form>-->
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -525,7 +523,7 @@
     <script src="@Url.Content("~/Areas/admin/Content/vendor/jquery-easing/jquery.easing.min.js")"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="@Url.Content("~/Areas/admin/Content/js/sb-admin-2.min.js")"></script>
+    <script src="@Url.Content("~/Areas/admin/Content/js/sb-admin-2.min.js?v=" + DateTime.Now.Ticks)"></script>
 
     @RenderSection("Scripts", false)
     @RenderSection("Header", false)

@@ -291,11 +291,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\BillManager.cs" />
     <Compile Include="Services\BlogManager.cs" />
     <Compile Include="Services\CommentManager.cs" />
     <Compile Include="Services\DentistManager.cs" />
     <Compile Include="Services\FacultyManager.cs" />
     <Compile Include="Services\InfoClinicManager.cs" />
+    <Compile Include="Services\MaterialManager.cs" />
     <Compile Include="Services\PatientManager.cs" />
     <Compile Include="Services\ServiceCategoryManager.cs" />
     <Compile Include="System\Date.cs" />
@@ -1418,6 +1420,8 @@
     <Content Include="Areas\admin\Content\js\demo\datatables-demo.js" />
     <Content Include="Areas\admin\Content\js\sb-admin-2.js" />
     <Content Include="Areas\admin\Content\js\sb-admin-2.min.js" />
+    <Content Include="Areas\admin\Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\admin\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\admin\Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Areas\admin\Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\admin\Content\vendor\bootstrap\js\bootstrap.js" />
@@ -3088,6 +3092,7 @@
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\admin\Content\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Areas\admin\Content\vendor\morrisjs\morris.css" />
+    <Content Include="Areas\dentist\Views\web.config" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Dentalcare.dll" />
@@ -3685,7 +3690,6 @@
     <Content Include="Areas\admin\Views\Receptionists\Details.cshtml" />
     <Content Include="Areas\admin\Views\Receptionists\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Receptionists\Index.cshtml" />
-    <Content Include="Areas\dentist\Views\web.config" />
     <Content Include="Areas\dentist\Views\Shared\MyLayout.cshtml" />
     <Content Include="Areas\dentist\Views\Default\Index.cshtml" />
     <Content Include="Areas\dentist\Views\Calendars\Index.cshtml" />
@@ -3711,6 +3715,10 @@
     <Content Include="Areas\admin\Views\Medicines\Details.cshtml" />
     <Content Include="Areas\admin\Views\Medicines\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Medicines\Index.cshtml" />
+    <Content Include="Areas\admin\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\admin\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\admin\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\admin\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -3772,6 +3780,7 @@
     <Content Include="Views\ServiceCategory\Details.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Shared\Milestone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
